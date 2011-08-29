@@ -48,6 +48,8 @@ solution)'' ismi vermis.
 
 Klasik Ornekler
 
+Ornek 1
+
 \[ mx'' + bx' + kx = f(t) \]
 
 Bu daha onceden hatirlayacagimiz yay / kutle / engelleyici sistemi. Fakat
@@ -59,12 +61,145 @@ Resmi hatirlayalim
 \includegraphics[height=2cm]{12_1.png}
 
 Ortada duran kutle ileri geri gidebiliyordu, eger denklemde $f(t)$ varsa,
-biri o kutle uzerinde ek olarak direk bir guc uygulami olur, mesela
+biri o kutle uzerinde ek olarak direk bir guc uygulamis olur, mesela
 kutlenin bir metal oldugunu farzedelim, ve uzaktan birinin bir miknatis
 tutarak yay, engelleyici ``haricinde'' degisik bir yonden de bir guc
 uyguladigini hayal edelim. 
 
 $f(t)=0$ oldugu zaman (yani denklemde olmadigi zaman), sistem
-pasiftir. Disaridan hicbir guc uygulanmamaktadir. 
+pasiftir. Disaridan hicbir guc uygulanmamaktadir. Baslangic sartlari olarak
+bazi seyler yapabiliriz tabii, mesela kutleyi bir tarafa dogru cekip,
+birakmak gibi. Ama ondan sonra sistemde hersey kendiliginden olacak, sistem
+salinima girecek, ya da girmeyecek, vs. Eger $f(t)$ varsa, bu sisteme guc
+uygulanmis sistem (forced system) denmesi bu yuzden. 
+
+Ornek 2
+
+Diferansiyel bir modeli mukemmel bir sekilde takip eden bir diger sistem,
+basit bir elekrik devresidir.
+
+\includegraphics[height=2cm]{12_2.png}
+
+$L$ bobinin yarattigi olusturucu (inductance) terimidir. Bu devreyi temsil
+etmek icin iki diferansiyel denklem kullanilir, ama bu denklemlerden biri
+otekinden turetilebilir, ikisi de Kirchoff'un voltaj kanununa baglidir. Bu
+kanun der ki ``devrenin tum noktalarinda alinan voltaj farkliliklari /
+dusuklukluklerini toplarsak, sonuc sifir olmalidir''. 
+
+$q$ kapasitans uzerindeki akim (charge), $i$ devredeki akimdir. 
+
+Denklem soyle
+
+\[ Li' + Ri + \frac{q}{C} = \varepsilon(t) \]
+
+Sagdaki $\varepsilon$ belki bir pil, bir jenerator uzerinden devreye
+eklenen enerji. Bu enerji sinussel bir dalga seklinde olabilir, ki o zaman
+alternatif akimdan (AC/DC) bahsediyor olurduk, ya da sabit olabilir, o
+zaman duz akimdan (DC) bahsediyor olurduk. 
+
+Formul hala nihai formunda degil, oraya gelmek icin bir sey daha bilmemiz
+gerekiyor, $q' = i$, yani akimin kapasitoru terk edis hizi devrenin akima
+esittir, akim bu yuzden hareket eder. Tabii aslinda hareket eden bir sey
+yok, her elektron yanindakini ittirir, ama aslinda yerlerini terk etmezler,
+her neyse [hoca ben de bu isi tam anlamiyorum diyor], her neyse, bu noktada
+iki sey yapabiliriz. Ya tum denklemi entegre ederiz ve her seyi $q$ bazinda
+temsil ederiz, ya da denlemin turevini aliriz ve her seyi $i$ bazinda
+temsil ederiz. Bir turev yontemini takip edecegiz:
+
+\[ Li'' + Ri' + \frac{i}{C} = \varepsilon(t)'\]
+
+Eger sag tarafta duz akim olsaydi turev sonrasi $\varepsilon(t)'$'nin sifir
+olacakti. Boylece elimize homojen bir denklem gecmis olurdu.
+
+Eger duz akim bile koymamis olsaydik, yani devreye disaridan ek
+yapmasaydik, belki baslangic sarti olarak kapasitor icinde bir doluluk
+olabilirdi, ve bu akim yavasca devre uzerinden, az amartisorlu durumda
+mesela ileri geriye bir salinimla, akacak ve bitecekti. Ama genellikle
+uygulamalarda olan disaridan enerji verilmesi ve akimin ittirilmesi /
+surulmesi / idare edilmesi, ve buna gore akimin ne olacaginin
+hesaplanmasi. 
+
+Elimizdeki iki problemler iste bunlar. Ya pasif devre, ya da disaridan
+verilen enerji. 
+
+Simdi homojen bir denklemi cozmek icin gereken kilit teoremi gorelim. 
+
+Teori
+
+\[ Ly = f(x) \]
+
+Ustteki bir ODE ve $L$ bir lineer operator. O zaman cozum su formdadir:
+
+\[ y_p + y_c \]
+
+yani
+
+\[ y = y_p + c_1y_1 + c_2y_2 \]
+
+$y_p$ ozel (particular) cozum. Bu kelime bu dersin en kotu secilmis / kafa
+karistirici kelimelerinden biri. Ozel cozum derken sanki ozgun, tekil
+cagrisimi yapiliyor ama aslinda kastedilen herhangi bir cozum. 
+
+Teoriye donelim, eger $L$'in lineer operator olusunu kullanirsak teorinin
+ispati cok kolay. Iki ifadeyi ispatlamamiz gerekiyor. 
+
+1. Tum $y = y_p + c_1y_1 + c_2y_2$ ifadeleri cozumdur. Bu ifadeyi nasil
+ispatlariz? Ana denkleme koyarak. 
+
+\[ L(y_p + c_1y_1 + c_2y_2) \]
+
+Ustteki lineer operator olduguna gore
+
+\[ = L(y_p) + L(c_1y_1 + c_2y_2) \]
+
+Biliyoruz ki
+
+\[ = \underbrace{L(y_p)}_{f(x)} + \underbrace{L(c_1y_1 + c_2y_2)}_{0} \]
+
+\[ =f(x) \]
+
+Demek ki tum $y_p + c_1y_1 + c_2y_2$'ler bir cozumdur. 
+
+Bu hikayenin bir yarisi tabii. Hikayenin ikinci yarisi bu cozumlerin
+``yegane'' cozumler oldugunu gostermek. Simdi ortaya $u(x)$ diye ufaklik
+cikartacagiz, bu arkadas cozum oldugunu zannedecek. Ve bizde ispatta
+gostermeliyiz ki bu kendini farkli zanneden $u(x)$ bile $y_p + c_1y_1 +
+c_2y_2$ 
+ifadesinden baska bir sey olamaz.
+
+Bunu nasil yapacagiz. Cok kolay. Eger bir cozum ise 
+
+\[ L(u) = f(x) \]
+
+olmalidir. Peki su bizim ``ozel cozumu'' kullanalim, $L(y_p)$ nedir? Aynisi
+
+\[ L(y_p) = f(x) \]
+
+Son iki denklemi birbirinden cikartirsak
+
+\[ L(u) - L(y_p) = 0 \]
+
+\[ L(u - y_p) = 0\]
+
+O zaman ustteki son ifade homojen denklemin bir cozumudur. O zaman su dogru
+olmali
+
+\[ u-y_p =  \tilde{c_1}y_1 + \tilde{c_2}y_2 \]
+
+Diger yandan onceden bildigimiz gibi
+
+\[ y = y_p + c_1y_1 + c_2y_2 \]
+
+\[ y -  y_p = c_1y_1 + c_2y_2 \]
+
+Ya da 
+
+\[ u = y_p + \tilde{c_1}y_1 + \tilde{c_2}y_2 \]
+
+\[ y = y_p + c_1y_1 + c_2y_2 \]
+
+Son iki ifade birbirinin aynisi, o zaman $u$ farkli bir cozum olamaz. 
+
+
 
 \end{document}
