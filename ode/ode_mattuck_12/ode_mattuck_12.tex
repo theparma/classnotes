@@ -263,13 +263,58 @@ yaramiyor.
 
 Simdi yapmak istedigim ustteki anlatimin 2. ve daha ust seviye
 denklemlerdeki karsiligini bulmak. 2. seviyeyi anlamak yeterli aslinda, onu
-anlarsak, daha ust seviye denklemlerde yapilacaklar tipatip ayni. 
+anlarsak, daha ust seviye denklemlerde yapilacaklar tipatip ayni. 2. derece
+denklemi yazalim:
 
 \[ y'' + Ay' + By = f(t) \]
 
+Sormak istedigim soru su. Hangi sartlarda 1. derece durumunda gordugum
+turden bir sabit konum kismi, gecici kisim ayrimini 2. derece denklem icin
+de yapabilirim? 
 
+Cozum neye benziyor? 
 
+\[ y = y_p + c_1y_1 + c_2y_2 \]
 
+Bu denklemde baslangic sartlari $c_1y_1 + c_2y_2 $ bolumunde olduguna gore,
+``hangi sartlarda olursa olsun'' diyecegimiz kisim ve $t \to \infty$
+sirasinda yokolup gidip gitmeyecegini anlamaya calisacagimiz kisim o'dur.
+
+Simdi yokolma mantiginin mekanigine gelelim. 1. derece durumda o mekanigi
+gormek kolaydi, cunku $e^{-kt}$ ibaresinde $k$'nin etkisinin hemen
+gorebiliyorduk. 2. derece durumunda bu biraz daha zor, ama cozumu elde
+edince ne kadar guzel bir sonuc oldugunu gorecegiz. 
+
+Yani soru $t \to \infty$ ne zaman $c_1y_1 + c_2y_2 \to 0$? Cunku eger bu
+olursa o zaman ODE'ye stabil denebilir. O cevabi bulursak o zaman 
+
+\[ y = y_p + \underbrace{c_1y_1 + c_2y_2}_{gecici} \]
+
+olacak ve (onumuzdeki iki hafta icinde bulmak icin ter dokecegimiz) cozum
+$y_p$ aradigimiz stabil cozum olacak. 
+
+ODE'lerin stabil cozumunu bilmek cok onemli, cunku o zaman ODE hakkinda
+kabaca bir fikir sahibi olabiliyorsunuz, uzun vadede nasil davranacagini
+anliyorsunuz. 
+
+Bu analizi kalem kalem, her sart icin irdeleyerek (case by case basis)
+yapalim. 
+
+\begin{tabular}{l|l|l}
+\hline
+Karakteristik denklemin kokleri &  Cozumler & Stabilite þartý  \\ 
+\hline
+$r_1 \ne r_2$ &  $c_1e^{r_1t} + c_2e^{r_2t}$ & $r_1 < 0$ ve $r_2 < 0$ \\ 
+\hline
+$r_1 = r_2$ &  $(c_1 + c_2t)e^{r_1t}$ & $r_1 < 0$  \\ 
+\hline
+$r = a \pm bi$ &  $e^{at}(c_1cos(bt) + c_2sin(bt))$ & $a < 0$  \\
+\hline
+\end{tabular}
+
+Yani tablonun sagindaki sartlar bir ODE icin gecerliyse, o ODE stabil
+demektir. Terminolojide bunu soylemenin kisa yolu ``eger tum karakteristik
+koklerin reel bolumu negatif ise'' sozudur.
 
 
 \end{document}
