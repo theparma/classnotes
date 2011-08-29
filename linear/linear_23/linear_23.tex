@@ -1,0 +1,444 @@
+\documentclass[12pt,fleqn]{article}
+\setlength{\parindent}{0pt}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage[latin5]{inputenc}
+\setlength{\parskip}{8pt}
+\setlength{\parsep}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\topmargin}{0pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\mathindent}{0cm}
+
+\begin{document}
+MIT OCW Lineer Cebir - Ders 23
+
+Bu derste birinci dereceden, sabit katsayili (coefficients) lineer
+diferansiyel denklem sistemini cozmeye gorecegiz. Form
+
+\[ \frac{du}{dt} = A u \]
+
+seklinde olacak. Katsayilar $A$ matrisi icinde. Temel fikir: sabit katsayili
+lineer diferansiyel denklemlerin cozumu usteldir (exponential). Sonucun
+ustel oldugunu bilince bulmamiz gereken ustel degerin ne oldugu, yani $e$
+uzerine ne geldigi, onu neyin carptigi, ki bunlari bulmak lineer cebirin
+isi olacak.
+
+Bir ornekle baslayalim
+
+\[ \frac{du_1}{dt} = -u_1 + 2u_2 \]
+
+\[ \frac{du_2}{dt} = u_1 - 2u_2 \]
+
+Ustteki sistemin katsayilarini disari cekersek $A$ matrisi su olur
+
+\[ A = 
+\left[\begin{array}{cc}
+-1 & 2 \\
+1 & -2
+\end{array}\right]
+ \]
+
+Baslangic degerleri soyle olsun
+
+\[ u(0) = 
+\left[\begin{array}{c}
+1 \\
+0
+\end{array}\right]
+ \]
+
+Eger $u_1$ ve $u_2$'yi bu sistemin temsil ettigi iki kap gibi gorsek
+(mesela), her sey $u_1$'in ``icinde'' olarak baslayacakti, sonra zaman
+gectikce oradan cikacak, $u_2$'ye dogru akacak. Tum bunlari $A$ matrisinin
+ozdeger/vektorlerine bakarak anlayabilmemiz lazim. O zaman ilk isimiz
+ozdeger/vektorleri bulmak olmali. 
+
+$A$'ya bakinca ne goruyoruz? Bir kolon digerinin kati, o zaman matris
+tekilsel (singular), bu demektir ki bir ozdeger $\lambda = 0$. Diger
+ozdeger icin bir numara kullanalim; ozdegerlerin toplami matris izine
+(trace) yani caprazdaki sayilarin toplamina esit olduguna gore, ve toplam
+$=-3$, o zaman ikinci ozdeger $-3$ olmali. Ozvektorler ise
+
+\[ 
+\left[\begin{array}{c}
+2 \\ 1
+\end{array}\right] 
+,
+\left[\begin{array}{c}
+1 \\ -1
+\end{array}\right]
+ \]
+
+O zaman cozum iki cozumun toplami olacak
+
+\[ u(t) = c_1 e^{\lambda_1 t}x_1 + c_2 e^{\lambda_2 t}x_2\]
+
+Bu genel cozum. Genel cozum $c_1, c_2$ haricindeki birinci ve ikinci
+terimdeki ``pur ustel'' cozumlerden olusuyor. Hakikaten mesela $e^{\lambda_1
+  t}x_1$ 
+dif denklemi cozuyor degil mi? Kontrol edelim. Denklem
+
+\[ \frac{du}{dt} = Au\]
+
+$u$ icin $e^{\lambda_1t}x_1$ koyalim, turev $t$'ye gore alindigina gore
+
+\[ \lambda_1 e^{\lambda_1t}x_1 = A e^{\lambda_1t}x_1\]
+
+Iki taraftaki ustel degerler iptal olur, geri kalanlar
+
+\[ \lambda_1 x_1 = A x_1\]
+
+Bu da ozdeger/vektor formuludur. Artik $u(t)$'nin son formulunu
+yazabiliriz. 
+
+\[ u(t) =
+c_1 \cdot 1 \cdot 
+\left[\begin{array}{c}
+2 \\ 1
+\end{array}\right]
++
+c_2 e^{-3t} \cdot 
+\left[\begin{array}{c}
+1 \\ -1
+\end{array}\right]
+ \]
+
+$t=0$ aninda
+
+\[ u(t) =
+c_1 
+\left[\begin{array}{c}
+2 \\ 1
+\end{array}\right]
++
+c_2 
+\left[\begin{array}{c}
+1 \\ -1
+\end{array}\right] = 
+\left[\begin{array}{c}
+1 \\ 0
+\end{array}\right] 
+ \]
+
+Iki tane formul, iki tane bilinmeyen var. Sonuc
+
+\[ c_1 = \frac{1}{3},\ c_2 = \frac{1}{3}\]
+
+yani
+
+\[ u(t) =
+\frac{1}{3}
+\left[\begin{array}{c}
+2 \\ 1
+\end{array}\right]
++
+\frac{1}{3}  e^{-3t} 
+\left[\begin{array}{c}
+1 \\ -1
+\end{array}\right] 
+ \]
+
+Denklem kararli konuma (steady-state) gelince, yani $t \rightarrow \infty$ icin,
+ustel bolum yokolacaktir, ve bastaki terim kalacaktir. 
+
+\[ u(\infty) =
+\frac{1}{3}
+\left[\begin{array}{c}
+2 \\ 1
+\end{array}\right]
+ \]
+
+Fakat ustteki durum, yani sabit bir istikrarli konuma yaklasmak her zaman
+mumkun olmayabilir. Bazen sifira, bazen de sonsuzluga da yaklasabiliriz. 
+
+1. Stabilite 
+
+Ne zaman $u(t) \rightarrow 0$? Ozdegerler negatif ise, cunku o zaman eksi
+ustel deger olarak kucultucu etki yapacaklar. Eger $\lambda$ kompleks bir
+sayi olsaydi, mesela 
+
+\[ e^{(-3 + 6i)} \]
+
+Bu sayi ne kadar buyuktur? Kesin degeri (absolute value) nedir? 
+
+\[ | e^{(-3 + 6i)t}| = e^{-3t} \]
+
+cunku 
+
+\[ |e^{6it}| = 1 \]
+
+Niye 1? Cunku kesin deger isareti icindeki $e^{6it} = cos(6t)+isin(6t)$, ve
+sagdaki $a+ib$ formudur, hatirlarsak kompleks eksenlerde $a$ ve $b$ ucgenin
+iki kenaridir, hipotenus ise, ustte kesin deger olarak betimlenen seydir,
+uzunlugu $a^2 + b^2$, yani $cos^2(6t) + sin^2(6t) = 1$. Aslinda $cos$ ve
+$sin$ icine ne gelse sonuc degismezdi. 
+
+Yani kompleks kisim konumuz icin onemli degil, cunku nasil olsa 1 olacak,
+esas cozumu patlatabilecek (sonsuza goturecek), ya da kucultecek olan sey
+reel kisim. Altta Re ile reel bolum demek istiyoruz.
+
+2. Istikrarli konum: $\lambda_1 = 0$ ve oteki $Re \ \lambda < 0$. 
+
+3. Patlama: herhangi bir $Re \ \lambda > 0$ ise. 
+
+* * * 
+
+Su formulun matris formu nedir?
+
+\[ u(0) =
+c_1 
+\left[\begin{array}{c}
+2 \\ 1
+\end{array}\right]
++
+c_2 
+\left[\begin{array}{c}
+1 \\ -1
+\end{array}\right] 
+=
+\left[\begin{array}{c}
+1 \\ 0
+\end{array}\right] 
+\]
+
+Soyle
+
+\[ 
+\left[\begin{array}{cc}
+2 & 1 \\ 1 & -1
+\end{array}\right]
+\left[\begin{array}{c}
+c_1 \\ c_2
+\end{array}\right] 
+=
+\left[\begin{array}{c}
+1 \\ 0
+\end{array}\right] 
+ \]
+
+Soldaki matris, ozvektor matrisi $S$. O zaman $Sc = u_0$ 
+
+* * *
+
+Probleme bakmanin degisik sekillerinden biri, onu ``baglantisiz
+(decoupled)'' hale getirmek. Baslangic formulune donersek
+
+\[ \frac{du}{dt} = Au \]
+
+Bu $A$ baglantili (coupled) bir halde. $u = Sv$ kullanirsak
+
+\[ S\frac{dv}{dt} = ASv\]
+
+$S$ ozvektor matrisi. 
+
+\[ \frac{dv}{dt} = S^{-1}ASv = \Lambda v\]
+
+Bu geciste iyi bilinen esitlik $AS=S\Lambda$'nin $S^{-1}AS = \Lambda$
+halini kullandik. Bu esitligin detaylari icin Hesapsal Bilim Ders 6'ya
+bakabilirsiniz.
+
+Boylece denklemler arasindaki baglantidan kurtulmus olduk. Tum sistem su
+hale geldi:
+
+\[ \frac{dv_1}{dt} = \lambda_1 v_1\]
+
+\[ \frac{dv_2}{dt} = \lambda_2 v_2\]
+
+..
+
+Bu sistemi cozmek daha kolay, her biri icin ayri ayri cozumu yazalim,
+mesela $v_1$
+
+\[ v_1(t) = e^{\lambda_1 t} v_1(0) \]
+
+Tamami icin
+
+\[ v(t) = e^{\Lambda t} v(0) \]
+
+Eger $u=Sv$ ise o zaman $v=S^{-1}u$, ve $v(0)=S^{-1}u(0)$
+
+\[ S^{-1}u(t) = e^{\Lambda t} S^{-1}u \]
+
+\[ u(t) = Se^{\Lambda t}S^{-1} u(0) \]
+
+Aradigimiz formul ustteki su bolum
+
+\[ e^{At} = Ae^{\Lambda t} S^{-1} \]
+
+Ama bir matrisin ustel deger haline gelmesi ne demektir? Problemimizde elde
+ettigimiz cozum bu oncelikle, yani $du/dt = Au$'nun cozumu $e^{At}$. Fakat,
+yine soralim, bu demek? 
+
+Guc serilerini (power series) hatirlayalim. $e^{x}$ icin guc serisi nedir? 
+
+\[ e^x = 1 + x + \frac{1}{2}x^2 + \frac{1}{6}x^3 + ... \]
+
+1 yerine $I$ (birim matris), ve $x$ yerine $At$ alirsak
+
+\[ e^{At} = I + At + \frac{(At)^2}{2} + \frac{(At)^3}{6} + ... +
+ \frac{(At)^n}{n!} + ..
+\]
+
+Bu ``guzel'' bir Taylor serisi. Aslinda matematikte iki tane cok guzel,
+temiz Taylor serisi vardir, bir tanesi
+
+\[ e^x = \sum_0^{\infty} \frac{x^n}{n!} \]
+
+Oteki de Geometrik seri
+
+\[ \frac{1}{1-x} = \sum_0^{\infty} x^n\]
+
+Bu da en guzel guc serisidir. Onu da matris formunda kullanabilirdik aslinda
+
+\[ (I-At)^{-1} = I + At + (At)^2 + (At)^3 + ... \]
+
+Bu formul, bu arada, eger $t$ kucuk bir degerse bir matrisin tersini
+hesaplamanin iyi yaklasiksal yontemlerinden biri olabilir. Cunku ustu
+alinan kucuk $t$ degerleri daha da kuculuyor demektir; ustteki terimlerin
+cogunu bir noktadan kesip atariz (yaklasiksallik bu demek), ve sadece 
+$I =
+At + (At)^2$ hesabi yaparak matris tersini yaklasiksal olarak
+hesaplayabiliriz.
+
+Zihin egzersizine devam edelim: $e^{At}$ acilimi $(I-At)^{-1}$ acilimindan
+hangisi daha iyi? Ikincisi daha temiz, ama birincisi bir degere yaklasiyor
+(converges), cunku gitgide buyuyen $n$ degerleriyle bolum yapiyorum. Demek
+ki $t$ ne kadar buyurse buyusun, toplam bir sonlu (finite) sayiya dogru
+gidiyor. Fakat ikinci acilim oyle degil. Eger $A$'nin 1'den buyuk ozdegeri
+var ise, toplam patlar ($At$ tum ozdegerleri 1'den kucukse durum degisir
+tabii, yani $|\lambda(At)| < 1$ ise).
+
+Neyse, konumuza donelim. 
+
+$e^{At}$'nin $Se^{\Lambda t}S^{-1}$ ile baglantili oldugunu nasil
+gorebilirim? $e^{At}$'yi anlamak icin $S$ ve $\Lambda$'yi anlamaya calismak
+lazim, $S$ zaten ozvektor matrisi, $\Lambda$ ise caprazsal (diagonal) bir
+matris, tum degerleri caprazinda, bunlar nispeten temiz formlar, onlari
+anlarsak isimiz kolaylasacak.
+
+Peki gecisi nasil yapalim? $e^{At}$ acilimi olan guc serisini kullanarak bu
+seriden $S$ ve $\Lambda$ cikmasini saglayabilir miyim acaba? Sunu zaten
+biliyoruz: $A = S \Lambda S^{-1}$. Peki $A^2$ nedir?
+
+\[ A^2 = (S \Lambda S^{-1})(S \Lambda S^{-1}) \]
+
+\[ = S \Lambda S^{-1}S \Lambda S^{-1} \]
+
+ortadaki $S$ ve $S^{-1}$ birbirini iptal eder. 
+
+\[ = S \Lambda^2 S^{-1} \]
+
+O zaman 
+
+\[ e^{At} = I + S \Lambda S^{-1} t + \frac{S \Lambda^2 S^{-1}}{2}t^2 + ...\]
+
+Disari tum $S$'leri cikartmak istiyorum. O zaman $I$'yi su sekilde yazarsam
+daha iyi olacak (ki icinden $S$'leri cekip cikartabilelim), $I = SS^{-1}$
+
+\[ = SS^{-1} + S \Lambda S^{-1} t + \frac{S \Lambda^2 S^{-1}}{2}t^2 + ...\]
+
+ve
+
+\[ = S (I + \Lambda t + \frac{\Lambda^2}{2}t^2 + ...) S^{-1}\]
+
+Ortada kalanlar $e^{\Lambda t}$ degil mi? O zaman
+
+\[ = S e^{\Lambda t}S^{-1} \]
+
+Boylece gecisi yapmis olduk. Soru: bu formul hep isler mi? Hayir. Ne zaman
+isler? Eger $A$ caprazlastiralabilen bir matris ise isler, yani icinden
+$\Lambda$ matrisi cekip cikartilabilecek matrisler icin. Onu yapmanin on
+sarti ise $A$'nin tersine cevirelebilir olmasi, yani tum ozvektorlerinin
+bagimsiz olmasidir.
+
+Peki $e^{\Lambda t}$ nedir? Yani caprazsal bir matris ustel deger olarak
+karsimiza cikinca sonuc ne olur? $\Lambda$ nedir?
+
+\[ \Lambda =
+\left[\begin{array}{ccc}
+\lambda_1 && \\
+&&.. \\
+&& \lambda_n
+\end{array}\right]
+ \]
+
+Bunu $e$ uzeri olarak hesaplayinca ne elde ederiz? Sunu elde ederiz:
+
+
+\[ e^{\Lambda t} =
+\left[\begin{array}{ccc}
+e^{\lambda_1t} && \\
+&&.. \\
+&& e^{\lambda_n t}
+\end{array}\right]
+ \]
+
+Not: Ustteki acilim sezgisel olarak tahmin edilebilecek bir sey olsa da,
+ustel olarak bir matris olunca, beklenen her islem yapilamayabiliyor. Mesela 
+eger matris
+
+\[ 
+\left[\begin{array}{cc}
+a & b \\ c & d
+\end{array}\right]
+ \]
+
+olsaydi o zaman her elemani ustel olarak $e^{a}$, $e^b$ seklinde kullanmak
+ve matris icindeki yerine yazmak ise yaramazdi. Ustel matris dunyasinin
+kendine has bazi kurallari var.
+
+Ornek
+
+\[ y'' + by' + Ky = 0 \]
+
+2. dereceden bu denklemi 1. dereceden formullerden olusan 2x2 bir
+``sisteme'' donusturebiliriz. Ekstra bir denklem ortaya cikaracagiz, eger
+$y$ yerine bir vektor formundaki $u$'yu su sekilde kullanirsak
+
+\[ u = 
+\left[\begin{array}{c}
+y' \\ y
+\end{array}\right]
+ \]
+
+$u$'nun turevi soyle olur
+
+\[ 
+u' = 
+\left[\begin{array}{c}
+y'' \\ y'
+\end{array}\right]
+ \]
+
+$u'$ formuna gore 2. derece denklemi su sekilde temsil edebiliriz
+
+\[ 
+\left[\begin{array}{cc}
+-b & -K \\
+1 & 0
+\end{array}\right]
+\left[\begin{array}{c}
+y' \\ y
+\end{array}\right]
+ \]
+
+Genel olarak, mesela 5. dereceden bir denklemi alip 5x5 boyutlarinda 1. 
+derece denklem sistemine gecmek te mumkundur. Bu gecis alttaki matrisin 
+ust satirina katsayi degerleri atayacak, ve onun altindan baslayarak 1 
+degerleri dolduracaktir. 
+
+\[ 
+\left[\begin{array}{rrrrr}
+- & - & - & - & - \\
+1 &&&& \\
+& 1 &&& \\
+&& 1 && \\
+&&& 1 & 
+\end{array}\right]
+ \]
+
+\end{document}
+
