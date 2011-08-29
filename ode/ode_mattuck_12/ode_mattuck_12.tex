@@ -200,6 +200,76 @@ Ya da
 
 Son iki ifade birbirinin aynisi, o zaman $u$ farkli bir cozum olamaz. 
 
+Eger katsayilar sabit ise, isin yarisini halletmisiz demek ki. Tamamlayici
+denklemi biliyorsak, ki onu nasil bulacagimizi biliyoruz artik, ustel,
+kompleks ustel, sin, cos fonksiyonlar kullanarak, vs. Geriye ne kaliyor?
+Sadece ozel bir cozum bulmak kaliyor. Yani hangisi olursa olsun, esitligin
+sag tarafina uyan ``bir'' cozum buldugumuz anda, isimiz bitiyor. 
+
+Is bitiyor dedik ama, onumuzdeki iki haftayi bu ozel cozumu bulmakla
+gecirecegiz. Fourier Serilerini kullanan bir genel metot gorecegiz, cunku
+bu serileri islemek icin iyi bir bahane bu, fakat sunu da eklememiz
+lazim. Birkac standart fonksiyon icin operatorler kullanaran genel bir
+yontem var, tum diger ``standart olmayan'' durumlar icin seriler
+kullaniliyor, ya da yaklasiksallama (approximation) kullaniliyor. Eger
+bunlari hicbiri islemezse, en kotu durumda bilgisayara hesaplattiririz, ve
+sayisal cevabi ozel cozum olarak kullaniriz. 
+
+Simdi bu yaptiklarimizi 1. seviye denklemlerle irtibatlandirmak
+istiyorum. Ders 8'den hatirlayalim:
+
+\[ y' + ky = q(t) \]
+
+Cozum icin entegre edici faktoru bulmustuk, carpmistik, vs. Cozum soyleydi
+
+\[ y = e^{-kt} \int q(t)e^{kt}dt + ce^{-kt} \]
+
+Ustteki formul 2. seviye denklemi cozmek icin gosterdigimiz paradigmaya
+nasil baglantili? Ustteki denklemde artinin sagindaki terim tamamlayici
+denklemin cozumu gibi durmuyor mu? 
+
+\[ y = e^{-kt} \int q(t)e^{kt}dt + \underbrace{ce^{-kt}}_{y_c} \]
+
+Bu mantikli cunku $ce^{-kt}$ alttaki homojen denklemin cozumu degil mi? 
+
+\[ y' + ky = 0\]
+
+Bunu hemen ilk bakista goruyoruz (dersin bu seviyesinde artik bunu aninda
+soyleyebilmemiz lazim). 
+
+O zaman ustteki cozumde $y_c$'den geri kalanlar da ozel cozum olurlar, 
+
+\[ y = \underbrace{e^{-kt} \int q(t)e^{kt}dt}_{y_p} + \underbrace{ce^{-kt}}_{y_c} \]
+
+Itiraz edenler olabilir, ama bu $y_p$ icinde tanimsiz bir entegral var,
+ayrica hic sabit yok, vs. Eger entegralin tanimsizligi bizi rahatsiz
+ediyorsa, onu tanimli hale getirmenin numarasini gormustuk, alt sinir icin
+bir  sifir koyariz, uste $t$ koyariz, vs. Sabit konusuna gelince, entegre
+edince ortaya bir sabit cikmayacak mi? 
+
+Devam edelim. Ustteki cozum hakkinda bir yorum daha yapmistik, hatirlarsak,
+$k>0$ ve $k<0$ sartlari oyle farkli iki sonuca yol aciyor, oyle farkli
+fiziksel anlamlara sebep oluyor ki, aslinda ustteki ayni forma bagli
+olmalarina ragmen, bu sartlarin tamamen farkli denklemler olarak
+gorulmeleri gerektiginden bahsetmistik. 
+
+$k>0$, ustteki cozumu $y_c$'nin gecici (transient) $y_p$'nin sabit konuma
+(steady-state) donustugu bir durum ortaya cikiyordu. Bu durumda baslangic
+sartlarinin tanimladigi $c$'nin ne oldugu onemli olmuyordu, cunku $c$'yi
+iceren kisim ne olursa olsun sifira gidiyordu. 
+
+$k<0$ olunca isler degisiyor tabii, o zaman ust paragraftaki analiz ise
+yaramiyor. 
+
+Simdi yapmak istedigim ustteki anlatimin 2. ve daha ust seviye
+denklemlerdeki karsiligini bulmak. 2. seviyeyi anlamak yeterli aslinda, onu
+anlarsak, daha ust seviye denklemlerde yapilacaklar tipatip ayni. 
+
+\[ y'' + Ay' + By = f(t) \]
+
+
+
+
 
 
 \end{document}
