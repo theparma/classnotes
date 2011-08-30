@@ -24,7 +24,13 @@ Ve genel cozum $y = y_p + c_1y_1 + c_2y_2$ formunda olacak.
 Gercek su ki esitligin sag tarafina yazilabilecek her fonksiyon o kadar
 ilginc degil. Ilginc olanlardan bir tanesi ustel (exponential)
 fonksiyonlar, yani $e^{ax}$ formundaki fonksiyonlar, ki cogunlukla $a<0$
-kullanilir. Diger bazi ilginc olanlar $cos(x)$, $sin(x)$ gibi salinim
+kullanilir. Diger bazi ilginc olanlar 
+
+\[ sin \omega x \]
+
+\[ cos \omega x \]
+
+gibi salinim
 ornekleri, ki bunlar da elektriksel devrem baglaminda alternatif AC/DC
 akimi temsil ediyorlar.
 
@@ -34,7 +40,95 @@ Ya da ``gittikce yokolan salinim'' ilginc, Burada
 
 \[ e^{ax}cos \omega x \]
 
-gibi ornekler var. 
+gibi ornekler var. Ama aslinda ustteki tum ilginc fonksiyonlar genel tek
+bir forma baglanabilir, bu form icin ustel sayinin kompleks olmasina izin
+vermek gerekiyor. Form soyle
+
+\[ e^{(a+i\omega)x} \]
+
+$\omega = 0$ ise o zaman $e^{ax}$ elde ederim. $a=0$ ise $sin\omega x$,
+$cos\omega x$ elde ederim. Ikisi de sifir degilse o zaman gittikce yokolan
+salimi elde ederim. 
+
+Bundan sonra habire $a+i\omega$ yazmamak icin onun yerine $\alpha$
+kullanacagiz, $\alpha$'yi gorunce onun bir kompleks sayi oldugunu
+anlayin. Yani esitligin sag tarafi $e^{\alpha x}$
+
+
+
+
+
+
+
+
+
+
+
+ olacak. 
+
+Birazdan gorecegimiz uzere, bu tur bir girdi kullanmak aslinda kolaylikla
+cozum sagliyor. Yerine gecirme (substitution) kuralini kullanarak cozume
+erismek cok kolay. 
+
+\[ y'' + Ay' + By = f(x) \]
+
+Polinom operator kullanirsak
+
+\[ (D^2 + AD + B )y = f(x) \]
+
+Parantez icindekine $p(D)$ diyelim. Ve su formulu ortaya atalim. 
+
+\[ p(D)e^{\alpha x} = p(\alpha)e^{\alpha x}  \]
+
+Ispat
+
+\[ (D^2 + AD + B )e^{\alpha x} \]
+
+\[ = D^2e^{\alpha x} + ADe^{\alpha x} + Be^{\alpha x} \]
+
+\[ = \alpha^2 e^{\alpha x} + A \alpha e^{\alpha x} + Be^{\alpha x} \]
+
+\[ = e^{\alpha x}(\alpha^2  + A \alpha + B)\]
+
+Parentez icinin $p(\alpha)$ oldugunu goruyoruz. 
+
+\[ = e^{\alpha x}p(\alpha)\]
+
+Simdi bunlari yeni bir teori icin kullanalim
+
+Ustel Girdi Teorisi
+
+ODE
+
+\[ y'' + Ay' + By = e^{\alpha x} \]
+
+yani
+
+\[ p(D)y = e^{\alpha x} \]
+
+icin ozel cozum sudur
+
+\[ y_p = \frac{e^{\alpha x}}{p(\alpha)} \]
+
+Bu teori bu dersin en onemli teorilerinden biri. Bu dersteki pek cok
+kavrami yanyana getiriyor. 
+
+Ispat
+
+Ispatlamak icin cozum $y_p$'yi yerine gecirelim ve alttaki ifadenin dogru
+olup olmayacagina bakalim.
+
+\[ p(D)y_p =  e^{\alpha x} \]
+
+\[ p(D)\frac{e^{\alpha x}}{p(\alpha)} = \frac{p(\alpha)e^{\alpha x}}{p(\alpha)} \]
+
+\[ = e^{\alpha x} \]
+
+Peki ya $p(\alpha) = 0$ olsaydi? Bu problemde olmadigini farzediyoruz. 
+
+
+
+
 
 
 \end{document}
