@@ -52,19 +52,7 @@ salimi elde ederim.
 
 Bundan sonra habire $a+i\omega$ yazmamak icin onun yerine $\alpha$
 kullanacagiz, $\alpha$'yi gorunce onun bir kompleks sayi oldugunu
-anlayin. Yani esitligin sag tarafi $e^{\alpha x}$
-
-
-
-
-
-
-
-
-
-
-
- olacak. 
+anlayin. Yani esitligin sag tarafi $e^{\alpha x}$ olacak. 
 
 Birazdan gorecegimiz uzere, bu tur bir girdi kullanmak aslinda kolaylikla
 cozum sagliyor. Yerine gecirme (substitution) kuralini kullanarak cozume
@@ -79,6 +67,8 @@ Polinom operator kullanirsak
 Parantez icindekine $p(D)$ diyelim. Ve su formulu ortaya atalim. 
 
 \[ p(D)e^{\alpha x} = p(\alpha)e^{\alpha x}  \]
+
+Bu yerine gecirme kurali (substitution rule). 
 
 Ispat
 
@@ -118,17 +108,27 @@ kavrami yanyana getiriyor.
 
 Ispat
 
-Ispatlamak icin cozum $y_p$'yi ana denkleme koyalm ve alttaki ifadenin dogru
-olup olmayacagina bakalim.
+Ispatlamak icin cozum $y_p$'yi ana denkleme koyalim ve alttaki ifadenin dogru
+olup olmayacagina bakalim. ODE'yi tekrar ifade edelim, 
 
-\[ p(D)y_p =  e^{\alpha x} \]
+\[ p(D)y =  e^{\alpha x} \]
 
-\[ p(D)\frac{e^{\alpha x}}{p(\alpha)} = \frac{p(\alpha)e^{\alpha x}}{p(\alpha)} \]
+ama $y$ yerine $y_p$ koyalim, ve bakalim ifadenin sol tarafini
+donusturunce, sag taraftaki ayni sonuc cikacak mi?
+
+\[ = p(D)y_p\]
+
+\[ = p(D)\frac{e^{\alpha x}}{p(\alpha)}  \]
+
+Ust taraf icin yerine gecirme kuralini kullanalim
+
+\[ = \frac{p(\alpha)e^{\alpha x}}{p(\alpha)} \]
 
 \[ = e^{\alpha x} \]
 
-Demek ki ifade dogru. Peki ya $p(\alpha) = 0$ olsaydi? Bu onemli bir
-istisnai durum, ama problemde boyle olmadigini farzediyoruz.
+Sag tarafta ayni ifadeye eristik, demek ki teori dogru. Peki ya $p(\alpha)
+= 0$ olsaydi? 
+Bu onemli bir istisnai durum, ama problemde boyle olmadigini farzediyoruz.
 
 Ornek 
 
@@ -172,7 +172,6 @@ Bu son formdan hoslanmiyorsak, onu hemen cevirebiliriz, dik ucgeni
 hatirlayalim, kenarlar 1 ve 1 ise hipotenusu $\sqrt{2}$
 
 \[ = \frac{5}{3}e^{-x} \sqrt{2}cos(x - \frac{\pi}{4})\]
-
 
 
 \end{document}
