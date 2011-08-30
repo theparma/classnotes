@@ -1,3 +1,6 @@
+#
+# MIT OCW ODE Mathlet Isoclines replacement in Python
+#
 from pylab import *
 xmax = 4.0
 xmin = -xmax
