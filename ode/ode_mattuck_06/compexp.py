@@ -1,3 +1,7 @@
+#
+# MIT OCW ODE Mathlet Complex Exponentials replacement in 
+# Python
+#
 from pylab import *
 from matplotlib.widgets import Slider
 
