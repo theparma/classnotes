@@ -1,0 +1,102 @@
+\documentclass[12pt,fleqn]{article}
+\setlength{\parindent}{0pt}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage[latin5]{inputenc}
+\setlength{\parskip}{8pt}
+\setlength{\parsep}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\topmargin}{0pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\mathindent}{0cm}
+
+\begin{document}
+Türev Ýþlevi Nasýl Türetilir
+
+Calculus, bir veya daha fazla dereceli denklemlerin, en yüksek noktasýný
+bulmak, deðiþimi temsil etmek gibi birçok bilim ve mühendislik alanýnda
+kullanýlýr. Herhalde Calculus'in türev, tümlev alma gibi yöntemlerini þimdiye
+kadar çok gördük. Fakat genelde anlatýlmayan, türev ve tümlev iþlemlerinin
+nasýl yapýldýðý, yani Calculus'in nasýl iþlediði. 
+
+Örnek olarak, aþaðýdaki grafiðe bakalým. 
+
+\includegraphics[height=4cm]{turev.png}
+
+Gösterilen eðri, $x^2$ eðrisi. Bu eðrinin artýþ oranýný bulmak için, artýþ
+oranýný temsil eden iþlevi bulabiliriz. Bu iþleve türev alarak gideceðiz.
+
+Bunu yapmanýn bir yolu, y eksenindeki artýþý x eksenindeki artýþ ile
+bölmek. 
+
+\[ f(x) = x^2 \]
+
+$f(x)$'in turevini bulmak icin 
+
+\[ = \frac{f(x+\Delta x) - f(x)}{\Delta x} \]
+
+\[ = \frac{(x+\Delta x)^2 - x^2}{\Delta x} \]
+
+\[ = \frac{x^2 + 2x\Delta x + \Delta x^2 - x^2}{\Delta x} \]
+
+$x^2$'ler iptal oldu
+
+\[=  \frac{2x\Delta x + \Delta x^2}{\Delta x} \]
+
+
+\[ = 2x + \Delta x \]
+
+
+Bu elimizdeki iþlev, türevin son haline yaklaþtý. En son haline getirmek
+için, þöyle düþünmemiz gerekiyor. Artýþ miktarýný bulduk, ama x eksenindeki
+artýþ basamaðý ne kadar büyük olmalý? Sonuna kadar küçültürsek, elimize
+hangi iþlev geçer?
+
+Calculus'u ilk bulan Leibniz adlý matematikçi, zamanýna göre büyük bir
+ilerleme olan bu yeni metodu bir türlü meslektaþlarýna tarif
+edemiyordu. "$x^2$'nin türevi nasýl 2x oluyor" gibi sorulara, artýþ miktarý
+kavramýný anlatýyor, fakat $2x$ formülüne geldiðini bahsederken, "$x$'teki
+artýþ sonsuz küçüldüðü için $2x$'e yaklaþýyoruz" deyince, arkadaþlarý onu
+anlamýyordu. Zamanýn matematikçileri bu 'sonsuz küçüklük' kavramýný çok
+eleþtirdiler. Leibniz sonunda, "sonsuz küçük sayýlarýn olduðu delilik gibi
+gelebilir, fakat pratik hesaplamalar açýsýndan yararlý bir alet olarak
+Calculus'un hala yararlý olabileceðini düþünüyorum" demiþti. Yani
+Calculus'un matematiksel ispatý Leibniz zamanýnda yapýlamadý. Keþifler
+tarihin de bu olaðan bir durumdur. Türevler, zamaný için yeterince normal
+dýþý bir buluþtu, bunun üzerine hemen arkasýndan bir diðer sarsýcý buluþun
+yapýlmasý, çoðu zaman mümkün olmamaktadýr.
+
+Bu yüzden türevlerin soyut matematiksel olarak ispatýnýn yapýlmasý, 1821'de
+limit kuramýnýn keþfine kadar beklemiþtir. Fakat bu keþiften önce bile,
+mühendisler ve bilim adamlarý Calculus yöntemlerini verimli bir þekilde
+kullanmaya baþlamýþlardý.
+
+Sonsuz Küçüklük
+
+Leipniz ve Calculus'un ``öteki babasý'' sayýlan Newton'un söylemeye
+çalýþtýklarý, türev iþleminin bir duraðan resim üzerinde yapýlan hesap
+deðil, ardýþýl yaklaþýklama süreci altýnda bir sabit sonuca "yaklaþan"
+hareketli bir hedef olduðu idi. Matematiksel limit kuramý, bu tür bir
+tarifi gösterebildiði için sonunda Calculus'u ispatlamak mümkün oldu.
+
+\[ g(x) = 2x + \Delta x \]
+
+\[ \lim_{\Delta x \to 0}g(x) = \lim_{\Delta x \to 0} lim (2x + \Delta x)  \]
+
+\[ \lim_{\Delta x \to 0}g(x) = 2x\]
+
+Bu formüle bakarak bir daha belirtmek gerekir ki, $x$ deðiþimini 0'a
+eþitlemiyoruz. 0'a eþitleseydik, daha baþtan bölünen olarak elimize sýfýr
+geçeceði için cebirsel iþlemde bu kadar ilerlememiz mümkün
+olmazdý. Yaptýðýmýz, limit tarifini kullanarak, $x$ sýfýra yaklaþýrken
+türev $2x$'e yaklaþýr demektir.
+
+Bu taným sonucu elde ettiðimiz yeni fonksiyon da, tüm diðer fonksiyonlar
+gibi, aynen limitlerin çalýþtýðý uzayda olduðu gibi sonsuz küçük
+aralýklarla çalýþabilecek bir taným olduðu için, bu türetilmiþ yeni
+fonksiyonu da normal bir fonksiyon olarak kabul etmemiz mümkün olmaktadýr.
+
+
+\end{document}
