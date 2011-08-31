@@ -410,4 +410,122 @@ ki baþtaki faraziyemiþ yanlýþtýr. Demek ki, R kümesi olan f(n), doðal
 sayýlar (n) ile eþlenemiyor; O zaman R sayýlamayan büyüklükte sonsuz bir
 küme olmaktadýr.
 
+Durmayan Turing Makinalarý Var mýdýr?
+
+Bilgisayar bilimde, bir dil (language) ile algoritma (Turing makinasý) arasýnda
+çok sýký bir baðlantý vardýr.
+
+Algoritma, belli bir problemi çözmek için yazýlýr. Bu problemi çözmek
+demek, önceden kararlaþtýrýlmýþ bir alfabe üzerinden oluþturulabilecek bir
+girdinin iþlenmesi, ve bu girdiye ve programýn mantýðýna göre bir cevabýn
+verilmesidir.
+
+Algoritma ile eþ görülen Turing makinalarýnýn yaptýðý (bkz. Church-Turing
+tezi), girdiye "ret" vermek, ya da "kabul" etmektir.
+
+O zaman, bir Turing makinasýnýn kabul ettiði tüm girdilerin toplamýný
+düþünürsek; bu toplama bir dil diyebiliriz.
+
+Formel olarak 
+
+\includegraphics[height=3cm]{language_tanimi.png}
+Demek ki, bir evet/hayýr türünden karar problemini, ayný zamanda "bir dilin
+karar verilme" problemi gibi de görebiliriz. Bilgisayara verilen girdiyi
+(bir dile ait olan bir girdiyi) anlayabiliyor muyuz? Anlamaktan öte, evet
+ya da hayýr diyebiliyor muyuz? Verilen girdinin, beklediðimiz dile ait olup
+olmadýðýna kesin evet ya da hayýr diyebiliyor muyuz?
+
+Diller, Problemler
+
+Bunu takiben þu soru sorulabilir: Bütün bunlar iyi de, bilgisayarlarýn iþi
+çoðu zaman evet/hayýr cevabý veren programlar deðil ki. Çoðu problem,
+hesaplanmýþ bir deðer istiyor, bir sonuç, çýktý veriyor. Dünyadaki her
+problemi bir karar problemine çevirebilir miyiz?
+
+Bu da kritik bir sorudur. Bunun da cevabý da "evet" olacak. Mesela bir
+optimizasyon problemini düþünelim. Þu ünlü seyahat eden satýcý problemi. N
+sayýda þehir arasýndaki uzaklýklar biliniyor, bütün þehirleri ziyaret etmek
+kaydýyla, en kýsa katedilebilecek yolu bulmamýz lazým. Yani cevap, en kýsa
+olan güzergahýn raporudur.
+
+Baþlangýçta evet/hayýr cevabý verilmesi mümkün gözükmeyen bu problemi,
+aslýnda bir eþik deðeri vererek bir karar problemine
+dönüþtürebiliriz. Yani, "en kýsa yolu bul" yerine, "katedilen en kýsa yol
+1-4-3-3 þehirleri mi?" sorusuna evet ya da hayýr cevabý verilmesi gibi.
+
+Her Problem = Dil Ama Her Dil=Problem Mi?
+
+Bu kadar giriþi, bir problemin (makinanýn) bir dil ile ayný olduðunu
+belirtmek için yaptýk. Fakat bunun tersi, her zaman geçerli deðildir.
+
+\textbf{Dünyadaki her dile karar verebilen bir Turing makinasý olmayabilir}.
+
+Bu uyuþmazlýðýn sebebi ne olabilir? 
+
+Basit bir sayý farký bu uyuþmazlýða yol açacaktýr. Eðer evrendeki tüm
+mümkün dillerin sayýsý, tüm mümkün Turing makinalarýndan fazla ise, demek
+ki bazý diller için Turing makinasý olamaz, ve bu diller karar verilen
+diller kategorisine giremezler.
+
+Ýyice kafalarýn karýþtýðýný görür gibi oluyorum. Tüm diller derken bir
+sonsuzluktan bahsediyoruz, ayný þekilde tüm Turing makinalarý derken de
+sonsuzluktan bahsediyoruz.. Bir sonsuzluk öteki sonsuzluktan nasýl büyük
+olabilir?
+
+Evet olabiliyor! Bazý sonsuzluklarýn bazý sonsuzluklardan daha büyük olduðu
+matematiksel olarak ispatlandý, ve tabii ki bu çok büyük bir buluþ oldu.
+
+Bu yazýda numaralar üzerinden gördüðümüz örnekte olduðu gibi, tüm Turing
+makinalarýnýn sayýlabilir olduðunu, ama tüm dillerin sayýlamayan kadar
+olduðunu ispatlayabilirsek, aradaki bariz farktan hareketle, bazý dilleri
+karar verebilecek bir Turing makinasýnýn olamayacaðýný da ispatlamýþ
+oluruz.
+
+Teori: Her dil karar verilebilen bir dil deðildir.
+
+Ýspat: Bütün Turing makinalarýnýn sayýlabilir kadar olduðunu
+biliyoruz. Turing makinasý bir program olduðuna göre, her programýn bir
+metin olarak kodlanmasý mümkündür. Bu kodlamayý {0,1} gibi bir alfabe ile
+yapacak olsak, tüm Turing makinalarý {0,1}* kümesine dahil olduðunu
+söyleyebiliriz. {0,1}* kümesi, {0,1,00,01,11,000,...} olarak sonsuza giden
+bir kümedir. Bu kümenin içinden geçerli olmayan (bozuk) Turing makinalarýný
+atsak, geriye kalan hâla sayýlabilir bir sonsuzluktadýr.
+
+Þimdi, tüm dillere dönelim. Bir dil, mesela gene ayný sigma alfabesi
+üzerinde {0,1,00,01,11,000,...} olarak giden bir kümede "sadece 1 ile
+baþlayan metinler" olabilir. Ayný þekilde "sadece 0 ile baþlayan metinler"
+bir baþka dil olabilir, vs. Yani, sayýlabilir sonsuz olduðunu bildiðimiz
+{0,1}* üzerinden, sonsuz kadar altküme oluþturuyoruz, tüm diller iþte bu
+kümede oluyor.
+
+Bu yeni küme, sayýlamayan bir sonsuzluktur. Ýspat için, yeni kümeyi, B
+adýný vereceðimiz sayýlamayan sonsuz baþka bir küme ile birebir ve örten
+türden eþleyelim.
+
+B kümesi, sigma alfabesi üzerinden yarattýðýmýz ve her bir üyesi sonsuza
+giden, ayrýca bu üyelerden sonsuz kadar olan bir kümedir.
+
+Eðer eþleme baþarý ile sonuçlanýrsa, tüm dillerin de sayýlamayan kadar
+sonsuz olduðu ispatlanmýþ olacaktýr.
+
+Aþaðýda bu eþlemenin bir örneðini görüyoruz. A ile gösterilen bir dildir. A
+dili, 0 ile baþlayan bütün ikili düzenli sayýlarýn dili olsun. Þimdi, bu
+dilin elemanlarýna tekabül eden hemen altýndaki Xa sýrasýna bakýn. Bu
+sýrada, eðer bir öðe o dile ait ise, bu öðenin o sýradaki bit deðeri 1
+olacak. Ait deðil ise 0.
+\includegraphics[height=2cm]{infinite_binary_esleme.png}
+
+Nereye gelmeye çalýþtýðýmýzý herhalde görüyorsunuz. $X_A$ numarasýnýn tamâmý,
+A dilinin bir nevi "temsilci numarasý" olmaktadýr. Ayný þekilde "1 ile
+baþlayan metinlerin toplamý olan dil"'in temsilci no'su baþka olacaktýr
+(mesela $X_C$). Temsilci no'su, aynen B kümesinin elemanlarý gibi, sonsuza
+giden bir ikili sayýdýr. Bütün dillerin temsilci no'larýnýn kümesi, B ile
+tekabül eden bir iliþki içindedir.
+
+Demek ki bütün diller sayýlamayan sonsuzluktadýr, çünkü B'nin sayýlamayan
+sonsuzlukta olduðunu ispatlamýþtýk. Kýyasla, Turing makinalarý sayýlabilir
+sonsuz olduðuna göre, aradaki fark, karar verilemeyen diller olacaktýr. Bu
+dilleri karar verebilen Turing makinasýnýn yazýlmasý mümkün deðildir.
+
+
 \end{document}
