@@ -1,0 +1,407 @@
+\documentclass[12pt,fleqn]{article}
+\setlength{\parindent}{0pt}
+\usepackage{graphicx}
+\usepackage{listings}
+\setlength{\parskip}{8pt}
+\setlength{\parsep}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\topmargin}{0pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\mathindent}{0cm}
+\usepackage[latin5]{inputenc}
+
+\begin{document}
+Logaritmayý Taylor Serisi Ýle Hesaplamak
+
+Taylor açýlýmý tekniðini ilk gördüðümüzde öðrenci genelde kendine þu soruyu
+sorar: "Ýyi ama, bu ne iþe yarar?" Taylor serilerini ilginç kýlan özellik,
+bir formülü bir baþkasýna dönüþtürmemizi saðlamalarý, ve, genelde sonsuz
+olmayan bir formülü, sonsuza kadar devam eden terimlerin toplamý olan baþka
+bir formül ile deðiþtirmemizi saðlamalarýdýr.
+
+Sonsuza kadar devam eden terimler toplamý, karýþýk bir durumdur. Teklikten,
+çokluða niye gidilmektedir? Bu sonsuz terimler dizisi ne iþe yaramaktadýr?
+Öðrenciye göre, düzenden, düzensizliðe gidilmiþtir. Niçin? Bu tür sorular,
+Taylor serilerinin tanýþtýrýldýðý her derste cevaplanmalýdýr. Bu yazýda,
+Taylor serisinin ne iþe yaradýðýný, hangi problemler için kullanýldýðýný,
+ve ait olduðu matematiksel dünyanýn hangisi olduðunu göreceðiz.
+
+Yaklaþýklamak (Approximation)
+
+Yaklaþýklamak, bir deðeri, fonksiyonu, matematiksel bir kavramýn yerine ona
+yakýn, aþaðý yukarý eþit olan baþka bir deðeri/fonksiyonu/kavramý koymak
+demektir. Gündelik hayatta bazý sayýlarý sürekli baþkalarý ile
+yaklaþýklamaya uðraþmaktayýz. Mesela bir alan, uzunluk, hacim, vs. gibi
+þeyler ölçerken, mecburen yaklaþýksal kavramlar ile yüzyüze
+gelmekteyiz. Normalde gündelik hayatýmýzda sadece tamsayýlar ve
+tamsayýlarýn bölümü olarak gösterilebilecek rasyonel sayýlar kullanýrýz,
+fakat matematikte rasyonel sayýlarýn yanýnda, irrasyonel sayýlar da
+mevcuttur. Ölçümlerimiz sýrasýnda irrasyonel sayýlar ortaya çýkmasalar da,
+teorik argümanlarýmýz ve iþlemlerimiz çoðunlukla bizi o yöne doðru
+itiverir. Yarýçapý 1/2 olan bir çemberin uzunluðu pi denilen 'irrasyonel'
+sayýdýr, ya da iki kenarý eþit, bir birim uzunluðunda olan dik üçgenin
+hipotenüsü 2'nin kareköküdür, bu sayý da irrasyonel bir
+sayýdýr. "Ýrrasyonel" kelimesinin Ýngilizce'de 'deli', 'üþütük', veya
+'mantýksýz' olarak karþýlýk bulmasý da ilginçtir. Ýrrasyonel sayýlar
+virgülden sonra bile sonsuza kadar devam etmektedirler [3].
+
+Bu sebeple, irrasyonel sayýlar ile iþlem yaparken, onlarý 'rasyonel' bir
+sayý ile yaklaþýklamak gerekir. Bunu yapmak için çoðu zaman virgülden sonra
+belli bir basamak sonrasýný atarýz [3].
+
+Baþka bir alaný ele alalým: Doða bilimleri sürekli fonksiyonlar ile bir
+yaklaþýklama eylemi içindedirler. Doðanýn ölçümsel gizemleri matematikte
+bir fonksiyon olarak gösterilir, ve bu fonksiyonlar hiçbir zaman kesinkes,
+týpatýp her seviyede ve her molekülü anlatan betimler deðildir. Elde olan,
+yaklaþýksal olarak ve þartlara göre kesinlik derecesi bazen çok, bazen daha
+fazla olan bir ibaredir [3].
+
+Bâzen de, doðal þartlara hiç alâkasý olmayan "pür matematiksel" bir
+fonksiyonu baþka bir fonksiyon ile deðiþtirmeye mecbur kalabiliriz. Bunu
+da, genelde baþlangýç fonksiyonunu hesaplayabilmek için yaparýz [3].
+
+Taylor Serisi
+
+Ýþte bu fonksiyonel yaklaþýklamanýn en gözde araçlarýndan biri olan Taylor
+Serisini göreceðiz. Not olarak belirtmek gerekir ki, yaklaþýklamak için
+Taylor Serileri haricinde baþka teknikler de vardýr. Kimi teknikler bize
+fonksiyonlarý tümlevler ile yaklaþýklamamýzý saðlar, kimisi türevsel
+denklemler ile yeni bir fonksiyon yaratmamýzý saðlar. Dalga fonksiyonlarýný
+yaklaþýklamak için Forier Serileri vardýr [3]. Bu yazýmýzýn konusu sadece
+Taylor Serileri olacak.
+
+Taylor Serileri bir fonksiyonu, eðer þartlar uygun ise, cebirsel polinom
+denen baþka bir fonksiyon ile deðiþtirmeye yarar. Bir cebirsel polinom
+þöyle gözükür.
+
+\[ P(x) = a_0 + a_1x + ... + a_nx^{n} \]
+
+Not: $a_0, a_1,..a_n$ sayýlarý sabit sayýlardýr, ve x'ten baðýmsýzdýrlar.
+
+Gördüðümüz gibi cebirsel polinomlarýn çok basit bir yapýsý var, ve eðer bir
+cebirsel polinomu hesaplamak istersek, bize lazým olan yegâne aritmetik
+iþlemi toplama, çýkarma ve çarpma olacaktýr. Mühendislik ve uygulamalý
+bilimde bu hesapsal basitlik çok önemlidir. Cebirsel polinomlarýn,
+yaklaþýklama için çok popüler hedefler olmalarý bu yüzden raslantý
+deðildir.
+
+Bilgisayarlarýn hesaplama iþinde çok iyi olduðu bilinir, fakat
+bilgisayarlar yorulmaksýzýn hesap yapsalar da, aslýnda hesaplarý temelde
+çok basit iþlemlere dayanýr. Bilgisayarlar, sonsuza giden limitler ile
+iþlem yapamazlar, o yüzden meselâ, bilgisayarlar log(x) fonksiyonunun kesin
+hesabýný yapamaz. Fakat biz log(x)'i matematiksel olarak yaklaþýk bir
+þekilde P(x) ile temsil edersek, bu polinomu bilgisayara çok hýzlý bir
+þekilde hesaplattýrabiliriz, ve bu hesabý, istediðimiz kesinlik derecesi
+üzerinden yaptýrabiliriz [3].
+
+Kesinlik derecesini nasýl ayarlarýz? Taylor Serisi sonsuza giden terimler
+toplamý deðil midir? Evet. O zaman yaklaþýklamanýn detayýný arttýrmak
+istersek, terim sayýsýný fazla tutarýz. Eðer çok kaba bir hesap istersek,
+az sayýda terimle, mesela 4-5 terim ile yetiniriz, ve gerisini atarýz
+(bunun benzeri bir iþlemi teorik fizikçiler bile bazen yapmaktadýr)
+
+Taylor Serisinin Temeli
+
+Diyelim ki, bir aralýk içinde her dereceden türevi mevcut olan fonksiyon f,
+ve gene ayný aralýktaki bir a noktasý olsun. Þimdi, þu ikinci fonksiyona
+dikkat edelim [2].
+
+\[ p_1(x) = f(a) + f'(a)(x-a) \]
+
+Bu fonksiyon, $x=a$ noktasýnda $f(a)$ ile ayný deðeri verir. Ayný þekilde, p1
+fonksiyonunun a noktasý üzerindeki birinci türevi, f fonksiyonunkinin
+birinci türevi ile de aynýdýr. Deðil mi? Bunu kontrol edelim [2].
+
+$F()$ için, $x=a$ koyarsanýz, $(x - a)$ sýfýr olup yokolacak (sabit olan
+$f'(a)$'yi $y_1$ yanýnda götürerek), geriye sadece $f(a)$
+kalacaktýr. Güzel. Þimdi birinci türevin eþitliðini kontrol edelim: Birinci
+türev sabit $f(a)$'yý yokeder, tek deðiþken olan x türevi alýnýnca 1'e
+gelir (ama 0 olmaz) ve bu sayede geriye sadece $f'(a)$ kalýr. Yani
+$f(a)$'nýn birinci türevi ile ayný þey olur!
+
+Harika.
+
+Þimdi, $f()$'e "biraz daha" yaklaþmaya uðraþalým. Öyle yeni bir fonksiyon
+$p_2$ bulalým ki, $p_2$'nin hem a noktasýndaki fonksiyon deðeri, hem
+birinci türevi, hem de ikinci türevi, $f$ fonksiyonu ile ayný olsun.
+
+\[ p_2(x)=f(a)+f'(a)(x-a) + \frac{f''(a)}{2}(x-a)^2 \]
+
+Bu fonksiyonun da x=a deðerinin, ve birinci, ikinci türevinin ayný olduðunu
+kontrol edebilirsiniz.
+
+Herhalde tekrar eden fikri görmeye baþladýnýz. Eðer üçüncü türeve gidersek,
+durum þöyle olurdu:
+
+\[ p_3(x) = f(a)+f'(a)(x-a) + \frac{f''(a)}{2}(x-a)^2 + \frac{f'''(a)}{6}(x-a)^3 \]
+
+Niye üçüncü terimde bölen 6? (3 olabilirdi). Bunun sebebi þöyle: $p_3$'ün
+türevini üç kere kere alýrsak, en sondaki $(x-a)$'nýn üstel deðeri olan 3
+aþaðý inecek (çarpan olarak) 2 kalacak, sonra ikinci türev sýrasýnda 2
+aþaðý inecek 1 kalacak, ve en son olarak $x^1$ kalacaðý için x'te üçüncü
+türev sýrasýnda yokolacaktýr. Yani çarpanlar $3*2*1=6$ deðerini
+verirler. Bizim yeni fonksiyonumuzun da üçüncü türevden sonra elimizde
+$f'''(a)$ býrakmasý için, açýlýmýn bu gelecek olan 6'yý bekliyor olmasý
+gerekir, yani bölen olarak karþýlamasý (6/6 olarak).
+
+Ayný mantýðý takip edersek, 5. türevden bahsediyor olsaydýk,5*4*3*2*1
+gerekecekti, vs..vs. Bu kavramý sembolik cebirsel olarak en rahat '!'
+operasyonu ile gösterebiliriz. Açýlýmýn en son hali þöyle olur.
+
+\[ f(x) \approx f(a) + f'(a)(x-a) + \frac{f''(a)}{2!} (x-a)^2 + .. +  
+\frac{f^n(a)}{n!}(x-a)^n
+\]
+
+Þimdi Taylor serileri hakkýnda þu genel soruyu sorabiliriz. Eðer iki
+fonksiyon p ve f, iki noktada ayný deðeri taþýyorsa, ve ayný noktadaki
+bütün türevlerinin deðeri ayný ise, eþit midirler?
+
+Evet! En azýndan, $x=a$ (ve bu noktaya yakýn noktalar) için bu durum
+böyledir. Analizden öðrendiðimiz gibi, bir fonksiyonun türevi onun artýþ
+oranýný gösterir, bu artýþýn aþaðý mý yukarý mý olduðunu ikinci türev
+gösterir, vs..vs. Türevler bize bir fonksiyon hakkýnda birçok þey
+söylemektedir. Türevler bir nevi fonksiyonun "aynasýdýrlar". Ýki
+fonksiyonun aynasý ne kadar çok birbirine benzer görüntüler gösteriyorsa,
+bu iki fonksiyon birbirine o kadar yakýn demektir. Tabii, yaklaþýksal
+tekniði kullanan biz (matematikçi/bilimci/mühendis), ne kadar yaklaþmak
+istediðimizi Taylor Serisinde tuttuðumuz terim sayýsý ile rahatça
+ayarlayabiliyoruz.
+
+Þimdi yaklaþýklamak istediðimiz log() fonksiyonuna gelelim.
+
+Log Nedir?
+
+$Log(x)$ fonksiyonu en basit þekilde $f(t)=1/t$ fonksiyonunun, 1 deðeri ile x
+deðeri arasýnda kalan alanýdýr [4]. Yani, bu fonksiyonunun tümlevinin 1 ile
+x deðeri arasýndaki deðeridir (tümlevin alan hesapladýðýný lise
+matematiðinden biliyoruz).
+
+\includegraphics[height=7cm]{taylor_log_graph.jpg}
+
+Sembolik olarak logaritma fonksiyonu, çarpma iþlemlerini toplamaya
+çevirmemizi saðladýðý için matematiksel olarak çok yararlý bir
+araçtýr. Zaten, keþfedilme sebebi de budur. Bu yaygýn kullaným, uygulamalar
+için logaritmanýn bir aþamada hesaplanmasýný gerektirmektedir. Fakat,
+görüldüðü gibi 1/t fonksiyonu tümlev iþleminden sonra güzel bir
+matematiksel fonksiyona dönüþmediði için, yaklaþýksal yöntemlere gereksinim
+duymaktayýz. Taylor açýlýmý iþte burada imdadýmýza yetiþmektedir.
+
+Örnek olarak, log(20) iþleminin sonucunu Taylor serisinin yardýmý ile
+hesaplayacaðýz. Niye Taylor açýlýmý? Çünkü log fonksiyonunun her dereceden
+türevi mevcut, Taylor açýlýmý için de bu türevler lazým.
+
+Log'un Açýlýmý
+
+Log fonksiyonunu nasýl açarken, amatör bir baþlangýç þöyle
+olabilirdi. Dikkat edelim, þu anda sadece sembolik olarak iþlem yapýyoruz.
+
+\[ f(x) = log(x) \]
+
+\[ f'(x) = \frac{1}{x}, f''(x) = \frac{-1}{x^2}, f'''(x)=.. \]
+
+\[ f(x) \approx f(a) + f'(a)(x-a)+\frac{f''(a)}{2!}(x-a)^2 + ... \]
+
+\[ f(x) \approx log(a) + \frac{1}{a}(x-a) + \frac{\frac{-1}{a^2}}{2!}(x-a)^2 \]
+
+Bu pek derli toplu bir açýlým olarak gözükmüyor. $a=0$ seçersek, 
+
+\[ f(x) \approx log(a) + \frac{1}{a}(x-a) + \frac{\frac{-1}{a^2}}{2!}(x-a)^2 + ..\]
+
+\[ f(x) \approx log(0) + \frac{1}{a}x + \frac{\frac{-1}{0^2}}{2!}(x)^2 + ..\]
+
+çýkar. $log(0)$ tanýmsýzdýr. Yani, bu açýlým iþimize yaramayacak. Daha temiz
+bir açýlým için, matematikçiler þu yöntemi bulmuþtur.
+
+$log(x)$ yerine, $log(1+x)$ kullanalým. 
+
+\[ f(x) = log(1+x) \]
+
+\[ f'(x) = \frac{1}{1+x}, f''(x) = \frac{-1}{1+x}^2, f'''(x) = ... \]
+
+\[ f(x) \approx f(a) + f'(a)(x-a) + \frac{f'''(a)}{2!}(x-a)^2 + ... \]
+
+$a = 0$ alirsak
+\[ f(x) \approx log(1+a) + \frac{1}{1+a} (x-a)+ \frac{\frac{-1}{(1+a)^2}}{2!} (x-a)^2\]
+
+\[ f(x) \approx log(1) + \frac{1}{1}(x) + \frac{\frac{-1}{1^2}}{2!} (x)^2\]
+
+\[ f(x) \approx 0 + \frac{1}{1}(x) \frac{\frac{-1}{1^2}}{2!} (x)^2 \]
+
+\[ f(x) \approx x - \frac{x^2}{2!}  + \frac{x^3}{3!} ... \]
+
+Bu çok daha temiz oldu. Dikkat ederseniz, entegrali düzgün olmayan $log()$
+fonksiyonunun Taylor açýmý ne kadar temiz oldu. Bu fonksiyonu bilgisayar
+ile hesaplamak çok basittir. Artýk log(20)'yi hesaplamaya hazýrýz.
+
+\[ f(x) \approx x - \frac{x^2}{2!}  + \frac{x^3}{3!} ... \]
+
+\[ log(20) \approx 20 - \frac{20^2}{2!} + \frac{20^3}{3!} ... \]
+
+Ama dikkat! Açýlan fonksiyonunu hesaplarken x'e verdiðimiz deðerin a
+noktasýna yakýn olmasý önemlidir.
+
+Çok uzak noktalar (yukarýdaki log(20)'nin açýlýmýnýn olduðu gibi)
+elimizdeki yeni seriyi uzaklastiran (diverging) bir seri haline
+getirebilir. Bunun tersi olan yakýnlasan (converging) seriler, elinizdeki
+terim sayýsýný biz arttýrdýkça, sabit bir sayýya doðru yönelen serilere
+denir. Bizim amacýmýz hesap yapmak olduðuna göre, bir somut sayýya doðru
+yönelen bir seriyi tabii ki tercih ederiz. Bu sebeple elimizdeki serinin,
+istediðimiz x deðeri için yakinlasan bir seri mi, yoksa uzaklasan bir seri
+mi olduðunu çok iyi bilmek zorundayýz.
+
+$log(1+x)$'in Taylor açýlýmý sadece $-1$ 
+
+Burada, log aritmetiði yardýmýmýza eriþiyor. Log iþlemlerinde, bölmenin
+çýkarmaya, çarpmanýn toplamaya dönüþtüðünü hatýrlayalým. Yâni Log(x*y) =
+log(x) + log(y), ve log(x/y) = log(x) - log(y) olur.
+
+O zaman, $log(20)$'yi 1'den küçük sayýlar kullanacak þekilde yeniden
+yazalým:
+
+\[ 
+log(20) = log( \frac{\frac{1}{2}}{\frac{1}{40}}) = log(\frac{1}{2})-log(\frac{1}{40})
+\]
+
+\[ log(1+x) \approx x - \frac{x^2}{2!} + \frac{x^3}{3!} \]
+
+Not: $(1+x)$'in $\frac{1}{2}$ vermesi icin $x$'in $-\frac{1}{2}$ olmasi
+gerekir. 
+
+\[ 
+log(\frac{1}{2}) \approx -\frac{1}{2} - \frac{-\frac{1^2}{2}}{2!}  + 
+\frac{-\frac{1^3}{2}}{3!} - ...
+\]
+
+Ayni sekilde $1/40$ icin durum aynidir.
+
+\[ 
+log(\frac{1}{40}) \approx
+-\frac{39}{40} -
+\frac{-\frac{39^2}{40}}{2!} -
+\frac{-\frac{39^3}{40}}{3!} + ...
+\]
+
+Bu kadar! Sað tarafta gözüken serilerin hesabýný, bir Python programý 
+ile yaptýk.
+
+\begin{lstlisting}[language=Python]
+import numpy as np
+
+def taylor_ile_log(bolum, bolen, taylor_ile_acilim_buyuklugu):
+    sum = 0
+    for i in range(1,taylor_ile_acilim_buyuklugu):
+        sum += np.power(-1, i+1) * (np.power(bolum/bolen, i) / i)
+
+    return sum
+        
+print taylor_ile_log(-39.0, 40.0, 160)
+\end{lstlisting}
+
+LISP
+
+\begin{lstlisting}[language=Lisp]
+;;
+;; Not: (/ 1 2) yazilirsa, Common Lisp 0 cevabi veriyor.
+;; Bunun sebebi, 1 2 deyince, parametrelerin integer 
+;; (tamsayi) olarak anlasilmasiymis, parametreler tamsayi 
+;; olunca, sonucta tamsayi olarak donuyor. O yuzden kesirli 
+;; cevaplar almak icin, (/ 1.0 2.0) demek lazim. 
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun power (Base Exponent)
+  "Reproduced EXPT in case where Exponent is non-negative integer"
+  (cond
+    ((= Exponent 0)  1)
+    ((evenp Exponent)(Power (* Base Base) (/ Exponent 2))) 
+    (t               (* Base (Power Base (- Exponent 1))))) )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun basit-taylor-ile-log-of-1-bolu-2 ()
+   (+ 
+    (* +1 ;;; taylor serisinin birinci terimi
+       (/
+	(power (/ -1.0 2.0)
+	       1)
+	1)
+       )
+    (* -1 ;;; taylor serisinin ikinci terimi
+       (/
+	(power (/ -1.0 2.0)
+	       2)
+	2)
+       )
+    (* +1 ;;; taylor serisinin ucuncu terimi
+       (/
+	(power (/ -1.0 2.0)
+	       3)
+	3)
+       )
+    ;
+    ; vs...vs..
+    ;
+    )
+  )
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(defun taylor-ile-log-hesapla (bolum bolen taylor-acilim-buyuklugu)
+  (let ((sum 0)(i 1))
+    (loop for i from 1 to taylor-acilim-buyuklugu do
+	  (setq sum (+ sum (* (power -1 (+ i 1))
+			      (/
+			       (power (/ bolum bolen)
+				      i)
+			       i)
+			      )))
+	  )
+    sum)
+)
+	
+
+(print "------------- 1/2 (yani log( 1 + (-1/2)) Hesabi -----")
+(print "Basit kod")
+(print (basit-taylor-ile-log-of-1-bolu-2))
+(print "Daha cok taylor terimi kullanan kod")
+(print (taylor-ile-log-hesapla -1.0 2.0 100))
+(print "Bilgisayarin kendi log()'undan gelen sonuc")
+(print (log (/ 1.0 2.0)))
+
+(print "------------- 1/40 (yani log( 1 + (-39/40)) ------- ")
+(print "160 taylor terimi")
+(print (taylor-ile-log-hesapla -39.0 40.0 160))
+(print "180 taylor terimi")
+(print (taylor-ile-log-hesapla -39.0 40.0 180))
+(print "200 taylor terimi")
+(print (taylor-ile-log-hesapla -39.0 40.0 200))
+(print "220 taylor terimi")
+(print (taylor-ile-log-hesapla -39.0 40.0 220))
+(print "240 taylor terimi")
+(print (taylor-ile-log-hesapla -39.0 40.0 240))
+(print "260 taylor terimi")
+(print (taylor-ile-log-hesapla -39.0 40.0 260))
+(print "Bilgisayarin kendi algoritmasina gore log(1/40)")
+(print (log (/ 1.0 40.0)))
+(print "--------------- Sonuc --------------------- ")
+
+(print "log(1/2) - log(1/40)")
+(print (- (taylor-ile-log-hesapla -1.0 2.0 100)
+	  (taylor-ile-log-hesapla -39.0 40.0 200)))
+
+(print "Bilgisayarin mevcut algoritmasinin verdigi ")
+(print (log 20))
+\end{lstlisting}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,96 @@
+\documentclass[12pt,fleqn]{article}
+\setlength{\parindent}{0pt}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage[latin5]{inputenc}
+\setlength{\parskip}{8pt}
+\setlength{\parsep}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\topmargin}{0pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\mathindent}{0cm}
+
+\begin{document}
+Lineer Optimizasyon ve Simplex
+
+Simplex algoritmasi lineer optimizasyon alaninda kullanilan bir
+algoritma. Simplex, George Dantzig tarafindan icat edildi, ve 2. Dunya
+Savasi sirasinda Berlin'e Hava Ikmali (Berlin Airlift) adli yardim
+operasyonunda yogun bir sekilde kullanildi. Elde sýnýrlý miktarda ucak,
+kargo kapasitesi vardi ve diger bazi kýsýtlamalar (constraints) da goz
+onune alinarak, durum bir lineer programa verildi ve optimal seferler
+planlandi.
+
+Problem soyleydi:
+
+24 Haziran 1948'te Sovyetler Birligi Dogu Almanya'dan Berlin'e giden tum
+kara ve deniz yollarini tikadi. Bu yuzden Berlin'de yasayan 2. milyon
+insana yiyecek, giyim, vb. esyalari nakil edebilmek icin Amerikali ve
+Ingiliz ucaklarindan olusan dev bir nakliyat operasyonu
+planlandi. 
+
+Bir Amerikali ucagin kargo kapasitesi 30,000 $\textrm{feet}^3$, Ingiliz
+ucaginin kargo kapasitesi 20,0000 $\textrm{feet}^3$ idi. Sovyetlerin
+engellemelerini etkili bir sekilde asabilmek icin muttefik gucler
+tasidiklari yuku maksimize etmek zorundaydilar. Diger kýsýtlamalar
+soyleydi: En fazla 44 ucak kullanilabilecekti. Daha buyuk Amerikan
+ucaklarini ucurmak icin 16 kisilik bir ekip gerekiyordu, Ingiliz ucaklari
+icin 8 kisi gerekiyordu. Kullanilabilecek elde olan ekipler toplam 512
+kisiydi. Amerikan ucaginin her ucusu \$9000, Ingiliz ucagin her ucusu
+\$5000 idi. Ve nihayetinde haftalik masraf toplam olarak \$300,000'i
+gecemeyecekti. 
+
+Bu bir lineer optimizasyon problemidir. Cozmek icin su sekilde belirtmek
+gerekir:
+
+\[ \textrm{maksimize et  } 30000x + 20000y, \textrm{  oyle ki} \] 
+
+\[ x + y \le 44 \]
+
+\[ 16x + 8y \le 512 \]
+
+\[ 9000x + 5000y \le 300000 \]
+
+sartlari gecerli olsun. 
+
+Ekteki program \verb!lp.py! ile bu problemi cozebiliriz. 
+
+\lstinputlisting[language=Python]{berlin.py}
+
+Sonucu basinca 
+
+\begin{lstlisting}[language=Python]
+1080000.0
+[ 20.  24.]
+\end{lstlisting}
+
+ekrana gelecek. Yani hesap (cost) adi verilen hedef fonksiyonu kargo
+buyuklugunun 1080000.0 oldugu noktada maksimize oldu (haftada en fazla bu
+kadar kargo tasinabilecek), ve bu optimal nokta icin $x=20$, $y=24$
+olmali. Demek ki optimal bir Berlin ikmal operasyonu icin 20 Amerikali, ve
+24 Ingiliz ucagi kullanmak gerekiyor.
+
+Bazi ek bilgiler: ustteki problemin belirten kitaplar, makalelerde ``44
+ucak kullanimindan'' bahsediliyor, fakat eldeki ucak mi, oyleyse gunde,
+haftada, ayda ne kadar havalandirilabileceklerinden bahsedilmiyor. Buyuk
+bir ihtimalle 44 bir hafta icinde havada olabilecek ucak sayisi, bir nevi
+ucus koridoru, ya da seyahati. 
+
+Dantzig hakkinda da ilginc hikayelerden bir sudur: Doktorasini yaptigi
+sirada ogrenciyken bir istatistik dersine gec girer. Hoca, tahtaya bazi
+problemler yazmistir, Dantzig bu problemleri odev problemi olarak not
+eder. Birkac hafta sonra hocayi evinde bulur, "hocam, bu odev problemleri
+cok agirmis, gunlerce ugrastim, ama cozdum" diyerek odev cozumlerini
+verir. Hocasi o problemlerin odev degil, istatistikte simdiye kadar
+cozulemeyen problemler oldugunu o zaman soyler. :) Dantzig farkinda olmadan
+birkac hafta icinde aslinda ciddi bir tez arastirmasi yapmistir.
+
+Kaynaklar
+
+http://projects.scipy.org/scipy/attachment/ticket/1252/lp.py
+
+
+\end{document}
+

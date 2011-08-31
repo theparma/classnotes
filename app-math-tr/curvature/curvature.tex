@@ -1,0 +1,206 @@
+\documentclass[12pt,fleqn]{article}
+\usepackage{graphicx}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{8pt}
+\setlength{\parsep}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\topmargin}{0pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\mathindent}{0cm}
+\usepackage{listings}
+
+\begin{document}
+
+Kesit seviyeleri tekniginde bir egri normal formda degil, dolayli (implicit) bir
+fonksiyon ile $F(x,y) = 0$ olarak gosterilir. Bu fonksiyonun tam diferansiyelini
+alirsak,
+
+\[ dF = F_x dx + F_y dy = 0  \]
+
+\[ dy = \frac{-F_x}{F_y}dx  \]
+
+\[ y' = \frac{dy}{dx} = \frac{-F_x}{F_y} = f'(x) = \frac{df}{dx} \]
+
+Burada bir faraziye daha var, o da aslinda ilk verilen formulde olmasa bile
+$y=f(x)$ olarak kabul etmemiz, yani $F(x,y)$ nasil bir formul olursa olsun,
+$y$'nin $x$'leri icerecek sekilde tekrar duzenlenebilecegini farz etmemiz,
+boylece $F(x,f(x))$ olabilecegini soylemis oluyoruz.
+
+Simdi $y'$'in turevini bir daha alalim. Yukaridaki $y'$ formulunde en sag taraf
+bir bolme islemi icerdigi icin burada Calculus'un Bolumler Kuralini (Quotient
+Rule) uygulamamiz lazim. Bu kural soyle gosterilir:
+
+\[ \frac{d}{dx}\bigg(\frac{u}{v}\bigg) = \frac{\frac{v du}{dx} - \frac{u dv}{dx}}{v^2} \]
+
+Bolumler Kurali icin $u$ ve $v$ tanimlari nedir? 
+
+\[ u = -F_x(x,f(x))  \]
+\[ v = F_y(x,f(x)) \]
+
+O zaman
+
+\begin{equation} v \frac{du}{dx} = F_y \frac{dF_x}{dx} \label{eq1} \end{equation}
+\begin{equation} u \frac{dv}{dx} = -F_x \frac{dF_y }{dx} \label{eq2} \end{equation}
+
+Bunlardan mesela $dF_x/dx$ uzerinde Zincirleme Kanunu (Chain Rule) uygulamak
+lazim (bu kural tam integral kuralinin bir sonucu). 
+
+\[ \frac{d F_x(x,f(x)) }{dx} = \frac{\partial F_x}{\partial  x}(x,f(x))+\frac{\partial F_x}{\partial y}\frac{df}{dx}\\ \]
+
+\begin{equation} = F_{xx}(x,f(x))+F_{xy}(x,f(x))f'(x) \label{eq3}  \end{equation}
+
+\begin{equation} \frac{d F_y(x,f(x)) }{dx} =  F_{xy}(x,f(x))+F_{yy}(x,f(x))f'(x) \label{eq4} \end{equation}
+
+Zincirleme Kanunu niye ustteki sekilde acildi? Tam Diferansiyeli bir daha
+hatirlayalim:
+
+\[ df = \frac{\partial f}{\partial x} dx + \frac{\partial f}{\partial y} dy  \]
+
+\[ \frac{df}{dx} = \frac{\partial f}{\partial x} \frac{dx}{dx} + \frac{\partial f}{\partial y} \frac{dy}{dx}  \]
+
+\[ \frac{df}{dx} = \frac{\partial f}{\partial x} + \frac{\partial f}{\partial y} \frac{dy}{dx}  \]
+
+O zaman formuller \ref{eq1}, \ref{eq2}, \ref{eq3} ve \ref{eq4} bir araya konulursa,
+
+\[ y '' = - \frac{F_yF_{xx} - F_y F_{xy}\frac{F_x}{F_y} - F_xF_{xy} + F_xF_{yy}\frac{F_x}{F_y}}{F_y^2}\\ \]
+
+\[ y '' = - \frac{F_yF_{xx} - F_{xy}F_x - F_xF_{xy} + \frac{F_x^2F_{yy}}{F_y}}{F_y^2} \]
+
+Ustteki bolumun hem bolen, hem bolunen terimlerini $F_y$ ile carparsak, ve
+sadelestirirsek
+
+\[ y '' = - \frac{F_y^2F_{xx} - 2F_{xy}F_xF_y + F_x^2F_{yy}}{F_y^3} \]
+
+Simdi Wolfram sitesinde turetimi gosterilen egim (curvature) formulune
+bakalim [2]. Not: Eger 
+
+\[ \kappa = \frac{x'y''-y'x''}{\bigg(x'^2 + y'^2 \bigg)^{3/2}} \]
+
+formulunun alttaki formule nasil donustugu tam anlasilir degilse, hatirlayalim ki,
+$y=f(x)$, ve $x'=1$, ve $x'' = 0$. 
+
+Bu formulun Courant [1] sf. 231'de benzer bir formunu goruyoruz [3]. 
+
+\[ \kappa = \frac{f''}{(1+f'^2)^{3/2}} \]
+
+Bu formuldeki $f''$ yani $y''$ icin ustte buldugumuz sonucu, $f'$ yani $y'$ icin
+bu yazinin basindaki formulu koyarsak,
+
+\[ \kappa = \frac{- \frac{F_y^2F_{xx} - 2F_{xy}F_xF_y +
+    F_x^2F_{yy}}{F_y^3}}
+{(1+f'^2)^{3/2}} 
+\]  
+
+Bolen kismi nedir?
+
+\[ (1+f'^2)^{3/2} = \bigg( 1 + \bigg(\frac{-F_x}{F_y}\bigg)^2 \bigg)^{3/2}  \]
+
+\[ = \bigg( 1 + \frac{F_x^2}{F_y^2} \bigg)^{3/2}  \]
+
+\[ = \bigg( \frac{F_y^2 + F_x^2}{F_y^2} \bigg)^{3/2}  \]
+
+\[ = (F_y^2 + F_x^2)^{3/2}(F_y^{-2})^{3/2}  \]
+
+\[ = (F_y^2 + F_x^2)^{3/2}F_y^{-6/2}  \]
+
+\[ = (F_y^2 + F_x^2)^{3/2}F_y^{-3} \]
+
+Yerine koyarsak,
+
+\[ 
+\kappa = \frac{- \frac{F_y^2F_{xx} - 2F_{xy}F_xF_y + F_x^2F_{yy}}{F_y^3}}
+{(F_y^2 + F_x^2)^{3/2}F_y^{-3}}
+ \]
+
+$F_y^{-3}$ ve $F_y^{3}$ birbirlerini iptal ederler ve sonuc:
+
+\begin{equation}\kappa = \frac{F_y^2F_{xx} - 2F_{xy}F_xF_y + F_x^2F_{yy}}{(F_y^2 + F_x^2)^{3/2}} \label{eq5}\end{equation}
+
+Ustteki unlu egim (curvature) formuludur. 
+
+Bu egim formulunun diger bir sekli soyledir ($F$ yerine $\phi$ kullanirsak)
+
+\[ \kappa = \bigtriangledown \cdot \frac{\bigtriangledown \phi}{|\bigtriangledown \phi|} \]
+
+Bunun okunus sekli ``birim normal gradyanin uzaklasim olcusu (divergence of the
+unit normal gradient)'' seklindedir. Acaba bu formul, \ref{eq5}. formul ile
+uyumlu mu?
+
+\[ \kappa = \nabla \cdot \frac{\nabla \phi}{|\nabla \phi|}  \]
+
+\[ = \nabla \cdot \frac{(\phi_x,\phi_y)}{\sqrt{\phi_x^2+\phi_y^2}} \]
+
+\[ = \left(\partial_x \frac{\phi_x}{\sqrt{\phi_x^2+\phi_y^2}}\right)+ 
+\left(\partial_y \frac{\phi_y}{\sqrt{\phi_x^2+\phi_y^2}}\right)  \]
+
+\[ = \frac{\phi_{xx}}{\sqrt{\phi_x^2+\phi_y^2}} - \frac{\phi_x (\phi_x\phi_{xx}+\phi_y\phi_{xy})}
+{(\phi_x^2+\phi_y^2)^{3/2}} +
+\frac{\phi_{yy}}{\sqrt{\phi_x^2+\phi_y^2}} - \frac{\phi_y(\phi_x\phi_{xy}+\phi_y\phi_{yy})}
+{(\phi_x^2+\phi_y^2)^{3/2}}  \]
+
+\[ = \frac{\phi_{xx}(\phi_x^2+\phi_y^2) - \phi_x
+  (\phi_x\phi_{xx}+\phi_y\phi_{xy}) +\phi_{yy}(\phi_x^2+\phi_y^2) -
+  \phi_y(\phi_x\phi_{xy}+\phi_y\phi_{yy})}{(\phi_x^2+\phi_y^2)^{3/2}} \]
+
+\[ = \frac{\phi_{xx}\phi_y^2 - 2\phi_x\phi_y\phi_{xy} + \phi_{yy}\phi_x^2}{(\phi_x^2+\phi_y^2)^{3/2}}  \]
+
+Bu formul bizim \ref{eq5}. formul ile tipatip ayni.
+
+Ustteki islemlerde uzaklasim olcusu (divergence) operatoru $\nabla \cdot$ ile
+gradyan operatoru $\nabla$ arasindaki farki belirtelim:  $\nabla \cdot$
+operatoru $F(x,y)$ uzerinde kismi turevlerin toplamini verir, yani bir skalar
+tek sayi dondurur. Gradyan ise her bir elemani bir kismi tureve tekabul eden bir
+{\em vektor} geri getirir. 
+
+Python Numpy kodlamasi baglaminda, daha once {\em Kesit Seviyeleri} yazisinda
+ayriksal olarak bir \verb!phi! degiskeni icindeki bir fonksiyon uzerinde
+egimselligi (curvature) soyle hesaplamistik:
+
+\begin{lstlisting}[language=Python]
+gradPhiY, gradPhiX = np.gradient(phi)
+absGradPhi=np.sqrt(gradPhiX**2+gradPhiY**2)                               
+
+normGradPhiX=gradPhiX/(absGradPhi+(absGradPhi==0))
+normGradPhiY=gradPhiY/(absGradPhi+(absGradPhi==0))
+
+divYnormGradPhiX, divXnormGradPhiX=np.gradient(normGradPhiX)
+divYnormGradPhiY, divXnormGradPhiY=np.gradient(normGradPhiY)
+                       
+K = divXnormGradPhiX + divYnormGradPhiY
+\end{lstlisting}
+
+Bu satirlarin $\nabla \cdot \frac{\nabla \phi}{|\nabla \phi|}$ ifadesiyle
+birebir uyum gosterdigini herhalde gorebiliyoruz. Satir 1, $\nabla \phi$
+ifadesidir. Satirlar 2-4 $\frac{\nabla \phi}{|\nabla \phi|}$ islemini
+gerceklestiriyor, gradyani onun uzunluguna (magnitude) bolerek onu birim vektoru
+haline getiriyor. Satirlar 6-7 tekrar sonucun gradyanini bir daha aliyor, ama bu
+sefer hesapsal kismi turevleri birbiriyle topluyor, boylece uzaklasim olcusu
+(divergence) hesaplanmis oluyor. Tum bu islemlerin sonucu egimsellik $\kappa$
+oluyor.
+
+Dikkat edilirse Python kodundaki K yani $\kappa$, N x N boyutlu bir matristir,
+bu mantikli cunku $\kappa$ hesabi icin kullandigimiz $F_x$, $F_y$ gibi
+turevler aslinda $F_x(x,y)$, $F_y(x,y)$ formullerine sahipler, yani her $x,y$
+kombinasyonu icin farkli bir sonuc dondurebilirler. Bu sebeple K yani $\kappa$
+$\phi$ fonksiyonunun her $x,y$ noktasi icin tanimlidir. 
+
+Bazen literaturde $\nabla \cdot$ yerine $div(..)$ kullanildigini gorebilirsiniz,
+bu operatorlerin ikisi de aynidir.
+
+--
+
+Kaynaklar
+
+[1] Courant, Introduction to Calculus and Analysis Volume 2, sf. 223-232
+
+[2] Wolfram - http://mathworld.wolfram.com/Curvature.html
+
+[3] Bu arada o karmasik formul yerine yaklasiksal olarak hesaplama
+sirasinda sadece $f''$ kullanmak ta mumkun [4]
+
+[4] Strang, G. Computational Science and Engineering, sf. Introduction bolumu
+
+\end{document}
+

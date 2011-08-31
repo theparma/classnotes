@@ -1,0 +1,202 @@
+\documentclass[12pt,fleqn]{article}
+\usepackage{graphicx}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{8pt}
+\setlength{\parsep}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\topmargin}{0pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\mathindent}{0cm}
+\usepackage{listings}
+
+\begin{document}
+
+\title{QP}
+
+QP
+
+Icinde esitsizlikleri de barindiran ve karesel olan bir matematiksel sistemi
+cozmek icin karesel programlama (quadratic programming) tekniklerini
+kullanabiliriz. Problemler su sekilde verilir:
+
+\[ \frac{1}{2}x^TQx+p^Tx \textrm{ fonksiyonunu minimize et} \]
+
+su kosullara uymak sartiyla (subject to)
+
+\[ Gx \leq h \textrm{ (esitsizlik kosulu)} \]
+
+\[ Ax = b \textrm{ (esitlik kosulu)} \]
+
+Kucuk harfli gosterilen degiskenler vektordur, buyuk harfler ise bir matrisi
+temsil ederler. $x$ icinde diger bilinmeyenler $x_1, x_2, ..$ olarak
+vardir, bulmak istedigimiz degerler buradadir.
+
+Somut ornek olarak suna bakalim:
+
+\[ 2x_1^2 + x_2^2 + x_1x_2+x_1+x_2 \textrm{ fonksiyonunu minimize et} \]
+
+kosullar:
+
+\[ x_1 \geq 0, x_2 \geq 0 \textrm{ (esitsizlik kosullari)} \]
+
+\[ x_1 + x_2 = 1 \textrm{ (esitlik kosulu)} \]
+
+Fakat bu formul su anda matris formunda degil. Matris formuna gecmek icin iki
+asama var. Once $x$ degiskenlerinin birbiri ve kendileri ile carpim durumlarini
+halledelim. Oyle bir $Q$ matrisi bulmaliyiz ki, altta bos olan $Q$ matrisinin
+degerleri doldurulup, carpim yapildiginda $x$ degiskenlerinin tum carpim
+iliskilerini bulsun. Carpim iliskileri nelerdir?  Formulun $2x_1^2 + x_2^2 +
+x_1x_2$ kismidir.
+
+\[ 
+\left[ \begin{array}{cc}
+    x_1 & x_2 
+\end{array} \right]
+\left[ \begin{array}{cc}
+    .. & .. \\
+    .. & ..
+\end{array} \right]
+\left[ \begin{array}{c}
+    x_1 \\
+    x_2 
+\end{array} \right]
+ \]
+
+$Q$ matrisinin $1,2,..$ gibi kordinatlari $x_1,x_2,..$'ye tekabul ediyor
+olacaklar.  (1,1) kordinatlari $x_1$'in kendisi ile carpimini, $x_1^2$'i temsil
+eder, (1,2) ise $x_1x_2$'yi temsil eder, vs. O zaman (1,1) icin 2 sayisini
+veriririz, cunku $x_1^2$'nin basinda $2$ degeri var. (2,2) icin $1$ degeri lazim
+cunku $x_2^2$'nin basinda sayi yok (yani '1' degeri var).
+
+(1,2) ve (2,1) ilginc cunku ikisi de aslinda $x_1x_2$'i temsil
+ediyorlar cunku $x_1x_2 = x_2x_1$. O zaman (1,2) ve (2,1) icin $0.5$
+degeri verirsek, $0.5x_1x_2 + 0.5x_2x_1$'i kisaltip $x_1x_2$ haline
+getirebiliriz. Sonuc
+
+\[ 
+Q = \left[ \begin{array}{cc}
+    2 & 0.5 \\
+    0.5 & 1
+\end{array} \right]
+ \]
+
+Kontrol edelim:
+
+\[ 
+ \left[ \begin{array}{cc}
+    x_1 & x_2 
+\end{array} \right]
+\left[ \begin{array}{cc}
+    2 & 0.5 \\
+    0.5 & 1
+\end{array} \right]
+\left[ \begin{array}{c}
+    x_1 \\
+    x_2 
+\end{array} \right] \\
+ \]
+
+\[ 
+= \left[ \begin{array}{cc}
+    2x_1 + 0.5x_2 & 0.5x_1 + x_2 
+\end{array} \right]
+\left[ \begin{array}{c}
+    x_1 \\
+    x_2 
+\end{array} \right] 
+ \]
+
+\[ = 2x_1^2 + 0.5x_2x_1 + 0.5x_1x_2 + x_2^2  \]
+
+\[ = 2x_1^2 + x_1x_2 + x_2^2  \]
+
+$p$ vektoru ise, her terimin, tek basina ana formule nasil eklenecegini kontrol
+ediyor. Elimizde $x_1 + x_2$ olduguna gore $p = [1, 1]$ yeterli olacaktir,
+bakalim: $[1, 1]^T[x_1, x_2] = x_1 + x_2$
+
+Simdi esitsizlik kosullari. Bizden istenen $x_1 \geq 0$ ve $x_2 \geq 0$
+sartlarini $Gx \leq 0$ formunda temsil etmemiz. Burada onemli nokta matris
+formuna gecerken bir yandan da $\geq$ isaretini tersine dondurmemiz, yani $\leq$
+yapmamiz. Bu cok dert degil, degiskeni $-1$ ile carparsak isareti tersine
+dondurebiliriz cunku $x_1 \leq 0$ ile $-x_1 \geq 0$ aynidir. O zaman $Gx$ soyle
+olacak: 
+
+\[ 
+\left[ \begin{array}{cc}
+    -1 & 0 \\
+    0 & -1
+\end{array} \right]
+\left[ \begin{array}{c}
+    x_1 \\
+    x_2
+\end{array} \right]
+\leq
+\left[ \begin{array}{c}
+    0 \\
+    0
+\end{array} \right]
+ \]
+
+\[ 
+\left[ \begin{array}{c}
+    -x_1 \\
+    -x_2
+\end{array} \right]
+\leq
+\left[ \begin{array}{c}
+    0 \\
+    0
+\end{array} \right]
+ \]
+
+Esitlik kosullari
+
+Esitlik kosullari icin problemimizin istediklerini $Ax = b$ formuna uydurmamiz
+lazim. $x_1 + x_2$'yi nasil forma sokariz? $A = [1, 1]$, $b = 1$ ile
+
+\[ 
+[1, 1] \left[ \begin{array}{c}
+    x_1 \\
+    x_2
+\end{array} \right] 
+= 1 \\
+ \]
+
+\[ x_1 + x_2 = 1 \]
+
+CVXOPT
+
+Bu paket ile karesel denklemleri minimizasyon / maksimizasyon baglaminda cozmek
+mumkundur. Ustte buldugumuz degerleri altta gorebiliyoruz. Q esitliginde 2 ile
+carpim var, bunun sebebi karesel denklem formunun basinda $\frac{1}{2}$ carpimi
+olmasi, boylece bu iki carpim birbirini dengeliyor.
+
+\begin{lstlisting}[language=Python]
+from cvxopt import matrix
+from cvxopt import solvers
+Q = 2*matrix([ [2, .5], [.5, 1] ])
+p = matrix([1.0, 1.0])
+G = matrix([[-1.0,0.0],[0.0,-1.0]])
+h = matrix([0.0,0.0])
+A = matrix([1.0, 1.0], (1,2))
+b = matrix(1.0)
+sol=solvers.qp(Q, p, G, h, A, b)
+print sol['x']
+\end{lstlisting}
+
+Sonuc $x_1$ icin [ 2.50e-01] ve $x_2$ icin [ 7.50e-01] olmali.
+
+Bazi notlar: A matrisi yaratilirken (1,2) kullanimi goruluyor, bu matrisin
+boyutlarini tanimlamak icin. Cvxopt paketi bu arada Numpy formati degil kendi
+matris, vektor objelerini kullaniyor, ama ikisi arasinda gidip gelmek mumkun. 
+
+References
+
+http://abel.ee.ucla.edu/cvxopt/examples/tutorial/qp.html
+
+http://www.mblondel.org/journal/2010/09/19/support-vector-machines-in-python/
+
+\end{document}
+

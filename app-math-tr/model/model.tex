@@ -1,0 +1,336 @@
+\documentclass[12pt,fleqn]{article}
+\usepackage[latin5]{inputenc}
+\usepackage[T1]{fontenc}
+\setlength{\parindent}{0pt}
+\usepackage{graphicx}
+\usepackage{listings}
+
+\setlength{\parskip}{8pt}
+\setlength{\parsep}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\topmargin}{0pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\mathindent}{0cm}
+
+
+\begin{document}
+Matematiksel Modelleme
+
+Babil medeniyetinden dikkatli ölçmeyi ve gözlem yapmayý öðrenen eski
+Yunanlýlar, tabiatý, mantýklý analiz dizisi ile anlamaya
+uðraþtýlar. Aristo'nun oldukça inandýrýcý olan söylemlerinden biri olan,
+"dünya düz deðildir"'den esinlenen günün diðer felsefecileri, "o zaman
+dünyanýn çapý nedir?" gibi sorular ile uðraþmaya baþladýlar. Hayret verici
+olan bir geliþme, Eratostenes'in bu ölçüyü oldukça yakýn olarak bulmasýdýr,
+hem de yaþadýðý þehir olan Ýskenderiye'den dýþarý ayak bile basmadan!
+Kullanýlan yöntem bazý kestirmeler ve temel alýnan birkaç varsayým
+içeriyordu. Dünya mükemmel bir küredir (olmasa da onun hesabý için bu
+uygundu), güneþin ýþýnlarý birbirine paralel olarak yol alýr, Syene þehri
+Ýskenderiye'nin 5000 stadya (bir ölçü birimir) kadar güneyde yer alýr,
+vs.. Bu varsayýmlardan yola çýkarak, Erotostenes bir matematiksel dünya
+yarattý ve bu dünya üzerinde geometri'nin uygulanabilir olduðunu gördü!
+
+\includegraphics[height=7cm]{top_dusuyor_pizza_kulesi.jpg}
+
+Günümüzde, aynen Yunanlý bilginlerin yaptýðý gibi, bilim adamlarý
+etrafýmýzdaki dünyayý daha pragmatik bir seviyede anlayabilmek ve akabinde
+teknik sorulara çözüm bulabilmek için, etrafýmýzdaki dünyayý matematiksel
+terimlerle temsil etmeye devam ediyorlar. Gerçeði matematiksel bir dil ile
+'taklit etmeye' yardým eden bu iþlem ve düþünce þekline, matematiksel
+modelleme adý veriliyor.
+
+Bir problemi matematiksel terimler kullanarak göstermenin bazý yararlarý
+var. Ýlki, altýnda olduðumuz þartlarý öne sürmemizi ve tanýmlamamýz için
+bizi zorlamasý, ki bu güzel bir þey. Gerçek dünyada olmakta olan problemler
+çetrefilli olduklarýndan, hangi deðiþkenlerin çözümümüz için önemli,
+hangisinin önemsiz olduðunu daha matematiksel uygulama baþlamadan
+kararlaþtýrmak önemli. Bu seçim yapýldýktan sonra, genelde bazý kanunlar ve
+kuramlar kuruluyor ve bu varsayýmlar, modelimizin idealleþtirilmiþ hali adý
+altýnda irdelenmeye baþlanýyor.
+
+Matematik'in en önemli yararý, mantýksal sonuçlara varabilmek icin
+elimizdeki varsayýmlardan baþlayarak bu formülleri deðiþimden geçirmemize
+yardým eden temel teknikler vermesi. Böylece elimize analiz yapabilmemiz
+için saðlam bir temel geçiyor, aradýðýmýz sonucun ne olduðunu baþtan tam
+kestirmesek bile, bu modelleme iþlemi bize yolda yardým edecek araçlar
+saðlýyor.
+
+Ayrýca matematiðin, bilgisayarlar tarafýndan sayýsal cevaplar alýnabileceði
+bir ortam saðlamasi da önemli bir avantaj.
+
+Etkili matematiksel modeller kurmak oldukça yetenek isteyen bir iþ,
+tasavvur ve tarafsýz irdeleyebilme kabiliyeti gerektiriyor. Daha önceden
+kurulmuþ olan öteki modelleri örnek olarak incelemek, modelleme sürecinin
+nasýl bir þey olduðunu hissetmek için yararlý olabilir. Revaçta modellemeyi
+öðreten çok güzel kitaplar ve makaleler var. Bu yazýmýzda bizim
+odaklanacaðýmýz, birinci derecen türevsel denklem içeren matematik
+modelleri olacak. Ýzleyeceðimiz modelleme iþleminin ana hatlarý þöyle
+olacak.
+
+
+Problemi Formüllere Dök
+
+Bu safhada amacýmýz bir formülü kurmak. Böylece cevabýn matematiksel olarak
+'bulunabileceðini' umuyoruz. Tabii bu iþlem hem matematiði hem de problem
+alanýný bilmemizi gerektiyor. Bu seviyede, matematikçi olmasa bile problem
+alanýnda uzman olanlar kimseler ile konuþmanýz yararlý olabilir. Ayrýca
+problem alanýný anlatan eserleri okumanýz iyi olacaktýr.
+
+Modeli Geliþtir
+
+Burada yapýlacak iki þey var. Ýlk önce hangi deðiþkenler önemli, hangiler
+deðil ona karar vermeniz gerekiyor. Önemli olanlarýn arasýndan, bazýlarý
+baðýmlý bazýlarý baðýmsýz deðiþken olarak tanýmlanacaklar. Önemsiz
+deðiþkenleri þöyle farketmeniz mümkün; modellenen süreç üzerinde hiç etkisi
+olmayan deðiþkenler sizin için önemli deðildir ve atýlabilir. Mesela,
+binadan aþaðý düþen bir topun hareketini incelemek istiyorsanýz, topun
+hangi renkte olduðu modeliniz için önemsizdir.
+
+Baðýmsýz deðiþkenler modeli etkileyebilecek, modele giriþ olarak
+verilebilecek deðerlerden seçilir. Yere düþen cisim için, cismin þekli,
+kütlesi, baþlangýç noktasý, baþlangýç hýzý, ve hangi zamanda býrakýldýðý bu
+tür baðýmsýz deðiþkenlerdendir. Baðýmlý deðiþkenler, adý üzerinde,
+deðerleri baðýmsýz deðiþkenlere baðlý olan fakat, gene de model için önemli
+olan deðiþkenlerdir. Yere düþen cisim için bunlar hýz, katledilen mesafe,
+yere çarpma zamaný gibi deðiþkenler baðýmlý deðiþkenler arasýnda
+sayýlabilir.
+
+Ýkinci yapmak gereken þey, bu deðiþkenler arasýndaki baðlantýlarý bulmak
+(mesela birinci derece türevsel denklem kurarak). Bunu yapmak problem alaný
+hakkýnda bilgi ve vizyon gerektirir. Taslak bir modelle baþlayabilirsiniz,
+ve testleriniz sonucunda modeli safileþtirmek (rafine etmek)
+mümkündür. Mesela yukarýdaki örnek için baþlangýçta sürtünme kuvvetini
+hesaba katmayabilirsiniz, fakat ileride daha net sonuçlar için sürtünmeyi
+modele eklemeniz gerekebilir.
+
+Modeli Test Et
+
+Modeli hemen test verileri ile 'doðrulamaya' uðraþmadan önce, þunlara
+tekrar göz atýn.
+
+\begin{itemize}
+   \item Varsayýmlar akla yatkýn mý?
+   \item Denklemler birim deðerlerini doðru kullanýyor mu? (Mesela kuvvet
+     deðerlerini, hýz deðeri ile toplamak yanlýþ olur) 
+   \item Model iç yapýsý bakýmýndan tutarlý mý? Yani, modeli oluþturan
+     denklemler birbiri ile çatýþma halinde mi?
+   \item Elimizde olan denklemler çözüm verebilecek nitelikte mi?
+   \item Çözümü bulmak, elimizdeki denklemler ile ne kadar zor olacak?
+   \item Çözüm, incelediðimiz probleme yardým edecek türden olacak mý?
+\end{itemize}
+
+Nüfus Artýþ Modeli
+
+Bir ülkenin nüfus artýþýný nasýl tahmin edebiliriz? Eðer bir gurubun nüfus
+artýþýný tahmin etmek istiyorsak, bu gurubu her dýþ etkiden uzak izole bir
+kapalý kutu halinde düþünebiliriz. Bu kutu mesela biyolojide Petri tabaðý
+denen bir ortam, ya da günlük hayatta bir ada olarak tanýmlanabilecek bir
+ortam olabilir. Böylece nüfus artýþýný izole bir þekilde 'tek odada'
+incelememiz mümkün olacak.
+
+Diyelim ki, $p(t)$, $t$ zamanýnda ölçülecek olan nüfusu veriyor
+olsun. Þimdi çoðalma (doðum) ve azalma (ölüm) hýzlarýný hesaplayalým.
+
+Örnek olarak þöyle düþünelim, bir bakteri kendini ikiye bölerek
+çoðalýr. Bizim modelimiz için de, büyüme hýzýnýn, o anki mevcut nüfusa
+oranlý olduðunu varsayalým. Bu varsayým bakterilerin büyüme þekli ile
+tutarlý. Büyüyecek yer ve yeteri kadar yiyecek olduðu sürece, bakteriler
+büyüyeceðini biliyoruz. Bir diðer varsayým da þöyle olsun, ölüm oraný
+sýfýr. (Unutmayalým ki, hücre bölünmesinde ebeveyn hücre ölmez, iki hücre
+haline gelir). Yani bakteri nüfusu için bir model þöyle olabilir.
+
+\[ \frac{dp}{dt} = k_1p\]
+
+\[ p(0) = p_0 \]
+
+$k_1 > 0$ olarak tasavvur edeceðiz. $k_1$ büyüme oraný 'sabitidir'. $p_0$,
+nüfusun $t = 0$ (yani baþlangýçtaki) sayýsýdýr. Þimdi bakterilerden, insan
+nüfusuna gelelim. Ýnsan nüfusu için hiç ölmeme varsayýmý tabii ki yanlýþ!
+Fakat, insanlarýn sadece doðal sebeplerden öldüðünü varsayarsak, ölüm
+oranýnýn da o anki nüfus sayýsýna orantýlý olduðunu düþünebiliriz. Bu
+yüzden, ilk denklemi deðiþtirip, þu hale getiriyoruz.
+
+\[ \frac{dp}{dt} = k_1p - k_2p = (k_1-k_2)p = kp\]
+
+$k_2$ olarak nitelenen sabit, ölüm oraný olarak temsil edildi. $k_1$'in her zaman
+$k_2$'den büyük olduðunu farzedersek, asâgýdaki model çýkar.
+
+\[ \frac{dp}{dt} = kp \]
+
+\[ p(0) = p_0 \]
+
+Birçok k sabiti kullanýlmýþ olmasý aklýnýzý karýþtýrmasýn. Doðum ve ölüm
+oranlamalarý deðiþik sabitler gerektiyor, ama önemli olan bir 'sabit'
+kullanýldýðýný farketmek. Sonuçta demeye çalýþtýðýmýz nüfus ile nüfus
+büyümesi arasýnda doðrusal bir baðlantý olmasý. Sabite ihtiyacamýz da
+buradan geliyor.
+
+Elimize geçen son formül, ünlü bir formüldür, Maltezyen ya da nüfus
+artýþýnýn üstel (exponential) kanunu olarak bilinir. Denklem ayýrýlabilir
+olduðu için, iþlemden geçirip p fonksiyonunu bulmak mümkün.
+
+\[ \frac{dp}{dt} = kp, p(0) = p_0 \]
+
+\[ \frac{dp}{p} = kdt \]
+
+\[ \int \frac{dp}{p} = \int kdt\]
+
+\[ ln p = kt + C \]
+
+\[ p = e^Ce^{kt} \]
+
+\[ e^C = C_1 \]
+
+\[ p = C_1e^{kt} \]
+
+Maltezyen modelini test etmek için, Amerika'nýn nüfus artýþ verisini
+kullanabiliriz.
+
+\begin{lstlisting}
+Sene Nufus Maltezyen Lojistik
+
+1970 3.93 3.93  3.3
+1800 5.31 5.19  5.30
+1810 7.24 6.84  7.13
+1820 9.64 9.03  9.58
+1830 12.87 11.92  12.82
+1840 17.07 15.73  17.07
+1850 23.19 20.76  22.60
+1860 31.44 27.39  29.70
+1870 39.82 36.15  38.65
+1880 50.16 47.70  49.69
+1890 62.95 62.95  62.95
+1900 75.99 83.07  78.37
+1910 91.97 109.63  95.64
+1920 105.71 144.67  114.21
+1930 122.87 190.91  133.28
+1940 131.67 251.94  152.00
+1950 151.33 332.47  169.56
+1960 179.32 438.75  185.35
+1970 203.21 579.00  199.01
+1780 226.50 764.08  210.46
+1990 249.63 1008.32  219.77
+2000 ? 1330.63  227.19
+\end{lstlisting}
+
+Örnek 1
+
+Eðer t = 0 deðeri için 1790 senesini alýrsak, son formüle göre þöyle p(t)
+formülü nasýl bulunabilir?
+
+\[ p(t) = (3.93)e^{kt} \]
+
+\[ p(100) = 62.95 = (3.93)e^{100k} \]
+
+\[ k = \frac{ln(62.95)-ln(3.93)}{100} \approx 0.027737 \]
+
+\[ p(t) = (3.93)e^{(0.027737)t} \]
+
+$p(t)$'yi bulduk. Yukarýda ki verilerden formülü kontrol edersek, Maltezyen
+tahmini 1900 tarihine kadar tuttuðunu görürüz. Fakat 1900'den sonra tahmin
+edilen nüfusun çok fazla, bu yüzden modelin iþlemediðini görüyoruz.
+
+Acaba model niye her zaman için iþlemedi? Düþünelim. Model, nüfus çok
+arttýktan sonra bozulmaya baþladýðýna göre, nüfus fazlalýðý ile alakalý, ve
+bizim modele almadýðýmýz bir faktör var demektir.
+
+Maltezyen modeli, sadece doðal sebeplerden olan ölümü göz önüne
+almýþtý. Öteki ölüm sebepleri de önemli olabilir, mesela yiyecek
+darlýðýndan olan ölümler, yeterli saðlýk malzemesi olmamasý, ilaç
+yokluðundan olan ölümler, bulaþýcý hastalýlar ya da suç iþleyen insanlar
+yüzünden ölenler olabilir.
+
+Bu tür faktörler insanlar arasýnda etkileþim gerektirdiði ve belli
+kaynaklara olan yarýþma sýrasýnda vuku bulan ölme durumlerý olduðu için,
+modele, ikili iliþkilerin de dikkate alýndýðý bir þekilde geniþletmemiz
+gerekiyor. Yani, p sayýsýndaki bir nüfus için, p(p - 1) kadar ikili iliþki
+olduðunu düþünürsek, o zaman bu ikili iliþki ve yarýþ sonucundaki ölüm
+oranýný þu þekilde modelleyebiliriz.
+
+\[ k_3 \frac{p(p-1)}{2} \]
+
+$k_3$ sabit deðeri, yeni oranýmýz. Böylece denklemimizi þu þekilde
+deðiþtirmemiz gerekiyor.
+
+\[ \frac{dp}{dt} = ap - bp^2 \]
+
+\[ p(0) = p_0 \]
+
+\[ a = k_1 0 k_2 + k_3 / 2 \]
+
+\[ b = k_4 / 2 \]
+
+\[ \int \frac{1}{p(a-bp)}dp = \int dt \]
+
+\[ 
+\frac{1}{a} \int \frac{1}{p} dp - \frac{1}{a} \int \frac{-b}{a-bp} dp =
+\int dt
+\]
+
+\[ \frac{1}{a} ln|p| = \frac{1}{a}ln|a-bp| = t+c_1 \]
+
+\[ ln|\frac{p}{a-bp}| = at + c_2 \]
+\[ \frac{p}{a-bp} = c_3e^{at} \]
+
+\[ p(t) = \frac{ ac_3 a^{at}}{bc_3e^{at} + 1} = \frac{ac_3e^{at}}{bc_3 + e^{-at}} \]
+
+\[ c_3 = \frac{p_0}{a-bp_0} \]
+
+eger
+
+\[ p_0 \ne 0 \]
+
+ya da
+
+\[ p_0 \ne a/b \]
+
+Bu ikinci modele, lojistik modeli ismi veriliyor. Lojistik bildiðimiz gibi,
+mallarý bir yerden bir yere ulaþtýrmak, kaynak idaresi gibi anlamlar
+çaðrýþtýrýyor, zaten ikinci denklemin içindeki faktörlerden biri de, artýk,
+kaynaklara olan eriþimin oluþturduðu yarýþma durumudur.
+
+Örnek 2
+
+1790 yýlýndaki 3.93 milyonluk nüfusu temel alarak, ve 1840 yýlýnda 17.07
+milyon ve 1890 yýlýnda 62.95 milyonluk nüfusu varsayarak, $t$'ye göre olan
+bir nüfus fonksiyonu bul.
+
+Çözüm: $t=0$ 1790 senesi olduðuna göre, $p_0 = 3.93$ demektir. Þimdi a ve b
+parametrelerini bulmamýz lazým. $p(50) = 17.07, p(100) = 62.95$ oluyor.
+
+\[ 17.07 = \frac{3.93a}{3.93b + (a-3.93b)e^{-50a}} \]
+
+\[ 62.95 =  \frac{3.93a}{3.93b + (a-3.93b)e^{-100a}} \]
+
+Ýki bilinmeyenli ve doðrusal olmayan bir denklem var elimizde. Genelde
+böyle bir sistemi çözmek için yaklaþýksal (approximate) bir yöntem
+kullanmamýz gerekecekti, Newton metodu gibi. Fakat, t1 ve t2 zamanlarýnda
+olan deðerleri bildiðimiz için, çözüm þöyle olacak.
+
+\[ 3.93b = \frac{3.93-17.07e^{-50a}}{17.07 (1-e^{-50a})} \]
+
+Bu denklemi 2 üstteki denkleme koyduðumuz zaman, bir takým cebir
+iþlemlerinden sonra, elimize þu deðerler çýkacak. a = 0.0304667 ve b =
+0.0001214. Yani, elimizdeki veriler icin olan lojistik model þöyle olacak.
+
+\[ p(t) = \frac{0.11977340}{(0.0004771 + 0.0299896) - e^{-0.0304667}} \]
+
+Bu sonucu verilerden kontrol etmeyi size býrakýyorum.
+
+Sonuç
+
+Bu yazýda hem model kurmanýn ve türevsel denklemlerin yararlarýný
+gördük. Türevsel denklem kurarken düþünülmesi gereken, dp/dt görünce 'oran'
+düþünmek, yani akla 'deðiþim' getirmek. Tabii daha türevleri daha detaylý
+anlayabilmek için (ispatý ile birlikte) limitlerin kuramý yararlý olur,
+fakat unutmayalým ki limitlerin analiz'in ispatý için yetiþinceye kadar
+yüzyýllar geçmiþti! Analiz'in tam ispatý daha gelmeden, mühendisler ve
+bilim adamlarý türevleri ve tümlevleri kullanýyorlardý.
+
+Analiz, dinamik olan sistemler için kullanýlýr, yani deðiþmekte olan
+sistemler için gereklidirler. Analiz'in tarihinin fizik ile yakýn alakasý
+bundandýr.
+
+\end{document}
