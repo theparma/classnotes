@@ -173,5 +173,131 @@ hatirlayalim, kenarlar 1 ve 1 ise hipotenusu $\sqrt{2}$
 
 \[ = \frac{5}{3}e^{-x} \sqrt{2}cos(x - \frac{\pi}{4})\]
 
+Ya $p(\alpha) = 0$ Olursa?
+
+Bu durumda ERF yerine yeni bir formul gerekecek. Bu yeni formul icin de
+yeni bir Yerine Gecirme Kanunu gerekecek. 
+
+Bu noktada $\alpha$ sembolu yerine $a$ sembolunu kullanacagiz, ama temsil
+edilen sey hala kompleks bir sayi (not: kompleks olmasi garanti degil bu
+arada, en azindan kompleks olmasina izin veriliyor). 
+
+Ustel Kaydirma Kanunu (Exponential Shift Law)
+
+Bu kanun alttaki ifadeyi basitlestirmekte kullaniliyor. Once bu ifadenin
+icerdigi cebirsel zorlugu gorelim.
+
+\[ p(D)e^{ax}u(x) \]
+
+Eger bu formulun turevini alirsak, $u(x)$'in 2. hatta daha fazla
+derecelerdeki turevini almamiz gerecek. Bundan kurtulmanin bir yolu yok mu?
+Var. Ustel Kaydirma Kanununa gore eger $e^{ax}$ $p(D)$ uzerinden sol tarafa
+gecerse, $p(D)$ degiserek $p(D+a)$ haline gelir. 
+
+\[ p(D)e^{ax}u(x) = e^{ax}p(D+a)u(x)\]
+
+Ispat
+
+Ozel bir sarta bakalim, $p(D) = D$ olsun. O zaman 
+
+\[ p(D)e^{ax}u(x) \]
+
+su hale gelir
+
+\[ = De^{ax}u\]
+
+\[ = De^{ax}Du + ae^{ax}u \]
+
+\[ = De^{ax}Du + ae^{ax}u \]
+
+\[ = e^{ax}(D + a)u \]
+
+ki son ifade kaydirma kanununu ile uyumlu. 
+
+Peki $P(D) = D^2$ olsaydi? Bunun ispati icin ustteki islemlerin hepsini
+tekrarlamaya gerek yok, mesela $D^2e^{ax}$ hesabi yapmaya gerek yok,
+onceki hesabi kullanalim, $De^{ax}u$'u zaten biliyoruz
+
+\[  D^2e^{ax}u = D(De^{ax}u) = D(e^{ax}(D+a)u)  \]
+
+\[ = e^{ax}(D+a)[(D+a)u] = e^{ax}(D+a)^2u \]
+
+Bu sonucun $D^3$, $D^4$, vs. icin genellestirilebilecegini gorebiliyoruz
+herhalde. Matematiksel tumevarim (induction) ile $D^NN$ icin bu formul
+ispatlanabilir. 
+
+Devam edelim
+
+\[ (D^2+AD+B)y = e^{ax} \]
+
+$a$'nin kompleks olabilecegini unutmayalim, ama problemimiz su: $p(a) =
+0$.
+Simdi ozel cozumu nasil elde edecegim? 
+
+\[ y_p = \frac{x e^{ax}}{p'(a)} \]
+
+Peki ya $p'(a) = 0$  olursa? Bunun icin $a$'nin $p(D)$'nin basit bir koku
+oldugunu farzedecegiz, cunku bu faraziye sayesinde $p'(a)$ hicbir zaman
+sifir olamaz. 
+
+Ya iki kokun ikisi de $a$ olsaydi? Elde ikiden fazla kok olamaz tabii,
+cunku bir karesel denklemin ancak o kadar koku olabilir. O zaman ozel cozum
+soyle olacakti
+
+\[ y_p = \frac{x^2e^{ax}}{p''(a)} \]
+
+Daha ust seviye polinomlar icin bu isin nereye gittigi belli oluyor
+herhalde. 
+
+Bunlardan birini ispatlayalim isterseniz. Sunu mesela
+
+\[ y_p = \frac{x e^{ax}}{p'(a)} \]
+
+Bu ispati ustel kaydirma kanunu kullanarak yapacagiz. 
+
+Ispat
+
+Basit kok durumu
+
+\[ p(D) = (D-b)(D-a) \]
+
+ve $b \ne a$ cunku iki tane farkli kok var. O zaman turevi alirsak
+
+\[ p'(D) = (D-a) + (D-b) \]
+
+\[ p'(a) = a-b \]
+
+Onerdigimiz ozel cozum suydu
+
+\[ \frac{P(D) e^{ax} x}{p'(a)} \]
+
+Amacimiz bu cozum icine daha once elde ettigimiz sonuclari koyarsak,
+ODE'nin sag tarafini, girdiyi elde etmek, boylece elimizde bir cozum
+oldugunu anlayabilmis olacagiz. 
+
+\[ = e^{ax}(D+a-b)\frac{Dx}{p'(a)} = e^{ax} \frac{(a-b) \cdot 1}{a-b} \]
+
+\[ = e^{ax} \]
+
+Ornek
+
+\[ y'' - 3y + 2y = e^x \]
+
+$e^x$ ile $e^{ax}$ formunu karsilastirirsak, $a$'nin 1 oldugunu goruruz,
+yani $a$ reel bir sayi. Ayrica $a$, $D^2-3D+2$'nin basit bir koku, yerine
+koyarsak $D^2-3D+2$'nin sifir verdigini gorurduk. 
+
+\[ y_p = \frac{xe^x}{-1} \]
+
+alttaki -1 nereden geldi? 
+
+\[ p'(D) = 2D - 3 \]
+
+\[ p'(1) = -1 \]
+
+Yani nihai sonuc
+
+\[ y_p = -xe^x \]
+
 
 \end{document}
