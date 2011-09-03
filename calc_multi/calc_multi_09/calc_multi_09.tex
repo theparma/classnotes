@@ -63,12 +63,12 @@ Hatirlarsak $\frac{\partial f}{\partial x}$ kismi turevi $x$'in degistigi
 ama $y$'nin sabit tutuldugu bir durumu tarif ediyordu. Yukaridaki grafige
 gore bu bir anlamda iki cukurlu kap gibi duran $z$ fonksiyonun bir kesitine
 bakmak gibi (unutmayalim, fonksiyon sadece kabin disinda tanimli, ici
-bos). Bu kesit $f$'in bir yansimasini olusturuyor, o yansima ustteki
+bos). Bu kesit uzerine $f$'in bir yansimasi olusuyor, o yansima ustteki
 grafikte bir parabol seklinde. Bu parabolda $x$ degistikce o noktanin
 parabol uzerindeki cizgizel tegeti de degisiyor (grafikteki yesil cizgi) ki
-bu cizgisel egim $\frac{\partial f}{\partial x}$'e esit. 
+bu cizgisel egim $\frac{\partial f}{\partial x}$'e esit.
 
-Eger ayni seyi $x$'in sabit $y$'nin sabit oldugu durum icin yapsaydim,
+Eger ayni seyi $x$'in sabit $y$'nin degistigi durum icin yapsaydim,
 benzer bir kesit elde edecektim. 
 
 \includegraphics[height=4cm]{9_2.png}
@@ -76,7 +76,8 @@ benzer bir kesit elde edecektim.
 Bu iki kesit uzerinden elde edilen ikinci teget cizgi birinci ile beraber
 kullanilinca bir duzlemi tanimlamak icin kullanilabilir (iki cizgi paralel
 bir duzlem tanimlamak icin yeterlidir), ki teget duzlem yaklasiksallamasi
-icin kullanilacak duzlem budur. Bunu nasil yapacagimizi gosterelim.
+icin kullanilacak duzlem budur. Formulsel olarak bunu nasil yapacagimizi
+gosterelim.
 
 $f_x$ ve $f_y$ iki teget cizgiyi tanimlamak icin kullaniliyorsa, bu
 formulleri bir araya koyarak duzlemi temsil edebilirim. Eger
@@ -135,7 +136,7 @@ Bu derste iki degiskenli duruma bakacagiz fakat ayni prensipler, 10, 15,
 milyon tane degisken icin ayni. 
 
 Lokal bir minimum icin hem $f_x=0$ hem $f_y=0$ olmalidir. Bu niye
-dogudur. Yine formul \ref{eq1}'e bakarsak, hem $f_x=0$ hem $f_y=0$ oldugu
+dogudur? Yine formul \ref{eq1}'e bakarsak, hem $f_x=0$ hem $f_y=0$ oldugu
 zaman $\Delta z$ sifir olacaktir, yani birinci derecede dusunursek
 $f(x,y)$'de degisim yok demektir. 
 
@@ -201,7 +202,9 @@ Yanliz bir diger secenek daha var. Bu secenek kritik noktanin ne maksimum,
 ne minimum oldugu durumdur. Bu durumda kritik noktadan hangi ``yone dogru''
 bakiyorsak, degisik bir cevap elde ederiz. Bu at egeri gibi gozuken
 grafigin orta noktasina, 0,0,0 noktasina bakalim, burada teget duzlem tam
-yatay. Bu noktaya eger noktasi (saddle point) deniyor. 
+yatay. Bu noktaya eger noktasi (saddle point) deniyor. Eger $z=y^2$ yonune
+dogru bakarsak min durumdayiz, eger $z=-x^2$ yonune dogru bakarsak maks
+durumdayiz. 
 
 2. turevlerden bahsetmisik, ve bu derste kritik noktanin ne oldugunu daha
 az otomatik bulacagimizi soyledik (2. turevler bir dahaki derste). 
@@ -225,14 +228,14 @@ olur. Icerideki 1'i dengelemek icin ise disari bir -1 ekleriz.
 
 \[  = ((x-y) + 1)^2 + 2y^2 - 1\]
 
-Bu formul eger 
+Iste, tum formul artik karelerden olusuyor. Bu formul eger 
 
 \[  = \underbrace{((x-y) + 1)^2}_{\ge 0} + \underbrace{2y^2}_{\ge 0} - 1\]
 
-ise ancak $\ge -1$ olabilir. Ve kritik nokta (-1,0)[da $f$'in degeri
-hakikaten -1'dir. Ustteki iki terimin niye $\ge 0$ oldugundan bahsettik.
-Yani biraz cebirsel takla, ve ufak bir numarayla istedigimiz sonuca erismis
-olduk.
+ise ancak $\ge -1$ olabilir. Ve kritik nokta (-1,0)'da $f$'in degeri
+hakikaten -1'dir. Ustteki iki terimin niye $\ge 0$ oldugundan
+bahsettik. Demek ki bu nokta bir minimum.  Yani biraz cebirsel takla, ve
+ufak bir numarayla istedigimiz sonuca erismis olduk.
 
 
 
