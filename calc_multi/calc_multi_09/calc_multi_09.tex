@@ -206,18 +206,22 @@ yatay. Bu noktaya eger noktasi (saddle point) deniyor.
 2. turevlerden bahsetmisik, ve bu derste kritik noktanin ne oldugunu daha
 az otomatik bulacagimizi soyledik (2. turevler bir dahaki derste). 
 
-Bu yontemde kareler kullanacagiz. $f(x,y)$'nin kareler, ve onlarin toplami
-olduguna dikkat edelim. Eger tum formulu bir seyin karesi olarak
-gosterebilirsek, belki bir yerlere gelebiliriz. Tek problem $xy$ terimi,
-ama $x^2 - 2x..$ diye giden bir formul biliyoruz. Kareyi Tamamlama
-teknigini kullanabiliriz. 
+Bu yontemde kareler kullanacagiz. Niye kareler? Cunku karesel ifadeler en
+az sifir olabilirler -- bir deger ne olursa olsun, eksi bile olsa karesi
+alinirsa arti olur, ve bu tur ifadeler sadece sifirda ``en az'' olurlar.
+
+O zaman $f(x,y)$'i karelerin toplami olarak tekrar temsil etmeye
+ugrasalim. $f(x,y)$'de zaten kareler var ama tum formulu bir seylerin
+karesi olarak gosterebilirsek, hedefimize erisebiliriz. Tek problem $xy$
+terimi, ama $x^2 - 2xy..$ diye giden bir baska formul biliyoruz, Kareyi
+Tamamlama ile onu kullanalim.
 
 \[ f(x,y) = (x-y)^2 + 2y^2 + 2x - 2y \]
 
 Basitlesti ama biraz daha basitlesebilir. Acaba $(x-y)^2$ icindeki $(x-y)$
-ile disaridaki $2x - 2y$ arasindaki bir baglanti kurabilir miyim? Iceriye
-bir +1 eklersek bu olabilir. O zamam disaridaki $2x - 2y$ iptal
-olur. Icerideki 1'i dengelemek icin disari bir -1 ekleriz. 
+ile disaridaki $2x - 2y$ arasindaki bir baglanti kurabilir miyiz? Iceriye
+bir +1 eklersek bu olabilir, o zaman disaridaki $2x - 2y$ iptal
+olur. Icerideki 1'i dengelemek icin ise disari bir -1 ekleriz.
 
 \[  = ((x-y) + 1)^2 + 2y^2 - 1\]
 
@@ -226,13 +230,9 @@ Bu formul eger
 \[  = \underbrace{((x-y) + 1)^2}_{\ge 0} + \underbrace{2y^2}_{\ge 0} - 1\]
 
 ise ancak $\ge -1$ olabilir. Ve kritik nokta (-1,0)[da $f$'in degeri
-hakikaten -1'dir. Niye ustteki iki terim $\ge 0$ dedik? Cunku bu terimler
-karesel ifadeler, ve karesel ifadeler en az sifir olabilirler. Bir deger ne
-olursa olsun, eksi bile olsa karesi alinirsa artik olur, bu tur ifadeler
-sadece sifirda ``en az'' olurlar. Yani biraz cebirsel takla, ve ufak bir
-numarayla istedigimiz sonuca erismis olduk.
-
-
+hakikaten -1'dir. Ustteki iki terimin niye $\ge 0$ oldugundan bahsettik.
+Yani biraz cebirsel takla, ve ufak bir numarayla istedigimiz sonuca erismis
+olduk.
 
 
 
