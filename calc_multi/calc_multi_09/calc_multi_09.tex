@@ -241,12 +241,12 @@ Simdi min/maks probleminin ilginc bir uygulamasini gorelim. Bu uygulamayi
 min/maks kategorisinde gormeyebilirsiniz, ama aslinda problem min/maks ile
 cok guzel bir sekilde cozuluyor.
 
-Deneysel bilimlerde en az karelesel aradegerleme (least squares
+Deneysel bilimlerde en az karelesel interpolasyon (least squares
 interpolation) adli bir teknik kullanilir. Mesela bir deney yapariz, ve
 deneyden gelen verileri aliriz. Mesela kurbagalari inceliyoruz, ve kurbaga
 bacak uzunlugunu kurbaga goz buyuklugu arasinda bir baglanti ariyoruz. Ya
 da baska bir seyi olcuyoruz, genel olarak bir $x$ degiskeni icin onun etki
-ettigi, alakali oldugu bir $y$ degiskenini olcuyoruz. 
+ettigi, alakali oldugu bir $y$ degiskenini olcuyoruz.
 
 Olculen iki degiskeni grafikleyince, su ortaya cikiyor diyelim.
 
@@ -324,8 +324,90 @@ esitliklerini dogru oldugu an. Kritik nokta burada. Kismi turevleri alalim.
 
 Cozmemiz gereken denklemler bunlar. 
 
+Eger dikkat edersek bu denklemler $a$ ve $b$ baglaminda
+lineer. Denklemlerde biraz kalabaliklik var, onlari acip tekrar
+duzenleyerek bu lineerligi gormeye ugrasalim. 
 
+Ilk once '2' terimini atalim, ona gerek yok. Iki denklem ayri ayri soyle
+olur:
 
+\[ \sum_{i=1}^n (x_i^2a + x_ib - x_iy_i) = 0\]
+
+\[ \sum_{i=1}^n (x_i^2a + b - y_i) = 0\]
+
+$a$ ve $b$ leri yanyana getirelim. Yine ayri ayri
+
+\[  \bigg(\sum_{i=1}^n x_i^2\bigg)a + \bigg(\sum_{i=1}^n x_i\bigg) b = \sum_{i=1}^n x_iy_i\]
+
+\[  \bigg(\sum_{i=1}^n x_i\bigg)a + nb = \sum_{i=1}^n y_i \]
+
+Parantezler icindeki $x_i$'li ifadeler korkutucu gorunuyor olabilir, fakat
+bunlar deney verisinden gelen sayilarin toplamindan ibaret, onlar elimizde
+sayisal olarak mevcut zaten. Deney verisini alip, hepsini toplayinca bu
+sayiyi elde edecegiz. 
+
+Sonuc olarak elimize gecen 2 x 2 boyutlarinda bir lineer sistem. Yani $x_i$
+ve $y_i$ iceren ifadeleri hesapladigimiz anda bu sistemi elde ederiz, ve 2
+x 2 bir lineer sistemi cozmeyi zaten biliyoruz. Ve kritik noktayi boylece
+elde ederiz. Bir sonraki derste gorecegimiz 2. kismi turevleri kullanacagiz
+yontemle de bu noktanin min/maks oldugunu anlariz. Bu testi uygulasak
+ustteki yontemin hakikaten bir min urettigini gorebilirdik. 
+
+En Az Kareler interpolasyonu cok daha genel kullanimlarda da ise yarar. 
+
+Ornek
+
+Bilgisayar dunyasinda Moore Kanunu denen bir kural vardir, bu kural
+bilgisayar ciplerinin nasil surekli daha hizli, daha iyiye dogru gittigini
+anlatir. Unlu cip ureticisi Intel baskani Andy Grove tarafindan ortaya
+atilmistir, bir hipotezdir, fakat sasirtici bir sekilde dogru
+cikmistir. Kuralin olctugu bir mikropcipin icine koyulabilecek transistor
+sayisidir. Bu olcumun bir ornegi alttadir. 
+
+\includegraphics[height=4cm]{9_7.png}
+
+Bu veriye lineer olarak uyum yapamazdik. Fakat logaritmik skalayi
+kullanirsak, yani transistor sayisi yerine onun logaritmasini alip
+grafiklersek, 
+
+\includegraphics[height=3cm]{9_8.png}
+
+veriler daha cizgisel olurlar. Bu demektir ki zaman ve transistor sayisi
+arasindaki iliski ustel (exponential) bir iliskidir. Zaten kuralin
+soyledigi de bu, kural her 18 ayda bir cip icindeki transistor sayisinin
+ikiye katlandigini soyler. Bir sonraki buyuklugun o buyuklugun o anki
+halinin belli bir kati olmasi (aynen nufus artisinda oldugu gibi) ustel bir
+iliskiye isaret eder. 
+
+Peki en iyi ustel uyumu nasil buluruz? Boyle bir uyumun formulsel hali
+sudur. Duz cizgi formulu yerine bir ustel ifade icerir. 
+
+\[ y = ce^{ax} \]
+
+Fakat bu formulu direk hata hesabinda kullanirsak, ele gecen formuller cok
+karmasik hale geliyor. Ama ustteki numarayi hatirlayalim, log skalasinda
+bakinca her sey lineer cikiyor. O zaman uyumu su sekilde yapabiliriz,
+ustteki formulun log'unu alalim:
+
+\[ ln(y) = ln(c) + ax \]
+
+ki bu formul lineerdir. Bunun uzerinde En Az Kareler yontemini
+kullanabiliriz. 
+
+Ustel iliski yerine karesel bir iliski de olabilirdi, mesela
+
+\[ y = ax^2 + bx + c \]
+
+o zaman en iyi parabolu uydurmaya ugrasiyor olabilirdik, bu uyum icin $a$,
+$b$ ve $c$'yi bulmamiz gerekirdi. Yani sunu minimize edecektik:
+
+\[ D(a,b,c) = \sum_{i=1}^n (y_i - ( ax_i^2 + bx_i + c ))^2  \]
+
+Burada kismi turevler 3 tane ayri denklem uretir, ve iliski yine lineer
+cikar, 3 x 3 boyutunde bir sistem elde ederiz. 
+
+Yani soyledigimiz gibi, bu problemler ilk basta minimizasyon problemi gibi
+gozukmeyebiliyordu, ama oyle olduklarini simdi gormus olduk. 
 
 
 
