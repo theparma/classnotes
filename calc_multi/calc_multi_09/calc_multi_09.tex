@@ -237,6 +237,98 @@ hakikaten -1'dir. Ustteki iki terimin niye $\ge 0$ oldugundan
 bahsettik. Demek ki bu nokta bir minimum.  Yani biraz cebirsel takla, ve
 ufak bir numarayla istedigimiz sonuca erismis olduk.
 
+Simdi min/maks probleminin ilginc bir uygulamasini gorelim. Bu uygulamayi
+min/maks kategorisinde gormeyebilirsiniz, ama aslinda problem min/maks ile
+cok guzel bir sekilde cozuluyor.
+
+Deneysel bilimlerde en az karelesel aradegerleme (least squares
+interpolation) adli bir teknik kullanilir. Mesela bir deney yapariz, ve
+deneyden gelen verileri aliriz. Mesela kurbagalari inceliyoruz, ve kurbaga
+bacak uzunlugunu kurbaga goz buyuklugu arasinda bir baglanti ariyoruz. Ya
+da baska bir seyi olcuyoruz, genel olarak bir $x$ degiskeni icin onun etki
+ettigi, alakali oldugu bir $y$ degiskenini olcuyoruz. 
+
+Olculen iki degiskeni grafikleyince, su ortaya cikiyor diyelim.
+
+\includegraphics[height=3cm]{9_5.png}
+
+Arada bir korelasyon oldugunu goruyoruz. Bu konu hakkinda bilimsel bir
+makale yaziyor olsaydik, bu grafikte soyle bir cizgi cizerdik, 
+
+\includegraphics[height=3cm]{9_6.png}
+
+Fakat veri noktalarinin tam ortasindan gecen bu cizgiyi nasil cizecegiz?
+Yani cozmek istedigimiz problem verilen $(x_1,y_1), (x_2,y_2),...(x_n,y_n)$
+seklindeki deney verileri icin ``en iyi uyan (best fit)'' cizgi $y=ax + b$,
+en iyi yaklasiksallik nedir? 
+
+Bu problemde onemli bir puf noktasina isaret edelim: $y=ax + b$ denkleminde
+bilinmeyenler nedir? Genellikle ogrenciler $x$ ve $y$ degiskenine
+bakiyorlar. Fakat bu dogru degil. Bir optimal cizgi ortaya cikarmak
+istiyorsak ilgilendigimiz $x$ ve $y$ degil, esas ilgilendiklerimiz $a$ ve
+$b$ katsayilari. Cizginin hangi sekilde oldugunu onlar kontrol ediyorlar,
+yani dogru uyum icin cizginin nereden gectiginin hesaplanmasi problemindeki
+bilinmeyenler onlar. Yani uyum icin en iyi $a$ ve $b$'yi bulmamiz
+gerekiyor.
+
+Bu noktada ``en iyi $a$ ve $b$'' ifadesinin ne olduguna karar vermemiz
+lazim. En iyi, $a$ ve $b$'nin bir fonksiyonunun minimize edilmesi olabilir,
+ki bu fonksiyon deneysel veri ile bir teorik cizgi arasindaki uyum
+hatalarinin toplamini temsil edebilir. Yani hata, o cizginin deney
+noktalarindan ne kadar uzakta oldugunun toplami ile temsil edilebilir.
+
+``Uzakligi'' hesaplamanin da degisik yollari olabilir. Mesela her noktanin
+bir cizgiye olan duz uzakligi olculebilir. Ya da deneysel noktadan dikey
+olarak yukari / asagi cikip cizgiye gelinceye kadar olan uzaklik. Ya da
+uzakligi en fazla olan tek noktanin mesafesi azaltilmaya ugrasilabilir (ama
+bu son yontem pek iyi bir secim olmayabilir, cunku belki deney sirasinda
+uykuya dalmissinizdir, ve cok yanlis bir nokta olcmussunuzdur, ve o nokta
+tum uyum hesabini bozukluga ugratir).
+
+Bu tur seceneklerden bir tanesi en iyisidir, ve evrensel olarak kullanilan
+yaklasim da o'dur. En Az Kareler demistik, bu yontemde hata noktalarin
+cizgiye olan uzakliklarin karesinin toplamidir. Bu yontem iyi sonuclar
+veriyor ve hesap icin oldukca temiz bir formul ortaya cikartiyor. Demek ki
+``en iyi'' tanimi hata noktalarin cizgiden olan sapmasinin karesinin
+toplaminin minimize edilmesi demek. Sapma nedir? Tahmin edilen ile gercek
+veri noktasinin farkidir. 
+
+\[ y_i - (ax_i + b) \]
+
+O zaman problem
+
+\[ \textrm{Minimize Et } D = \sum_{i=1}^n \bigg[ y_i - (ax_i+b) \bigg]^2 \]
+
+Tekrar vurgulayalim, bu fonksiyonda bilinmeyenler $a$ ve $b$. $x_i$ ve
+$y_i$ deneyden gelen veriler. 
+
+Minimize etmek icin simdiye kadar ogrendiklerimizi kullanabiliriz. Kritik
+noktayi bulalim. 
+
+Yani istedigimiz 
+
+\[ \frac{\partial D}{\partial a} =0 \]
+
+\[ \frac{\partial D}{\partial b} =0 \]
+
+esitliklerini dogru oldugu an. Kritik nokta burada. Kismi turevleri alalim.
+
+\[ \frac{\partial D}{\partial a}  =
+\sum_{i=1}^n 2 (y_i (ax_i+b)) (-x_i) 
+= 0
+ \]
+
+\[ \frac{\partial D}{\partial b} = 
+\sum_{i=1}^n 2 (y_i (ax_i+b)) (-1) 
+=0 \]
+
+Cozmemiz gereken denklemler bunlar. 
+
+
+
+
+
+
 
 
 \end{document}
