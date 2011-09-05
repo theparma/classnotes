@@ -220,7 +220,7 @@ iki tarafin karesini alirsak
 
 bu ifadenin sag tarafi noktasal carpimdan elde ettigimizle ayni. 
 
-Peki ya elimizde iki farkli vektor varsa? 
+2) Peki ya elimizde iki farkli vektor varsa? 
 
 Iddiam su ki formul \ref{eq1} ve \ref{eq2} arasindaki iliskiye Kosinus
 Kanunu ile kurabilirim. Bu kanunu yazalim
@@ -235,5 +235,44 @@ Bu arada, eger bu formulu
 
 seklinde yazsaydim Pitagor Formulu olurdu, ama burada Pitagor kullanamayiz
 cunku arada dik aci yok, o yuzden ucuncu terimi eklemek gerekti. 
+
+Ispat
+
+Soyle baslayalim
+
+\[ |\vec{C}|^2 = \vec{C} \cdot \vec{C} \]
+
+Bunun dogru oldugunu biliyoruz, daha once ispatladik. $\vec{C}$'nin
+ustteki tanimini yerine koyarsak
+
+\[ = (\vec{A} - \vec{B}) \cdot (\vec{A} - \vec{B})  \]
+
+Simdi bu carpimi acarak 4 terimin toplami haline getirmek isterdik, ama
+bunu yapabilir miyiz? Daha bilmiyoruz, noktasal carpim operasyonunu daha
+yeni gorduk, gizemli yeni bir operasyon bizim icin su anda. Fakat cevap
+evet, cunku formul \ref{eq1}'deki tanima bakarsak, acilim yapmak icin bize
+gerekli sekilde davranacagini gorebiliriz. O zaman
+
+\[  =
+\vec{A}\cdot\vec{A} - 
+\vec{A}\cdot\vec{B} -
+\vec{B}\cdot\vec{A} +
+\vec{B}\cdot\vec{B} 
+\]
+
+Ilk ve son terimin karsiligini hemen yazabiliriz, alttaki ilk iki terim
+onlar zaten
+
+\[ = |\vec{A}|^2 + |\vec{B}|^2 - 2\vec{A} \cdot \vec{B} \]
+
+Geride kalan en son terimi, son formul icindeki cos iceren formul ile
+karsilastiralim, aralarindaki tek fark, bir tarafta $2\vec{A} \cdot
+\vec{B}$ diger 
+tarafta $2|\vec{A}||\vec{B}|cos(\theta)$ olmasi.. Fakat bildigimiz diger
+esitliklerden  bu iki terimin de aslinda birbirine esit oldugunu
+biliyoruz. Ispat tamamlandi.
+
+
+
 
 \end{document}
