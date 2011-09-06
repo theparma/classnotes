@@ -191,6 +191,190 @@ cikmasinin garantisi yoktur. Eksi degerli terimler buyuyup arti degerlileri
 asabilirler. O zaman ifadelerimizin tam dogru olmasi icin ustteki
 determinant hesabi -alan ya da +alan degerine esittir demek lazim. 
 
+Ilerleyelim
+
+Uzayda (3 boyutta, kordinat sisteminde, vs.) yapabilecegimiz iki tur hesap
+var. Bunlar objelerin ya dis alan hesabi (surfaces) ya da objelerin hacim
+(volume) hesabi. Daha kolay olanla baslayalim, hacim hesabi.
+
+Iddia ediyorum ki bu is icin uzay ortaminda kullanilabilecek bir tur
+determinant var. Elimizde uc vektor $\vec{A},\vec{B},\vec{C}$ var ve bu vektorlerin
+determinanti
+
+\[ det(\vec{A},\vec{B},\vec{C}) = 
+\left|\begin{array}{rrr}
+a_1 & a_2 & a_3 \\
+b_1 & b_2 & b_3 \\
+c_1 & c_2 & c_3 
+\end{array}\right|
+ \]
+
+\[ = 
+a_1
+\left|\begin{array}{rr}
+b_2 & b_3 \\
+c_2 & c_3
+\end{array}\right|
+-
+a_2
+\left|\begin{array}{rr}
+b_1 & b_3 \\
+c_1 & c_3
+\end{array}\right|
++
+a_3
+\left|\begin{array}{rr}
+b_1 & b_2 \\
+c_1 & c_2
+\end{array}\right|
+\]
+
+Ustteki gibi 2 x 2 determinantlarin acilimi biliyoruz zaten. O acilimi
+ustteki formul icin yapinca elimize 6 tane terim gecmis olacak. Ustteki
+formulu, yani bir 3 x 3 determinantin 2 x 2 acilimini hatirlamanin kisa
+yolu nedir? Ustte kullandigimiz 1. satira gore acilim. 1. satirda sirayla
+gideriz, $a_1$'e bakariz, onun oldugu satiri ve kolonu (zihnimizde) sileriz
+ve geriye kalan 2 x 2 determinanti hemen hesaplariz. Boyle devam
+ederiz. Ayrica ikinci 2 x 2 determinantin onunde bir eksi isareti olduguna
+dikkat. Bunun niye oldugunun matematiksel sebebine burada girmeyecegiz.
+
+Peki bu formul bize ne saglayacak? Su teoriyi saglayacak:
+
+Teori
+
+Geometriksel olarak $det(\vec{A},\vec{B},\vec{C}) = \pm \textrm{
+  paralelipipe'in hacmi}$. 
+Paralelipipe nedir? Bu obje bir nevi paralelogramin 3 boyuttaki hali. 
+Alttaki gibi
+
+\includegraphics[height=2cm]{2_9.png}
+
+Capraz Carpim (Cross Product)
+
+Tanim
+
+\[ \vec{A} \times \vec{B} =
+\left|\begin{array}{rrr}
+\hat{i}& \hat{j}& \hat{k} \\
+a_1 & a_2 & a_3 \\
+b_1 & b_2 & b_3 
+\end{array}\right|
+ \]
+
+seklindedir ve bu islemin sonucu bir vektordur. Bu noktasal carpimdan
+farkli, o sonuc bir tek sayiydi. Burada sonuc bir vektor.
+
+Fakat bu determinant biraz garip. Icindeki elementler $\hat{i}$, $\hat{j}$
+gibi birim vektorler. Bu tur determinantin ogeleri tek sayilar degil midir?
+Ama aslinda amac $\hat{i}$'yi oldugu gibi hesaba dahil etmek degil, bu bir
+notasyon sadece, boylece acilimi yaptigimizda
+
+\[ = 
+\left|\begin{array}{rr}
+b_2 & b_3 \\
+c_2 & c_3
+\end{array}\right| 
+\hat{i}
+-
+\left|\begin{array}{rr}
+b_1 & b_3 \\
+c_1 & c_3
+\end{array}\right|
+\hat{j}
++
+\left|\begin{array}{rr}
+b_1 & b_2 \\
+c_1 & c_2
+\end{array}\right|
+\hat{k}
+\]
+
+$\hat{i}$, $\hat{j}$, $\hat{k}$'nin nereye gidecegini hatirlamak kolay oluyor.
+
+Simdi bu islemi alan hesabinda kullanalim. 
+
+\includegraphics[height=3cm]{2_10.png}
+
+Ve $\vec{A} \times \vec{B}$ ikisinin ciktigi noktadan, bu iki vektore de
+dik olan 3. bir vektoru yaratir. Peki $\vec{A} \times \vec{B}$ hesabinin
+hangi yonde bir vektor yaratacagini nereden bilecegiz? Sag el kuralini
+kullanarak.
+
+\includegraphics[height=3cm]{2_11.png}
+
+Bu kurala gore el $\vec{A}$ yonunu gosterecek sekilde tutulur, parmaklar
+bukulerek $\vec{B}$ yonune cevirilir. Bu haldeyken basparmak kaldirilir, ve
+bu basparmak $\vec{A} \times \vec{B}$'nin yonunu gosterecektir.
+
+Soru
+
+\includegraphics[height=4cm]{2_12.png}
+
+Secenekler
+
+\begin{enumerate}
+   \item $\hat{k}$
+   \item $-\hat{k}$
+   \item $1$
+   \item $0$
+   \item Bilmiyorum
+\end{enumerate}
+
+Dogru cevap?
+
+Cevap 1. Yani $\hat{i} \times \hat{j} = \hat{k}$
+
+Kontrol edelim. 
+
+\[ 
+\left|\begin{array}{rrr}
+\hat{i}& \hat{j}& \hat{k} \\
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+\end{array}\right| = 
+0 \hat{i} - 0 \hat{j} - 1 \hat{k}  = 
+\hat{k}
+ \]
+
+Hakikaten de sonuc sag el kuralini kullansak basparmagimizin gosterecegi
+yon olan $\hat{k}$'yi gosteriyor. 
+
+Simdi hacim hesabina geri donelim. Determinant kullanmadan nasil hacim
+hesabi yaparim? 
+
+\includegraphics[height=4cm]{2_13.png}
+
+Parallelipipe'nin hacminin taban alani carpi yuksekligi oldugunu biliyoruz
+herhalde. Alan nedir? Tabanin kenari olan $\vec{B}$, ve $\vec{C}$'yi
+kullaniriz, onlarin capraz carpimini aliriz, yani $\vec{B}\times
+\vec{C}$. Fakat capraz 
+carpimin sonucunun bir baska vektor oldugunu
+soylemistik, o zaman o vektorun sadece buyuklugunu kullaniriz, $|\vec{B}\times
+\vec{C}|$. 
+
+Peki yuksekligi nasil hesaplariz? Yuksekligi en azindan yonsel olarak, bir
+birim vektor olarak bildigimizi varsayalim, ve bu birim vektor $\vec{n}$
+olsun. O zaman $\vec{A}\cdot\vec{n}$ yuksekligi hesaplayabilirdik. Soyle.
+
+\includegraphics[height=4cm]{2_14.png}
+
+Peki $\vec{n}$'i nasil hesaplariz?  $\vec{B}\times \vec{C}$ yukseklik
+yonunde ucuncu bir vektor uretmez mi? Bu vektor $\vec{n}$ ile ayni yonde
+olmaz mi? O zaman $\vec{B}\times \vec{C}$'yi kullanirim. Ama bu carpim
+birimsel degildir, o zaman onu kendi buyuklugu ile bolerim, ve istedigim
+birim vektoru elde ederim.
+
+\[ \vec{n} = \frac{\vec{B}\times \vec{C}}{|\vec{B}\times \vec{C}|} \]
+
+O zaman
+
+\[ |\vec{B}\times \vec{C}| \vec{A}\cdot\vec{n} \]
+
+\[  = |\vec{B}\times \vec{C}| \vec{A}\cdot \frac{\vec{B}\times \vec{C}}{|\vec{B}\times \vec{C}|}  \]
+
+\[  = \vec{A}\cdot (\vec{B}\times \vec{C})  \]
+
+Isin ilginci $det(\vec{A},\vec{B},\vec{C})$'nin ustteki formulle ayni sonucu vermesidir. 
 
 
 \end{document}
