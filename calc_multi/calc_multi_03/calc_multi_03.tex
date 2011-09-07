@@ -94,6 +94,45 @@ Esitligin sagindaki carpima uclu carpim (triple product) deniyor.
 Son formulu takip edersek determinant sifirligi uzerinden tanimlanan diger
 formul ile ayni sonucu getirdigini gorurduk. 
 
+Matrisler
+
+$A \ B$ seklindeki bir matris carpiminda hangi hucrenin hangi kolon, hangi
+satirin noktasal carpim sonucu (answer) oldugunu hayal edebilmek icin
+alttaki sekil faydali olabilir. $B$, sonuc matrisinin (altta bos) ustunde
+hayal edilir, ve carpi isaretindeki sonuc icin onun heme ustundeki kolona,
+ve hemen yanindaki satira gidilir.
+
+\includegraphics[height=4cm]{3_4.png}
+
+Sezgisel (intuitive) olarak $AB$ carpimi neyi temsil eder? Bu carpimi soyle
+dusunebiliriz, once $B$ transformu yap, sonra $A$ transformu yap. Bu biraz
+acaip gelebilir, cunku normalde islemleri soldan saga yapmaya
+alisigizdir. Fakat $AB$'yi belki de sirali fonksiyon islemleri olarak
+gormek daha dogru olur, mesela $f(g(x))$ gibi. Burada once $g$ uygulanir,
+sonra $f$ uygulanir. 
+
+\[ (AB)X = A(BX) \]
+
+Ustteki aktarim kanunudur (associativity) ve ``iyi davranan'' carpimlarin
+bir ozelligidir. Bu arada ustteki carpimin noktasal degil, matris carpimi
+olduguna dikkat edelim. 
+
+Not: $AB \ne BA$. En azindan sagdaki carpimin olabilecegini beklemememiz
+gerekir. $AB$ carpimi boyutlar uydugu icin mumkun olmustur, fakat bu uyumlu
+boyutlar yerler degisince belki mumkun olmaz. Boyutlar olsa bile sonuc
+farkli cikabilir, o sebeble esitlik farz edilemez. Ufak bir Python kodu ile
+test edelim:
+
+\lstinputlisting[language=Python]{dot.py}
+
+Sonuclar farkli cikacak. 
+
+
+
+
+
+
+
 
 
 \end{document}
