@@ -18,7 +18,73 @@ MIT OCW Cok Degiskenli Calculus - Ders 3
 Capraz carpimlar hakkinda bilinmesi gereken bazi sasirtici gelebilecek
 kurallar var. Bunlardan bir tanesi $\vec{A} \times \vec{B} \ne \vec{B}
 \times \vec{A}$. Niye boyle? Bunu 
-gormenin yollarindan bir tanesi geometrik olarak dusunmek.
+gormenin yollarindan bir tanesi geometrik olarak dusunmek. Sag el kuralini
+dusunursek, yonun niye farkli olabilecegini anlariz. Isaretler tam terstir, yani
+
+\[  \vec{A} \times \vec{B} = - \vec{B}\times \vec{A} \]
+
+Determinant acilimini da dusunursek, ikinci terim eksi isareti tasir, ama
+carpim sirasi degisince eksi isaretinin yeri degisir. 
+
+Peki $\vec{A} \times \vec{A}$ nedir? Capraz carpim alan hesabinda onemli
+olduguna gore ve $\vec{A} \times \vec{A}$'in bir parallelogram
+yaratmayacagina gore (ya da sifir alanli bir parallelogram yaratacagina
+gore) cevap sifir, daha dogrusu sifir ``vektoru'' (o vektorun buyuklugu de
+tabii ki sifir).
+
+Uygulamalar
+
+Diyelim ki bize uzayda 3 nokta verildi, ve bu noktalari iceren bir duzlemin
+formulunu bulmamiz gerekiyor. 3 nokta 3 boyutlu uzayda bir duzlem yaratmak
+icin yeterli, bunu biliyoruz. Bunun icin bir dorduncu nokta $P$ hayal
+edelim ki bu noktanin ogeler $x,y,z$ olsun.
+
+\includegraphics[height=2cm]{3_1.png}
+
+Simdi duzlemi tanimlayalim. Su sekilde 3 tane vektor yaratalim
+
+\includegraphics[height=2cm]{3_2.png}
+
+Bu vektorlerin ayni duzlem uzerinde olmasi, ayni zamanda bu vektorlerin
+tanimladigi parallelipipe'nin hacimsiz olmasi demektir. Yani birisi
+uzerinden bastirip onu dumduz etmistir sanki, sadece alani kalmistir. 
+
+Bunu formulsel olarak soylemenin yolu sudur:
+
+\[ det(\vec{P_1P},\vec{P_2P},\vec{P_3P}) = 0 \]
+
+Gercek uygulama baglaminda problem bize $P_1,P_2,P_3$ sayilarini vermis
+olacakti bu sayilari ustteki formule yerlestirirdik, tanimsiz olan sadece
+$x,y,z$ kalirdi, ve bu $x,y,z$'ler ile beraber elde edilecek formul bu
+noktalarin tanimladigi alan olurdu.
+
+Bu hesabi daha da hizli yapmanin bir yolu var. Alttaki resmi dusunelim. 
+
+\includegraphics[height=4cm]{3_3.png}
+
+Resme bakalim. Duzlem uzerindeki iki vektore dik bir $\vec{N}$'i nasil
+hesaplayacagimizi biliyoruz (carpraz carpim ile). Devam edelim, $x,y,z$
+degiskenlerini iceren ucuncu bir vektor $\vec{P_1P}$'in ayni duzlemde
+olmasi demek, bu $\vec{N}$ vektorune dik olmasi demektir ($\vec{N}$
+``normal vektor'' olarak isimlendirilir). Bunu matematiksel olarak nasil
+ifade ederiz? Dikligin formulsel karsiligini biliyoruz, noktasal carpim
+sifir olmali.
+
+\[ \vec{P_1P} \cdot \vec{N} = 0 \]
+
+$\vec{N}$ hesabi icin 
+
+\[ \vec{N} = \vec{P_1P_2} \times \vec{P_1P_3}\]
+
+Bu kadar. 
+
+Ek not, eger capraz carpimin sirasini degistirmis olsaydim, o zaman ustteki
+hesabin ters yonunde bir baska dik vektor elde ederdim, duzlem yine ayni
+olurdu, sadece baska bir normal vektor olurdu. Bu problem degil, herhangi
+bir duzlemin sonsuz sayida normal vektoru olabilir. Elde ettigimiz bir
+normal vektoru herhangi bir sabit ile carpinca yeni bir normal vektor elde
+etmis olurum. 
+
 
 
 \end{document}
