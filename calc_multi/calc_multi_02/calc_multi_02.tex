@@ -291,14 +291,55 @@ c_1 & c_2
 
 $\hat{i}$, $\hat{j}$, $\hat{k}$'nin nereye gidecegini hatirlamak kolay oluyor.
 
-Simdi bu islemi alan hesabinda kullanalim. 
+Teoriler
+
+1)
+
+$|\vec{A} \times \vec{B}|$ bu vektorlerin olusturdugu paralelograminalanina esittir. Yani 
+alan hesabi icin capraz carpimi yapariz, bir vektor elde ederiz, sonra bu 
+vektorun uzunlugunu buluruz (tum ogelerinin karesini alip toplariz, 
+karekok aliriz, vs). Burada arti, eksi ile ugrasmamiza gerek
+yok cunku bir vektorun buyuklugu hep pozitiftir.
+
+Yani dersin ilk kismiyla baglamak gerekirse, aslinda $det(\vec{A},\vec{B})
+= |\vec{A} \times \vec{B}|$ 
+demis oluyoruz. Kontrol edelim. Capraz carpim soyle
+
+\[ \vec{A} \times \vec{B} =
+\left|\begin{array}{rrr}
+\hat{i}& \hat{j}& \hat{k} \\
+a_1 & a_2 & a_3 \\
+b_1 & b_2 & b_3 
+\end{array}\right|
+ \]
+
+Determinant formulunu hatirlayalim
+
+\[ = det(\vec{A},\vec{B}) \]
+
+\[ =
+\left|\begin{array}{rr}
+a_1 & a_2 \\
+b_1 & b_2 \\
+\end{array}\right|
+ \]
+
+Bu formulde sadece $a_1,a_2,b_1,b_2$ var, o zaman capraz carpimi o hale
+getirmek icin $a_3=0,b_3=0$ kullanabiliriz. Acilimi yaptimiz zaman
+determinant sonucu ile ayni seyi elde ettigimizi gorebiliriz.
+
+2)
+
+Sadece buyukluk degil, $\vec{A} \times \vec{B}$ degerinin yonu de cok ilginc. $dir(\vec{A} \times \vec{B})$ 
+paralelogramin uzerinde oldugu duzleme tam dik yonu gosteriyor. 
+Yani $\vec{A} \times \vec{B}$ ikisinin ciktigi noktadan, bu iki vektore de
+dik olan 3. bir vektoru yaratir
+
 
 \includegraphics[height=3cm]{2_10.png}
 
-Ve $\vec{A} \times \vec{B}$ ikisinin ciktigi noktadan, bu iki vektore de
-dik olan 3. bir vektoru yaratir. Peki $\vec{A} \times \vec{B}$ hesabinin
-hangi yonde bir vektor yaratacagini nereden bilecegiz? Sag el kuralini
-kullanarak.
+Peki $\vec{A} \times \vec{B}$ hesabinin hangi yonde bir vektor yaratacagini
+nereden bilecegiz? Sag el kuralini kullanarak.
 
 \includegraphics[height=3cm]{2_11.png}
 
