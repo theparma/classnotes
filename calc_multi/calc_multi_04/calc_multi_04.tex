@@ -202,7 +202,46 @@ denklemin sifira esit olmasi, onlarin temsil ettigi her duzlemin orijinden
 gectigi anlamina gelir. Eh hepsi orijinden geciyorsa, hepsi orada
 kesiyorlar da demektir. Basit cozum budur. 
 
+Burada iki alt kalem / durum daha var. 
 
+1) Eger $det(A) \ne 0$ o zaman $A$ tersine cevirilebilir, o zaman $X =
+A^{-1} \ 0 = 0$. 
+Baska hicbir cozum yoktur.
 
+2) Eger $det(A) = 0$ o zaman $det(\vec{N_1},\vec{N_2},\vec{N_3}) = 0$. Uc formulu temsil  
+eden uc duzlemin normal vektorleri determinanti sifir, yani
+$\vec{N_1},\vec{N_2},\vec{N_3}$ ayni duzlemde (coplanar). 
+
+\includegraphics[height=4cm]{4_5.png}
+
+$det(\vec{N_1},\vec{N_2},\vec{N_3})$ hesabinin paralelipipe hacmini hesapladigini hatirlayalim, ve 
+bu hacim sifir ise vektorlerin olusturdugu hacim sifirdir, yani paralelipipe 
+tamamen yassi demektir. O zaman vektorler ayni duzlemdedir. 
+
+$\vec{N_1},\vec{N_2},\vec{N_3}$'nin ayni duzlemde ise, bu vektorlere ayni
+anda dik olan bir cizgiyi dusunelim simd. Iddia ediyorum ki o cizgi,
+kesisme cizgisidir.
+
+Niye? Cunku kesisme cizgim tum normal vektorlere ayni anda dik, yani o
+normal vektorlerin temsil ettigi duzlemlerin hepsine ayni anda
+paralel. Peki niye parallellik otesinde, o duzlemlerin ``uzerinde''. Cunku
+cizgi orijinden geciyor, ve tum duzlemler de orijinden geciyor. Bunun
+olabilmesi icin cizgim duzlemlerin uzerinde olmali.
+
+O zaman elimde $\infty$ tane cozum vardir. 
+
+Ornek 
+
+$\vec{N_1} \times \vec{N_2}$ hesabi $\vec{N_1},\vec{N_2}$'ye dik bir ucuncu
+vektor hesaplar, bu vektor $\vec{N_3}$'e de ayni sekilde dik olmalidir
+cunku bu uc vektorun ayni duzlemde oldugunu biliyoruz. Bu basit olmayan
+cozumdur.
+
+Genel Durum (General Case)
+
+Eger $det(A) \ne 0$ ise bir ozgun (unique) cozum vardir, $X = A^{-1}B$. 
+
+Eger $det(A) = 0$ ise, ya hic cozum yoktur ya da sonsuz tane cozum
+vardir. Tek bir cozum olmasi mumkun degildir. 
 
 \end{document}
