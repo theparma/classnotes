@@ -153,6 +153,121 @@ ayni sey degildir. Esitsizligin sagindaki kavram zaten cogunlukla pek ise
 yarar bir sey degildir, hesaplanabilir, biraz sac bas yoldurabilir ama
 mumkundur, fakat cogunlukla kullanilmaz. 
 
+Egri Uzunlugu (Arc Length)
+
+Egri uzunlugu bir egri uzerinde ne kadar yol katettigimizi gosteren bir
+buyukluktur. Mesela bir arabadaki ne kadar yol katettiginizi gosteren
+kilometre sayaci bunu arabanin hizini belli bir zaman uzerinden entegre
+ederek hesapliyor.
+
+$s$ = bir yol uzerinde katedilmis mesafe
+
+Bunun anlami olmasi icin tabii ki bir sabit, referans noktasi
+dusunmeliyiz. Orijin noktasi bu nokta olabilir. Bu arada $s$ referans
+noktasinin neresinde oldugumuza gore negatif olarak ta
+hesaplanabilir. Referansa kadar eksi, sonrasi arti olabilir mesela.
+
+Peki $s$ ile $t$, yani egri uzunlugu ve zamani nasil birbirine baglariz? 
+
+\[ \frac{ds}{dt} = \textrm{ hýz } = |\vec{v}| \]
+
+Yani birim zamanda katedilen egri uzunlugu hizdir. 
+
+Ama acik olmak gerekirse, aslinda turevin kesin degerini (absolute value)
+almak daha dogru olur (dikkat, vektor buyuklugu isareti degil, kesin deger
+isareti bu sefer)
+
+\[ \bigg| \frac{ds}{dt} \bigg| = \textrm{ hýz } = |\vec{v}| \]
+
+Niye? Belki bir egri uzerindeyiz ama o egri uzerindeki hareketimiz bir
+ileri bir geri seklinde. Bu durumda egri uzunlugunu surekli saymak
+istemeyiz, onu ``cogalan (ileri), azalan (geri)'' turunden bir buyukluk
+olarak gormek isteriz.
+
+Egri uzunlugu hesabi icin hizi zaman uzerinden entegre ederiz. Mesela bir
+cycloid'in (resimde sari ile gosterilen) bir turunun uzunlugu ne kadar diye
+hesaplamak istiyorsak, 
+
+\[ \vec{v} = \sqrt{ 2-2cos(t) } \]
+
+ifadesinin 0 ile $2\pi$ arasinda entegralini almamiz lazim. 
+
+
+\[ \int_o^{2\pi} \vec{v} = \int_o^{2\pi} \sqrt{ 2-2cos(t) } dt \]
+
+Acikca soylemek gerekirse bunun entegrali analitik olarak nedir bilmiyoruz,
+ama ileriki derslerde bu hesabi yapmak icin fiyakali bir numara gorecegiz. 
+
+Gidisatin Birim Teget Vektoru
+
+Notasyonda bu kavram cogunlukla $\hat{T}$ olarak gosterilir. Sapka var
+cunku vektor birim vektor. $T$ cunku ``teget''. 
+
+\includegraphics[height=2cm]{6_3.png}
+
+Vektor $\vec{v}$ gidisata zaten tegettir. $\hat{T}$ bir anlamda bu vektorun
+sadece yonudur, o zaman $\vec{v}$'nin yonu bize gerekli, demek ki onu birim
+vektor haline getirirsek, $\hat{T}$'yi elde etmis oluruz.
+
+\[ \hat{T} = \frac{\vec{v}}{|\vec{v}|} \]
+
+Bir suru kavram birikti. Bunlarin birbiriyle bir alakasi olmali, onlardan
+bahsedelim. 
+
+\[ \vec{v} = \frac{d\vec{r}}{dt} = \frac{d\vec{r}}{ds}\frac{ds}{dt} \]
+
+Ustte zincirleme kanununu (chain rule) kullandik. 
+
+Biraz once goruk ki $ds/dt = |\vec{v}|$. 
+
+Eger 
+
+\[ \vec{v} = \frac{d\vec{r}}{ds}|\vec{v}| \]
+
+ise, vektor $\vec{v}$'nin buyuklugunu oyle bir sey ile carpiyorum ki sonuc
+olarak vektorun kendisi ortaya cikiyor. O sey ne olabilir? Tabii ki
+vektorun birim vektor olarak gosterilecek yonu olabilir. Bu birim vektoru
+zaten hesaplamadik mi? Bu vektor $\hat{T}$'den baskasi degil.
+
+\[ \vec{v} = \hat{T}|\vec{v}| \]
+
+ya da
+
+\[ \vec{v} = \hat{T}\frac{ds}{dt} \]
+
+Peki sezgisel olarak dusunursek, $d\vec{r}/dt$ niye $\hat{T}$'ye esit
+olmali? Alttaki grafiklere bakalim.
+
+\includegraphics[height=4cm]{6_4.png}
+
+\includegraphics[height=4cm]{6_5.png}
+
+Yerimizi $t$ aninda $\vec{r}(t)$, $\Delta t$ kadar bir adim atiyoruz, ve
+$\vec{r}(t+\Delta t)$ noktasina geliyoruz. Bu noktada egri uzerinde
+katedilen mesafe $\Delta s$, o zaman
+
+\[ \frac{\Delta s}{\Delta t} \approx hýz \]
+
+Yer vektorumuzun degisimi ise 
+
+\[ \Delta \vec{r} \approx \hat{T} \Delta s \]
+
+Iki tarafi $\Delta t$ ile bolersek 
+
+\[ \frac{\Delta \vec{r}}{\Delta t} \approx \hat{T} \frac{\Delta s}{\Delta t} \]
+
+
+ve $\Delta t \to 0$ olarak limitini alirsak, o zaman usttekiler turev
+haline gelir, yaklasiksal isaret esitlik olur. Yani
+
+\[ \frac{d\vec{r}}{dt} = \hat{T}\frac{ds}{dt} \]
+
+
+
+
+
+
+
 
 
 
