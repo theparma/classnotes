@@ -262,6 +262,79 @@ haline gelir, yaklasiksal isaret esitlik olur. Yani
 
 \[ \frac{d\vec{r}}{dt} = \hat{T}\frac{ds}{dt} \]
 
+Peki bu tur konularda vektorler kullanalim. Aslinda simdiye kadar
+gorduklerimizi diger yollarla da temsil edebilirdik. Fakat vektor ``dili''
+ozellikle hareketleri modellerken oldukca faydali oluyorlar. 
+
+Ornek - Kepler'in Ikinci Kanunu
+
+Kanun 1609'da kesfedildi, yani pek yeni bir gelisme oldugu iddia
+edilemez. Kepler gezegenlerin hareketini modellemeye ugrasiyordu. Bazi
+insanlar gezegenler mukemmel bir cember icinde donerler,
+vs. diyordu. Kepler gezegenlerin yorungesinin cember degil elips (ellipse)
+oldugunu one surdu. Kepler'in Kanunu soyle der:
+
+Gezegenlerin hareketi bir duzlem uzerindedir, gunesten gezegene
+cekilebilecek bir hayali cizginin kapsadigi alanin buyumesi / asilmasi
+sabit bir orandadir. Bu ilginc bir kanun cunku bir kez yorungenin seklini
+bilirsek, o yorunge uzerinde ne kadar hizli gidebilecegimizi bize
+soyluyor. 
+
+\includegraphics[height=4cm]{6_6.png}
+
+Ustteki sekle bakarsak, gunes (sun) etrafinda bir gezegen (planet) var, ve
+katedilen yol tarali sekilde cizili. Kepler Kanunu su anlama gelir,
+katedilen alan zamana orantilidir, eger gezegen gunese daha yakin olsa,
+daha hizli gitmek zorundadir, uzak olsa, daha yavas gitmek zorundadir, ki
+katedilen alanin zamana orani ayni kalsin. Niye? Eger yakin olursak, gunese
+direk mesafe azalacaktir, boydan kaybettigimizi diger yonden kazanmamiz
+gerekir, yani ayni zamanda ayni alani katetmek icin bu sefer yorunde
+uzerine daha hizli gidilmelidir, ki ayni alana erisebilelim. Tabii
+gezegenlerin akli yoktur, boyle olsun diye ugrasmazlar, Kepler gozlemlerini
+yaparken, modellerken degismeyen bu buyuklugu kesfetmistir, ve sayede bazi
+hesaplari temiz sekilde yapabilmesi mumkun olmustur.
+
+Biz de simdi bu kanunu, mekanik / fizikten bugun bildiklerimizi kullanarak
+dogrulamaya calisacagiz. Newton, ki 1600'lu yillarin sonlarinda ortaya
+cikti, bu durumu yercekimi formulleri ile aciklamayi basardi. 
+
+Simdi vektorler kullanarak bu modeli yaratacagiz ve Kepler'in onlari
+kullanarak alan hesabinin aslinda ne kadar dogal / bariz oldugunu
+gorecegiz. Fakat Kepler bu kanunu ortaya atarken isler hicbir bu kadar
+bariz degildi!
+
+Tekrar bir pozisyon vektoru $\vec{r}$ yaratalim, baslangici gunes, bitis
+noktasi gezegen olsun, katedilen yol $\Delta \vec{r}$ olsun. 
+
+\includegraphics[height=3cm]{6_7.png}
+
+Katedilen alani nasil hesaplariz. Sekilde cizdiklerimiz yeterince ipucu
+veriyor, yaklasiksal olarak bir ucgen olustu. Alan bir kenari $\vec{r}$,
+diger kenari $\Delta \vec{r}$ olan paralelogramin yarisi. Paralelogram
+hesabini yapmayi biliyoruz nasilsa,
+
+\[ 
+\textrm{ $\Delta t$'de Kapsanan Alan } \approx
+\frac{1}{2} |\vec{r} \times \Delta \vec{r}| 
+\]
+
+ki $\Delta t$ oldukca kucuk olmali. 
+
+Ayrica
+
+\[ \Delta \vec{r} \approx \vec{v} \Delta t \]
+
+O zaman alan
+
+\[ \approx
+\frac{1}{2} |\vec{r} \times \Delta \vec{v}| \Delta t
+ \]
+
+Peki bu alanin zamana sabit oranda olmasi ne demektir? Alanin $\Delta t$'ye
+oranli olmasi demektir, bu da ustteki formulde $|\vec{r} \times \Delta
+\vec{v}|$ teriminin 
+sabit olmasi demektir. 
+
 
 
 
