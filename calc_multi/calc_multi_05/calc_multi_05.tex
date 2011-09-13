@@ -168,14 +168,116 @@ degisik temsil yontemi olabilir, fakat aciya gore parametrize edersek en
 temiz formulu elde etmek mumkun olur. O zaman $x(t),y(t)$ yerine
 $x(\theta),y(\theta)$ kullanalim. 
 
+Yani $x(\theta),y(\theta)$ ile tekerlegin ne kadar donmus oldugunu
+belirleyen $\theta$ aci uzerinden tanimli bir fonksiyon kullanalim. 
 
+\includegraphics[height=4cm]{5_4.png}
 
+Tekerlegin nerede oldugu bilgisini ise $\vec{OP}$ vektoru ile temsil
+edebilirim. Buradaki tek problem vektor $\vec{OP}$ hakkinda hic bir sey
+bilmiyorum. Ama belki daha basit vektorler hakkinda bir seyler
+biliyorumdur. Mesela $\vec{AB}$ basit gibi duruyor, ayni sekilde $\vec{OA}$
+fena degil, $\vec{BP}$ ayni sekilde. Peki $\vec{OP}$'yi bu daha basit
+vektorler uzerinden temsil edemez miyim? Edebilirim. 
 
+\[ \vec{OP} = \vec{OA} + \vec{AB} + \vec{BP}  \]
 
+O zaman bu basit vektorleri hesaplayabilirsem, daha zor olan $\vec{OP}$'yi
+de hesaplarim. 
 
+\[ \vec{OA} = <a\theta, 0> \]
 
+Niye? Vektorun $y$ bileseni sifir, bu bariz. 
+
+\includegraphics[height=3cm]{5_5.png}
+
+Peki niye $a\theta$? Eger kayma, bosta donme gibi seyler yok ise, bu
+tekerlegin dis cemberinin katettigi donus / geldigi nokta (ustte yesil ile
+isaretli), tekerlegin gittigi yer mesafesi ile aynidir. Bu yuzeylerden
+birinin kavisli, digerinin duz olmasi bu gercegi degistirmez. Yesil ile
+isaretli dis cember parcasinin $a\theta$ ile hesaplandigini basit
+matematikten biliyoruz (eger $\theta$ radyan biriminde ise tabii, zaten bu
+sebeple -isleri basitlestirdigi icin- matematikte hep radyan birimi
+kullanilir). 
+
+$\vec{AB}$ daha kolay, $x$ bileseni sifir, $y$ yonune yaricap kadar
+gitmis. 
+
+\[ \vec{AB} = <0, a> \]
+
+En son vektor $\vec{BP}$ biraz daha zor. Bu vektor hakkinda neler
+biliyoruz? Buyuklugunu yani $|\vec{BP}|$'yi biliyoruz ve dikey eksen ile
+$\theta$ kadar bir aci olusturdugunu biliyoruz. Daha yakindan bakarsak
+
+\includegraphics[height=2cm]{5_6.png}
+
+\[ \vec{BP} = <-asin(\theta), -acos(\theta)> \]
+
+Simdi ekleme asamasina geldik. 
+
+\[ \vec{OP} = <a\theta - asin(\theta), a-acos(\theta)> \]
+
+Ve nihayet cevabimizi bulduk. Cunku 
+
+\[ \vec{OP} = 
+<
+\underbrace{a\theta - asin(\theta)}_{x(\theta)}, 
+\underbrace{a-acos(\theta)}_{y(\theta)}
+> \]
+
+Simdi gizemli bir noktayi inceleyelim. Tekerlegin donmesi sonucu takip
+edilen noktanin yere degip, tekrar yukari ciktigi anda, olusan takip
+cizgisi ne sekildedir? Bilgisayar grafigine bakalim; 
+
+\includegraphics[height=4cm]{5_7.png}
+
+Sekil sunlardan hangisidir? 
+
+\includegraphics[height=4cm]{5_8.png}
+
+Bu cevabi vermenin en iyi yolu, formullerimizi kullanmak. 
+
+Formulleri basitlestirmek icin eger $a=1$ alirsak, 
+
+\[ x(\theta) = \theta - sin(\theta) \]
+
+\[ y(\theta) = 1 - cos(\theta) \]
+
+Simdi yaklasiksal olarak dusunmeye ugrasalim. Cok kucuk $\theta$ icin
+$sin(\theta) \approx \theta$ ve $cos(\theta) \approx 1$. Bunlari
+$x(\theta), y(\theta)$ icinde kullanirsak, biri 0, oteki 1 cikacak, bunlar
+pek net sonuclar degiller. Demek ki bize daha iyi yaklasiksal (approximate)
+teknikler gerekiyor. 
+
+Tek Degiskenli Calculus dersinde Taylor Yaklasiksallamasi ogretilir. 
+
+Taylor Yaklasiksallamasi
+
+Kucuk $t$ degerleri icin 
+
+\[ f(t) \approx f(0) \]
+
+Bu kabaca bir yaklasiksallamadir tabii ki. Biraz daha iyisi icin, eger $t$
+kadar degisim olursa, bu degisimin su sekilde eklenebilecegini farzederiz.
+
+\[ f(t) \approx f(0) + tf'(0)\]
+
+Biraz daha iyisi icin
+
+\[ f(t) \approx f(0) + tf'(0) + \frac{t^2}{2}f''(0)\]
+
+Buna istedigimiz kadar devam edebiliriz
+
+\[ f(t) \approx f(0) + tf'(0) + \frac{t^2}{2}f''(0) + \frac{t^3}{6}f'''(0)\]
+
+Bu teknigi simdi kullanalim
+
+\[ sin(\theta) \approx \theta - \frac{\theta^3}{6} \]
+
+\[ cos(\theta) \approx 1 - \frac{\theta^2}{2} \]
 
 
 
 
 \end{document}
+
