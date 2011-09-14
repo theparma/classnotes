@@ -209,9 +209,37 @@ Grafiksel olarak
 
 $x$ noktasindaki egim (slope) $f'(x)$'e esittir. 
 
+Yaklasiksallik Formulu
 
+\[ f(x) \approx f(x_0) + f'(x_0)(x-x_0) \]
 
+Bu formule daha fazla terim eklesek, ortaya Taylor Formulu cikardi. 
 
+Benzer seyleri 2 degiskenli fonksiyonlar icin nasil yapardik?
+
+Buradaki problem iki degiskenin ikisinin birden degisebilecegi. Bu sebeple
+bize birden fazla turev sekli gerekiyor. 
+
+Notasyon
+
+Parcali turev kivrik bir ``d'' sembolunu andirir
+
+\[ \frac{\partial f}{\partial x} \]
+
+Bu ibare ``sadece $x$ degisiyor, digerleri degismiyor'' demek. O yuzden bu
+klasik bir turev degil, kismi bir turev. Tamami
+
+\[ \frac{\partial f}{\partial x}(x_0,y_0) = 
+\lim_{\Delta x \to 0} \frac{f(x_o+\Delta x, y_o) - f(x_0,y_0)}{\Delta x}
+ \]
+
+Gordugumuz gibi $y$ uzerinde hicbir degisiklik yapmiyorum. Sadece $x$'i
+degistirip, bu degisimin fonksiyonun tamami uzerindeki oranini (rate of
+change) hesapliyorum. 
+
+\[ \frac{\partial f}{\partial y}(x_0,y_0) = 
+\lim_{\Delta y \to 0} \frac{f(x_o, y_o+\Delta y) - f(x_0,y_0)}{\Delta y}
+ \]
 
 
 
