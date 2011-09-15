@@ -378,5 +378,114 @@ Not: Bu arada parallellik hem cekim, hem itme icin gecerli olurdu (her iki
 durumda da yon paralel). Hakikaten elektriksel alanda parcaciklarin
 cekilmesi ve itilmesi baglaminda da Kepler'in Kanunu aynen islemektedir. 
 
+Soru
+
+Diyelim ki $P$ noktasi bir kure (sphere) uzerinde hareket ediyor ve 
+
+\[ OP = \vec{r}(t) = x(t)\hat{i} + y(t)\hat{j} + z(t)\hat{k}  \]
+
+Hiz vektoru $\vec{v}$'nin her zaman pozisyon vektoru $\vec{r}$'ye dik
+oldugunu $x,y,z$ kordinatlarini kullanmadan ve alttaki esitlikten 
+faydalanarak
+
+\begin{equation}\label{eq1}
+\frac{d}{dt}\vec{a} \cdot \vec{b} =  
+\frac{d\vec{a}}{dt} \cdot \vec{b} +
+\vec{a} \cdot \frac{d\vec{b}}{dt} 
+\end{equation}
+
+
+ispatlayin. 
+
+Cevap
+
+Eger $\vec{r}$ ve $\vec{v}$ birbirine dik ise, o zaman $\vec{r} \cdot
+\vec{v} = 0$ demektir. 
+
+Bu arada hatirlayalim ki hiz pozisyon vektorunun zamana gore turevidir. 
+
+\[ \vec{v} = \frac{d\vec{r}}{dt} \]
+
+Suradan bir giris yapalim. Eger uzerinde olunan kurenin yaricapi $a$ ise, 
+
+\[ \vec{r} \cdot \vec{r} = a^2 \]
+
+Usttekinin formul \ref{eq1}'e gore turevini alalim
+
+\[ 
+\frac{d}{dt}\vec{r} \cdot \vec{r} =  
+\frac{d\vec{r}}{dt} \cdot \vec{r} +
+\vec{r} \cdot \frac{d\vec{r}}{dt} = 0
+ \]
+
+Sag taraf sifir cunku sabit $a^2$'nin turevi sifir. Devam edelim
+
+\[ 
+2 \frac{d\vec{r}}{dt} \cdot \vec{r} = 0
+\]
+
+\[ \vec{v} \cdot \vec{r} = 0 \]
+
+Demek ki iki vektor birbirine dik.
+
+Soru
+
+Bir onceki soruda ispatlananin tam ters yonunu ispatlayin. Eger $\vec{r}$
+ve $\vec{v}$ dik ise, $P$'nin hareketi kesinlikle bir kure uzerinde olmak
+zorundadir. 
+
+Cevap
+
+Biliyoruz ki
+
+\[ \vec{r} \cdot \vec{r} = |r|^2 \]
+
+Turevi alinca
+
+\[ 
+\frac{d}{dt}\vec{r} \cdot \vec{r} = 0 
+ \]
+
+Sag taraf sifir oldu cunku orada bir sabit vardi. Diger taraftan, eger
+diklik oldugunu biliyorsak su dogru olmali
+
+\[ \vec{v} \cdot \vec{r} = 0 \]
+
+$\vec{v}$ ayni zamanda pozisyonun turevidir, ustte yerine koyalim
+
+\[ 
+\frac{d\vec{r}}{dt} \cdot \vec{r} = 0
+\]
+
+Onceden gormustuk ki 
+
+\[ 
+2 \frac{d\vec{r}}{dt} \cdot \vec{r} =
+\frac{d}{dt}(\vec{r} \cdot \vec{r})   
+ \]
+
+Bu denklemin sol tarafi iki ustteki formulun sol tarafina benziyor, o zaman
+
+\[ \frac{d}{dt}(\vec{r} \cdot \vec{r}) = 0 \]
+
+Simdi sunu soralim: Turevi sifir olan sey nedir? Bir sabittir. 
+
+\[ \vec{r} \cdot \vec{r} = c \textrm{ adinda bir sabit }\]
+
+O zaman $|\vec{r}| = \sqrt{c}$. 
+
+Eger $\vec{r}$'nin uzunlugu hic degismiyor ise, o zaman pozisyon bir kure
+uzerinde hareket ediyor olmalidir.
+
+
+
+
+
+
+
+
+
+
+
 
 \end{document}
