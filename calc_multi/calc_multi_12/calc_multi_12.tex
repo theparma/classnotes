@@ -57,7 +57,7 @@ edilecek kesit yuzeyine (level surface) her zaman diktir.
 
 Eger fonksiyonumun bir kontur grafigini cizersem
 
-\includegraphics[height=4cm]{12_1.png}
+\includegraphics[height=3cm]{12_1.png}
 
 gosterilen noktada hesaplanacak gradyan vektoru o noktadaki kontura
 diktir. 
@@ -103,6 +103,45 @@ Secilen $x,y$ noktasinda $\nabla w$ gosterilmis. Bu vektorun $x$ ve $y$
 eksenlerinde boyunun, basladigi noktaya gore olan $x,y$ degerlerinin
 yaklasik iki kati olduguna dikkat, ki bu da $<2x,2y>$ vektoru ile uyumlu. 
 
+Simdi gradyanin niye kesit egrilerine hep dik oldugunu ispatlayalim.
+
+Ispat
+
+Once kesit egrileri ``uzerinde'' hareket eden bir nokta hayal edecegiz. Bu
+nokta fonksiyonun sabit oldugu yerlerden geciyor demektir, cunku kontur
+uzerinde fonksiyon degeri hep aynidir. 
+
+Egri $\vec{r} = \vec{r}(t)$ hep $w = c$ uzerinde olacak. Resme bakalim,
+hayali bir kesit yuzeyi uzerinde bir egri olacak (kirmizi renkli) bu
+egrinin uzerinde giden noktanin bir hizi olacak. 
+
+\includegraphics[height=4cm]{12_3.png}
+
+Iddia o ki, 
+
+\[ \vec{r} = \frac{d\vec{r}}{dt} \]
+
+vektoru, kesit $w = c$'ye muhakkak teget olmali, cunku hiz egriye teget, ve
+egri kesit icinde. 
+
+Daha baska ne iddia edebiliriz? Zincirleme Kanununu kullanarak 
+
+\[ \frac{dw}{dt} = \nabla w \cdot \frac{d\vec{r}}{dt} \]
+
+esitligini kurabiliriz. 
+
+\[ \frac{dw}{dt} = \nabla w \cdot \vec{v} = 0\]
+
+Sifira esitligin sebebi basta $w = c$ demis olmamiz, o zaman tum kismi
+turevler sifirdir ($w$ degerleri sabittir, sabitlerin turevleri sifirdir),
+ve $0 \cdot \vec{v} = 0$.
+
+Simdi ters yonden bakalim: iki vektorun noktasal carpimi ne zaman sifir
+sonucu verir? Eger vektorler birbirine dik ise. Demek ki $\nabla w \perp
+\vec{v}$. Hatta 
+iddia ediyorum ki bu diklik $w=c$ uzerindeki her hareket (motion) icin 
+gecerlidir. Yani $\vec{v}$, kesit yuzeyine teget olan herhangi bir vektor
+olabilir, ustteki diklik hep dogru olacaktir. 
 
 
 
