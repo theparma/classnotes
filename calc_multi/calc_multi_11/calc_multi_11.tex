@@ -259,7 +259,7 @@ Tekrar duzenlersek
 Bolum Kanununu elde ettik.
 
 Simdi biraz daha cilginca bir sey yapalim. Iddia ediyorum ki daha fazla
-degisken kullanarak Zincirleme Kanununu kullanabilirim. 
+degisken icin Zincirleme Kanununu kullanabilirim. 
 
 \[ w = f(x,y), \ x = x(u,v), \ y = y(u,v) \]
 
@@ -287,9 +287,11 @@ Biz $dx$ ve $dy$'den kurtulmak istiyoruz cunku cevap istedigimiz sorulardan
 biri ``$u,v$ biraz degisince $w$ ne kadar degisir'' seklindeki
 sorular. Devam edelim
 
-\[ = f_x (x_u du + x_y dv) + f_y (y_u du + y_v dv ) \]
+\[ = f_x \bigg( x_u du + x_y dv \bigg) + 
+f_y \bigg( y_u du + y_v dv \bigg) \]
 
-\[ = (f_x x_u + f_yy_u )du  + (f_xx_u + f_yy_v)dv\]
+\[ = \bigg(f_x x_u + f_yy_u \bigg)du  + 
+\bigg(f_xx_u + f_yy_v \bigg) dv \]
 
 Bu formulde kismi turevler soyle gosterilebilir
 
@@ -310,14 +312,14 @@ Yani
 \]
 
 Bu formulde, mesela birincisinde, insanin icinden hem bolum, hem bolende
-olan $\partial x$'leri iptal etmek gelebilir. Ama bunu yaparsak
+olan $\partial x$ ve $\partial y$'leri iptal etmek gelebilir. Ama bunu yaparsak
 
 \[ \frac{\partial f}{\partial u} = 
 \frac{\partial f}{\partial u} + \frac{\partial f}{\partial u} 
 \]
 
 gibi bir formul cikardi, ki bu formul dogru olmazdi. Cunku bu tur bir iptal
-operayonu yanlistir, bunlar kismi turevler, tam turevler (total
+operasyonu yanlistir, bunlar kismi turevler, tam turevler (total
 derivatives) degil. Zaten $d$ yerine kivrik d, yani $\partial$ sembolu
 kullanmamizin sebebi de bu -- bize hatirlatici olmalari icin. $d$'ler ile
 yapabilecegimiz bazi basitlestirme islemlerini $\partial$'lar ile
