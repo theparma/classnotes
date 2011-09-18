@@ -1,0 +1,100 @@
+\documentclass[12pt,fleqn]{article}
+\setlength{\parindent}{0pt}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage[latin5]{inputenc}
+\setlength{\parskip}{8pt}
+\setlength{\parsep}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\topskip}{0pt}
+\setlength{\topmargin}{0pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\mathindent}{0cm}
+
+\begin{document}
+Cok Degiskenli Calculus - Ders 11
+
+Onceki derste cok degiskenli fonksiyonlari min, maks uzerinden
+inceledik. Bu derste bu tur fonksiyonlarin herhangi bir yondeki
+varyasyonunu nasil hesaplayacagimizi gorecegiz. Bunu yapabilmek icin daha
+fazla kavramsal araclara ihtiyacimiz var. 
+
+Bugunku konumuz diferansiyeller. 
+
+Diferansiyeller
+
+Tek degiskenli Calculus'tan dolayli (implicit) diferansiyel almayi
+biliyoruz herhalde. Mesela elimizde
+
+\[ y = f(x) \]
+
+var. Dolayli turevler ile $x$ uzerindeki sonsuz kucuk bir degisimi $y$
+uzerindeki sonsuz kucuk bir degisime baglayabiliyoruz. 
+
+\[ dy = f'(x) dx \]
+
+Ornek
+
+\[ y = sin^{-1}(x) \]
+
+Bu formulun turevini bulmak icin, soyle bir zincir takip
+edebiliriz. Usttekine tersten bakalim
+
+\[ x = sin(y) \]
+
+O zaman
+
+\[ dx = cos(y)dy \]
+
+\[ 
+\frac{dy}{dx} = \frac{1}{cos(y)} = \frac{1}{\sqrt{1-x^2}}
+ \]
+
+Esitligin sag tarafini nasil elde ettik? Hatirlayalim
+
+\[ cos^2(y) + sin^2(y) = 1 \]
+
+\[ cos (y) = \sqrt{1 - sin^2y} \]
+
+$sin^2(y)$ nedir? 
+
+\[ y = sin^{-1}(x) \]
+
+\[ sin(y) = sin(sin^{-1}(x)) \]
+
+Ters sinus fonksiyonunun sinusu alinirsa, geriye sadece $x$ kalir. 
+
+\[ sin(y) = x \]
+
+O zaman
+
+\[ cos (y) = \sqrt{1 - x^2} \]
+
+Iste bu tur $dy,dx$ iceren formulleri kullanacagiz, bu derste cok
+degiskenli ortamda bunu yapacagiz. 
+
+Tam Diferansiyeller
+
+Eger $f(x,y,z)$ varsa, 
+
+\[ df = f_xdx + f_ydy + f_zdz \]
+
+Diger notasyonla
+
+\[ df = \frac{\partial f}{\partial x}dx + \frac{\partial f}{\partial y}dy + 
+\frac{\partial f}{\partial z}dz \]
+
+Bu formulun hesapladigi nedir? Elde edilen bir sayi, matris, vektor
+degildir. Bu degisik turden bir nesne ve bu nesneleri manipule etmenin,
+kullanmanin kendine has kurallari var. Onlari nasil kullanacagimizi
+ogrenmemiz gerekiyor. 
+
+Onlari nasil irdelemek gerekir? Bunu cevaplayabilmek icin onlari nasil
+``gor\textbf{me}memiz'' gerektigini anlamamiz lazim. 
+
+
+
+
+
+\end{document}
