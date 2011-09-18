@@ -89,7 +89,7 @@ terimi dengelemek gerekiyor,
  \]
 
 
-\[ w = \frac{1}{4a} 
+\[ = \frac{1}{4a} 
 \bigg[
 4a^2 \bigg( x+\frac{b}{2a}y \bigg)^2 +
 \bigg(4ac - b^2 \bigg)y^2
@@ -97,12 +97,93 @@ terimi dengelemek gerekiyor,
 \]
 
 
+Bu noktada kontrol etmemiz gereken 3 durum var:
 
+1) $4ac - b^2 < 0 => $ Ustteki ikinci terim negatif, pozitif $y^2$'yi
+carpiyor yani negatiflik daha da buyuyor, birinci terim kesinlikle pozitif
+(cunku karesi alinmis ifadeler var). Bu durumda bir eger noktamiz var. 
 
+2)  $4ac - b^2 = 0 => $ Ikinci terim yokolur. Geri kalanlar sonucunda
+fonksiyonumuz sadece bir yonde tanimli hale gelir, fonksiyonun ``dejenere''
+oldugu soylenir. Mesela $w = x^2$ fonksiyonu boyledir, $y$'ye hic baglanti
+yoktur, alttaki gibi.
 
+\includegraphics[height=3cm]{10_2.png}
 
+Grafikte goruldugu gibi $y$ yonunde hicbir degisim olmamaktadir, o yonde
+pek cok kritik nokta vardir, bu noktalar ``dejeneredir''. 
 
+Ana formulumuzdeki birinci terimde $x$ ve $y$ olmasi sasirtici gelebilir,
+orada $x$ ve $y$ oldugu icin elimizde dejenere bir durum var, eger o
+ifadeleri kullanarak yeni bir eksen sistemi yaratsaydim, o yonde hicbir
+degisiklik olmadigini gorurdum.
 
+3) $4ac - b^2 > 0 => $ Bu durumda ustteki formulde, kareli ifadeler 
+
+\[w = \frac{1}{4a} 
+\bigg[
++ .. \bigg( .. \bigg)^2 +
+\bigg( .. \bigg)
+\bigg]
+\]
+
+hep $>0$ demektir, bu durumda elimizde ya bir maksimum ya da bir minimum
+var. Isler $a$'ya gore degisecek, o zaman onun isaretine bakariz. 
+
+Eger $a > 0$ bir minimum vardir
+
+Eger $a < 0$ bir maksimum vardir
+
+[bazi bolumler atlandi]
+
+Genel olarak maks, min islemleri icin 2. turevlere bakmak gerekir. 
+
+Kac turlu kismi turev vardir? Mesela bir kez $x$'e gore kismi turev alabilirim,
+sonra elde ettigim fonksiyonun bir daha $x$'e gore turevini alirim. 
+
+\[ \frac{\partial f^2}{\partial x^2} = f_{xx}\]
+
+Ya da
+
+\[ 
+\frac{\partial f^2}{\partial x \partial y} = f_{xy}
+ \]
+
+Ya da 
+
+\[ 
+\frac{\partial f^2}{\partial y \partial x} = f_{yx}
+ \]
+
+Burada bir iyi haber su: Ustteki iki kismi turev birbirine esit, yani
+$f_{xy} = f_{yx}$.
+
+Ve en son olarak
+
+\[ \frac{\partial f^2}{\partial y^2} = f_{yy}\]
+
+2. Turev Testi
+
+$f$'in kritik noktasi $x_0,y_o$'da $A = f_{xx}(x_o,y_o)$, $B =
+f_{xy}(x_o,y_o)$, 
+$C = f_{yy}(x_o,y_o)$ ise, o zaman 
+
+\[ AC - B^2 > 0 \]
+
+hesabina bakilir. Bu hesabin da 2 tane alt secenegi vardir. 
+
+$A > 0$ ise lokal minimum. 
+
+$A < 0$ ise lokal maksimum. 
+
+\[ AC - B^2 < 0 \]
+
+hesabi var ise, elimizde bir eger noktasi vardir. 
+
+\[ AC - B^2 = 0 \]
+
+ise hicbir sonuca varamayiz. Bir sekilde dejenere oldugunu biliriz, ama
+nasil bir kritik nokta oldugunu bilemeyiz. 
 
 
 
