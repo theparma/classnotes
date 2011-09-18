@@ -37,9 +37,71 @@ Tabii ki bunu soyleyince ustteki gradyan'in $x,y,z$'ye bagli oldugunu da
 soyluyoruz, mesela $w$'nun belli bir nokta $x,y,z$'da gradyanini
 alabilirsiniz, o zaman her degisik $x,y,z$ noktasinda farkli bir vektor
 elde edersiniz, ki bu vektorlerin tamamina ileride ``vektor alani (vector
-field)'' ismini verecegiz.
+field)'' ismini verecegiz. Devam edelim, 
 
+\[ \frac{d\vec{r}}{dt} = < \frac{dx}{dt}, \frac{dy}{dt}, \frac{dz}{dt} > \]
 
+Yani hiz vektoru (velocity vector) $d\vec{r}/{dt}$ yukaridaki gibi
+tanimlidir.
+
+Bugunku amacimiz gradyan vektorunu anlamak, ve nerelerde
+kullanabilecegimizi incelemek. Gradyanlari yaklasiksal formullerde
+kullanmak mumkundur, vs. Ustte gordugumuz onun notasyonu. 
+
+Gradyanlarin belki de en ``havali'' ozellikleri sudur. 
+
+Teori
+
+Iddia ediyorum ki $\nabla w$ vektoru, $w = \textrm{ bir sabit }$ile elde
+edilecek kesit yuzeyine (level surface) her zaman diktir.
+
+Eger fonksiyonumun bir kontur grafigini cizersem
+
+\includegraphics[height=4cm]{12_1.png}
+
+gosterilen noktada hesaplanacak gradyan vektoru o noktadaki kontura
+diktir. 
+
+Ornek 1
+
+Lineer bir $w$ kullanalim. 
+
+\[ w = a_1 x + a_2 y + a_3 z \]
+
+Gradyan nedir? Kismi turevleri alalim:
+
+\[ \nabla w = <a_1, a_2, a_3> \]
+
+Konturlari nasil elde ederim? $a_1 x + a_2 y + a_3 z  = c$ ki $c$ bir
+sabittir, bu formulu tatmin eden tum $x,y,z$ degerleri bir duzlem
+olustururlar. 
+
+Bu duzlemin normalinin nasil alinacagini biliyoruz, katsayilara bakariz,
+$<a_1,a_2,a_3>$. Bu vektorun gradyanla ayni ciktigina dikkat, ki normal
+vektor de duzleme diktir zaten. Ayni cikmalari mantikli. 
+
+Aslinda bu ornek gradyanin dikligini bir anlamda ispatliyor, cunku duzlem
+olmasa bile herhangi bir fonksiyonun birinci yaklasiksalligi bir duzlem
+yaratir, o duzlemin normali, gradyani esitligi bizi yine gradyanin
+dikligine goturur. Ama bu yeterince ikna edici olmadiysa baska bir ornege
+bakabiliriz. 
+
+Ornek 2
+
+\[ w = x^2 + y^2 \]
+
+Bu fonksiyonun kesit seviyeleri, degisik yaricaplara sahip dairelerdir,
+$x^2 + y^2 = c$ formulundeki degisik $c$ degerleri bu daireleri tanimlar. 
+
+Gradyan vektoru
+
+\[ \nabla w = <2x, 2y> \]
+
+\includegraphics[height=4cm]{12_2.png}
+
+Secilen $x,y$ noktasinda $\nabla w$ gosterilmis. Bu vektorun $x$ ve $y$
+eksenlerinde boyunun, basladigi noktaya gore olan $x,y$ degerlerinin
+yaklasik iki kati olduguna dikkat, ki bu da $<2x,2y>$ vektoru ile uyumlu. 
 
 
 
