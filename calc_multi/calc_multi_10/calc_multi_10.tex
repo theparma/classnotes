@@ -185,7 +185,142 @@ hesabi var ise, elimizde bir eger noktasi vardir.
 ise hicbir sonuca varamayiz. Bir sekilde dejenere oldugunu biliriz, ama
 nasil bir kritik nokta oldugunu bilemeyiz. 
 
+Simdi formulumuz $w = ax^2 + bxy + cy^2$ uzerinde buldugumuz ozel sarti
+kismi turevler ile dogrulayip dogrulayamayacagimiza bakalim. 
 
+\[ w_{x} = 2ax + by\]
+
+\[ w_{xx} = 2a\]
+
+\[ w_{xy} = b\]
+
+\[ w_{y} = bx + 2cy \]
+
+\[ w_{yx} = b \]
+
+O zaman
+
+\[ A = 2a \]
+
+\[ B = b \]
+
+\[ C = 2c \]
+
+\[ AC - B^2 = 4ac - b^2 \]
+
+Gordugumuz gibi $4ac - b^2$ tekrar elde ettik, yani ilk basta kare
+tamamlayarak elde ettigimiz irdelemeleri aynen kullanabiliriz. 
+
+Tabii dejenere konumda hala ne yapilacagini bilmiyoruz. O durum icin de
+Taylor Yaklasiksallamasini kullanacagiz. 
+
+Karesel yaklasiksallama
+
+\[ \Delta f \approx f_x (x - x_0) + f_y (y - y_0) \]
+
+Fakat kritik noktalarda $f_x = f_y = 0$ oldugunu hatirlarsak, o zaman
+ustteki ifadede tum terimler iptal (sifir) olur. Bu isimize yaramaz. Daha
+fazla terim eklememiz lazim. 
+
+\[ \Delta f \approx f_x (x - x_0) + f_y (y - y_0)   \]
+\[\hspace{1cm}  + 
+\frac{1}{2}f_{xx}(x-x_0)^2 + f_{xy}(x-x_0)(y-y_0) + 
+\frac{1}{2}f_{yy}(y-y_0)^2 \]
+
+Bu durumda genel durum (case) karesel duruma indirgenmis olur. Ustteki
+formulde 
+
+\[ \Delta f \approx f_x (x - x_0) + f_y (y - y_0)   \]
+\[\hspace{1cm} + 
+\underbrace{\frac{1}{2}f_{xx}}_{1/2 A = a}(x-x_0)^2 + 
+\underbrace{f_{xy}}_{B=b}(x-x_0)(y-y_0) + 
+\underbrace{\frac{1}{2}f_{yy}}_{1/2 C = c}(y-y_0)^2 \]
+
+kullanilabilir. 
+
+Dejenere durumda ne olacagi daha yuksek turevlere baglidir. Biz bu dersti o
+konuya girmeyecegiz. 
+
+Fakat sunu soylemek gerekir ki 
+
+\[ AC - B^2 = 0 \]
+
+sartinin ortaya cikmasi, yani ``sonuca varamiyoruz'' noktasina gelmek
+gercek hayatta pek olmuyor. 
+
+Ornek
+
+\[ f(x,y)= x + y + \frac{1}{xy}, \ \ x,y > 0 \]
+
+Min, maks nedir? 
+
+Kritik noktalari bulalim. 
+
+\[ f_x = 1 - \frac{1}{x^2y} = 0\]
+
+\[ f_y = 1 - \frac{1}{xy^2} = 0\]
+
+\[ x^2y = 1 \]
+
+\[ xy^2 = 1 \]
+
+Ikinci formul birinciyi bolerse, 
+
+\[ x/y = 1 \]
+
+yer degistirince
+
+\[ x = y => x = 1 \]
+
+\[ y^3 = 1 => y = 1 \]
+
+Tek kritik nokta $(1,1)$
+
+Soru
+
+Bu nokta 
+
+\begin{enumerate}
+   \item Lokal minimum
+   \item Lokal maksimum
+   \item Eger noktasi
+   \item ???
+\end{enumerate}
+
+Cevaplayin. 
+
+Cevap icin 2. kismi turevleri hesaplayalim. 
+
+\[ f_{xx} = \frac{2}{x^3y} \]
+
+\[  A = 2 \]
+\[ f_{xy} = \frac{1}{x^2y^2} \]
+
+\[ B = 1 \]
+
+\[ f_{yy} = \frac{2}{xy^3} \]
+
+\[ C = 2 \]
+
+\[ AC - B^2 = 2 \cdot 2 - 1^2 = 3 > 0 \]
+
+Demek ki bu ya bir lokal min, ya da lokal maks. 
+
+\[ A > 0 \]
+
+o zaman bu lokal min. Hatta bunun bir global min oldugunu da kontrol etmek
+mumkun. 
+
+Ya peki lokal maksimum? 
+
+Maksimum herhangi bir kritik noktada degil, maksimum sonsuzlukta. 
+
+$x \to \infty$, ya da $y \to \infty$, ya da $x,y \to 0$ iken, $f \to
+\infty$. 
+
+Genelde ustteki kontrolleri yapmak gerekir, neler oldugunu anlamak icin
+once kritik noktalara bakilir, sonra sinirlarda (boundaries) neler olduguna
+bakilir.
 
 
 \end{document}
