@@ -113,7 +113,12 @@ uzerinde fonksiyon degeri hep aynidir.
 
 Egri $\vec{r} = \vec{r}(t)$ hep $w = c$ uzerinde olacak. Resme bakalim,
 hayali bir kesit yuzeyi uzerinde bir egri olacak (kirmizi renkli) bu
-egrinin uzerinde giden noktanin bir hizi olacak. 
+egrinin uzerinde giden noktanin bir hizi olacak. Bu arada $w$ 
+mesela $w = x^2
++ y^2$ belki, herhangi bir uc boyutlu fonksiyon. $\vec{r}$'nin $w$ ustunde
+gitmesi demek, $\vec{r}$ ile $w$ parametrize edilebilir demek,
+ $\vec{r}(t)
+= <x(t),y(t),z(t)>$ ve onu kullanarak  $w(\vec{r}(t)) = c$. 
 
 \includegraphics[height=4cm]{12_3.png}
 
@@ -122,27 +127,25 @@ Iddia o ki,
 \[ \vec{v} = \frac{d\vec{r}}{dt} \]
 
 vektoru, kesit $w = c$'ye muhakkak teget olmali, cunku hiz egriye teget, ve
-egri kesit icinde. Bu arada $w$ aslinda $w(\vec{r}(t))$, $w$'ye girdi
-olarak verilenler $x,y,z$ ama $\vec{r}(t)$'nin ogeleri de ayni $x,y,z$
-parametreleri. 
+egri kesit icinde. Bu arada $w$'nin aslinda $w(\vec{r}(t))$ oldugunu
+belirttik.
 
 Bu sayede Zincirleme Kanununu kullanarak 
 
-\[ \frac{dw(\vec{r})}{dt} = \nabla w \cdot \frac{d\vec{r}}{dt} \]
+\[ \frac{dw(\vec{r})}{dt} = \nabla w \cdot \frac{d\vec{r}}{dt} = \frac{dc}{dt}\]
 
-esitligini kurabiliriz. Esitligin sag tarafi nasil oldu? Bu ifade $w$'nin
+esitligini kurabiliriz. Noktasal carpim nereden geldi? Bu ifade $w$'nin
 her kismi turevinin alip, ona tekabul eden $\vec{r}(t)$ ogesinin turevi ile
 carpip sonuclarin toplanmasi demek. Sonuc Zincirleme Kanunu'ndaki goruntu
 olacaktir. Ayrica
 
 \[  = \nabla w \cdot \vec{v} = 0\]
 
-Sifira esitligin sebebi $w = c$ olmasi, diferansiyeli alirken sag tarafin
-diferansiyelini aldik, orasi sabit oldugu icin sonuc sifir oldu. 
+Sifira esitligin sebebi $w = c$ olmasi ve sabitin turevi sifir oldu. 
 
-Simdi ters yonden bakalim: iki vektorun noktasal carpimi ne zaman sifir
-sonucu verir? Eger vektorler birbirine dik ise. Demek ki $\nabla w \perp
-\vec{v}$. 
+Simdi sifir sonucundan ters yone gidelim: iki vektorun noktasal carpimi ne
+zaman sifir sonucu verir? Eger vektorler birbirine dik ise. Demek ki
+$\nabla w \perp \vec{v}$.
 
 Hatta iddia ediyorum ki bu diklik $w=c$ uzerindeki her hareket (motion)
 icin gecerlidir. Yani $\vec{v}$, kesit yuzeyine teget olan herhangi bir
@@ -150,15 +153,50 @@ vektor olabilir, ustteki diklik hep dogru olacaktir.
 
 \includegraphics[height=4cm]{12_4.png}
 
+Bunun guzel bir uygulamasi su, artik istedigimiz her seyin teget duzlemini
+bulabiliriz. 
 
+Ornek
 
+Yuzey $x^2 + y^2 - z^2 = 4$'un $(2,1,1)$ noktasindaki teget duzlemini bul. 
 
+\includegraphics[height=4cm]{12_5.png}
 
+Resimde teget duzlem pek teget gibi degil, diger grafigin icine girmis gibi
+duruyor, fakat problemin verdigi noktada duzlem teget. 
 
+Bu duzlemi nasil bulacagiz? Gradyani hesaplayarak. 
 
+Kesit seviyesi $w=4$ ve Yuzey $w = x^2 + y^2 - z^2$. 
 
+\[ \nabla w = <2x, 2y, -2z> \]
 
+Verilen nokta degerlerini bu gradyan vektorune verirsek, sonuc
+$<4,2,-2>$. Bu sonuc yuzeye ya da teget duzleme normal (dik) olan 
+vektoru verecek. 
 
+Bu normal vektoru kullanarak duzlemin formulunu bulabiliriz. 
+
+\[ 4x + 2y - 2z = ? \]
+
+Soru isareti ne olur? $(2,1,1)$ noktasini formule koyarsak, sonuc 8 cikar.
+
+\[ 4x + 2y - 2z = 8 \]
+
+Alternatif Yontem
+
+\[ dw = 2x dx + 2y dy -2z dz \]
+
+$(2,1,1)$ noktasinda
+
+\[ = 4dx + 4dy - 2dz \]
+
+Yaklasiksal olarak 
+
+\[ \Delta w \approx 4 \Delta x + 2\Delta y - 2\Delta z  \]
+
+Ne zaman kesit yuzeyi uzerinde dururuz? Eger $w$'de hic degisim yok ise,
+yani $\Delta w = 0$ ise.
 
 
 
