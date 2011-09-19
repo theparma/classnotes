@@ -119,29 +119,51 @@ egrinin uzerinde giden noktanin bir hizi olacak.
 
 Iddia o ki, 
 
-\[ \vec{r} = \frac{d\vec{r}}{dt} \]
+\[ \vec{v} = \frac{d\vec{r}}{dt} \]
 
 vektoru, kesit $w = c$'ye muhakkak teget olmali, cunku hiz egriye teget, ve
-egri kesit icinde. 
+egri kesit icinde. Bu arada $w$ aslinda $w(\vec{r}(t))$, $w$'ye girdi
+olarak verilenler $x,y,z$ ama $\vec{r}(t)$'nin ogeleri de ayni $x,y,z$
+parametreleri. 
 
-Daha baska ne iddia edebiliriz? Zincirleme Kanununu kullanarak 
+Bu sayede Zincirleme Kanununu kullanarak 
 
-\[ \frac{dw}{dt} = \nabla w \cdot \frac{d\vec{r}}{dt} \]
+\[ \frac{dw(\vec{r})}{dt} = \nabla w \cdot \frac{d\vec{r}}{dt} \]
 
-esitligini kurabiliriz. 
+esitligini kurabiliriz. Esitligin sag tarafi nasil oldu? Bu ifade $w$'nin
+her kismi turevinin alip, ona tekabul eden $\vec{r}(t)$ ogesinin turevi ile
+carpip sonuclarin toplanmasi demek. Sonuc Zincirleme Kanunu'ndaki goruntu
+olacaktir. Ayrica
 
-\[ \frac{dw}{dt} = \nabla w \cdot \vec{v} = 0\]
+\[  = \nabla w \cdot \vec{v} = 0\]
 
-Sifira esitligin sebebi basta $w = c$ demis olmamiz, o zaman tum kismi
-turevler sifirdir ($w$ degerleri sabittir, sabitlerin turevleri sifirdir),
-ve $0 \cdot \vec{v} = 0$.
+Sifira esitligin sebebi $w = c$ olmasi, diferansiyeli alirken sag tarafin
+diferansiyelini aldik, orasi sabit oldugu icin sonuc sifir oldu. 
 
 Simdi ters yonden bakalim: iki vektorun noktasal carpimi ne zaman sifir
 sonucu verir? Eger vektorler birbirine dik ise. Demek ki $\nabla w \perp
-\vec{v}$. Hatta 
-iddia ediyorum ki bu diklik $w=c$ uzerindeki her hareket (motion) icin 
-gecerlidir. Yani $\vec{v}$, kesit yuzeyine teget olan herhangi bir vektor
-olabilir, ustteki diklik hep dogru olacaktir. 
+\vec{v}$. 
+
+Hatta iddia ediyorum ki bu diklik $w=c$ uzerindeki her hareket (motion)
+icin gecerlidir. Yani $\vec{v}$, kesit yuzeyine teget olan herhangi bir
+vektor olabilir, ustteki diklik hep dogru olacaktir.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
