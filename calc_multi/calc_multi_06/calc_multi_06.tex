@@ -503,7 +503,39 @@ Yon bu. Bu yonde ilerlemek icin
 
 \[  = <x_0,y_0> + \frac{(x_0+avt)y+(y_0 + bvt)\hat{j}}{\sqrt{a^2+b^2}}\]
 
+Problem 1I-3
 
+Alttaki pozisyon vektorunun hareketini $t$ $-\infty$ ile $\infty$ arasinda
+giderken tarif edin. [Vektorun ucundan olan] P noktasinin xy denklemini
+verin, ve pozisyon vektorunun tanimladigi bu egrinin hangi bolumunun
+uzerinden gecildigini gosterin. 
+
+a) 
+
+\[ \vec{r} = 2cos^2(t) \hat{i} + sin^2(t) \hat{j}  \]
+
+Cevap
+
+\[ x(t) = 2cos^2(t) \]
+
+\[ y(t) = sin^2(t) \]
+
+Simdi $t$ bazli denklemlerden $x,y$ bazli denklemlere gecmek istiyorsak,
+$t$'yi yoketmeliyiz, o zaman usttekini bir lineer denklem sistemi olarak
+gorebiliriz. Eger ikinci denklemi 2 ile carpip toplarsak
+
+\[ x + 2y = 2 \]
+
+elde ederiz, cunku trigonometriden $cos^2(t) + sin^2(t) = 1$ oldugunu
+biliyoruz. Elde ettigimiz bir cizgiyi temsil eder, bu cizginin taranan
+kismi $cos$ ve $sin$'in nerelerde en buyuk olduguna baglidir. Bu iki
+fonksiyon uc noktalarda birbirinin tersi degerlere sahiptirler, biri 0 iken
+oteki 1 degerindedir, ve tam tersi, vs. O zaman $x,y$ (0,1) ve (2,0)
+arasinda gidip gelinecektir, $t$ ne olursa olsun.
+
+Su kod olanlari animasyonlu olarak gosterecektir. 
+
+\lstinputlisting[language=Python]{1i3.py}
 
 
 
