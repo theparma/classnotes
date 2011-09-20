@@ -13,9 +13,11 @@ ylim(-10,10)
 for t in linspace(-3., 3., 30):
     plot (x,((2. - x)/2.))
     plt.hold(True)
-    quiver(0,0,2*cos(t)**2,sin(t)**2)
+    xx=2*cos(t)**2
+    yy=sin(t)**2
+    quiver(0,0,xx,yy)
     plt.hold(True)
-    plot(2*cos(t)**2,sin(t)**2,'rd')
+    plot(xx,yy,'rd')
     plt.hold(True)
     plt.draw()
     time.sleep(1)
