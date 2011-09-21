@@ -374,7 +374,7 @@ Kontrol edelim.
 1 & 0 & 0 \\
 0 & 1 & 0 \\
 \end{array}\right| = 
-0 \hat{i} - 0 \hat{j} - 1 \hat{k}  = 
+0 \hat{i} - 0 \hat{j} + 1 \hat{k}  = 
 \hat{k}
  \]
 
@@ -417,6 +417,82 @@ O zaman
 \[  = \vec{A}\cdot (\vec{B}\times \vec{C})  \]
 
 Isin ilginci $det(\vec{A},\vec{B},\vec{C})$'nin ustteki formulle ayni sonucu vermesidir. 
+
+Problem 1E-1
+
+d)
+
+Eksenler $x,y,z$ uzerinde $x=a,y=b,z=c$ noktalarini kesin duzlemin
+$Ax+By+Cz=1$ formundaki formulu. 
+
+Cevap
+
+Duzlemin uzerindeki iki vektoru kullanrak onlara dik olan ucuncuyu bulma
+teknigini kullanalim, boylece duzleme dik olan normali de bulmus
+oluruz. Duzlem uzerindeki iki vektoru, duzlem uzerindeki uc noktayi
+kullanarak bulabiliriz. Cikis noktasi olarak $x$ eksenini kullanalim,
+o noktanin kordinati $(a,0,0)$. Bu baslangic noktasindan $(0,0,c)$'a ve
+$(0,b,0)$ noktasina giden iki vektor bulunabilir. Vektorler cikartma islemi
+kullanilarak bulunur
+
+\[ \vec{A} = (a,0,0) - (0,0,c) = <a,0,-c>\]
+
+\[ \vec{B} = (a,0,0) - (0,b,0) = <a,-b,0>\]
+
+Capraz carpim
+
+\[ \vec{A} \times \vec{B} =
+\left|\begin{array}{rrr}
+\hat{i}& \hat{j}& \hat{k} \\
+a & 0 & -c \\
+a & -b & 0 
+\end{array}\right|
+ \]
+
+\[ = 
+\left|\begin{array}{rr}
+0 & -c \\
+-b & 0
+\end{array}\right| 
+\hat{i}
+-
+\left|\begin{array}{rr}
+a & -c \\
+a & 0
+\end{array}\right|
+\hat{j}
++
+\left|\begin{array}{rr}
+a & 0 \\
+a & -b
+\end{array}\right|
+\hat{k}
+\]
+
+\[ = -cb\hat{i} + -ca\hat{j} -ab \hat{k} \]
+
+O zaman duzlem 
+
+\[ -cbX + -caY -abZ = d \]
+
+$d$'yi hesaplamak icin bilinen bir noktayi bu formule sokariz, mesela
+$(a,0,0)$, 
+
+\[ -cba  = d \]
+
+O zaman duzlem
+
+\[ -cbX + -caY -abZ = -cba \]
+
+ya da
+
+\[ cbX + caY + abZ = cba \]
+
+Problem esitligin sag tarafinda 1 olsun diyor, iki tarafi $cba$'ya bolersek
+
+\[ \frac{1}{a}X + \frac{1}{b}Y + \frac{1}{c}Z = 1 \]
+
+
 
 Kaynaklar
 
