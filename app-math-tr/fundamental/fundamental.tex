@@ -15,11 +15,128 @@
 \begin{document}
 Calculus'un Temel Teoremi (The Fundamental Theorem of Calculus)
 
-Eger $f$ fonksiyonu 
+Ana teoriyi ispatlamadan once iki diger teoriden bahsetmemiz, ispatlamamiz
+lazim. Bu teorilerden biri Gecis Degeri Teorisi (Intermediate Value
+Theorem) digeri Tanimli Entegraller Icin Ortalama Deger Teoremi (Mean Value
+Theorem for Definite Integrals). Gecis Degeri Teorisi basitce sunu soyler
+
+Teori
+
+$[a,b]$ araliginda surekli bir fonksiyon $y=f(x)$, $f(a)$ ve $f(b)$
+arasindaki her degeri muhakkak alir. Bir diger degisle, eger $y_o$, $f(a)$
+ve $f(b)$ arasindaki bir deger ise $[a,b]$ araligindaki bir $c$ icin
+muhakkak $y_0 = f(c)$ olmalidir. 
+
+Geometrik olarak bu teori $y$ eksenini $f(a)$ ve $f(b)$ arasinda kesen
+$y=y_0$ yatay cizgisinin $y=f(x)$ fonksiyonunu muhakkak, en az bir kez
+kesecegidir. Grafik altta. 
+
+\includegraphics[height=4cm]{intermediate.png}
+
+Sezgisel olarak bu anlamli degil mi? Eger surekli bir fonksiyon var ise,
+$f(a)$'dan $f(b)$'ye giderken o araliktaki her sayiya bir kez ``ugramaya''
+mecburuz. Etraflarindan dolasmamiz mumkun degil, cunku kesintili bir
+fonksiyon degil, kesintisiz / surekli bir fonksiyonumuz var. Bu teorinin
+daha detayli ispati icin daha ileri matematiksel kitaplara bakabilirsiniz. 
+
+Maks-Min Esitsizligi
+
+Eger $[a,b]$ araliginda $f$, maksimum deger $max \ f$'e ve minimum deger
+$min \ f$'e sahipse, 
+
+\[ min \ f \cdot (b-a) \le \int_a^b f(x)dx \le max \ f \cdot (b-a) \]
+
+demektir.
+
+Ortalama Deger Teoremi
+
+Eger $f$ fonksiyonu $[a,b]$ arasinda surekli ise o zaman $[a,b]$ araliginda
+olan bir $c$ noktasinda
+
+\[ f(c) = \frac{1}{b-a}\int_a^b f(x) dx \]
+
+esitligi dogru olmalidir. Yani alttaki resimde sol grafikteki mavi alanin
+$b-a$ ile bolunerek elde edilen ortalama degeri, $[a,b]$ araligindaki bir
+$c$ uzerinden $f(c)$'ye muhakkak esittir. Ya da bir kenari $f(c)$, digeri
+$b-a$ olan bir diktortgenin alani (alt sagdaki resim), mavi alanin
+tamamina esit olacaktir.
+
+\includegraphics[height=4cm]{mean.png}
+
+Maks-Min Esitsizliginin iki tarafini $b-a$'ya bolersek
+
+\[ min \ f  \le \frac{1}{b-a} \int_a^b f(x)dx \le max \ f  \]
+
+elde ederiz. Eger Gecis Degeri Teorisi dogruysa, $min \ f$ ve $max \ f$
+arasindaki tum noktalar ziyaret edilmelidir. O zaman boyle bir $f(c)$
+kesinlikle var demektir.
+
+Calculus'un Temel Teoremi
+
+Teori
+
+Eger $f$ fonksiyonu $[a,b]$ arasinda surekli ise o zaman 
+
+\[ F(x) = \int_a^xf(t)dt  \]
+
+fonksiyonu da $[a,b]$ arasinda sureklidir, ve bu fonksiyonun turevi
+$f(x)$'in kendisidir.
+
+Yani
+
+\[ F'(x) = \frac{d}{dx}\int_a^x f(t) dt = f(x)   \]
+
+\includegraphics[height=3cm]{fund.png}
+
+Ispat
+
+Turevin tanimini direk $F(x)$ uzerinde uygulayalim, $[a,b]$ icinde olan $x$
+ve $x+h$ araligini alalim, ve
+
+\[ \frac{F(x+h)-F(x)}{h} \]
+
+bolumunun limitinin, $h \to 0$ iken, $f(x)$'e gittigini gostermeye
+calisalim. $F(x+h)$ ve $F(x)$ fonksiyonlarini entegralleri uzerinden
+tanimlayalim. O zaman ustteki formulun bolum kismi
+
+\[ F(x+h) - F(x) = \int_a^{x+h} f(t)dt - \int_a^x f(t)dt  \]
+
+Entegrallerin toplam kuralina gore ustteki formulun sag tarafi 
+
+\[ \int_x^{x+h} f(t)dt  \]
+
+ifadesidir. O zaman bolumun tamami
+
+\[  \frac{F(x+h)-F(x)}{h} = \frac{1}{h} \int_x^{x+h} f(t)dt   \]
 
 
+Ortalama Deger Teoremine gore, ustteki esitligin sagindaki ifadenin, $x$ ve
+$x+h$ araliginda $f$'in aldigi degerlerden birine aynen esit oldugunu
+biliyoruz. Yani o araliktaki bir $c$ icin
+
+\[ \frac{1}{h} \int_x^{x+h} f(t)dt = f(c) \]
+
+kesinlikle dogru olmali. Simdi, $h \to 0$ oldukca, $x+h$ mecburen $x$'e
+yaklasmak zorunda kalacaktir, cunku $c$, $x$ ile $x+h$ arasinda sýkýþýp
+kalmistir. $f$ fonksiyonu $x$ noktasinda surekli olduguna gore, o zaman
+$f(c)$, $f(x)$'e yaklasmalidir. 
+
+\[ \lim_{h \to 0} f(c) = f(x) \]
+
+Simdi elimizdeki bu bilgiyle basa donersek, 
+
+\[ \frac{dF}{dx} = \lim_{h \to 0} \frac{F(x+h)-F(x)}{h} \]
+
+\[  = \lim_{h \to 0} \frac{1}{h} \int_x^{x+h} f(t)dt   \]
+
+\[ = \lim_{h \to 0} f(c) \]
+
+\[ = f(x) \]
 
 
+Kaynaklar
+
+Thomas Calculus 11. Baski, sf. 358
 
 
 \end{document}
