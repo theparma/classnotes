@@ -112,13 +112,13 @@ nokta fonksiyonun sabit oldugu yerlerden geciyor demektir, cunku kontur
 uzerinde fonksiyon degeri hep aynidir. 
 
 Egri $\vec{r} = \vec{r}(t)$ hep $w = c$ uzerinde olacak. Resme bakalim,
-hayali bir kesit yuzeyi uzerinde bir egri olacak (kirmizi renkli) bu
-egrinin uzerinde giden noktanin bir hizi olacak. Bu arada $w$ 
-mesela $w = x^2
-+ y^2$ belki, herhangi bir uc boyutlu fonksiyon. $\vec{r}$'nin $w$ ustunde
-gitmesi demek, $\vec{r}$ ile $w$ parametrize edilebilir demek,
- $\vec{r}(t)
-= <x(t),y(t),z(t)>$ ve onu kullanarak  $w(\vec{r}(t)) = c$. 
+hayali bir kesit yuzeyi uzerinde bir egri bu (kirmizi renkli) ve bu egrinin
+uzerinde giden noktanin bir hizi olacak. Bu arada $w$ mesela $w = x^2 +
+y^2$ belki,
+herhangi bir uc boyutlu fonksiyon. $\vec{r}$'nin $w$ ustunde gitmesi demek, $\vec{r}$ ile 
+$w$ parametrize edilebilir demek, $\vec{r}(t)
+= <x(t),y(t),z(t)>$ ve onu 
+kullanarak $w(\vec{r}(t)) = c$.
 
 \includegraphics[height=4cm]{12_3.png}
 
@@ -141,7 +141,7 @@ olacaktir. Ayrica
 
 \[  = \nabla w \cdot \vec{v} = 0\]
 
-Sifira esitligin sebebi $w = c$ olmasi ve sabitin turevi sifir oldu. 
+Sifira esitligin sebebi $w = c$ olmasi ve sabitin turevi $dc/dt$ sifir oldu. 
 
 Simdi sifir sonucundan ters yone gidelim: iki vektorun noktasal carpimi ne
 zaman sifir sonucu verir? Eger vektorler birbirine dik ise. Demek ki
@@ -185,6 +185,9 @@ Soru isareti ne olur? $(2,1,1)$ noktasini formule koyarsak, sonuc 8 cikar.
 
 Alternatif Yontem
 
+Aslinda tum bunlari gradyan olmadan da yapabilirdik, bir diferansiyel ile
+ise baslayabilirdik
+
 \[ dw = 2x dx + 2y dy -2z dz \]
 
 $(2,1,1)$ noktasinda
@@ -195,8 +198,37 @@ Yaklasiksal olarak
 
 \[ \Delta w \approx 4 \Delta x + 2\Delta y - 2\Delta z  \]
 
-Ne zaman kesit yuzeyi uzerinde dururuz? Eger $w$'de hic degisim yok ise,
-yani $\Delta w = 0$ ise.
+Ne zaman kesit yuzeyi, kontur uzerindeyiz? Eger $w$'de hic degisim yok ise,
+yani $\Delta w = 0$ ise. Bu arada ustteki yaklasiksalligin bir lineer
+yaklasiksallik oldugunu unutmayalim. $(2,1,1)$ noktasinda bu tegeti
+kullanmak istersek,  $\Delta w = 0$ esitligi bize $4 \Delta x + 2\Delta y -
+2\Delta z $ 
+teget duzlemini verecektir. Nasil? $\Delta x$ degisimdir, teget duzlem
+uzerinde degisimi tanimlamak istiyorsak, $(2,1,1)$'den baslayarak bir yere
+gittigimizi dusunmemiz gerekir, ki mesela $x-2$ degisimini yapabiliriz,
+vs. Tam formul
+
+\[ 4(x-2) + 2(y-1) - 2(z-1) = 0 \]
+
+Yonsel Turevler (Directional Derivatives) 
+
+Elimdeki bir $w = w(x,y)$ formulunun kismi turevini aldigim zaman 
+$\partial  w/\partial x$, $\partial w/\partial y$ ile mesela, bu turevler x-ekseni ya da y-ekseni 
+yonunde degisim oldugu zaman $w$'nun nasil degistini olcerler. Peki baska
+yonlere gore, mesela bir birim vektor $\hat{u}$ yonunde turev alinamaz mi? 
+Cevap evet. Yonsel turevler bu ise yariyorlar. 
+
+\includegraphics[height=4cm]{12_6.png}
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -171,7 +171,7 @@ Peki $s$ ile $t$, yani egri uzunlugu ve zamani nasil birbirine baglariz?
 
 \[ \frac{ds}{dt} = \textrm{ hýz } = |\vec{v}| \]
 
-Yani birim zamanda katedilen egri uzunlugu hizdir. 
+Yani birim zamanda katedilen egri uzunlugu hizdir [1].
 
 Ama acik olmak gerekirse, aslinda turevin kesin degerini (absolute value)
 almak daha dogru olur (dikkat, vektor buyuklugu isareti degil, kesin deger
@@ -576,21 +576,57 @@ sonuca bakariz, ve en uc noktalarin (1,1) ve (1,-1) olacagini goruruz.
 
 Kaynaklar
 
-Thomas Calculus, 11. Baski, sf. 932
+[1] Thomas Calculus, 11. Baski, sf. 932
 
+Eger $ds/dt = |\vec{v}|$ iliskisi anlasilmadiysa, baska bir yonden, biraz
+daha detayli bir aciklama soyle. Katedilen mesafeyi parametrize edilmis bir
+$\vec{r}(t)$'nin taradigi sonsuz kucuklukteki parcalarin birlesimi olarak
+gorelim. 
 
+\includegraphics[height=3cm]{arclength.png}
 
+Bu parcalar parametrize halde $dx/dt$, $dy/dt$ ve $dz/dt$ olmayacak midir?
+O zaman sonsuz kucuklukteki $ds$, bir parcanin uzunlugu soyledir
 
+\[ \sqrt{ 
+\bigg(\frac{dx}{dt}\bigg)^2 + 
+\bigg(\frac{dy}{dt}\bigg)^2 + 
+\bigg(\frac{dz}{dt}\bigg)^2 }
+\]
 
+$a$ ve $b$ arasindaki $t$ icin, bunu entegralini alabiliriz
 
+\[ L = \int_a^b \sqrt{ 
+\bigg(\frac{dx}{dt}\bigg)^2 + 
+\bigg(\frac{dy}{dt}\bigg)^2 + 
+\bigg(\frac{dz}{dt}\bigg)^2 
+} dt \]
 
+Dikkatle bakarsak, mesela $dx/dt$ sonucu $\vec{r}(t)$'nin turevini
+aldigimizda ele gecen $\vec{v}$ icindeki $\hat{i}$'in ogesidir, ayni
+sekilde $\hat{j},\hat{k}$. O zaman ustteki sonucu $\vec{v}$ formuna da
+cevirebiliriz: 
 
+\[ L = \int_a^b |\vec{v}| dt \]
 
+Eger bir uzunluk formulu $s$'i $t$'ye bagli olarak yazmak istersek,
+entegralin ust sinirini $t$ yapariz,
 
+\[ s(t) = \int_{t_0}^t |\vec{v(\tau)}|d\tau  \]
 
+\includegraphics[height=4cm]{st.png}
 
+O zaman $ds/dt$ nedir? $s(t)$ formulunun turevidir. Calculus'un Temel
+Teorisi'ne gore entegral yokolur ve elimize gecen
 
+\[ \frac{ds}{dt} = |\vec{v}(t)|\]
 
+ki bu sonuc mantikli. 
+
+Hiz taniminda $t_0$'in hicbir onemi kalmadigina dikkat, bu baslangic
+noktasi $s(t)$ icin onemliydi, cunku toplam uzunluk icin ona ihtiyac
+vardir, fakat bir parcacigin bir yolu katetme orani (hiz) baslangictan ne
+kadar uzakta oldugundan bagimsiz. 
 
 
 \end{document}
