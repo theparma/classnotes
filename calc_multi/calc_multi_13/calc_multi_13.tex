@@ -90,22 +90,168 @@ olmalari gerekir. Bu durumda
 
 \[ \nabla f // \nabla g \]
 
-ifadesi dogru olmaladir, yani $f$'in gradyani $g$'nin gradyanina
+ifadesi dogru olmalidir, yani $f$'in gradyani $g$'nin gradyanina
 paraleldir. Bazi ornekler
 
 \includegraphics[height=3cm]{13_4.png}
 
+\includegraphics[height=3cm]{13_6.png}
+
 \includegraphics[height=3cm]{13_5.png}
 
-Goruldugu gibi minimal noktalarin birinde (ustteki 2. resim) gradyanlar
-ayni yone isaret ediyor. 
+Goruldugu gibi minimal noktalarin birinde (ustteki son resim) gradyanlar
+paralel. 
 
-Vektorler ne zaman birbirine paralel olur? Birbirlerinin kati olduklari
-zaman. Yani su sekilde bir ifadeyi yazabildigimiz zaman
+Cebirsel olarak dusunursek: vektorler ne zaman birbirine paralel olur?
+Birbirlerinin kati olduklari zaman. Yani su sekilde bir ifadeyi
+yazabildigimiz zaman
 
 \[ \nabla f = \lambda \nabla g \]
 
 ki $\lambda$ bir sabit. 
+
+Gradyanlar ayni yonu gostermiyor olabilir, bu durumu $\lambda$'nin negatif
+olup olmamasi halledecektir.
+
+Yani aradigimiz $xy$ uzerinde sayisal deger $\lambda$ uzerinden $\nabla f =
+\lambda \nabla g $ 
+ifadesinin dogru oldugu bir nokta, ve $\lambda$ degeri
+ariyoruz (unutmayalim, gradyanlar belli $x,y$ degerleri uzerinden
+alinir). Yani 2 degisken iceren sinirlama ifadesi $g(x,y)=c$ iceren bir min /
+maks problemi yerine, bir denklem sistemi geciriyoruz. Bu sistem nedir?
+Yani ustteki gradyan formuludur, o da su sisteme donusur:
+
+\[ f_x = \lambda g_x \]
+
+\[ f_y = \lambda g_y \]
+
+Oyle degil mi? Cunku $\nabla f$ ve $\nabla g$ birer vektordur, 
+
+\[ 
+\nabla f =
+\left[\begin{array}{r}
+f_x \\
+f_y
+\end{array}\right], \ \ 
+\nabla g =
+\left[\begin{array}{r}
+g_x \\
+g_y
+\end{array}\right]
+ \]
+
+O zaman iki ustteki denklem sistemi suradan ileri gelmektedir
+
+\[ 
+\left[\begin{array}{r}
+f_x \\
+f_y
+\end{array}\right]  = 
+\lambda
+\left[\begin{array}{r}
+g_x \\
+g_y
+\end{array}\right]
+ \]
+
+Fakat hala eksik bir sey var. Elimizde $x,y,\lambda$ bilinmeyenleri var,
+ama sadece iki tane formul var. Eksik olan $g(x,y) = c$, cunku $x,y$
+birbirinden bagimsiz degil ve $g$ uzerinden baglantililar. Simdi oldu. 3
+formul soyle:
+
+\[ f_x = \lambda g_x \]
+
+\[ f_y = \lambda g_y \]
+
+\[ g(x,y) = c \]
+
+Ornegimiz 
+
+\[ f(x,y) = x^2 + y^2 \]
+
+\[ g(x,y) = xy  \]
+
+uzerinde uygularsak
+
+\[ 2x = \lambda y \]
+
+\[ 2y = \lambda x \]
+
+\[ xy = 3 \]
+
+Bu sistemi cozmemiz gerekiyor. Yanliz sunu soyleyelim, bu sistemi cozmenin
+genel (hep isleyen) bir yontemi yoktur. Cozum bazen cok basittir, bazen
+zordur, bazen sadece sayisal / numerik / hesapsal acidan cozulebilir
+(bilgisayar ile). Bu ornekte kolay. 
+
+\[ 2x - \lambda y = 0\]
+
+\[ 2y= \lambda x = 0 \]
+
+\[ xy = 3 \]
+
+Matris formuna koyarsak
+
+\[ 
+\left[\begin{array}{rr}
+2 & -\lambda \\
+\lambda & -2
+\end{array}\right]
+\left[\begin{array}{r}
+x \\ y
+\end{array}\right]
+=
+\left[\begin{array}{r}
+0 \\ 0
+\end{array}\right]
+ \]
+
+En basit cozum $x=0,y=0$ sinirlama ifadesi $xy=3$'u cozmez. Diger cozum ne
+zaman ortaya cikar? Eger matrisin determinanti sifir ise. 
+
+\[ 
+\left|\begin{array}{rr}
+2 & -\lambda \\
+\lambda & -2
+\end{array}\right| = -4 + \lambda^2 = 0
+ \]
+
+\[ <=> \lambda^2 = 4 \]
+
+\[ <=> \lambda = \pm 2 \]
+
+Elimizde iki durum var. $\lambda$ ya 2, ya da -2. 
+
+1. $\lambda = 2$ durumunda
+
+\[ x = y \]
+
+\[ x^2 = 3 \]
+
+O zaman
+
+$(x,y)$ = $(\sqrt{3}, \sqrt{3})$ ya da $(-\sqrt{3}, -\sqrt{3})$ 
+
+2. $\lambda = -2$ durumunda
+
+\[ x = -y \]
+
+\[ -x^2 = 3 \]
+
+Bu durumda cozum yoktur (karesi alinip eksi ile carpilan hicbir sayi 3
+sonucunu vermez). 
+
+Ustteki son iki resime bakinca, $\lambda = 2$'nin dogru oldugunu goruyoruz,
+cozum olan iki noktada bir gradyan otekinin hakikaten tam iki kati. 
+
+
+
+
+
+
+
+
+
 
 
 \end{document}
