@@ -189,7 +189,34 @@ yolu da alttaki kisitlama ifadesi
 \[ a = bcos(\theta) \]
 
 Incelemek istedigimiz alanin $\theta$'ya olan baglantisi, yani, mesela
-$A$'nin degisiminin $\theta$'nin degisimine orani nedir? 
+$A$'nin degisiminin $\theta$'nin degisimine orani nedir? Bunu hesaplamanin
+3 yontemi olabilir
+
+1) $a,b,\theta$'yi bagimsiz kabul et, o zaman
+
+\[ \frac{\partial A}{\partial \theta} = 
+\bigg( \frac{\partial A}{\partial \theta} \bigg)_{a,b}  \]
+
+Tabii $a,b$ sabitken $\theta$ degissin demek, ucgenin dikliginin ihlali
+demektir, cunku hem kenarlar sabit, hem aci degissin diyoruz, ama o zaman
+dik aci degismek zorundadir. Her neyse, kismi turevleri hesaplayalim. 
+
+\[ \frac{\partial A}{\partial \theta} = \frac{1}{2}ab cos(\theta) \]
+
+Simdiye kadar kisitlama ifadelerimi kullanmadim. 
+
+2) $a$'yi sabit tutalim, $b$ degisebilsin, ki boylece dik aci yerinde
+kalabilsin. 
+
+\[ b = b(a,\theta) = \frac{a}{cos(\theta)} \]
+
+\[ \bigg( \frac{\partial A}{\partial \theta} \bigg)_{a}  \]
+
+3) $b$'yi sabit tutalim, $a = a(b,\theta)$ degissin, ki boylece dik aci yerinde
+kalabilsin. 
+
+\[ \bigg( \frac{\partial A}{\partial \theta} \bigg)_{b}  \]
+
 
 
 
