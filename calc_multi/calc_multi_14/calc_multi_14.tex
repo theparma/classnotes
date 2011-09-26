@@ -84,6 +84,117 @@ deriz, geri kalanlar
 
 ki bu formul $z$'nin $x$'teki degisime gore nasil degistigini gosteriyor. 
 
+Genel olarak 
+
+\[ g(x,y,z) = c \]
+
+ise, o zaman 
+
+\[ dg = g_x dx + g_y dy + g_z dz \]
+
+formulu sifira esitlenir, ve bir diferansiyel digerinin formunda elde
+edilebilir. 
+
+\[ dz = -\frac{g_x}{g_z}dx -\frac{g_y}{g_z}dy \]
+
+O zaman $\frac{\partial z}{\partial x}$'i gormek istiyorsak, $dx$'in katsayisina bakabiliriz, ya 
+da $y=sabit$ yani $dy=0$ deriz, ve geri kalanlar
+
+\[ dz =  -\frac{g_x}{g_z}dx, \ 
+\frac{\partial z}{\partial x} = -\frac{g_x}{g_z}dx
+\]
+
+Daha fazla ilerlemeden, simdiye kadar gordugumuz notasyonun bazi
+problemlerini inceleyelim. 
+
+\[ f(x,y) = x+y \]
+
+\[ \frac{\partial f}{\partial x} = 1\]
+
+Degisken degisim (change of variables) yapalim
+
+\[ x = u \]
+
+\[ y = u+v \]
+
+Pek cetrefilli bir degisim degil bu. O zaman 
+
+\[ f = x + y = 2u + v \]
+
+\[ \frac{\partial f}{\partial u} = 2\]
+
+Bu nasil oldu? $x=u$ dedigimize gore, $x,u$ birbiriyle esitler, o zaman
+kismi turevleri de ayni olmaliydi. 
+
+Bu uyusmazligin niye ortaya ciktigini anlamak icin notasyonun ne demek
+istedigine yakindan bakmamiz lazim. $\partial f/\partial x$ ile $x$'i degistiriyor, 
+ama $y$'yi sabit tutuyoruz. $\partial f/\partial u$ ile $u$'yu degistiriyor, ama $v$'yi 
+sabit tutuyoruz.
+
+Yani evet, $x$ ile $u$'yu degistirmek ayni sey olabilir, ama $v$'yi sabit
+tutmak ile $y$'yi sabit tutmak ayni sey degildir. Cunku mesela $y$'yi sabit
+tutarsam ve $u$'yu degistirirsem, $v$ de degismelidir (ki biz bunu
+istemiyoruz) $y = u+v$ ifadesindeki toplaminin sabit kalmasi icin. Ya da $v$ 
+sabit ise ve $u$'yu degistiriyorsam, $y$ degisecektir. 
+
+Yani hos, guzel kismi turev notasyonumuz neyin degistigini acikca
+gostermesine ragmen, neyin sabit tutuldugunu gostermedigi icin yanilgilara
+yol acabiliyor. Bunu aklimizda tutmamiz lazim. Ornekteki kismi turevler
+birbiriyle ayni degil cunku 
+
+$\partial f/\partial x$, $u=x$'i degistir, ve $y$'yi sabit tut
+
+$\partial f/\partial u$, $u=x$'i degistir, ve $v = y-x$'i sabit tut
+
+anlamina geliyor. 
+
+Daha acik bir notasyon soyle olabilir
+
+\[ 
+\bigg( \frac{\partial f}{\partial x}  \bigg)_y = \textrm { y sabit}
+ \]
+
+\[ 
+\bigg( \frac{\partial f}{\partial u}  \bigg)_v = \textrm { v sabit}
+ \]
+
+Ornege donersek
+
+\[ 
+\underbrace{
+\bigg( \frac{\partial f}{\partial x}  \bigg)_y 
+}_{1} 
+\ne 
+\underbrace{
+\bigg( \frac{\partial f}{\partial x}  \bigg)_v = 
+\bigg( \frac{\partial f}{\partial u}  \bigg)_v 
+}_{2}
+ \]
+
+Ornek
+
+\includegraphics[height=2cm]{14_1.png}
+
+\[ A = \frac{1}{2}absin(\theta) \]
+
+Alan, $a,b,\theta$'nin fonksiyonu. 
+
+Farz edin ki size $a,b,\theta$ arasinda bir iliski oldugunu soyledim. 
+
+\includegraphics[height=2cm]{14_2.png}
+
+Diyelim ki ucgen aslinda bir dik ucgen, bunu cebirsel olarak soylemenin
+yolu da alttaki kisitlama ifadesi
+
+\[ a = bcos(\theta) \]
+
+Incelemek istedigimiz alanin $\theta$'ya olan baglantisi, yani, mesela
+$A$'nin degisiminin $\theta$'nin degisimine orani nedir? 
+
+
+
+
+
 
 
 
