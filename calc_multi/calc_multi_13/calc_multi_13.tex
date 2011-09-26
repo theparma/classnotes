@@ -295,6 +295,99 @@ ettigimiz degerler minimum'dur, maks bu problemde sonsuzluktadir.
 
 Zor Ornek
 
+Diyelim ki bir piramit insa etmek istiyoruz, hacim ve ucgensel taban bize
+veriliyor. Amac, tum dis yuzey alanini minimize etmek. 
+
+\includegraphics[height=3cm]{13_8.png}
+
+Cozum icin bulmamiz gereken piramidin en ust noktasi. Degisik yerlerde
+olabilecek, ve nerede olduguna gore hacimin, alanin degisebilecegi
+elimizdeki ayar noktasi orasi. Hacim formulu
+
+Hacim = $\frac{1}{3}$ Baz alani $\times$ yukseklik
+
+Hacmi ve baz alani sabitlediysek, o zaman formulde geri kalan yukseklik te
+sabitlenmis demektir. Minimize ederken onun uzerinde oynayamayiz. O zaman
+ust nokta sadece xy duzlemine paralel olarak saga, sola, ileri, geri,
+vs. seklinde yer degistirebilir, asagi, yukari cikamaz. 
+
+\includegraphics[height=3cm]{13_9.png}
+
+Eger kordinatlari ustteki gibi ortaya cikartsak, ele gecen tum ucgenlerin
+alan hesabini vektor capraz carpimi ile hesaplamayi biliyoruz, onlarin
+toplamini elde etmeye ugrasabilirdik, vs. Fakat ustteki yontem isleri daha
+fazla karistiriyor. Kordinatlari daha iyi temsil edecek bir yontem
+gerekiyor bize.
+
+\includegraphics[height=4cm]{13_10.png}
+
+Temsili ustteki gibi yapalim, resimde sagda olan sekil piramidin kusbakisi
+goruntusu. Piramit tabaninda bir $Q$ noktasi hayal edelim, $P_1$  ve $P_2$
+arasindan $Q$'ye giden uzaklik $u_3$ [resimde iyi cikmadi, biz ekledik],
+yuksekligi zaten biliyoruz, $h$. O zaman piramit kenarinda ona tekabul eden
+yukseklik $\sqrt{u_3^2 + h^2}$. 
+
+\[ \textrm{Kenar alani } = 
+\frac{1}{2}a_1 \sqrt{u_1^2 + h^2} + 
+\frac{1}{2}a_2 \sqrt{u_2^2 + h^2} + 
+\frac{1}{2}a_3 \sqrt{u_3^2 + h^2} 
+ \]
+
+Bu 3 degisken iceren bir fonksiyon, $f(u_1,u_2,u_3)$. 
+
+Uc degiskeni birbiri ile nasil iliskilendiririz? Cunku buyuk bir ihtimalle
+bunlar bagimsiz degiskenler degiller.
+
+Eger ust resimdeki sag sekle bakarsak, ve baz alanini uc parcaya bolersek,
+elde ettigimiz
+
+\[ \textrm{Baz alani } = 
+\frac{1}{2}a_1u_1 +  
+\frac{1}{2}a_2u_2 +  
+\frac{1}{2}a_3u_3
+\]
+
+formuludur. Bu formul kisitlama ifadem, yani bu problemnin $g$'si. Kenar
+alani formulu de $f$'im. 
+
+Lagrange
+
+\[ \nabla f = \lambda \nabla g \]
+
+\[ \frac{\partial f}{\partial u_1} =
+\frac{1}{2}a_1 \frac{u_1}{\sqrt{u_1^2 + h^2}} = 
+\lambda \frac{1}{2}a_1
+\]
+
+$1/2a_1$'ler iptal olur
+
+\[
+\frac{\partial f}{\partial u_1} =
+\frac{u_1}{\sqrt{u_1^2 + h^2}} = \lambda 
+\]
+
+Digerleri benzer sekilde
+
+\[
+\frac{\partial f}{\partial u_2} =
+\frac{u_2}{\sqrt{u_2^2 + h^2}} = \lambda 
+\]
+
+\[
+\frac{\partial f}{\partial u_3} =
+\frac{u_3}{\sqrt{u_3^2 + h^2}} = \lambda 
+\]
+
+Son uc formulun ucu de $\lambda$'ya esit, o zaman uc formul birbirine
+esit. Bu mantigi izlersek, $u_1 = u_2 = u_3$ olmasi gerektigi sonucuna da
+variriz. 
+
+O zaman $Q$ noktasi her kenardan esit uzaklikta, tam ortada (incenter)
+olmali. 
+
+
+
+
 
 
 
