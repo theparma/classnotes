@@ -1,6 +1,7 @@
 \documentclass[12pt,fleqn]{article}
 \setlength{\parindent}{0pt}
 \usepackage{graphicx}
+\usepackage{cancel}
 \usepackage{listings}
 \usepackage[latin5]{inputenc}
 \setlength{\parskip}{8pt}
@@ -248,9 +249,9 @@ olmayabilir.
 
 Yapilacaklar sunlar
 
-* $a$'yi sabit tut, $da = 0$
+- $a$'yi sabit tut, $da = 0$
 
-* kisitlama ifadesi $a = b \ cos(\theta)$
+- kisitlama ifadesi $a = b \ cos(\theta)$
 
 Ustteki ifadenin diferansiyelini alalim
 
@@ -289,6 +290,65 @@ $da = 0$ ise, ilk terim yokolur.
 Geri kalanlarda, $db$ var, ama biz $\theta$'ya gore degisimi istiyoruz,
 $db$'yi orada gormek istemiyoruz. O zaman elimizdeki $db$ formulunu buraya
 sokalim. 
+
+\[ dA =  
+\frac{1}{2} \ a \ sin(\theta) \ ( \ b \ tan(\theta) d\theta \ ) \ + 
+\frac{1}{2} \ ab \ cos(\theta)d\theta
+\]
+
+\[ dA =  
+\frac{1}{2} \ ab \ (sin(\theta) tan(\theta) +  cos (\theta) )d\theta
+\]
+
+Trigonometriden 
+
+\[ dA =  
+\frac{1}{2} \ ab \ (
+\underbrace{sin(\theta) tan(\theta) +  cos (\theta)}_{sec(\theta)}
+)d\theta
+\]
+
+Sonucu bulduk 
+
+\[ \bigg( \frac{\partial A}{\partial \theta} \bigg)_{a} = 
+\frac{1}{2} \ ab \ sec(\theta)
+ \]
+
+Ozetlemek gerekirse, sunlari yaptik
+
+- $A$'yi $da,db,d\theta$ ile ifade et
+
+- $a=sabit, \ da=0$ demektir.
+
+- Kisitlama ifadesinin diferansiyelini al, $db$'yi yanliz birak. 
+
+- $dA$'ya sok
+
+2. Metot: Zincirleme Kanununu Kullan
+
+\[ \bigg( \frac{\partial A}{\partial \theta} \bigg)_{a} = 
+A_\theta \bigg( \frac{\partial \theta}{\partial \theta} \bigg)_{a} + 
+A_a \bigg( \frac{\partial a}{\partial \theta} \bigg)_{a} + 
+A_b \bigg( \frac{\partial b}{\partial \theta} \bigg)_{a} 
+ \]
+
+\[  = 
+A_\theta \cancelto{1}{\bigg( \frac{\partial \theta}{\partial \theta} \bigg)_{a}} + 
+A_a \cancelto{0}{\bigg( \frac{\partial a}{\partial \theta} \bigg)_{a}} + 
+A_b \bigg( \frac{\partial b}{\partial \theta} \bigg)_{a}
+ \]
+
+Sifir olan kismi turev oyle oldu cunku $a$ sabit dedik. Son terimdeki
+kismi turev icin kisitlama ifadesini kullanacagiz.
+
+
+
+
+
+
+
+
+
 
 
 
