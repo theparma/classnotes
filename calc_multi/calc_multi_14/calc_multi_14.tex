@@ -217,14 +217,78 @@ kalabilsin.
 
 \[ \bigg( \frac{\partial A}{\partial \theta} \bigg)_{b}  \]
 
+Bunlardan bir tanesini hesaplayalim, mesela $\bigg( \frac{\partial A}{\partial \theta} \bigg)_{a} $.
 
+Hesabi yapmanin uc degisik yolunu gorecegiz. 
 
+0. Metot: $b$'yi yanliz birak (cebirsel), ve diger formule sok
 
+\[ a = b \ cos (\theta) => b = \frac{a}{cos(\theta)} = a \ sec (\theta)\]
 
+\[ A = \frac{1}{2} \ ab \ sin(\theta) \]
 
+\[ = \frac{1}{2} \frac{a^2 sin(\theta)}{cos(\theta)} \]
 
+\[ = \frac{1}{2} a^2 tan(\theta) \]
 
+O zaman 
 
+\[ \bigg( \frac{\partial A}{\partial \theta} \bigg)_{a} = 
+\frac{1}{2}a^2sec^2(\theta)
+ \]
+
+Bu arada $sec$, $1/cos$ demektir, eger ve onun turevini $1+tan^2$ olarak
+biliyorsaniz, o da ayni kapiya cikar. 
+
+Hoca bu metotu tavsiye etmiyor (onun icin metot sayisi biraz espri yaparak
+'sifir' vermis) cunku her zaman yanliz birakma, baska formule sokma mumkun
+olmayabilir.
+
+1. Metot: Diferansiyelleri Kullan
+
+Yapilacaklar sunlar
+
+* $a$'yi sabit tut, $da = 0$
+
+* kisitlama ifadesi $a = b \ cos(\theta)$
+
+Ustteki ifadenin diferansiyelini alalim
+
+\[ da = cos(\theta) db - b \ sin(\theta) d\theta \]
+
+Simdi elimizde $da,db,d\theta$'yi iliskilendiren bir ifade var. $a$'nin
+sabit oldugunu biliyoruz, o zaman $da=0$
+
+\[ 0 = cos(\theta) db - b \ sin(\theta) d\theta \]
+
+$db$'yi yanliz birakabiliriz
+
+\[ cos(\theta) db = b \ sin(\theta) d\theta \]
+
+\[ db = b \ sin(\theta) d\theta \ / \ cos(\theta) \]
+
+\[ db = b \ tan(\theta) d\theta  \]
+
+Boylece $b$'nin $\theta$'ya gore degisim oranini bulduk. Bu ne ise yarar?
+Ana formulu hatirlayalim, ve onun da diferansiyelini alalim
+
+\[ A = \frac{1}{2} \ ab \ sin(\theta) \]
+
+\[ dA = \frac{1}{2} \ b \ sin(\theta) da + 
+\frac{1}{2} \ a \ sin(\theta) db + 
+\frac{1}{2} \ ab \ cos(\theta)d\theta
+ \]
+
+$da = 0$ ise, ilk terim yokolur. 
+
+\[ dA = 
+\frac{1}{2} \ a \ sin(\theta) db + 
+\frac{1}{2} \ ab \ cos(\theta)d\theta
+ \]
+
+Geri kalanlarda, $db$ var, ama biz $\theta$'ya gore degisimi istiyoruz,
+$db$'yi orada gormek istemiyoruz. O zaman elimizdeki $db$ formulunu buraya
+sokalim. 
 
 
 
