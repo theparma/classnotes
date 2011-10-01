@@ -160,7 +160,7 @@ CP_t^t & CP_t^t + R
 
 Ayni sekilde $x_{t+1} , y_{t+1}$ birlesik dagilim icin
 
-\[ 
+\begin{equation}\label{eq1}
 \left[\begin{array}{r}
 \hat{x}_{t+1}^t \\
 C\hat{x}_{t+1}^t
@@ -169,14 +169,15 @@ C\hat{x}_{t+1}^t
 P_{t+1}^t & P_{t+1}^tC' \\
 CP_{t+1}^t & CP_{t+1}^tC' + R
 \end{array}\right]
- \]
+\end{equation}
 
 Simdi $x_{t+1}^{t+1}$ 'in ortalama ve varyansi icin parcali Gaussian kavramini
 anlatmaliyiz. Bir n boyutlu Gaussian daha kucuk boyutlardaki p ve q alt
 Gaussian'lara parcalanabilir (tabii ki $n = p + q$). Yani su ifade
 kullanilabilir
 
-\[ \mu = 
+\begin{equation}\label{eq2}
+\mu = 
 \left[\begin{array}{r}
 \mu_1 \\ \mu_2
 \end{array}\right], 
@@ -185,14 +186,41 @@ kullanilabilir
 \Sigma_{11} & \Sigma_{12} \\
 \Sigma_{21} & \Sigma_{22} 
 \end{array}\right]
+\end{equation}
+
+\[ 
+p(x|\mu,\Sigma) = 
+\frac{1}{(2\pi)^{(p+q)/2}|\Sigma|^{1/2}}
+exp \bigg\{ 
+-\frac{1}{2} 
+\left(\begin{array}{rr}
+x_1 - \mu_1 \\
+x_2 - \mu_2 
+\end{array}\right)'
+\left[\begin{array}{rr}
+\Sigma_{11} & \Sigma_{12} \\
+\Sigma_{21} & \Sigma_{22} 
+\end{array}\right]^{-1}
+\left(\begin{array}{rr}
+x_1 - \mu_1 \\
+x_2 - \mu_2 
+\end{array}\right)
+\bigg\}
  \]
 
+Uzun cebirsel islemlerden sonra $p(x_1|x_2)$ ifadesini elde ederiz. Buradan
+sartlanmis (conditioned) $\mu$ ve $\Sigma$ alinir.
+
+\begin{equation}\label{eq3}
+\mu_{1|2} = \mu_1 + \Sigma_{12}\Sigma_{22}^{-1}(x_2 - \mu_2) 
+\end{equation}
 
 
+\[ \Sigma_{1|2} = \Sigma_{11}- \Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21} \]
 
-
-
-
+Simdi denklem \ref{eq3}'u alip \ref{eq1}'in icine koydugumuzda ve
+\ref{eq2}'deki yerlesim yapisini dikkate aldigimizda $\hat{x}_{t+1}^{t+1}$
+ve $P_{t+1}^{t+1}$ formullerini ortaya cikartabiliriz. 
 
 
 

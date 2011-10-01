@@ -8,7 +8,7 @@ if len(sys.argv) == 1 or sys.argv[1] == 'tex':
 */moment.pdf */dagilimlar.pdf */buyuk.pdf */cebisev.pdf \
 */ml-tr.pdf */naive.pdf */coal.pdf */simplex.pdf */qp.pdf \
 */svm.pdf */fem.pdf */fourier.pdf */heat.pdf */curvature.pdf \
-*/level.pdf */varcalc.pdf */filter.pdf */phd.pdf \
+*/level.pdf */lk.pdf */varcalc.pdf */filter.pdf */phd.pdf \
 output ~/Dropbox/Public/skfiles/app-math-tr.pdf "
     os.system(cmd)
     exit()
