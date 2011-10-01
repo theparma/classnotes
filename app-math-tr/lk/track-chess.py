@@ -3,6 +3,7 @@ from opencv.highgui import *
 from opencv.adaptors import Ipl2NumPy
 import numpy as np
 import lk
+import math
 
 prev = None
 track_x = 420
@@ -24,13 +25,18 @@ if __name__ == '__main__':
         curr = Ipl2NumPy(gray)
         curr = np.resize(gray,(int(frame.width/__scale__), 
                                int(frame.height/__scale__)))
-        cvCircle(frame, (track_x, track_y), 
+        
+        cvCircle(frame, (int(track_x), int(track_y)), 
                  4, CV_RGB(0,255,0), 0, CV_AA, 0 )
                  
         if prev != None: 
             u, v = lk.lk(prev, curr, track_x, track_y, win)              
+            print u, v
+            track_x += u
+            track_y += v
+        print track_x, track_y
         prev = curr            
-        
+                
         cvShowImage("Example2", frame)
         
         char = cvWaitKey(33)
