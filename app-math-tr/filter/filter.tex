@@ -366,16 +366,145 @@ uzerinden goruntuye yansitarak bu yuzeyi olusturduk, boylece deneme /
 yanilma yontemiyle pek cok P degerini deneyerek, yuzeyin resimde gorulen
 masanin sonunda cikacak sekilde olmasini sagladik. O noktaya gelince
 istedigimiz P degerini bulmus oluyorduk. Yansitma matrisleri 3x3 olur, KF
-buna bir dorduncu [0 0 0] satiri
+buna bir dorduncu [0 0 0] satiri ekleyerek onu 4x3 H haline getiriyor.
 
+KF'in baslangic noktasi olarak P'yi bulmak icin kullandigimiz masa sonunu
+kullandik. Kararsizlik olcutu Q icin, ki bu degisken bir Gaussian kovaryan-
+sidir, $Q = I \cdot 150 cm$ degerini kullandik, yani oldukca buyuk bir
+kararsizlik degeri kullandik. Sebep baslangic degeri olan masa ortasini
+sectik, ve takip edecegimiz satranc tahtasinin nerede oldugunu bilmiyoruz,
+``emin degiliz''.  Bu kararsizligi sayisal olarak programa bildirmis olduk.
 
+Alttaki resimlerde filtrenin tahminini temsil eden yesil yuzeyin satranc tah-
+tasini basariyla takip ettigini goreceksiniz.
 
+\lstinputlisting[language=Python]{kalman_3d.py}
 
+\lstinputlisting[language=Python]{track-chess-kf.py}
 
+\includegraphics[height=4cm]{cb-kf-00.jpg}
 
+\includegraphics[height=4cm]{cb-kf-1.jpg}
 
+\includegraphics[height=4cm]{cb-kf-2.jpg}
 
+\includegraphics[height=4cm]{cb-kf-3.jpg}
 
+\includegraphics[height=4cm]{cb-kf-4.jpg}
+
+Parcacik Filtreleri
+
+Filtrelemede tek yontem Kalman filtreleri degil. KF kararsizlik Gaussian
+olarak gosterilebiliyorsa cok faydali, ve hizli bir yontem. Bir KF bellekte
+cok az yer tutar, 3 boyutlu bir Gaussian icin 3x1 boyutunda bir ortalama
+vektoru, ve 3x3 boyutunda bir kovaryans matrisi yeterlidir, yani 3 + 9 = 12
+sayi.
+
+Parcacik filtreleri (PF) bir dagilimi ``ayriksal'' olarak temsil
+ederler. Yani diyelim ki tek boyutlu bir dagilimi 100 eleman iceren bir
+dizin ile temsil ede- biliriz, o zaman dagilimin degerlerini 100 tane
+noktada tasimamiz gerekir.  Bunun faydalari her turlu dagilim seklini
+temsil edebilmemiz. Gaussian sadece belli bir sekilde olabilir, tek bir
+tepe noktasi olmalidir, vs. Ayriksal temsil ile 2, 3, istedigimiz kadar
+tepe noktasi olan (ya da hic olmayan) bir dagilim kullanabiliriz.
+
+Bu neye yarar? Birden fazla hipotezi ayni anda isletebilmemize yarar. KF
+ile tepe noktasi en iyi tahminimizdir (mesela.. satranc kartonu masa
+ortasinda), PF ile birkac tahmini ayni anda hesaplatmak mumkun olabilir.
+
+Daha detaylandirmak gerekirse, PF kodlamasi $x_t$ icin iki tane veri yapisi
+gerektirir. Bir veri yapisi dagilimdaki degerleri temsil eden
+parcaciklardir, digeri ise bu parcaciklarin dagilimdaki onemini temsil eden
+agirliklardir.  Filtreleme sistemi KF'e benzer, once bir gecis uygulanir,
+ki bu gecis kararsi- zligi arttiracaktir, fakat ardindan gozlem verisi bir
+hata fonksiyonu uzerinden dagilim guncellenir. Bu islem sirasinda hatasi
+yuksek olan parcaciklar cezalandirilir, onlarin agirligi azalir,
+otekilerinki yukselir. Her parcacik icin hata fonksiyonu sudur:
+
+\[ 
+w^{[i]} = \frac{1}{1 + (y^{[i]} - p^{[i]})^2  )}
+ \]
+
+$y^{[i]}$ gozlem degeri, $p^{[i]}$ gecis uygulandiktan sonra elimizdeki
+tahminimizdir, ki bu KF dunyasindaki $Ax_t + Q$'nun karsiligidir. PF icin
+hareket gecisi soyle hesaplanir: Bir uniform dagilimdan ornekleme yapilir,
+ve bu orneklenen degerler $x$'e eklenir. Ornekleme icin z-kordinati icin
+$Unif (-0.1, -1)$'i, x kordinati icin $Unif (-40, 40)$'i kullandik. Yani
+ileri dogru 0.1 ve 1 santimetre arasinda bir hareket ekliyoruz, ve saga ve
+sola donuk olarak 80 santimetrelik bir kararsizligi hesaplara ekliyoruz.
+
+Ustteki formulde $(y^{[i]} - p^{[i]})^2$ e niye 1 degeri ekledigimiz
+aciktir herhalde, bu sayede hata fonksiyonunun olasilik degerlerini andiran
+bir sonuc don- durmesini istiyoruz. Cok ufak hatalar icin $1 + hata$
+bolunendeki 1'i bolecek, ve 1'e yakin bir deger geri getirecek. Istedigimiz
+de bu zaten, kucuk hatalarin daha buyuk agirliga sebebiyet vermeleri, buyuk
+hatalarin ise tam tersi sonuca sebep olmalari.
+
+Tekrar ornekleme (resampling) surecinde parcaciklar tekrar duzenlenerek
+agirligi cok olan parcaciklarin agirligi az olanlara gore daha fazla
+tekrarlanmasini istiyoruz. Dikkat: tekrar ornekleme sureci yeni parcacik
+degerleri yaratmiyor, sadece mevcut olanlari tekrarliyor ya da onlari
+atliyor.
+
+\lstinputlisting[language=Python]{PF.py}
+
+\lstinputlisting[language=Python]{track-chess-pf.py}
+
+\includegraphics[height=4cm]{cb-pf-1.jpg}
+
+\includegraphics[height=4cm]{cb-pf-2.jpg}
+
+\includegraphics[height=4cm]{cb-pf-3.jpg}
+
+\includegraphics[height=4cm]{cb-pf-4.jpg}
+
+Kaynaklar
+
+http://dl.dropbox.com/u/1570604/skfiles/campy/chessb-left.avi
+
+http://dl.dropbox.com/u/1570604/skfiles/campy/chessb-right.avi
+
+S. Marsland, Machine Learning: An Algorithmic Perspective, CRC Press,
+2009.
+
+S. Thrun, W. Burgard, and D. Fox, Probabilistic Robotics, MIT Press,
+Cambridge, MA, 2005
+
+C. Bishop Pattern Recognition and Machine Learning , 2006.
+
+Rabiner L. R. , A Tutorial on Hidden Markov Models and Selected
+Applications in Speech Recognition, Proceedings of IEEE vol. 77, no. 2,
+pp. 257-286, 1989.
+
+Roweis S. and Z. Ghahramani, A Unifying Review of Linear Gaussian Models,
+Neural Computation 11(2):305-345, 1999.
+
+Ghahramani Z., H. E. Hinton, Parameter Estimation for Linear Dynamical
+Systems, Technical Report CRG-TR-96-2
+
+ftp://ftp.cs.toronto.edu/pub/zoubin/tr96-2.ps.gz], Department of Computer
+Science, University of Toronto, 1996. 
+
+Ghahramani Z., H. E. Hinton, Switching State Space Models, Technical Report
+CRG-TR-96-3, Dept. Comp. Sci., Univ. Toronto, 1996. 
+
+Shumway R., H. S. Stoffer Time series analysis and its applications 2nd
+Edition, New York, Springer, (Springer texts in statistics), 2000. 
+
+Jordan M. I. , C. Bishop An Introduction to Graphical Models, Not yet
+published, 2000. 
+
+Kalman R. E., A New Approach to Linear Filtering and Prediction Problems,
+Transactions of the ASME-Journal of Basic Engineering, 82 (Series D):
+35-45, 1960.
+
+Kalman, R.E. and R.S. Bucy, New results in filtering and prediction theory,
+Trans. ASME J. Basic Eng., 83, 95-108, 1961. 
+
+Welling, M., The Kalman Filter - Lecture Tutorial, California Institute of
+Technology, 2008. 
+
+Lall, S., Modern Control 2 Lecture Notes, Stanford University, 2006.
 
 \end{document}
 
