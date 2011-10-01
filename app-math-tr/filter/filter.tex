@@ -222,6 +222,55 @@ Simdi denklem \ref{eq3}'u alip \ref{eq1}'in icine koydugumuzda ve
 \ref{eq2}'deki yerlesim yapisini dikkate aldigimizda $\hat{x}_{t+1}^{t+1}$
 ve $P_{t+1}^{t+1}$ formullerini ortaya cikartabiliriz. 
 
+\[ \hat{x}_{t+1}^{t+1} =  x_{t+1}^{t} +  P_{t+1}^{t}C'(CP_{t+1}^{t}C' + \Sigma_w)^{-1}
+(y_{t+1}- C\hat{x}_{t+1}^t)
+\]
+
+\[ P_{t+1}^{t+1} = P_{t+1}^{t} - P_{t+1}^{t} C'(CP_{t+1}^{t} C'+R)^{-1}CP_{t+1}^{t} 
+\]
+
+Eger $K = P_{t+1}^{t}C'(CP_{t+1}^{t}C' + \Sigma_w)^{-1}$ dersek
+
+\[  \hat{x}_{t+1}^{t+1}  =  \hat{x}_{t+1}^{t} + K_t (y_{t+1} - C \hat{x}_{t+1}^{t}  \]
+
+\[  P_{t+1}^{t+1} =  P_{t+1}^{t} - K_tC P_{t+1}^{t} \]
+
+Ornek: Veriye Duz Cizgi Uydurmak (Line Fitting)
+
+Eger elimizde bir cizgiye uydurmak icin kullanacagimiz tum veri olsaydi,
+uydurma islemi icin en az kareler (least sqaures) yontemini
+kullanabilirdik.  Kalman Filtreleri bize yeni veri geldigi anda, her
+seferinde, azar azar bir cizgiyi uydurmamizi sagliyor. Hatta matematiksel
+olarak ispalanmistir ki eger baslangic noktasi ayniysa, azar azar veriyi KF
+ile almanin sonunda, tum veriyi bir kerede en az karesel yontem ile
+uydurmak ayni sonucu verir.
+
+Peki bu uydurma islemini nasil yapariz? Burada veriyi nasil temsil ettigimiz
+konusunda ufak bir numara kullanmamiz lazim.
+
+Kendimize bir soru soralim: bu sistemin konum bilgisi nedir? Bir robotu
+izliyorsak mesela soru cevabi basittir, onun $x, y$ gibi kordinat
+bilgisi. Duz cizgi fit ederken takip edilen bunlar degil, bize gerekli olan
+bir cizginin ``egimi (slope)''. Yani hem bir cizginin y eksenini kestigi
+nokta, hem de cizginin egimi xt konum bilgisi icinde dahil edilecek. Burada
+KF literaturunden gelen $x, y$ harfleri birbirine karismasin diye cizginin
+degerlerini $xx_t$ ve $yy_t$ olarak tanimlayacagiz. O zaman $x_t$ vektoru suna
+benzer:
+
+\[ x_t = 
+\left[\begin{array}{r}
+yy_t \\
+a
+\end{array}\right]
+ \]
+
+ki burada $a$ harfi egimi temsil etmektedir. $a$ bir sabit olduguna gore
+KF her zaman diliminde ayni kalacak bir degiskeni
+hesaplayacaktir. Cogunlukla KF ile her zaman diliminde degisik olan
+degerlerin hesaplandigini goruruz, bu uygulamaya gore degisen bir seydir,
+matematiksel bir mecburiyet degildir. $A$ matrisimiz ile de biraz numara
+yapmamiz gerekli. Bu matris $x_t$'yi donusturup $x_{t+1}$'i elde etmemizi
+saglayan sey olduguna gore $A$'nin soyle olmasi gerekir:
 
 
 
