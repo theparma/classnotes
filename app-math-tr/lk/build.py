@@ -1,6 +1,7 @@
 import os, sys
     
-if sys.argv[1] == 'zip':    
-    cmd = "zip ~/Dropbox/Public/tmp/lk.zip *.m *.png *.py" 
-    os.system(cmd)
+if len(sys.argv) == 1 or sys.argv[1] == 'tex':
+    os.system("pdflatex calc_multi_*.tex")
+    os.system("evince calc_multi_*.pdf")
+    exit()
     
