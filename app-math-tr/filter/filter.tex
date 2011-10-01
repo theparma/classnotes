@@ -69,22 +69,96 @@ durum var.
 
 \[ \hat{y}_{t+1}^t = C\hat{x}_{t+1} \]
 
+Kovaryans icin benzer durum
 
+\[ E[(y_{t+1}-\hat{y}_{t+1}^t)(y_{t+1}-\hat{y}_{t+1}^t)' | y_0,...,y_t] = 
+C_{t+1}^t C' + R
+ \]
 
+ Simdi daha zor is olan oku tersini cevirmeye gelelim. Eger amacimiz p(xt
+ |yt ) denklemini elde etmek ise o zaman bu iki degiskeni iceren birlesik
+ dagilimi (joint distribution) elde etmek zorundayiz. Iki Gaussian'in
+ birlesiminin yeni bir Gaussian oldugunu biliyoruz, o zaman hem $x_t$ hem
+ de $y_t$'in kendisi cok boyutlu birer Gaussian olduklari icin onlarin
+ birlesimi $p(x_t |y_t )$'in hakikaten devasa bir Gaussian olacagini tahmin
+ edebiliriz.
 
+$x_t$ ve $y_t$'in birlesimi olan Gaussian'i bulmak demek, bu Gaussian'in 
+ortalamasini (mean) ve kovaryansini bulmak demektir cunku bir Gaussian 
+ortalama ve kovaryansi ile net bir sekilde tanimlanabilir bir seydir. 
+Bir numara yapalim, ve $y_t = Cx_t + w_t$'yi $z = Hu$ seklinde
+yazalim. Sonra 
 
+\[ 
+\left[\begin{array}{r}
+x_t \\
+y_t
+\end{array}\right], 
+H = 
+\left[\begin{array}{rr}
+I & 0 \\
+C & I
+\end{array}\right], 
+u = 
+\left[\begin{array}{r}
+x_t \\
+w_t
+\end{array}\right]
+ \]
 
+Boylece daha basit bir denklemin kovaryansini alabiliriz
 
+\[ cov(z) = H \ cos(u) H' \]
 
+\[ 
+cov(u) = 
+\left[\begin{array}{rr}
+P_t & 0 \\
+0 & R
+\end{array}\right]
+ \]
 
+Tam carpim suna esit
 
+\[ 
+\left[\begin{array}{rr}
+I & 0 \\
+C & I
+\end{array}\right]
+\left[\begin{array}{rr}
+P_t & 0 \\
+0 & R
+\end{array}\right]
+\left[\begin{array}{rr}
+I & C' \\
+0 & I
+\end{array}\right]
+ \]
 
+bunun sonucu ise
 
+\[ 
+\left[\begin{array}{rr}
+P_t & P_t C' \\
+CP_t & CP_tC' + R
+\end{array}\right]
+ \]
 
+Bunu baglantisal denklem icin ve ortalamayi icerecek sekilde yazabiliriz
 
+\[ 
+\left[\begin{array}{r}
+\hat{x}_t^t \\
+C\hat{x}_t^t
+\end{array}\right] 
+, 
+\left[\begin{array}{rr}
+P_t^t & P_t^tC' \\
+CP_t^t & CP_t^t + R
+\end{array}\right]
+ \]
 
-
-
+Ayni sekilde $x_{t+1} , y_{t+1}$ birlesik dagilim icin
 
 
 
