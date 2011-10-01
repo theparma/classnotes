@@ -8,5 +8,6 @@ ode/symtest.py
 ode/Elementary*
 */*/_region*
 */*/*.log
+*/*/*.pyc
 */*/*.aux
 */CompSci_Strang.djvu
