@@ -126,7 +126,7 @@ I_t(p_k)
 \end{array}\right]
  \]
 
-Bu sistei
+Bu sistemi
 
 \[ A \ d = b \]
 
@@ -134,7 +134,20 @@ olarak gosterebiliriz. Sol tarafi $A^T$ ile carpalim
 
 \[ A^TA \ d = A^Tb \]
 
-Bu denklemi Python Numpy icinde \verb!pinv! kullanarak cozeriz. 
+Eger $A^TA$'nin matris tersini iki tarafla carparsak, $d$ yanliz kalir, ve
+sonuc elde edilir. Bu denklemi Python Numpy icinde \verb!pinv! kullanarak
+cozeriz. 
+
+Test icin uc tane resim kullandik, bu resimlerden \verb!flow1-bw-0.png!
+baslangic resmi, bu resmin ortasindaki objeleri GIMP kullanarak elle
+kopyaladik, bir ust sag capraza dogru, bir alt sol capraza dogru, ve iki
+yeni resim elde ettik (\verb!upright.png!, \verb!dleft.png!). Takip edilen
+nokta gri dortgenin alt sol kosesinde. Lucas Kanade algoritmasi bu noktayi
+takip ederek, yesil ile isaretledi.
+
+\includegraphics[height=4cm]{res1.png}
+
+\includegraphics[height=4cm]{res2.png}
 
 \lstinputlisting[language=Python]{deriv.py}
 
