@@ -9,24 +9,9 @@ import lk
 import math
 
 __test__ = "/home/burak/Dropbox/Public/skfiles/campy/chessb-left.avi"
-#track_x = 50
-#track_y = 50
-#__scale__ = 3
-track_x = 80
-track_y = 60
+track_x = 80.
+track_y = 60.
 __scale__ = 2
-
-
-#__test__ = "/home/burak/Dropbox/Public/skfiles/campy/chessb-right.avi"
-#track_x = 150
-#track_y = 50
-#__scale__ = 3
-#track_x = 220
-#track_y = 70
-#__scale__ = 2
-#track_x = 110
-#track_y = 40
-#__scale__ = 4
 
 prev = None
 win = 8
@@ -50,8 +35,9 @@ if __name__ == '__main__':
             if prev != None: 
                 u, v = lk.lk(prev, curr, track_x, track_y, win)              
                 print u, v
-                track_x += math.floor(u)
-                track_y += math.floor(v)
+                print np.floor(u), np.floor(v)
+                track_x += np.floor(u)
+                track_y += np.floor(v)
             prev = curr            
         
         ipl2 = PIL2Ipl(ipl)
