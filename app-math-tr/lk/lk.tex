@@ -150,6 +150,9 @@ yeni resim elde ettik (\verb!upright.png!, \verb!dleft.png!). Takip edilen
 nokta gri dortgenin alt sol kosesinde. Lucas Kanade algoritmasi bu noktayi
 takip ederek, yesil ile isaretledi.
 
+OpenCV uzerinden bir video'daki imajin takip edilmesinin ornegi ise
+\verb!track-chess.py! icinde bulunabilir. 
+
 \includegraphics[height=4cm]{res1.png}
 
 \includegraphics[height=4cm]{res2.png}
@@ -158,9 +161,59 @@ takip ederek, yesil ile isaretledi.
 
 \lstinputlisting[language=Python]{lk.py}
 
+Not
+
+Bu matematiksel modele alternatif bir bakis soyle olabilir. Iki imaj karesi
+icinde birincisine $H(x,y)$ ikincisine $I(x,y)$ diyelim, burada $t$
+uzerinden parametrizasyon olmasin. $x,y$ pikselinin $I$ icinde $u,v$ kadar
+yer degisiminden sonra, bu noktalarin $H$'de geldigi yerdeki grilik degerinin
+ayni oldugunu (yine) farzediyoruz. Sonra $I(x+u,y+v)$'nin birinci
+dereceden Taylor Acilimini yapiyoruz, 
+
+\[ I(x+u,y+v) = I(x,y) + \frac{\partial I}{\partial x}u + 
+\frac{\partial I}{\partial y}v + ...
+\]
+
+ya da
+
+\[ I(x+u,y+v) \approx I(x,y) + \frac{\partial I}{\partial x}u + 
+\frac{\partial I}{\partial y}v 
+\]
+
+Grilik ayniligini ise soyle belirtebiliriz
+
+\[  I(x+u,y+v) - H(x,y) = 0\]
+
+Taylor acilini ustteki formulde $I$ yerine gecirelim
+
+\[ I(x,y) + 
+\frac{\partial I}{\partial x}u + 
+\frac{\partial I}{\partial y}v - H(x,y) = 0
+\]
+
+$H$'in yerini degistirelim
+
+\[ I(x,y)  - H(x,y) + I_xu + I_yv = 0\]
+
+Su ifade $I(x,y)  - H(x,y)$ nedir? Bunlar imajin sonraki halinin onceki 
+halinden cikartilmasi olduguna gore, onu imajin zaman gore turevi 
+olarak alabiliriz, yani $I_t = I(x,y) - H(x,y)$. Yerine koyalim
+
+\[ I_t + I_xu + I_yv = 0\]
+
+\[ I_xu + I_yv = -I_t \]
+
+Boylece ayni denkleme erismis olduk. Bu aslinda normal, birinci
+dereceden Taylor acilimi ile tam diferansiyel denklemi (ve Zincirleme
+Kanununu) birbiriyle cok yakindan alakasi var. 
+
 Kaynaklar
 
 R. Collins Ders Notlari, www.cse.psu.edu/~rcollins/CSE486
+
+Khurram Hassan-Shafique, CAP 5415 Lecture Notes, Spring 2003
+
+http://dl.dropbox.com/u/1570604/skfiles/campy/chessb-left.avi
 
 
 \end{document}

@@ -1,3 +1,5 @@
+# Tracks a chessboard using Lucas Kanade
+
 from opencv.cv import *
 from opencv.highgui import *
 from opencv.adaptors import Ipl2NumPy
