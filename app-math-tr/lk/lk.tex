@@ -23,29 +23,29 @@ Matematiksel olarak temsil etmek gerekirse, zamana gore degisen 2 boyutlu
 goruntuyu bir fonksiyon olarak dusunelim, ki bu fonksiyonun degerleri
 ayriksal olarak, imajin ta kendisi. Bir $I(x(t),y(t),t)$ fonksiyonu piksel
 degerlerini veriyor. Bu fonksiyonda $x,y$ ekran kordinatlarina tekabul
-ediyor, $t$ ise zaman, 1,2,.. gibi degerleri var, mesela $I(100,200,1)$,
-bize 1. fotograftaki $x=100,y=200$ kordinatlarindaki piksel degerini
-verecek. 
+ediyor, $t$ ise zaman, $1,2,..$ gibi degerleri indeks degerleri var, mesela
+$I(100,200,1)$, bize 1. video karesindeki $x=100,y=200$ kordinatlarindaki
+piksel degerini verecek.
 
 $x,y$ degiskenleri parametrize edildi, bir noktayi takip etmek istiyoruz
 cunku, ve $t$'ye gore bu takip edilen noktanin $x,y$ kordinatlari belli bir
 gidisat yonunde degisiyor.
 
-O zaman su faraziyeyi yaparak problemimizi kolaylastirabiliriz. Diyelim ki
+Su faraziyeyi yaparak takip problemimizi kolaylastirabiliriz. Diyelim ki
 takip edilen bir nokta, goruldugu her karede ayni piksel rengindedir. Bu
-cok siradisi bir faraziye degil, resim karelerinden bir araba geciyor, ve
-bu arabanin uzerindeki piksellerin renkleri, en azindan iki kare arasinda
-degismiyor. Isik seviyesi, golgede olma, vs. gibi durumlarda biraz
-degisebilir, fakat basitlestirme amaciyla bu faraziye ise yarar.
+cok siradisi bir faraziye degil, resim karelerinden bir araba geciyor
+mesela, ve bu arabanin uzerindeki piksellerin renkleri, en azindan iki kare
+arasinda degismiyor. Isik seviyesi, golgede olma, vs. gibi durumlarda biraz
+degisebilir, fakat basitlestirme amaciyla bu faraziye gecerlidir. 
 
 \includegraphics[height=3cm]{disp2.png}
 
 Bir diger faraziye, kameralar hareket ettiklerinde alinan iki goruntu
 arasindaki tum piksellerin yer degisimi genellikle ayni yonde olmasidir. Bu
 degisim yonunu $<u,v>$ vektoru olarak gorebiliriz, ve bu degiskenler iki
-goruntu arasindaki degisimde tum pikseller icin ayni olacaktir. Kamarayi
-saga hareket ettiriyoruz, ve goruntudeki tum pikseller sola dogru
-gidiyorlar. 
+goruntu arasindaki degisimde tum pikseller icin ayni olacaktir. Bu da
+normal, kamerayi alip mesela saga dogru hareket ettiriyoruz, ve goruntudeki
+tum pikseller sola dogru gidiyorlar.
 
 \includegraphics[height=3cm]{disp.png}
 
@@ -68,8 +68,8 @@ tarafa Zincirleme Kanununu uygularsak,
 \]
 
 Bu formulde $dx/dt$ ve $dy/dt$, hareket halindeki (zaman gecerken) noktanin
-sonsuz kucuklukteki ne kadar yer degimi. Ayriksal baglamda arka arkaya iki
-kare icindeki yer degisimi. O zaman,
+sonsuz kucuklukteki yer degimi. Ayriksal baglamda arka arkaya iki kare
+icindeki yer degisimi. O zaman,
 
 \[ \frac{dx}{dt}, \frac{dy}{dt} = u, v \]
 
@@ -80,7 +80,7 @@ hesaplanacagini cok iyi biliyoruz!
 \frac{\partial I}{\partial x}, \frac{\partial I}{\partial y}
  \]
 
-Alttaki ise resim karelerinin zamana gore turevi
+Alttaki ise resim karelerinin zamana gore turevidir.
 
 \[ 
 \frac{\partial I}{\partial t}
@@ -96,15 +96,16 @@ ya da
 \nabla I \cdot <u, v> = -I_t
  \]
 
-Peki bizim sectigimiz (takip edecegimiz) bir piksel icin $u,v$'yi nasil
-hesaplayacagiz? Ustteki formulu hem takip ettigimiz, hem de onun
-etrafindaki pikseller icin yazarsak, ve bu sistemi cozersek, sonuca
-varabiliriz. Boylece iki tane bilinmeyenimiz olacak, ama pek cok formul
-gececek. Veriler gurultulu oldugu icin, aslinda bilinmeyenden ``daha
-fazla'' formul elde etmek iyi, boylece elimizdeki denklem sistemi cok
-esitlige sahip (overdetermined) bir hale gelecek, ve bu tur sistemleri En
-Az Kareler (Least Squares) yontemi ile cozmeyi biliyoruz. Tum bu
-denklemleri biraraya koyunca soyle bir sistem ortaya cikar
+Simdi $u,v$'nin hesaplanmasina gelelim. Ustteki formulu bir veri noktasi
+icin yazmak yeterli degil. Ama bu formulu hem takip ettigimiz, hem de onun
+etrafindaki pikseller icin yazarsak (onlarin yer degisimi de ayni degil
+mi?), ve bu sistemi cozersek, sonuca varabiliriz. 
+
+Iki tane bilinmeyenimiz var, ama boylece pek cok formul elde
+ediyoruz. Veriler gurultulu oldugu icin, aslinda bilinmeyenden ``daha
+fazla'' formul elde etmek iyi, bu tur denklem sistemlerina ``cok esitlige
+sahip (overdetermined)'' denir, ve boyle tur sistemler En Az Kareler (Least
+Squares) ile cozulur. Tum bunlari biraraya koyunca su ortaya cikar.
 
 \[ 
 \left[\begin{array}{cc}
@@ -126,17 +127,21 @@ I_t(p_k)
 \end{array}\right]
  \]
 
+Gradyanlarin belli noktalarda hesaplandigini unutmayalim, o sebeple $p_1,
+p_2$ gibi piksel noktalarini bu fonksiyonlara geciyoruz. 
+
 Bu sistemi
 
 \[ A \ d = b \]
 
-olarak gosterebiliriz. Sol tarafi $A^T$ ile carpalim
+olarak gosterebiliriz, ki $d = <u,v>$. Sol tarafi $A^T$ ile carpalim
 
 \[ A^TA \ d = A^Tb \]
 
 Eger $A^TA$'nin matris tersini iki tarafla carparsak, $d$ yanliz kalir, ve
-sonuc elde edilir. Bu denklemi Python Numpy icinde \verb!pinv! kullanarak
-cozeriz. 
+sonuc elde edilir. 
+
+Bu denklemi Python Numpy'da \verb!pinv! kullanarak cozeriz.
 
 Test icin uc tane resim kullandik, bu resimlerden \verb!flow1-bw-0.png!
 baslangic resmi, bu resmin ortasindaki objeleri GIMP kullanarak elle
