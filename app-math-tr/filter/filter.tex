@@ -31,6 +31,34 @@ lineer bir fonksiyon uzerindendir.
 $v$ ve $w$'in dagilimi Gaussian'dir ve kovaryans sirasiyla $Q$ ve $R$
 icindedir. 
 
+Zaman faktorunu de dahil etmek gerekirse;
+
+\[ \hat{x}_t^t = E[x_t|y_0,..,y_t] \]
+
+\[ P_t^t = E[(x_t - \hat{x}_{t|t}) (x_t - \hat{x}_{t|t})'| y_0,...,y_t   ] \]
+
+Filtremenin amaci $x_{t+1}$ ve $P_{t+1}$ hesabini yeni bir olcum $y_{t+1}$
+uzerinden yapmak olacak. ``Gizli'' $x_t$ derken bunu kastediyorduk, bu
+deger bize verilmiyor, sadece xt ve $x_{t+1}$ arasindaki gecisin nasil oldugunu
+biliyoruz, gurultunun nasil eklendigini biliyoruz, ama bunlarin bilsek bile
+elde bir suru bilinmeyen var. Filtrelemenin matematiksel numaralari
+sayesinde bunu hesaplayabiliyor olacagiz.  Yani yapmamiz gereken ``oku
+tersine cevirmek'', yani $x_t$'nin $y_t$ uzerindeki sartsal bagliligini
+(conditional dependence) ortaya cikartmak, bunu $y_t$'nin $x_t$'ye olan sartsal
+bagimliligini tersine cevirerek yapmak. Ana denklemin iki tarafinin da
+beklentisini (expectation) alalim:
+
+\[ E \ x_{t+1} = \hat{x}_{t+1} = A \mu_t = A \hat{x}_t \]
+
+Simdi iki tarafin kovaryansini alalim ve $P_t$'yi $cov \ x(t)$ olarak
+belirtelim:
+
+
+
+
+
+
+
 
 
 
