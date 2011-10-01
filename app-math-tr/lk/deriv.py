@@ -14,16 +14,9 @@ def gauss_kern():
     return g / g.sum()
 
 def deriv(im1, im2):
-    '''
-    fx = si.convolve2d(im1, 0.25 * np.array([[-1., 1.],[-1., 1.]])) + \
-        si.convolve2d(im2, 0.25 * np.array([[-1., 1.],[-1., 1.]]) )    
-    fy = si.convolve2d(im1, 0.25 * np.array([[-1., -1.],[1., 1.]])) + \
-        si.convolve2d(im2, 0.25 * np.array([[-1., -1.],[1., 1.]]) )    
-    '''
     g = gauss_kern()
     Img_smooth = si.convolve(im1,g,mode='same')
-    fx,fy=np.gradient(Img_smooth)
-    
+    fx,fy=np.gradient(Img_smooth)    
     ft = si.convolve2d(im1, 0.25 * np.ones((2,2))) + \
         si.convolve2d(im2, -0.25 * np.ones((2,2)))
                     
