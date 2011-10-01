@@ -319,6 +319,59 @@ kacinilmaz olarak deger kaybediliyor, bir boyutun bilgisi ortadan
 yokoluyor. Ama tum bu bilinmezlere ragmen Kalman filtresinin bizim icin
 gizli bilgiyi hesaplamasini istiyoruz.
 
+Bu problemde A matrisi ne olacaktir? Obje takibi konularinda A'nin ne
+oldugunu hayal etmek daha kolay, A matrisi iki zaman dilimi arasindaki
+``hareketi'' temsil edecek. Bu problemdeki ek bir kolaylik bu hareketi
+onceden bildigimiz, ve hareketin tek yonde oldugu. Yani resimde benim
+tuttugum kartonu ne kadar hizla hareket ettirdigimi ben onceden probleme
+bildiriyorum. Yer degisikligini $d$ olarak betimledim, ve $A$ soyle oldu:
+
+\[ A = 
+\left[\begin{array}{rrrr}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & d \\
+0 & 0 & 0 & 1
+\end{array}\right]
+ \]
+
+Dikkat edersek $A$ 4x4 boyutunda, 3x3 degil. 3 boyutlu kordinatlari temsil
+etmek icin homojen kordinat sistemini kullandigimiz icin boyle oldu, o
+sebe- ple zaten $x_t$ de 4x1 oldu, ona uymak icin $A$'nin degismesi
+gerekiyordu. $Ax_t$ carpiminin hakikaten kartonu hareket ettirdigini
+gostermek icin bu carpimi bir ornek uzerinde yapalim: Diyelim 
+ki $x_t = [
+ a_1 \ a_2 \ a_3 \ a_4 ]$ o zaman $Ax_t$ ya da $x_{t+1}$ su hale gelir: $[
+ a_1 \ a_2 \ a_3+d \ a_4 ]$.
+
+Bakiyoruz, hakikaten de d kadarlik bir yer degisimi z kordinati, yani
+derinlik uzerinde eklenmis. Test amaclarimiz icin d = -0.5 aldik, yani
+satranc tahta kartonunun her zaman diliminde kameraya dogru 0.5 cm
+ilerledigini belirttik. Tabii bu da kabaca bir tahmindi (her ne kadar
+hareketi yaptiran ben olsam bile!), ama filrelemenin gucunu burada
+goruyoruz. Benim tahminimde ``gurultu'' yani ``hata payi'' var, olcumde
+gurultu var, tum bunlar ust uste konsa bile filtre yine de gizli konumu
+bulacak.
+
+Olcumsel donusumu temsil eden H'e ben onun temeli olan yansima (projection)
+kelimesinden gelen P matrisinden bahsedelim. Yansima matrisi goruntu
+(vision) literaturunde tek delikli kamera (pinhole camera) modelinden ileri
+gelen bir matristir ve bu matrisi hesaplamak ayarlama / kalibrasyon
+(calibration) denen apayri bir islemin parcasidir. OpenCV icinde
+kalibrasyon icin fonksiyonlar var, biz de bunlari denedik, kalibrasyon icin
+kullandigimiz resimlerle alakali olmali, elde edilen sonuclardan memnun
+kalmadik. Alternatif olarak sunu yaptik; resimde gorulen yesil yuzey bizim
+programin olustur- dugu hayali bir yuzey. Filtrenin o anki tahminini P
+uzerinden goruntuye yansitarak bu yuzeyi olusturduk, boylece deneme /
+yanilma yontemiyle pek cok P degerini deneyerek, yuzeyin resimde gorulen
+masanin sonunda cikacak sekilde olmasini sagladik. O noktaya gelince
+istedigimiz P degerini bulmus oluyorduk. Yansitma matrisleri 3x3 olur, KF
+buna bir dorduncu [0 0 0] satiri
+
+
+
+
+
 
 
 
