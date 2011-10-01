@@ -16,6 +16,86 @@
 \begin{document}
 Piksel Takibi, Optik Akis, Lucas Kanade Algoritmasi
 
+Hareket halindeki bir kameranin aldigi goruntulerdeki herhangi bir pikseli
+nasil takip ederiz? 
+
+Matematiksel olarak temsil etmek gerekirse, zamana gore degisen 2 boyutlu
+goruntuyu bir fonksiyon olarak dusunelim, ki bu fonksiyonun degerleri
+ayriksal olarak, imajin ta kendisi. Bir $I(x(t),y(t),t)$ fonksiyonu piksel
+degerlerini veriyor. Bu fonksiyonda $x,y$ ekran kordinatlarina tekabul
+ediyor, $t$ ise zaman, 1,2,.. gibi degerleri var, mesela $I(100,200,1)$,
+bize 1. fotograftaki $x=100,y=200$ kordinatlarindaki piksel degerini
+verecek. 
+
+$x,y$ degiskenleri parametrize edildi, bir noktayi takip etmek istiyoruz
+cunku, ve $t$'ye gore bu takip edilen noktanin $x,y$ kordinatlari belli bir
+gidisat yonunde degisiyor.
+
+O zaman su faraziyeyi yaparak problemimizi kolaylastirabiliriz. Diyelim ki
+takip edilen bir nokta, goruldugu her karede ayni piksel rengindedir. Bu
+cok siradisi bir faraziye degil, resim karelerinden bir araba geciyor, ve
+bu arabanin uzerindeki piksellerin renkleri, en azindan iki kare arasinda
+degismiyor. Isik seviyesi, golgede olma, vs. gibi durumlarda biraz
+degisebilir, fakat basitlestirme amaciyla bu faraziye ise yarar.
+
+\includegraphics[height=3cm]{disp2.png}
+
+Bir diger faraziye, kameralar hareket ettiklerinde alinan iki goruntu
+arasindaki tum piksellerin yer degisimi genellikle ayni yonde olmasidir. Bu
+degisim yonunu $<u,v>$ vektoru olarak gorebiliriz, ve bu degiskenler iki
+goruntu arasindaki degisimde tum pikseller icin ayni olacaktir. Kamarayi
+saga hareket ettiriyoruz, ve goruntudeki tum pikseller sola dogru
+gidiyorlar. 
+
+\includegraphics[height=3cm]{disp.png}
+
+Tum bunlari modelimizde nasil kullaniriz? 
+
+Takip edilen nokta her karede ayni renkte ise, su ifade dogru demektir 
+
+\[ I(x(t),y(t),t) = \textrm{ sabit } \]
+
+Eger bu fonksiyonun zamana gore turevini alirsak
+
+\[ \frac{d \ I(x(t),y(t),t)}{dt} = 0\]
+
+sonucu gelir. Esitligin sagi sifir, cunku bir sabitin turevini aldik. Sol
+tarafa Zincirleme Kanununu uygularsak, 
+
+\[ \frac{\partial I}{\partial x}\frac{dx}{dt} +
+\frac{\partial I}{\partial y}\frac{dy}{dt} +
+\frac{\partial I}{\partial t} = 0
+\]
+
+Bu formulde $dx/dt$ ve $dy/dt$, hareket halindeki (zaman gecerken) noktanin
+sonsuz kucuklukteki ne kadar yer degimi. Ayriksal baglamda arka arkaya iki
+kare icindeki yer degisimi. O zaman,
+
+\[ \frac{dx}{dt}, \frac{dy}{dt} = u, v \]
+
+Alttakiler ise mesafesel (spatial) gradyanlardir, bunlarin nasil
+hesaplanacagini cok iyi biliyoruz! 
+
+\[ 
+\frac{\partial I}{\partial x}, \frac{\partial I}{\partial y}
+ \]
+
+Alttaki ise resim karelerinin zamana gore turevi
+
+\[ 
+\frac{\partial I}{\partial t}
+ \]
+
+Daha derli toplu olarak gostermek gerekirse ana formul nihai olarak soyle
+
+\[ 
+\nabla I \cdot <u, v> = -I_t
+ \]
+
+
+\lstinputlisting[language=Python]{deriv.py}
+
+\lstinputlisting[language=Python]{lk.py}
 
 
 

@@ -3,7 +3,6 @@ import scipy.signal as si
 from PIL import Image
 
 def gauss_kern():
-    """ Returns a normalized 2D gauss kernel array for convolutions """
     h1 = 15
     h2 = 15
     x, y = np.mgrid[0:h2, 0:h1]

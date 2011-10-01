@@ -8,10 +8,12 @@ import numpy.linalg as lin
 def lk(im1, im2, i, j, window_size) :
     fx, fy, ft = deriv.deriv(im1, im2)
     halfWindow = np.floor(window_size/2)
-    curFx = fx[i-halfWindow-1:i+halfWindow, j-halfWindow-1:j+halfWindow]
-    curFy = fy[i-halfWindow-1:i+halfWindow, j-halfWindow-1:j+halfWindow]
-    curFt = ft[i-halfWindow-1:i+halfWindow, j-halfWindow-1:j+halfWindow]
-
+    curFx = fx[i-halfWindow-1:i+halfWindow, 
+               j-halfWindow-1:j+halfWindow]
+    curFy = fy[i-halfWindow-1:i+halfWindow, 
+               j-halfWindow-1:j+halfWindow]
+    curFt = ft[i-halfWindow-1:i+halfWindow, 
+               j-halfWindow-1:j+halfWindow]
     curFx = curFx.T
     curFy = curFy.T
     curFt = curFt.T
