@@ -16,6 +16,26 @@
 \begin{document}
 Filtrelemek
 
+Filtreler dis dunyadaki bir aksiyon hakkinda elde edilen gurultulu
+sinyalleri, tersine cevirerek arka plandaki aksiyon hakkinda hesaplama
+yapabilmemizi saglar. Mesela Kalman Filtreleri (KF) icin gizlenmis konum
+bir robotun nerede oldugu, bir senetin fiyati gibi bir sey olabilir, gizli
+konum bilgisi $x_t$ degiskeninde o konum hakkindaki gurultulu olcum $y_t$
+icindedir. Hem gizli konumlar arasindaki gecis, hem de olcumun gurultusu
+lineer bir fonksiyon uzerindendir.
+
+\[ x_{t+1} = Ax_t + v \]
+
+\[ y_t = Hx_t + w \]
+
+$v$ ve $w$'in dagilimi Gaussian'dir ve kovaryans sirasiyla $Q$ ve $R$
+icindedir. 
+
+
+
+
+
+
 
 
 
