@@ -272,6 +272,56 @@ matematiksel bir mecburiyet degildir. $A$ matrisimiz ile de biraz numara
 yapmamiz gerekli. Bu matris $x_t$'yi donusturup $x_{t+1}$'i elde etmemizi
 saglayan sey olduguna gore $A$'nin soyle olmasi gerekir:
 
+\[ 
+A_t = 
+\left[\begin{array}{rr}
+1 & \Delta xx \\
+0 & 1
+\end{array}\right]
+ \]
+
+Bu matrisi $x_t$ ile carptigimizda $yy_t \cdot 1 + a \cdot \Delta xx$
+degerini elde ediyoruz, ki bu deger bir cizgi uzerinde bir sonraki noktayi
+temsil ediyor. Dis olcumu veren gurultu matrisi $H$ ise
+
+\[ H =
+\left[\begin{array}{rr}
+1 & 0 \\
+1 & 0
+\end{array}\right]
+ \]
+
+seklinde. Bunu $x_t$ ile carptigimizda $y_t$'yi (iki kere) elde ettigimizi
+gorecegiz.  Not: Niye iki kere? Kodlama sirasinda boyutlarin uyumlu olmasi
+icin boyle gerekti, cok buyuk bir rahatsizlik degil. Kod altta
+gorulebilir.
+
+\lstinputlisting[language=Python]{kalman_slope.py}
+
+\includegraphics[height=7cm]{kalman-line-fit.png}
+
+Ornek: Obje Takibi
+
+Daha degisik bir ornekten bahsedelim. Bu ornekte OpenCV kutuphanesinden
+elde ettigimiz 2 boyutlu degerleri $y_t$ icin kullanacagiz. Degerler
+OpenCV'nin bir satranc tahtasi seklinin kose noktalarini otomatik olarak
+bulabilen cvFindChessboardCorners cagrisinden gelecek (ayrica
+cvDrawChessboardCorners ile bu noktalari ekranda aninda gosterebilecegiz).
+
+Elimizdeki ``gurultulu'' olcumler iki boyutlu noktasal degerler. Gurultulu
+cunku kamera bize bu imajlari aktarirken hata eklemis olabilir, OpenCV
+fonksiyonu hesabi yaparken hata eklemis olabilir, bir suru olasilik var.
+
+Bu ornekte, ayrica, ilk kez KF ortaminda boyut degisikligi olasiligini net
+bir sekilde gorebiliyoruz. Gizli konum bilgisi $x_t$ 3 boyutlu bir nokta,
+ama elimizdeki olcum 2 boyutlu bir ``yansima''. Yansima sirasinda
+kacinilmaz olarak deger kaybediliyor, bir boyutun bilgisi ortadan
+yokoluyor. Ama tum bu bilinmezlere ragmen Kalman filtresinin bizim icin
+gizli bilgiyi hesaplamasini istiyoruz.
+
+
+
+
 
 
 \end{document}
