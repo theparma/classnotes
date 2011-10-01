@@ -33,8 +33,8 @@ if __name__ == "__main__":
     im1 = np.asarray(Image.open('flow1-bw-0.png'))
     print im1.shape
     #im2 = np.asarray(Image.open('flow2-bw-0.png'))
-    im2 = np.asarray(Image.open('upright.png'))
-    #im2 = np.asarray(Image.open('dleft.png'))
+    #im2 = np.asarray(Image.open('upright.png'))
+    im2 = np.asarray(Image.open('dleft.png'))
     print im2.shape
     u, v = lk(im1, im2, x, y, win)
     print u, v

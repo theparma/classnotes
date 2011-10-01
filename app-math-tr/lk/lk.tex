@@ -103,12 +103,38 @@ varabiliriz. Boylece iki tane bilinmeyenimiz olacak, ama pek cok formul
 gececek. Veriler gurultulu oldugu icin, aslinda bilinmeyenden ``daha
 fazla'' formul elde etmek iyi, boylece elimizdeki denklem sistemi cok
 esitlige sahip (overdetermined) bir hale gelecek, ve bu tur sistemleri En
-Az Kareler (Least Squares) yontemi ile cozmeyi biliyoruz.
+Az Kareler (Least Squares) yontemi ile cozmeyi biliyoruz. Tum bu
+denklemleri biraraya koyunca soyle bir sistem ortaya cikar
 
+\[ 
+\left[\begin{array}{cc}
+I_x(p_1) & I_y(p_1) \\
+I_x(p_2) & I_y(p_1) \\
+\vdots & \vdots \\
+I_x(p_k) & I_y(p_k) 
+\end{array}\right]
+\left[\begin{array}{r}
+u \\
+v
+\end{array}\right] = 
+-
+\left[\begin{array}{c}
+I_t(p_1) \\
+I_t(p_2) \\
+\vdots \\
+I_t(p_k) 
+\end{array}\right]
+ \]
 
+Bu sistei
 
+\[ A \ d = b \]
 
+olarak gosterebiliriz. Sol tarafi $A^T$ ile carpalim
 
+\[ A^TA \ d = A^Tb \]
+
+Bu denklemi Python Numpy icinde \verb!pinv! kullanarak cozeriz. 
 
 \lstinputlisting[language=Python]{deriv.py}
 
