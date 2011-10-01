@@ -8,18 +8,28 @@ import Image
 import lk
 import math
 
-__test__ = "/home/burak/Dropbox/Public/skfiles/campy/chessb-right.avi"
-prev = None
-track_x = 150
-track_y = 50
-__scale__ = 3
+__test__ = "/home/burak/Dropbox/Public/skfiles/campy/chessb-left.avi"
+#track_x = 50
+#track_y = 50
+#__scale__ = 3
+track_x = 80
+track_y = 60
+__scale__ = 2
+
+
+#__test__ = "/home/burak/Dropbox/Public/skfiles/campy/chessb-right.avi"
+#track_x = 150
+#track_y = 50
+#__scale__ = 3
 #track_x = 220
 #track_y = 70
 #__scale__ = 2
 #track_x = 110
 #track_y = 40
 #__scale__ = 4
-win = 5
+
+prev = None
+win = 8
 frame_no = 0
 
 if __name__ == '__main__':
@@ -32,8 +42,7 @@ if __name__ == '__main__':
         gray = cvCreateImage ((frame.width, frame.height), 8, 1)   
         cvCvtColor( frame, gray, CV_BGR2GRAY )                
         ipl = Ipl2PIL(gray)
-        ipl = ipl.resize((int(frame.width/__scale__),
-                          int(frame.height/__scale__)), 
+        ipl = ipl.resize((int(frame.width/__scale__),int(frame.height/__scale__)), 
                          Image.ANTIALIAS)
         
         if frame_no > 25:
@@ -41,8 +50,8 @@ if __name__ == '__main__':
             if prev != None: 
                 u, v = lk.lk(prev, curr, track_x, track_y, win)              
                 print u, v
-                track_x += u
-                track_y += v
+                track_x += math.floor(u)
+                track_y += math.floor(v)
             prev = curr            
         
         ipl2 = PIL2Ipl(ipl)
