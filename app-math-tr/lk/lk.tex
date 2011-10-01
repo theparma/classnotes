@@ -88,9 +88,26 @@ Alttaki ise resim karelerinin zamana gore turevi
 
 Daha derli toplu olarak gostermek gerekirse ana formul nihai olarak soyle
 
+\[ I_x u + I_y v + I_t = 0 \]
+
+ya da
+
 \[ 
 \nabla I \cdot <u, v> = -I_t
  \]
+
+Peki bizim sectigimiz (takip edecegimiz) bir piksel icin $u,v$'yi nasil
+hesaplayacagiz? Ustteki formulu hem takip ettigimiz, hem de onun
+etrafindaki pikseller icin yazarsak, ve bu sistemi cozersek, sonuca
+varabiliriz. Boylece iki tane bilinmeyenimiz olacak, ama pek cok formul
+gececek. Veriler gurultulu oldugu icin, aslinda bilinmeyenden ``daha
+fazla'' formul elde etmek iyi, boylece elimizdeki denklem sistemi cok
+esitlige sahip (overdetermined) bir hale gelecek, ve bu tur sistemleri En
+Az Kareler (Least Squares) yontemi ile cozmeyi biliyoruz.
+
+
+
+
 
 
 \lstinputlisting[language=Python]{deriv.py}
