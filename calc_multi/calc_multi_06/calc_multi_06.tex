@@ -628,5 +628,60 @@ noktasi $s(t)$ icin onemliydi, cunku toplam uzunluk icin ona ihtiyac
 vardir, fakat bir parcacigin bir yolu katetme orani (hiz) baslangictan ne
 kadar uzakta oldugundan bagimsiz. 
 
+Soru 1J-7
+
+Turevi alinabilen pozisyon vektoru $\vec{r}(t)$ veriliyor. $t$'nin ayni
+zamanda $s$ sonucunu vermesinin sartlari nelerdir? 
+
+Cevap
+
+Sart hiz buyuklugunun yani $|v|=1$ olmasidir, kontrol edelim. 
+
+\[ \bigg|\frac{ds}{dt}\bigg| = |v| = 1 \]
+
+\[ ds = dt \]
+
+\[ \int ds = \int dt \]
+
+\[ t = s + c \]
+
+$t=0$ iken $s=0$ olduguna gore $c=0$. O zaman 
+
+\[ t = s \]
+
+Egzersizler 13.3, Soru 11, Thomas' Calculus
+
+$\vec{r}(t) = 4 cos \ t \hat{i} + 4 sin \ t \hat{j} + 3t \hat{k}$ egrisinin uzunlugunu, yani $s$'yi  $ 0 \le t \le \pi / 2$ 
+araligi icin bul. 
+
+Su formulu kullanacagiz
+
+\[ s(t) = \int_{t_0}^t |\vec{v(\tau)}|d\tau  \]
+
+Once $\vec{v}$ lazim. Biliyoruz ki
+
+\[ \vec{v} = \frac{d\vec{r}}{dt} \]
+
+O zaman $\vec{r}(t)$'nin turevi
+
+\[ \vec{v} = -4sin(t)\hat{i} + 4cos(t)\hat{j} + 3\hat{k} \]
+
+\[ |v| = \sqrt{16sin^2t + 16cos^2t  + 9} = 
+\sqrt{16(sin^2t + cos^2t) + 9} = 
+ \]
+
+\[ = \sqrt{16(1) + 9} = \sqrt{25} = 5 \]
+
+\[ s(t) = \int_0^t 5 \ d\tau = 
+5t 
+\]
+
+\[ s(\pi / 2) = 5(\pi/2) \]
+
+
+
+
+
+
 
 \end{document}
