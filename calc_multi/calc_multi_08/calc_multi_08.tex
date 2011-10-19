@@ -279,4 +279,93 @@ $x^2+y^2$ fonksiyonun grafigi alttadir.
 \includegraphics[height=8cm]{levels.png}
 
 
+Soru 2D-5
+
+$T = x^2 + 2y^2 + 2z^2$ fonksiyonu her $x,y,z$ noktasindaki sicakligi rapor
+ediyor. 
+
+a) Bu fonksiyonun isosicaklik (isotherms) fonksiyonu hangi sekle benzer? 
+
+Cevap 
+
+Isosicaklik $T$ fonksiyonun bir sabite esitlendiginde elde edilen
+fonksiyondur, o ``sey'' ne ise, o cisim yuzeyinde sicaklik hic
+degismeyecektir. 
+
+Bu cisim bir ellipsoid, bir ellipsoid bir yumurtaya benzeyen, bir elips'in
+alip bir nevi cevrilerek elde edilen bir sekildir. Peki seklin ellipsoid
+oldugunu nereden biliyoruz? Cunku ellipsoid formulu
+
+\[ \frac{x^2}{a^2} +  \frac{y^2}{b^2} + \frac{z^2}{c^2}  = 1  \]
+
+seklinde, ve $x^2 + 2y^2 + 2z^2 = c$ formulunu ustteki forma cevirmek
+mumkun. Iki tarafi $c$'ye boleriz,
+
+\[ \frac{x^2}{c} +  \frac{2y^2}{c} + \frac{2z^2}{c}  = 1  \]
+
+Boylece $1/a^2 = 1/c$ olur, vs.. 
+
+Peki bir ellipsoid'i nasil grafikleriz? Bu noktada sorunun istediginden
+daha ileri gidiyoruz. 
+
+Grafiklerken, mesela $x^2 + 2y^2 + 2z^2 = 10$ icin diyelim, ilk aklimiza
+gelebilecek fikir formulu tekrar organize ederek $z$'yi yanliz birakmak, ve
+$x,y$ kombinasyonlarini bu fonksiyona gecerek sonuclari grafiklemek. 
+
+Buradaki problem $z$ formulu ortaya bir karekok cikartacak, ve bu karekok
+sonucu hem eksi, hem arti olabilir. Daha iyi bir yontem, kutupsal forma
+gecmek, boylece hep arti olacak vektor buyuklugu ve acilar uzerinden bir
+cizim yapmak [1]. Su formule tekrar bakarsak
+
+\[ \underbrace{\frac{x^2}{a^2} +  \frac{y^2}{b^2}}_{w}
+ + \frac{z^2}{c^2}  = 1  \]
+
+bunu
+
+\[ w^2 + \frac{z^2}{c^2}  = 1  \]
+
+olarak gorelim, burada karelerinin toplami '1' olan bir sey var. 
+
+Bu ``seyler'' cos ve sin olabilirler, cunku cos ve sin karelerinin toplami
+1 degerini verir. 
+
+Eger
+
+\[ w = cos \ \phi \]
+
+\[ \frac{z}{c} = sin \ \phi \]
+
+dersek, karelerin toplami ustteki gibi 1 olur. 
+
+Simdi $w$'nin detayina inelim
+
+\[ w^2 = cos^2\phi = \frac{x^2}{a^2} +  \frac{y^2}{b^2}  \]
+
+Esitligin en sagina bakarsak, yine kareler toplami goruyoruz. Ama bu sefer
+karelerin toplami 1 degil, $cos^2\phi$ vermis. Problem degil, karelerin
+icine bir $cos\ \phi$ biz sokarsak, o zaman sonucta istedigimiz bir
+ekstra $cos^2\phi$ kendiliginden gelecek. 
+
+\[ \frac{x}{a} = cos\phi \ cos\theta  \]
+
+\[ \frac{y}{b} = cos\phi \ sin\theta  \]
+
+O zaman
+
+\[ x = a \ cos\phi \ cos\theta  \]
+
+\[ y = b \ cos\phi \ sin\theta  \]
+
+\[ z = c \ sin \ \phi \]
+
+O zaman grafiklemeyi $\phi$, $\theta$ acilarinin $0..\pi$ arasindaki degerlerinin 
+kombinasyonlarini kullanarak rahatca yapabiliriz. Alttaki kodda
+\verb!linspace! ile bu ayriksal degerleri bulunuyor, \verb!outer! ile
+onlarin her turlu kombinasyonla carpimi aliniyor. 
+
+\lstinputlisting[language=Python]{ellipsoid.py}
+
+[1] Thomas Calculus, 11. Baski
+
+
 \end{document}
