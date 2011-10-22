@@ -57,9 +57,129 @@ boyutsuz parcaciklar gibi kabul ederek ODE'ler ile temsil etmek yeterli
 olabilir, ama diger problemlerde daha fazla bagimsiz degisken gerekecegi
 icin ODE yetmez, mesela zaman, cismin 3D uzaydaki boyutlari gibi.
 
+Mesela bir PDE
 
+\[ u = u(x,y) \]
 
+Cogunlukla problem taniminin ilk basinda fonksiyonel iliskiyi hemen
+gostermek iyi olur, mesela ustte bagimsiz degiskenler $x,y$, ve $u$ bu iki
+degiskene bagimli. Devam edelim PDE soyle olsun
 
+\[ \frac{\partial^3 u}{\partial x^3} + 
+cos(y)\frac{\partial u}{\partial y} + 3 = 0
+\]
+
+Bir PDE problemine cogunlukla ek olarak sinir kosullari (boundary condition
+-BC-) ve baslangic kosullari (initial conditions -IC-) eklemek de gerekir. 
+
+Kismi Turev nedir? 
+
+\[ u = u(x_1, x_2,...,x_n) \]
+
+\[ 
+\frac{\partial u}{\partial x_i} = 
+\lim_{\Delta x_i \to 0} 
+\frac{
+u(x_1,..,x_i+\Delta x_i,x_{i+1},...,x_n) - u(x_1,..,x_i,x_{i+1},...,x_n)}
+{\Delta x_i}  \]
+
+Yani bir fonksiyonun kismi turevini almak istedigimiz degisken haricinde
+tum diger degiskenlerinin sabit tutuldugu bir durum. 
+
+Ornek
+
+\[ u = x_1^2 + x_1sin(x_2) \]
+
+\[ 
+\frac{\partial u}{\partial x_1} = 2x_1 + sin(x_2)
+ \]
+
+\[ 
+\frac{\partial u}{\partial x_2} = x_1 cos(x_2)
+ \]
+
+Notasyon
+
+Cogunlukla kismi turevler 3 farkli sekilde gosteriliyor. 
+
+\[ \frac{\partial u}{\partial x} \equiv u_x \equiv \partial_x u \]
+
+Ustte soldaki tanimi gorduk, bazen ortadaki de tercih edilebiliyor, ya da
+bazen en sagdaki. 
+
+PDE Derecesi
+
+Bir PDE'nin derecesi, o denklemdeki kismi turevlerin en yuksek dereceli
+olanin derecesi neyse o'dur.
+
+Mesela
+
+\[ u_{xxx} + u_y = 5 \]
+
+derecesi 3. Ayni zamanda bu lineer ve homojen olmayan (inhomogeneous) bir
+PDE. Bu son iki kavrami birazdan tanimlayacagim. 
+
+Ornek 
+
+\[ (u_{xx})^2 + u_xu_y = u \]
+
+Bu 2. derece. Bu bazi insanlarin kafasini karistiriyor, cunku $u_{xx}$'in
+karesi var. Bu ayni zamanda homojen, ve gayri lineer. Bu dersteki cogu PDE
+lineer olacak. 
+
+Lineer ve gayri lineerlikten bahsetmisken, sunu ekleyelim. 
+
+\includegraphics[height=3cm]{pde_01.png}
+
+Simdi diyelim ki bir girdi (input) fonksiyonu $I(t)$ bir isleme giriyor
+($L$ operatoru) ve cikti (output) olarak $R(t)$ cikiyor. Yani sistem
+
+\[ R = L \ I \]
+
+Bir lineer sistemde eger girdiyi iki ile carparsaniz, cikti da iki katina
+cikar. O zaman kurallar
+
+\begin{enumerate}
+
+   \item $L(\alpha I) = \alpha \ L(I)$, ki $\alpha$ bir sabit.
+
+   \item $L(I_1 + I_2) = L(I_1) + L(I_2)$, ki buna ust uste eklenebilme
+     (superposition) prensibi deniyor. Bu prensibi bu dersteki cogu PDE'yi
+     cozmek icin kullanacagiz. Bir lineer sistem varsa cogu zaman arka
+     planda bir yerlerde ust uste eklenebilme prensibi geziniyordur. 
+
+\end{enumerate}
+
+Diyelim ki PDE'nizi soyle yazdiniz
+
+\[ Lu = f(\vec{x}) \]
+
+Burada $u$ bagimli degisken, $\vec{x}$ bir vektor, $\vec{x} \in \Re ^n$, ve
+bu vektorun icinde birden fazla degisken var, bu degiskenlerin hepsi
+bagimsiz.
+
+\[ 
+\vec{x} = 
+\left(\begin{array}{r}
+x_1,\\
+.. \\
+x_n
+\end{array}\right)
+ \]
+
+Bu denkleme benzer bir diger denklem lineer cebirdeki $A\vec{x} = \vec{b}$
+denklemidir.  PDE sisteminde de cevabini aradigimiz, lineer cebir
+sisteminde ``$A$ ile carpilip $b$ sonucunu verecek $\vec{x}$ hangisidir?''
+sorusuna benzer bir sekilde ``$L$ operatoru uygulanip $f(\vec{x})$
+sonucunu verecek $u$ hangisidir?'' sorusudur.
+
+Bu analojiden devam etmek gerekirse, belli bir noktada $u$'nun icinde
+oldugu ``fonksiyon uzayi'' hakkinda dusunmemiz gerekebilir, $\vec{x}$'in
+icinde oldugu $\Re^n$ uzayi gibi. Lineer cebir durumunda operatorun
+ozelliklerine bakilir, mesela `` $b$'nin icinde oldugu ve $A$ operatoru
+uygulanip hic sonuc alinamayacak uzayin belli kisimlari var
+midir?'' gibi sorularla ugrasilabilir, bunlar $A$'nin ``ulasamadigi
+yerlerdir'' vs. PDE'deki $L$ operatoru icin de benzer sorular sorulabilir. 
 
 
 
