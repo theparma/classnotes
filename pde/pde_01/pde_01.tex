@@ -182,6 +182,128 @@ midir?'' gibi sorularla ugrasilabilir, bunlar $A$'nin ``ulasamadigi
 yerlerdir'' vs. PDE'deki $L$ operatoru icin de benzer sorular sorulabilir. 
 
 Yani lineer cebirle pek cok kavram PDE dunyasina benziyor, orada vektor
-uzayi var, burada fonksiyon uzayi var. 
+uzayi var, burada fonksiyon uzayi var. Yani bir analoji olarak bu
+benzerligi aklimizda tutmamiz faydali. 
+
+Bir operator su sekilde de olabilir
+
+\[ L = L \bigg(
+\frac{\partial }{\partial x_1}, \frac{\partial }{\partial x_2},..,
+u,..
+\bigg)
+ \]
+
+Yani operator kismi turevlere ve hatta $u$'nun kendisine de bagimli
+olabilir. 
+
+Eger elimizde gayri lineer bir PDE var ise, basimiz dertte demektir. Boyle
+bir sistemi cozmek icin cogunlukla sayisal cozumlere basvurmak
+gerekir. Eger lineer ise cozumde bayagi ilerlemek mumkundur. 
+
+Lineerlik
+
+Bir operator ve onun tanimladigi bir ust uste eklenebilme durumu dusunelim
+
+\[ L = L(\alpha_1 u_1 + \alpha_2 u_2) = \alpha_1 Lu_1 + \alpha_2 Lu_2 \]
+
+ki $\alpha_1,\alpha_2$ birer tekil sayidir (scalar), ya reel, ya da
+kompleks. 
+
+Ornek
+
+Birazdan bakacagimiz denklem dalga denklemi. Orada
+
+\[ u_{tt} - c^2u_x = 0 \]
+
+Bu denklemi
+
+\[ Lu = 0 \]
+
+seklinde yazabiliriz ki $L$ soyle tanimli olacaktir
+
+\[ L = \frac{\partial^2}{\partial t^2} - 
+c^2 \frac{\partial ^2}{\partial x^2 = 0}\]
+
+$c$ bir sabittir. 
+
+Simdi diyelim ki su denklemi cozmemiz lazim
+
+\[ L u = f \]
+
+ki
+
+\[ L: V \to V \]
+
+Yani, $L$ bir vektor uzayini bir digerine eslemekte (map), ve yine diyelim
+ki bu uzaylar birer Hilbert Uzayi (bunun anlamina simdi bilmemiz
+gerekmiyor, ileride bu konuya donecegiz, bu kelimeyi soyle bir ortaya atmak
+istedim). 
+
+Yani sordugumuz Hilbert Uzayi $V$'de bir $f$'e esleyecek bir $u$ fonksiyonu
+olup olmadigi. Bu arada tipik bir Hilbert Uzayi mesela kare alip bir sinir
+bolgesinde (boundary domain) entegre edince elde edilen sonlu (finite) bir
+sonuclarin olusturdugu uzay. Yani ``derli toplu'' fonksiyonlar bir anlamda,
+absurt sonuclar vermeyen turden, sonsuzluga dogru patlayip giden turden
+olanlari degil. 
+
+Faraziyeye devam edelim, diyelim ki $V$ icinde bir baz (basis) var. Baz
+nedir? Lineer cebirden hatirlayalim, mesela uc boyutlu Oklidsel (Euclidian)
+uzayi $\Re^3$. 
+
+\includegraphics[height=4cm]{pde_02.png}
+
+\[ 
+\vec{x} = 
+\left[\begin{array}{r}
+1 \\ 0 \\ 0
+\end{array}\right]
+ \]
+
+\[ 
+\vec{y} = 
+\left[\begin{array}{r}
+0 \\ 1 \\ 0
+\end{array}\right]
+ \]
+
+\[ 
+\vec{z} = 
+\left[\begin{array}{r}
+0 \\ 0 \\ 1
+\end{array}\right]
+ \]
+
+\includegraphics[height=4cm]{pde_03.png}
+
+Bu uzaydaki herhangi bir vektor $\vec{r}$ ustteki uc baz vektoru
+kullanilarak parcalarina ayirilabilir, ya da, onlarin bir lineer
+kombinasyonu olarak gosterilebilir. Mesela
+
+\[ \vec{r} = x\vec{x} +  y\vec{y} +  z\vec{z} \]
+
+Bu uc vektorun bu uzay icin bir ``baz olusturdugu'' soylenebilir, cunku bu
+uzaydaki her vektor bu uc vektorun bir kombinasyonu olarak temsil
+edilebilir. Dikkat edelim, iki baz vektor yeterli olmazdi, dort taneye
+gerek yok. Tami tamina uc tane vektor bu uzayin bazini olusturuyor. 
+
+Bu sonlu (finite) miktarda bir uzay, herhangi bir vektoru tanimlamak icin
+sonlu miktarda baz vektoru yeterli. Sonsuz boyutlu bir uzay da olabilirdi,
+o zaman herhangi bir fonksiyonu tanimlamak icin sonsuz tane baz vektoru
+gerekirdi. Mesela Fourier Serilerini dusunelim
+
+\[ u = \sum_{i=1}^{\infty} \alpha_i \phi_i(x) \]
+
+ki baz fonksiyonlar $\bigg\{ \phi_i(x)  \bigg\}_{i=1}^\infty$.
+
+Bu fonksiyonlarin her biri trigonometrik fonksiyonlar olabilir (cos, sin)
+gibi, o zaman seri Fourier Serisi olur. Her halukarda, yukaridaki tanimla
+diyoruz ki belli (unique) $\alpha$ degerleri var ki, o degerleri zaten
+onceden bilinen baz fonksiyonlari ile carpip toplayarak $u$'yu
+olusturabiliyoruz.
+
+
+
+
+
 
 \end{document}
