@@ -134,16 +134,16 @@ Lineer ve gayri lineerlikten bahsetmisken, sunu ekleyelim.
 Simdi diyelim ki bir girdi (input) fonksiyonu $I(t)$ bir isleme giriyor
 ($L$ operatoru) ve cikti (output) olarak $R(t)$ cikiyor. Yani sistem
 
-\[ R = L \ I \]
+\[ R = \mathcal{L} \ I \]
 
 Bir lineer sistemde eger girdiyi iki ile carparsaniz, cikti da iki katina
 cikar. O zaman kurallar
 
 \begin{enumerate}
 
-   \item $L(\alpha I) = \alpha \ L(I)$, ki $\alpha$ bir sabit.
+   \item $\mathcal{L}(\alpha I) = \alpha \ \mathcal{L}(I)$, ki $\alpha$ bir sabit.
 
-   \item $L(I_1 + I_2) = L(I_1) + L(I_2)$, ki buna ust uste eklenebilme
+   \item $\mathcal{L}(I_1 + I_2) = \mathcal{L}(I_1) + \mathcal{L}(I_2)$, ki buna ust uste eklenebilme
      (superposition) prensibi deniyor. Bu prensibi bu dersteki cogu PDE'yi
      cozmek icin kullanacagiz. Bir lineer sistem varsa cogu zaman arka
      planda bir yerlerde ust uste eklenebilme prensibi geziniyordur. 
@@ -152,7 +152,7 @@ cikar. O zaman kurallar
 
 Diyelim ki PDE'nizi soyle yazdiniz
 
-\[ Lu = f(\vec{x}) \]
+\[\mathcal{L}u = f(\vec{x}) \]
 
 Burada $u$ bagimli degisken, $\vec{x}$ bir vektor, $\vec{x} \in \Re ^n$, ve
 bu vektorun icinde birden fazla degisken var, bu degiskenlerin hepsi
@@ -170,7 +170,7 @@ x_n
 Bu denkleme benzer bir diger denklem lineer cebirdeki $A\vec{x} = \vec{b}$
 denklemidir.  PDE sisteminde de cevabini aradigimiz, lineer cebir
 sisteminde ``$A$ ile carpilip $b$ sonucunu verecek $\vec{x}$ hangisidir?''
-sorusuna benzer bir sekilde ``$L$ operatoru uygulanip $f(\vec{x})$
+sorusuna benzer bir sekilde ``$\mathcal{L}$ operatoru uygulanip $f(\vec{x})$
 sonucunu verecek $u$ hangisidir?'' sorusudur.
 
 Bu analojiden devam etmek gerekirse, belli bir noktada $u$'nun icinde
@@ -179,7 +179,7 @@ icinde oldugu $\Re^n$ uzayi gibi. Lineer cebir durumunda operatorun
 ozelliklerine bakilir, mesela `` $b$'nin icinde oldugu ve $A$ operatoru
 uygulanip hic sonuc alinamayacak uzayin belli kisimlari var
 midir?'' gibi sorularla ugrasilabilir, bunlar $A$'nin ``ulasamadigi
-yerlerdir'' vs. PDE'deki $L$ operatoru icin de benzer sorular sorulabilir. 
+yerlerdir'' vs. PDE'deki $\mathcal{L}$ operatoru icin de benzer sorular sorulabilir. 
 
 Yani lineer cebirle pek cok kavram PDE dunyasina benziyor, orada vektor
 uzayi var, burada fonksiyon uzayi var. Yani bir analoji olarak bu
@@ -187,7 +187,7 @@ benzerligi aklimizda tutmamiz faydali.
 
 Bir operator su sekilde de olabilir
 
-\[ L = L \bigg(
+\[ \mathcal{L} = \mathcal{L} \bigg(
 \frac{\partial }{\partial x_1}, \frac{\partial }{\partial x_2},..,
 u,..
 \bigg)
@@ -204,10 +204,10 @@ Lineerlik
 
 Bir operator ve onun tanimladigi bir ust uste eklenebilme durumu dusunelim
 
-\[ L = L(\alpha_1 u_1 + \alpha_2 u_2) = \alpha_1 Lu_1 + \alpha_2 Lu_2 \]
+\[ \mathcal{L} = \mathcal{L}(\alpha_1 u_1 + \alpha_2 u_2) = 
+\alpha_1 \mathcal{L}u_1 + \alpha_2 \mathcal{L}u_2 \]
 
-ki $\alpha_1,\alpha_2$ birer tekil sayidir (scalar), ya reel, ya da
-kompleks. 
+ki $\alpha_1,\alpha_2$ birer tekil sayidir (scalar), ya reel, ya da kompleks. 
 
 Ornek
 
@@ -217,24 +217,24 @@ Birazdan bakacagimiz denklem dalga denklemi. Orada
 
 Bu denklemi
 
-\[ Lu = 0 \]
+\[ \mathcal{L}u = 0 \]
 
-seklinde yazabiliriz ki $L$ soyle tanimli olacaktir
+seklinde yazabiliriz ki $\mathcal{L}$ soyle tanimli olacaktir
 
-\[ L = \frac{\partial^2}{\partial t^2} - 
+\[ \mathcal{L} = \frac{\partial^2}{\partial t^2} - 
 c^2 \frac{\partial ^2}{\partial x^2 = 0}\]
 
 $c$ bir sabittir. 
 
 Simdi diyelim ki su denklemi cozmemiz lazim
 
-\[ L u = f \]
+\[\mathcal{L} u = f \]
 
 ki
 
-\[ L: V \to V \]
+\[ \mathcal{L}: V \to V \]
 
-Yani, $L$ bir vektor uzayini bir digerine eslemekte (map), ve yine diyelim
+Yani, $\mathcal{L}$ bir vektor uzayini bir digerine eslemekte (map), ve yine diyelim
 ki bu uzaylar birer Hilbert Uzayi (bunun anlamina simdi bilmemiz
 gerekmiyor, ileride bu konuya donecegiz, bu kelimeyi soyle bir ortaya atmak
 istedim). 
@@ -300,6 +300,75 @@ gibi, o zaman seri Fourier Serisi olur. Her halukarda, yukaridaki tanimla
 diyoruz ki belli (unique) $\alpha$ degerleri var ki, o degerleri zaten
 onceden bilinen baz fonksiyonlari ile carpip toplayarak $u$'yu
 olusturabiliyoruz.
+
+Eger lineer operatorumuzu hatirlarsak
+
+\[ \mathcal{L} = \mathcal{L}(\alpha_1 u_1 + \alpha_2 u_2) = 
+\alpha_1 Lu_1 + \alpha_2 Lu_2 \]
+
+Bu operator herhangi iki katsayiyi kullaniyordu, fakat iki ustteki sonsuz
+tane toplami da icerecek sekilde genisletilebilir, ve baz kavrami ile ust
+uste eklenebilme kavraminin arasindaki alakayi gosterir. 
+
+Diyelim ki $\mathcal{L}$'nin her baz vektorunu nasil esledigini biliyoruz, 
+
+\[ \mathcal{L} \phi_i = -\lambda_i \phi_i \]
+
+Ustteki ifade $\phi$'in $L$'in ozfonksiyonu oldugunu soyluyor ayni
+zamanda. Eger alttaki acilimi yaparsak, ki bunu yapabiliriz cunku
+$\phi$'ler bazdirlar, 
+
+\[ \mathcal{L}u = \mathcal{L} \bigg( \sum_i \alpha_i \phi_i(x) \bigg) =
+\sum_i \alpha_i \bigg( \mathcal{L} \phi_i \bigg)
+ \]
+
+\[ = -\sum_i \alpha_i \lambda_i \phi_i  \]
+
+Bir operatorun herhangi bir baz uzerinde nasil islem yaptigini anladigimiz
+anda, o zaman $\mathcal{L}$'in herhangi bir $u$ fonksiyonu uzerinde ne etki yaptigini
+bilebiliriz. Diger bir deyisle bir uzayda sonsuz tane fonksiyon olabilir,
+ama biz operatorumuzun bazlara nasil etki ettigini biliyorsak, o bazlarla
+olusturulan tum fonksiyonlara nasil etki ettigini de biliyoruz demektir. 
+
+Tekrar belirtelim, bu sadece $\mathcal{L}$ lineer bir operator oldugu zaman mumkun. 
+
+Ornek
+
+Klasik Burger denklemi
+
+\[ u_t + u u_x = v u_{xx} \]
+
+Denklemi 
+
+\[ \mathcal{L}u = 0 \]
+
+olarak yazabiliriz, ki 
+
+\[ \mathcal{L} = \frac{\partial }{\partial t} + 
+u \frac{\partial }{\partial x} - v\frac{\partial ^2}{\partial x^2}
+\]
+
+Bu gayri lineer
+
+Ornek
+
+\[ u_{xx} + u_{yy} + sin(u) \]
+
+\[ \mathcal{L} u = 0 \]
+
+\[ \mathcal{L} = \partial_{xx} + \partial_{yy} + sin(\cdot) \]
+
+Usttteki ilginc bir durum sinus fonksiyonun da ici bos halde, operator
+olarak kullanilmis olmasi. Operator taniminda bazen boyle nokta konuldugu
+oluyor, ki neyin uzerinde operasyon yapildigi anlasilsin diye, mesela
+ustteki soyle de gosteriliyor bazen
+
+\[ \mathcal{L} = \partial\cdot_{xx} + \partial\cdot_{yy} + sin(\cdot) \]
+
+
+
+
+
 
 
 
