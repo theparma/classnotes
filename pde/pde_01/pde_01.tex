@@ -524,6 +524,50 @@ sonucunu saglardi, diger secenekleri elemis olurdu. Bu ornegi sinir
 kosullarinin onemini belirtmek icin sectik, bu kosullar ana denklemin
 kendisi kadar onemli. 
 
+Bir nokta daha:
+
+Soyle bir ODE dusunelim
+
+\[ \frac{du}{dt} = 1 \]
+
+Entegre edince genel cozum
+
+\[ u(t) = t + c_1 \]
+
+Fakat PDE icin
+
+\[ u = u(x,y) \]
+
+\[ u_x = xy \]
+
+Burada $y$ bazli bir turev yok, basit bir PDE, cozmesi kolay, fakat
+unutmayin, entegre edince
+
+\[ u = \frac{1}{2}x^2y + [..] \]
+
+Noktalarin oldugu yere ne gelecek? Bir sayi sabiti degil bir fonksiyon
+gelecek. 
+
+\[ u = \frac{1}{2}x^2y + g(y) \]
+
+cunku $u$, $y$'nin bir fonksiyonu, o zaman elimize gecen $y$'nin herhangi
+bir fonksiyonu olacak, ki bu fonksiyonun degeri sinir kosullari uzerinden
+tanimlanmis olmali. Bunu ozellikle vurgulamak istedim cunku insanlar bu
+detayi unutabiliyor.
+
+Sinir kosulu nasil olabilir? Mesela $u(\alpha,y) = f(y)$ seklinde
+olabilir. Bu kosulu yerine sokunca
+
+\[ \frac{1}{2}\alpha^2 y + g(y) = f(y) \]
+
+Bu bize $g(y)$'in ne oldugunu soyler
+
+\[ g(y)  = f(y) - \frac{1}{2}\alpha^2 y \]
+
+ve bu ornek icin nihai cozum
+
+\[ u(x,y) = \frac{1}{2}x^2y + f - \frac{1}{2}\alpha^2 y \]
+
 
 
 
