@@ -365,6 +365,68 @@ ustteki soyle de gosteriliyor bazen
 
 \[ \mathcal{L} = \partial\cdot_{xx} + \partial\cdot_{yy} + sin(\cdot) \]
 
+Bu da gayri lineer cunku sin fonksiyonu lineer degil, yani
+
+\[ sin(u_1 + u_2) \ne sin(u_1) + sin(u_2) \]
+
+Lineerlik uzerinde cok duruyoruz cunku diferansiyel denklemimiz hakkinda
+bilmemiz gereken en onemli bilgilerden / ipuclarindan biri bu, cunku
+denklemimizin lineer ya da gayri lineer olmasi, bizi cok farkli cozum
+teknikleri kullanmaya itecek.
+
+Bir diger onemli terim homojen (homogeneous), homojen olmayan
+(inhomogeneous) kavrami. 
+
+Homojenlik
+
+Eger $u=0$ bir cozum ise PDE homojendir. 
+
+Yani $\mathcal{L} u = f(\vec{x})$ denklem taniminda eger $f(\vec{x})=0$ ise PDE homojendir. 
+
+Ornek
+
+\[ u_{xx} + u_y^2 = xu \]
+
+Denklem 2. derece, gayri lineer cunku bir kare var, ve homojen cunku
+$u=0$'in bir cozum oldugunu gorebiliyoruz. 
+
+Ornek
+
+\[ u_x^2 + u_y = 6y sin\bigg(\frac{x^3}{5}\bigg) \]
+
+PDE 1. derece, gayri lineer, ve homojen degil. 
+
+Soru
+
+Bagimsiz degiskenlere bagli bir lineer operator olabilir mi? 
+
+Cevap 
+
+Evet. Mesela $u=u(x,y)$, ve denklem $xu_x + u_y = u$. 
+
+Bu homojen bir denklem, ve $\mathcal{L} u = 0$ olarak gosterilebilen bir
+denklem, ve 
+
+\[ \mathcal{L} = x\frac{\partial }{\partial x} + 
+\frac{\partial }{\partial y} - 1
+\]
+
+ve goruldugu uzere operator taniminda bagimsiz degisken $x$ var.
+
+Bu lineer bir operator. Lineerligin bagli oldugu sey bagimli degiskenler,
+bagimsizlar degil, mesela ustteki $x$, $x^3$ gibi bir sey olabilirdi ama
+problem hala lineer olurdu. 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
