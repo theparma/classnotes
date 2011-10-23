@@ -589,18 +589,48 @@ yegane fizik bilgisi)
 
 Formul ne diyor? Kutle carpi ivme esittir kuvvet. Gayet basit.
 
+Diyelim ki elimizde $N$ tane tane parcacik var, $i=1,..,N$, ve bu
+parcaciklar birbirleriyle etkilesim halindeler, aralarinda bir tur cekim
+var belki, ya da baska bir kuvvet. O zaman her parcacik icin ayri ayri
+hareket kanunu isleyecek. Ve $i$'inci parcacik uzerinde bir kuvvet var, ve
+bu kuvvet sistemdeki tum diger degiskenlerle bir sekilde bagimli. $x$ tabii
+ki pozisyon degiskeni. O zaman
+
+\[ m_i \frac{d^2x_i}{dt^2} = F_i(\vec{x}) \]
+
+Dikkat edersek, $F$ fonksiyonuna giren parametre tum parcaciklar, yani o
+parcacigin hissettigi kuvvet bir sekilde tum diger parcaciklarla alakali. 
+
+Baslangic Sarti
+
+$i$'inci parcacigin baslangic konumu
+
+\[ x_i(0) = \hat{x}_i \]
+
+Tipik olarak baslangic hizi da verilir
+
+\[ \frac{dx_i}{dt}(0) = \hat{v}_i \]
+
+Ustteki bir baslangic deger problemi (initial value problem). Biz bu derste
+PDE bazinda sinir degerli problemlerle ugrasacagiz. 
+
+Bu tur baslangic deger problemleri iyidir, cunku, mesela bu ornekte
+2. derece bir diferansiyel denklem var elimizde, ve bagimli degisken $x$
+var, ve bize verilen kosulu anlamak icin alttaki resme bakalim
 
 
+\includegraphics[height=3cm]{1_06.png}
 
+Bize verilenler, $t=0$ aninda $x_i$ noktasinin oldugu yere ek olarak
+(soldaki nokta), bir de o noktadaki egim bilgisi. Bu tur bilgi verilince,
+parcacigin hangi yone gitmeye meyilli olacagini da gormus oluyoruz. Sanki
+bir top ateslenmis, ve topun ates ettigi anda nerede olduguna ek olarak
+topun namlusunun gosterdigi yer de bize soyleniyor.
 
-
-
-
-
-
-
-
-
+Bu iyi huylu bir problem. Sinir degerli denklemler cok daha karmasik
+olabiliyor. Bu arada ``sinir kosullu'' kelimesindeki ``sinir'' cogunlukla
+bir fiziksel seye tekabul eder, mesela bir ip vardir, ve ipin ``sonunda''
+yani sinirlarinda degerin ne olmasi gerektigi sabitlenir. 
 
 
 
