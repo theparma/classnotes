@@ -417,6 +417,38 @@ Bu lineer bir operator. Lineerligin bagli oldugu sey bagimli degiskenler,
 bagimsizlar degil, mesela ustteki $x$, $x^3$ gibi bir sey olabilirdi ama
 problem hala lineer olurdu. 
 
+Sinir kosullari da bu baglamda cok onemli, mesela diyelim ki tanimi lineer
+olan bir PDE var, ama problem tanimindaki sinir kosullari eger fonksiyonun
+gayri lineer bir kombinasyonunu iceriyorsa o zaman problemin tamami gayri
+lineer hale gelir. 
+
+Biraz formel olarak dusunursek, mesela tek boyutlu isi denklemi
+
+\[ u_t = k u_{xx} \]
+
+ki $x$ mesafe belirten degisken, $t$ zaman, 
+
+\includegraphics[height=2cm]{pde_04.png}
+
+Bu denklem ustteki gibi bir borudaki isinin dagilimini, akisini gosteriyor
+olsun. $u|_{x=L}$ ile gosterilen bir sinir sarti, yani $L$ uzunlugundaki
+borunun en ucunda (sagindaki) olmasi sart olan isi seviyesi. Mesela bu sart
+$u|_{x=L} = T_2$ olsun, ki $T_2$ bir tekil sayi, $100^o$ , $200^o$ gibi. Simdi homojenlige
+ne oldu? Ana denklem homojen, ama homojenlik testini sinir sartina uyguladigimiz
+zaman $0 = T_2$ gibi bir sonuc aliyoruz, ki bu absurt bir sonuc demek ki sinir
+sarti homojen degil. O zaman bu problemin tamami homojen olamaz. 
+
+Aslinda formel olarak sinir sartlarini alip 
+
+\[ \mathcal{L}  = \frac{\partial }{\partial t} - k \partial_{xx}\]
+
+operator tanimina bir sekilde dahil etmenin yollari var, ama biz bunlar cok
+ileri seviye teknikler, bu derste bu teknikleri gormeyecegiz. 
+
+
+
+
+
 
 
 
