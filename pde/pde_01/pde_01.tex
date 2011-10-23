@@ -453,21 +453,76 @@ Aslinda formel olarak sinir sartlarini alip
 operator tanimina bir sekilde dahil etmenin yollari var, ama biz bunlar cok
 ileri seviye teknikler, bu derste bu teknikleri gormeyecegiz. 
 
+Baslangic Sartlari
 
+Mesela yayilma (diffusion) denklemi $u(x,t)$ icin $u(x,0) = f(x)$, yani
+baslangic aninda isi dagiliminin tum boru boyunca hangi seviyelerde
+oldugunun (burada bu dagilim $f(x)$ ) belirtilmesi , baslangic sartini
+tanimlamak demektir.
 
+Genel bir kural PDE'deki turev sayisi kadar sart tanimlanmasi
+gerektigidir. Mesela iki zaman turevi var ise, iki tane kosul gerekir,
+mesela $t=0$ anindaki bir kosul, arti zamana goreve turevin $t=0$ anindaki
+degeri, vs. 
 
+Soyle dusunebiliriz, $u_{xx}$'in oldugu bir denklemde $u$ elde etmek icin
+iki kere entegre edilir, ve bunun sonucu olarak iki tane entegrasyon sabiti
+ortaya cikar, ki bu degerler herhangi bir sayi olabilir. O iki sabiti
+hesaplamak icin iki tane kosul gerekecektir. 
 
+Genel kurali daha somutlastirirsak, ``her bagimsiz degisken icin gereken
+sinir kosulu, o bagimsiz degiskenin derecesine esittir''. Tabii bu genel
+bir kural, bazen gercek dunyadaki fizik problemlerinde bu gecerli
+olmayabiliyor, bir problem icin duzgun sinir kosullari bulmak basli basina
+bir sanat denebilir aslinda. 
 
+Ornek
 
+Laplace denklemi
 
+\[ \nabla^2 u \equiv \frac{\partial ^2u}{\partial x^2} + 
+\frac{\partial ^2u}{\partial y^2}  +
+\frac{\partial ^2u}{\partial z^2} 
+\]
 
+ki $\nabla^2$ Laplacian operatoru olarak bilinir. 
 
+Ustteki turden bir denklem hic kaynak akim verilmeyen sonsuz uzayda
+elektrik potansiyeli alanini temsil ediyor olabilir. 
 
+Bu denklemin bir cozumun (ki sinir sartlarina dikkat edelim) su sekilde
+oldugunu gostermek kolaydir:
 
+\[ u(\vec{x}) = \frac{1}{\sqrt{x^2+y^2+z^2}} \]
 
+Bu Potansiyel Teori'sinde tipik bir problem, bir alan degiskeni var, ve
+orijinden uzaklastikca bu degisken azaliyor, bu azalma $1 / $ uzakligin
+karesi oraninda. 
 
+Bu ``bir'' cozum, fakat bir suru 2. derece turev var ortalikta, o zaman
+$x,y,z$'nin her turlu lineer fonksiyonu de aslinda bir cozumdur. Mesela
 
+\[ u(\vec{x}) = \alpha x + \beta y + \gamma z + \delta \]
 
+formulu de bir cozum olabilir. Niye? Herhangi bir lineer fonksiyonun iki
+kere turevini alirsak o fonksiyon yokolur. 
+
+Demek ki bu problemin tanimi eksik, sinir sartlari da tanimlanmasi gerekli,
+aksi takdirde elde edilen sonuclar ozgun olmayacak. Envai turden cozum
+mumkun. 
+
+Bu problem icin tipik bir sinir kosulu $\lim_{|\vec{x}|\to \infty} u = 0$
+ifadesidir. Elektrik alan ornegine donersek, elektrik alani sonsuzluga
+giderken sifira dusuyor demis oluyoruz. Bir sabite gidiyor da diyebilirdik,
+o da islerdi. 
+
+O tur bir sart 
+
+\[ u(\vec{x}) = \frac{1}{\sqrt{x^2+y^2+z^2}} \]
+
+sonucunu saglardi, diger secenekleri elemis olurdu. Bu ornegi sinir
+kosullarinin onemini belirtmek icin sectik, bu kosullar ana denklemin
+kendisi kadar onemli. 
 
 
 
