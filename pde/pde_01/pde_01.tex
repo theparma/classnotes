@@ -457,7 +457,7 @@ Baslangic Sartlari
 
 Mesela yayilma (diffusion) denklemi $u(x,t)$ icin $u(x,0) = f(x)$, yani
 baslangic aninda isi dagiliminin tum boru boyunca hangi seviyelerde
-oldugunun (burada bu dagilim $f(x)$ ) belirtilmesi , baslangic sartini
+oldugunun (burada bu dagilim $f(x)$) belirtilmesi , baslangic sartini
 tanimlamak demektir.
 
 Genel bir kural PDE'deki turev sayisi kadar sart tanimlanmasi
@@ -650,7 +650,7 @@ mesafeyi sabit, ve ayni olarak aldik. Benzer sekilde
 
 Yani tum parcaciklar ayni kutleye sahip. 
 
-Simdi Newton Kanununu parcaciklara uygulayalim. 
+Simdi Newton Kanununu parcaciklara uygulayalim [1]. 
 
 \[ m \frac{d^2Y_i}{dt^2} = 
 \tau \bigg( \frac{Y_{i+1}- Y_i}{\Delta x} \bigg) -
@@ -661,37 +661,46 @@ Bununla ne demis olduk? $i$'inci parcacigin hissettigi cekimin, o
 parcacigin solunda bagli oldugu diger parcacikla baginin ipteki egimi ile
 orantili oldugunu soylemis olduk.
 
-\includegraphics[height=3cm]{1_08.png}
+$\tau$ her tel icin farkli olacak bir gerginlik sabiti, ama belli bir
+telde, her parcacik icin ayni. 
 
-$\tau$ her tel icin farkli olabilecek bir gerginlik sabiti. 
+\includegraphics[height=3cm]{1_08.png}
 
 Ustteki formul aslinda yerel turevin ``ucuz'' bir yaklasiksallamasi. 
 
+Gerginlikle kurulan alaka akla yatkin olmali, dusunursek ipte parcacik ne
+kadar yuksekte olursa uzerinde o kadar guc hissederdi, yanindaki
+parcaciklar(lar) tarafindan asagi cekilirdi, ne kadar altta ise o kadar az
+guc hissederdi. Tabii ``diger parcaciklara gore'' yukarida ya da asagida
+olmanin olcusu de iki parcacik arasindaki ipin egimi. 
+
 \includegraphics[height=4cm]{1_09.png}
+
+Diger bir acidan yaklasirsak
 
 \[ F_y \equiv \tau sin\theta \]
 
-Sadece sin kullandik cunku daha once belirttigimiz gibi, sadece dikey
-hareketlere bakiyoruz, yatay hareketlerle ilgilenmiyoruz (o yuzden cos
-yok). 
+da diyebilirdik. Sadece sin kullandik cunku daha once belirttigimiz gibi,
+sadece dikey hareketlere bakiyoruz, yatay hareketlerle ilgilenmiyoruz (o
+yuzden cos yok).
 
 Bir yaklasiksallama yapabiliriz simdi, eger $\theta << 1$ ise, yani aci 1
 sayisindan cok kucuk ise, $sin\theta \approx tan\theta$ sayilabilir, bu
-sonuc Taylor Serileri ile alakali. $tan$ fonksiyonu, $sin / cos$ oldugu
-icin ve sifira yakin degerlerde bolen hep 1'e yakin olacagi icin, $tan$ bir
-nevi $sin$ de sayilabilir. 
-
-Bu problemde $tan\theta$ nasil hesaplanir?
+sonuc Taylor Serileri ile alakali ve $tan$ fonksiyonu, $sin / cos$ oldugu
+icin ve sifira yakin degerlerde bolen $\theta$'nin sifira yakinligindan cos
+uzerinden hep 1'e yakin olacagi icin, $tan$ bir nevi $sin$
+sayilabilir. Peki bu problemde $tan\theta$ nasil hesaplanir?
 
 \[  \tan\theta = \frac{\Delta y}{\Delta x} \]
 
 \[ = \frac{Y_{1+1}-Y_i}{\Delta x} \]
 
-Bu model bir ``en yakin komsu'' modeli, her parcacik yakinindaki
+Yani yine ayni yere gelmis olduk. 
+
+Bu model bir ``en yakin komsu'' modelidir, her parcacik yakinindaki
 parcaciktan etkileniyor. 
 
-Simdi bir numara yapalim ve ana formulu su sekilde tekrar organize ederek
-yazalim
+Ana formulu su sekilde tekrar organize ederek yazalim
 
 \[ \frac{d^2Y_i}{dt^2} = 
 \tau \frac{\Delta x}{m} \bigg[
@@ -699,8 +708,8 @@ yazalim
 \bigg]
 \]
 
-Koseli parantez icindeki ifade 2. turevin ayriksal formdaki
-yaklasiksallamasi bu arada. 
+Koseli parantez icindeki ifade Calculus'ta 2. turevin ayriksal formdaki
+yaklasiksallamasi degil mi?
 
 Ayriksal modelimiz boyle. Simdi sureklilik limitine gecmek istiyorsak,
 mesela sonsuz sayida parcacik oldugu bir duruma gecmek isteyebiliriz,
@@ -744,7 +753,7 @@ Ayni seyi $Y_{i-1}$ icin yapabiliriz
 
 Not: Esitligin sagindaki eksi, arti isaretlerinin nereden geldigini merak
 ediyorsak, Hesapsal Bilim 1 Ders 2 notlarinda $u(x-h)$ acilimina
-bakilabilir. 
+bakabiliriz.
 
 Son iki formulu toplarsak
 
@@ -764,13 +773,12 @@ O zaman ana formulde
 \]
 
 Yani $\Delta x \to 0$ iken koseli parantez ici $\partial ^2y/\partial
-x^2$'e gider.
+x^2$'e gider. Niye kismi tureve gider? Cunku ayriksal degisimi sadece $x$
+uzerinde yaptik, fakat $Y$ icinde ayni zamanda $t$ de var. Notasyon olarak
+ODE dili kullanmamiz kafa karistirmasin, goruntu basit olsun diye bunu
+yaptik. Ama degisimin $x$ te olmasi sebebiyle turev kismi turev oldu. 
 
-Simdiye kadar yazdiklarimda ODE dili kullandim, goruntu basit olsun diye,
-fakat unutmayalim, $Y$ ayni zamanda $t$'ye de bagli, o yuzden ustte kismi
-turev kullandik. 
-
-Bu sistemin sureklilik limiti, $\Delta x \to 0$ iken
+O zaman bu sistemin sureklilik limiti, $\Delta x \to 0$ iken
 
 \[ 
 \frac{\partial ^2Y}{\partial x^2} = 
@@ -782,8 +790,7 @@ cogunlukla
 
 \[ c^2 = \frac{\tau}{\rho} \]
 
-seklinde yazarlar ve $c$ boylece ``dalga hizi'' olarak kullanilabilir
-(hakikaten de aynen ona esittir). 
+seklinde yazarlar ve $c$ boylece ``dalga hizi'' olarak kullanilabilir. 
 
 Eger teli bir noktasinda titrettigimiz dusunursek, ve telin sonlu degil
 sonsuz oldugunu dusunelim, o zaman ``hareket eden dalgalar (traveling
@@ -986,6 +993,20 @@ Bu ise yarar
 
 Bir dahaki derste $\eta$'yi nasil hesaplayacagimizi gorecegiz. 
 
+---
+
+[1] Diger bir acidan bakarsak, mesela matematikci David Mumford
+turetirken ($i$ yerine $k$ kullanmis)
+
+\includegraphics[height=3cm]{1_15.png}
+
+\[ 
+\tau \bigg( \frac{Y_{i+1}- Y_i}{\Delta x} \bigg) +
+\tau \bigg( \frac{Y_{i-1}- Y_{i}}{\Delta x} \bigg) 
+\]
+
+kullanmis. Yani bir parcacigin uzerindeki kuvvet sagindaki ve solundaki
+kuvvetlerin ``toplami'' olarak goruluyor, bu formul de ayni kapiya cikiyor.
 
 
 \end{document}
