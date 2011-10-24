@@ -859,19 +859,128 @@ Bir kordinat sistemi nedir?
 
 \includegraphics[height=4cm]{1_12.png}
 
-\includegraphics[height=4cm]{1_13.png}
+Diyelim ki oyle bir fonksiyon kumesi var ki, onlar uzerinden PDE'lerimizi
+degisik bir kordinat sisteminde temsil etmemiz mumkun olacak. 
+
+\includegraphics[height=2cm]{1_13.png}
+
+$\xi$ ve $\eta$'yi kesit egrileri (level curves) uzerinden incelemek
+mumkundur. Bu fonksiyonlari belli sabitlere esitleyip, durumlarina
+bakabiliriz, sonra sabitleri degistiririz, bir daha bakariz, vs. 
+
+\includegraphics[height=6cm]{1_14.png}
+
+Ustteki resimde mesela, saga yatik tum egriler, her biri degisik bir sabite
+(Ingilizce const diye yazilmis) esit olacak sekildeki $\xi$ egrileri
+olabilir. Sola yatik $\eta$ cizgileri de olabilir. Ortadaki nokta iki
+onceki resimdeki bir noktanin bu yeni kordinata eslenmis bir nokta mesela.
+
+Gerekliliklerimiz
+
+Esleme, transformasyon bire bir (one-to-one) olmali. Ilk kordinat
+sistemindeki her nokta, diger kordinat sistemindeki tek bir noktaya
+esleniyor olmali. 
+
+Jacobian'i yokolmayan (non-vanishing) olmali. 
+
+\[ 
+\left(\begin{array}{rr}
+\xi & \eta \\
+x & y
+\end{array}\right) = 
+\left|\begin{array}{rr}
+\xi_x & \xi_y \\
+\eta_x & \eta_y
+\end{array}\right| =
+\xi_x \eta_y - \xi_y \eta_x \ne 0
+ \]
+
+Ustteki ifade Calculus'un Dolayli Fonksiyon Teorisi (Implicit Function
+Theorem of Calculus) ile alakali. Bu teorinin yerel baglamda niye birebir
+esleme yarattigini merak ediyorsaniz Calculus kaynaklarina
+danisabilirsiniz. 
+
+Amac: Sunu 
+
+\[ au_x + bu_y + cu = f \]
+
+transform et ve suna cevir
+
+\[ W_\xi + h(\xi, \eta)W = R(\xi,\eta)\]
 
 
+\[ W(\xi,\eta) \equiv u \bigg( x(\xi,\eta),y(\xi,\eta) \bigg) \]
 
+Birebir transformasyon istemistik, o zaman esleme geriye cevirilebilir
+(invertible) de olmali, yani istersek $x,y$ degiskenlerini $\xi,\eta$
+cercevesinde temsil edebiliyor olmamiz lazim. 
 
+Dikkat: $W_\eta$ yoktur, bu sayede iki ustteki formul 1. derece ODE haline
+gelir, entegre edici faktor kullanip entegre edip Cauchy Verisini
+uygulayarak bu problemi cozebilirsiniz. Analitik olarak biraz karmasikliga
+sebep verebilir, ama bu en azindan mumkun bir stratejidir. 
 
+Simdi sira transformasyonu bulmaya geldi. $x,y$ degiskenlerini $\xi,\eta$
+cercevesinde temsil edelim. Zincirleme Kanununu kullanalim. 
 
+\[ \frac{\partial }{\partial x}u \equiv
+\frac{\partial }{\partial x}W(\xi(x,y),\eta(x,y)) =
+W_\xi\eta_x + W_\eta\eta_x 
+ \]
 
+\[ \frac{\partial }{\partial y}u =
+W_\xi\eta_y + W_\eta\eta_y
+ \]
 
+Bunu orijinal denkleme sokalim
 
+\[ 
+a(\xi,\eta) \bigg[W_\xi \eta_x + W_\eta\eta_x \bigg] +
+b(\xi,\eta) \bigg[W_\xi \eta_y + W_\eta\eta_y  \bigg] + 
+c(\xi,\eta)W = f(\xi,\eta)
+ \]
 
+Tekrar duzenleyelim
 
+\[ = 
+\bigg[ a\xi_x + b\xi_y \bigg] W_\xi + 
+\bigg[ a\eta_x + b\eta_y \bigg] W_\eta +
+cW = f
+ \]
 
+Soyle sec
+
+1.
+
+\[ a \eta_x + b \eta_y = 0 \]
+
+\[ \Rightarrow \frac{\eta_x}{\eta_y} = -\frac{b(x,y)}{a(x,y)}\]
+
+2. 
+
+\[ \xi = x \]
+
+Boylece 
+
+\[ h = \frac{c}{a} \]
+
+\[ R = \frac{f}{a} \]
+
+elde edilir. 
+
+Unutmayalim Jacobian sartini tatmin etmemiz lazim. 
+
+Farz edelim 
+
+\[ \eta_y \ne 0 \]
+
+Bu ise yarar
+
+\[ J = \xi_x\eta_y - \cancelto{0}{\xi_y}\eta_y \]
+
+\[ J = \eta_y \ne 0 \]
+
+Bir dahaki derste $\eta$'yi nasil hesaplayacagimizi gorecegiz. 
 
 
 
