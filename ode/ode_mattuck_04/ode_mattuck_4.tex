@@ -398,11 +398,98 @@ $x_p$ bulunuyor. Sonra su kurala siginilarak
 
 genel cozum o sekilde elde edilebiliyor. 
 
+Entegral egrileri genel cozumun grafikleridir. Her turlu $C$ olasiligi icin
+cizilmis egrilerdir onlar. 
 
+Ornek
 
+\[ \dot{x} + tx = (1+t)e^t \]
 
+Alakali homojen denklem 
 
+\[ \dot{x} + tx = 0\]
 
+Ayirilabilir bir denklem
+
+\[ \frac{dx}{dt} + tx = 0 \]
+
+\[ \frac{dx}{dt} = - tx  \]
+
+\[ \frac{dx}{x} = -tx \]
+
+\[ \int \frac{dx}{x} = \int -tx \]
+
+\[ ln |x| = -t^2 / 2 + C \]
+
+\[ x_h = e^{-t^2/2} \]
+
+$C$ sabiti de var aslinda ama homojen cozum oldugu icin sabiti dahil
+etmiyoruz, nasil olsa $x = x_p + cx_h$ tanimindan sabit dahil oluyor.
+
+Simdi ozel cozumu $y_p$'yi nasil buluruz? Burada kullanilan tekniklerden
+biri, $vx_h$, $v(t)$ yani $t$'nin bir fonksiyonu, seklinde cozumu homojen
+cozumden ``uretebilecegimiz''. Bu ugrastigimiz turden lineer ODE'ler icin
+hakikaten mumkun. $x_p$ bir sekilde bulunuyor demistik, iste sekillerden
+biri bu. 
+
+Teorisi:
+
+$x=vx_h$ formulunu 
+
+\[ x' + p(t)x = q(t) \]
+ 
+yani standart forma sokuyoruz, 
+
+\[ \dot{v}x_h + v\dot{x_h} + pvx_h = q \]
+
+Ikinci ve ucuncu terim toplaninca sifir olur. Degil mi? Cunku $x_h$ homojen
+denkleminin cozumu, o denklem de
+
+\[ x' + p(t)x = 0 \]
+ 
+seklinde. O zaman
+
+\[ v\dot{x_h} + pvx_h = v(\dot{x_h} + px_h) = v \cdot 0 = 0 \]
+
+Geriye kalan 
+
+\[ \dot{v}x_h  = q \]
+
+\[ \dot{v} = x_h^{-1} q \]
+
+Direk entegrasyon ile $v$'yi buluruz, ozel cozumu temsil etmesi icin $v_p$
+diyelim
+
+\[ v_p = \int x_h^{-1} q dt\]
+
+Yani 
+
+\[ x_p = v_p x_h = x_h \int x_h^{-1} \ q \ dt \]
+
+Ornegimize donersek
+
+\[ x_h = e^{-t^2/2} \]
+ 
+bulmustuk, o zaman 
+
+\[ x_p =  e^{-t^2/2} \int e^{t^2/2} (1+t)e^t dt\]
+
+Entegrali ayri olarak
+
+\[ \int e^{t^2/2} (1+t)e^t dt  = 
+\frac{e^{t+ t^2/2}}{(1+t)}{(1+t)} = 
+e^{t+ t^2/2}
+\]
+
+\[ x_p =  e^{-t^2/2} e^{t+ t^2/2} \]
+
+\[ x_p = e^t \]
+
+Genel cozum 
+
+\[ x = x_p + cx_h \]
+
+\[ x = e^t + ce^{-t^2/2}  \]
 
 
 
