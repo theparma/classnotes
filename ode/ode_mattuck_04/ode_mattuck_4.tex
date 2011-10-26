@@ -292,6 +292,19 @@ Ustteki form kutupsal (polar) kordinatlarin formuna benziyor. Hakikaten:
 
 Ekler
 
+Not: Kolay Sin ve Cos Hesabi
+
+\includegraphics[height=2cm]{4_3.png}
+
+45, 30, 60 gibi belli bazi acilar icin cabuk sin ve cos hesabi soyle
+yapilabilir. 30 icin ustteki gibi esit kenarli ucgen dusunulur, bu ucgenin
+ortasindan bir cizgi cekilir, ve ustte 30 derece, yani $\pi/6$, sagda 60
+derece yani $\pi/3$ kalir. Cekilen cizginin boyu $\sqrt{2^2 - 1^2} =
+\sqrt{3}$. Buna  gore $sin(30)$ nedir? Karsi bolu hipotenus = $1/2$. $cos(30)$ ayni ucgene 
+gore $\sqrt{3}/2$ olur.
+
+* * *
+
 Alttakiler Ingilizce ders notlarindan aktariliyor:
 
 Bir ``lineer ODE'', ``standart forma'' cevirilebilen bir denklemdir.
@@ -353,40 +366,46 @@ Dikkat edin, ornekte $k$'nin belli bir anti-turevini kullandik, yani
 $kt$. Bu entegralin ``gorulmeyen'' sabiti ilerideki basamaklarda ortaya
 cikan $C$ tarafindan halledildi. 
 
-Yani (\ref{4eq1})'in genel cozumu $C x_h$ formundadir, ki $x_h$ sifir
-olmayan herhangi bir cozumdur. 
+Yani formul \ref{4eq1}'in genel cozumu $C x_h$ formundadir, ki $x_h$ sifir
+olmayan herhangi bir cozumdur.
 
 \[ x_h = e^{- \int p(t) dt} , \ x = C x_h \]
 
 Ileride genel durumun bir cebirsel numara ile cozulebildigini ve iki
 entegrasyon iceren bir dizi (sequence) ortaya cikardigini gorecegiz. 
 
-Bir dif denklemin genel cozumu hem homojen hem homojen olmayan
-(inhomogeneous) denklemleri tatmin etmelidir. Homojenligin sifira esitlik
-oldugunu soylemistik, eger homojen olmayan denklem icin bir cozum bulursak,
-homojen cozumu onun uzerine eklersek elde ettigimiz hala bir cozumdur cunku
-bu ekleme sifir eklemek ile esanlamlidir, yani hic bir degisiklik
-yaratmaz. Bu homojen denklemin resme hicbir getiri saglamadigi anlamina
-gelmez, denklemin homojen bolumu arka planda temsil edilen fiziksel
-vs. olayini anlamamizi saglar.
+Ekler
 
-Yani: Bir cozum homojen ve homojen olmayan cozumlerin eklenmesi ile ortaya
-cikarilabilir, ve bu cozumun icinde bilinmeyen bazi sabitler
-olacaktir. Boyle bir cozume dif denklemin ``genel cozumu (general
-solution)'' denir. Daha sonra sinir sartlari devreye sokularak o sabitlerin
-degerlerinin ne oldugu ortaya cikarilir.
+Icinde tanimsiz $C$ sabiti iceren cozum genel cozumdur, bu cozumler mumkun
+olan ``tum cozum kumesini'' temsil ederler bir bakima. O sebeple
+geneldirler. Ozel (particular) cozum baslangic sartlarini tatmin eden ve
+$C$ icermeyen cozumlerdir. 
 
-Not: Kolay Sin ve Cos Hesabi
+Bazen 
 
-\includegraphics[height=2cm]{4_3.png}
+\[ x' + p(t)x = q(t) \]
+ 
+formulunun tamami, bir sekilde, ayni anda cozulur ve $C$ iceren sonuc elde
+edilir. Bazen de ustteki formule bagli olan homojen formulu cozmek daha
+basit gelebiliyor, yani
 
-45, 30, 60 gibi belli bazi acilar icin cabuk sin ve cos hesabi soyle
-yapilabilir. 30 icin ustteki gibi esit kenarli ucgen dusunulur, bu ucgenin
-ortasindan bir cizgi cekilir, ve ustte 30 derece, yani $\pi/6$, sagda 60
-derece yani $\pi/3$ kalir. Cekilen cizginin boyu $\sqrt{2^2 - 1^2} =
-\sqrt{3}$. Buna 
-gore $sin(30)$ nedir? Karsi bolu hipotenus = $1/2$. $cos(30)$ ayni ucgene 
-gore $\sqrt{3}/2$ olur.
+\[ x' + p(t)x = 0 \]
+ 
+cozuluyor, ve $x_h$ elde ediliyor. Sonra bir sekilde, belki tahmin ederek,
+$x_p$ bulunuyor. Sonra su kurala siginilarak 
+
+\[ x = x_p + cx_h \]
+
+genel cozum o sekilde elde edilebiliyor. 
+
+
+
+
+
+
+
+
+
 
 
 
