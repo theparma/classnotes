@@ -55,22 +55,31 @@ dusunelim.
 
 \includegraphics[height=4cm]{piecewise-multiplication.png}
 
-Bu durumda dikey eksendeki kolonlara bir ek yaptik, ama genisligi tam bir
-kolon degil, yarim bir kolon ekledik. Bu durumda alan hesabini sadece dikey
+Bu durumda dikey eksendeki kolonlara bir ek yaptik, ama bu ekin genisligi
+tam bir kolon degil, yarim bir kolon. Bu durumda alan hesabini sadece dikey
 kolonlarin toplanmasi olarak yapsakdik 3'u bes kere toplamamiz gerekirdi,
-ve yanlis bir hesap yapmis olurduk.
+ve 15 elde ederdik, yanlis bir hesap yapmis olurduk.
 
-Ilk ornege donersek, diyelim ki $v(t) = 2t$ ve tamam carpim kullanalim,
-$t
-\cdot 2t$ diyemez miyiz? 
+Toplamin dogru olmasi icin yatay eksenin genisliginin hesaba katilmasi
+gerekir, 3*1 + 3*1 + 3*1 + 3*1 + 3*0.5 = 13.5. Ya da tum genisligi tum
+yukseklik ile carpariz 3 * 4.5 = 13.5. 
 
-Bu da olmaz, cunku $t\cdot 2t = 2t^2$ bize sadece tek bir $t$ anindaki bir
-hesabi veriyor. Biz verilen bir baslangic ve bitis noktalari arasindaki
-``tum $t$'ler uzerindeki'' katedilen mesafeyle ilgileniyoruz.  
+Peki ilk ornege donersek, madem carpimlardan bahsediyoruz, diyelim ki
+$v(t)
+= 2t$ o zaman $t
+\cdot 2t$ diyemez miyiz? Bu da olmaz, cunku $t\cdot 2t = 2t^2$ 
+bize sadece tek bir $t$ anindaki bir hesabi veriyor. Biz verilen bir 
+baslangic ve bitis noktalari arasindaki ``tum $t$'ler uzerindeki'' 
+katedilen mesafeyle ilgileniyoruz.  
 
 Yani entegral denince aklimiza carpim gelsin, $x,y$ eksenleri baglaminda,
 $y$ eksenindeki $f(x)$'i $x$'i carpiyoruz, bu carpim $x$ icin entegrale
 $dx$ olarak yansiyor, $f(x)$ ise entegre edilen fonksiyon haline geliyor. 
+
+Birimleri hesaba katarsak anlatilanlar biraz daha anlamlanir belki. Eger
+hiz km / saat ise, zaman saat ise, sadece hizlarin toplami mesafe birimini
+km / saat yapar, bu yanlis olur. Ama carpim olarak dusunursek km / saat *
+saat = km sonucunu verir ki bu mesafenin birimidir. 
 
 Kaynaklar
 
