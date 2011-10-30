@@ -62,13 +62,21 @@ problemlerinde, yani Monte Carlo entegrali icin Markov Zinciri kullanildigi
 durumlarda elimizde bir $\pi(x)$ dagilimi vardir ve bir Markov Zinciri
 olusturmamiz gerekir.
 
-Bunu gerceklestirmek icin literaturde bir suru teknik vardir, Onemsel
-Ornekleme (Importance Sampling), Ornekleme Oneme Gore Tekrar Ornekle
-(Sampling Importance Resampling), Metropolis-Hastings Orneklemesi, Gibbs
+Nihai dagilimi biliriz, ve bu dagilima ``giden'' gecisleri uretiriz. Bu
+uretim sirasinda bir yandan kenarda entegralimizi hesaplariz, ve sonuca
+vardigimizda hem nihai, duragan dagilima erismisizdir, hem de entegral
+hesabimizi dogru bir sekilde yapmis oluruz. 
+
+Gecisleri uretmek icin literaturde bir suru teknik oldugunu gorebilirsiniz,
+Onemsel Ornekleme (Importance Sampling), Ornekleme ve Oneme Gore Tekrar
+Ornekleme (Sampling Importance Resampling), Metropolis-Hastings, Gibbs
 Orneklemesi gibi teknikleri vardir, ve detaylari degisik olsa da hepsi de
 MCMC kategorisine girer, ve yapmaya calistiklari $\pi(x)$'e giderken bir
 sekilde bir gecisleri, zinciri ortaya cikartmak ve bu gecisleri entegral
-hesabinda kullanmaktir. 
+hesabinda kullanmaktir.
+
+Ustteki tekniklerden en yaygin kullanilani Metropolis-Hastings
+algoritmasidir. 
 
 Not: Bu alandaki makalelerde bir dagilimin ``belli bir carpimsal sabite
 kadar'' bilindigi (known up to a multiplicative constant) soylenir. Bu soz
