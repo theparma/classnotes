@@ -1,7 +1,6 @@
 \documentclass[12pt,fleqn]{article}\usepackage{../common}
 \begin{document}
 
-
 \begin{minted}[fontsize=\footnotesize]{python}
 import pandas as pd
 df = pd.read_csv('oilprice.csv',header=None,index_col=0)
@@ -46,24 +45,16 @@ plt.savefig('corr_02.png')
 import pandas as pd
 df = pd.read_csv('burgersold.csv',sep=' ',header=None,index_col=0,names=['sold'])
 df['price'] = pd.read_csv('burgerprice.csv',sep=' ',header=None,index_col=0)
-df['price'] = bs['price'].interpolate()
-print df.sold.corr(df.price)
-print df[:10]
+df['price'] = df['price'].interpolate()
+df['inflation'] = pd.read_csv('usinf.csv',index_col=0,sep='\s*')
+df['inflation2'] = 1 + (df['inflation'] / 100.)
+df['inflation2'] = df['inflation2'].cumprod()
+df['adjprice'] = df['price'] / df['inflation2']
+print df.sold.corr(df.adjprice)
 \end{minted}
 
 \begin{verbatim}
-0.912052062441
-      sold  price
-1969  2142    NaN
-1970  2142    NaN
-1971  2142    NaN
-1972  2142    NaN
-1973  2142    NaN
-1974  2142    NaN
-1975  2142  0.300
-1976  2142  0.325
-1977  3750  0.350
-1978  3750  0.375
+0.445384371682
 \end{verbatim}
 
 http://the-american-catholic.com/2014/11/21/wages-and-hamburgers-a-pricing-history/
@@ -84,17 +75,74 @@ plt.savefig('corr_04.png')
 \includegraphics[height=6cm]{corr_04.png}
 
 
+\begin{minted}[fontsize=\footnotesize]{python}
+import pandas as pd, re
+df = pd.read_csv('oilprice.csv')
+df['year'] = df['date'].map(lambda x: int(re.search(r'(\d+)',x).groups(1)[0]))
+df = df.drop('date',axis=1).groupby('year').mean()
+df['inflation'] = pd.read_csv('usinf.csv',index_col=0,sep='\s*')
+df['inflation2'] = 1 + (df['inflation'] / 100.)
+df['inflation2'] = df['inflation2'].cumprod()
+df['inflation adjusted oil price'] = df['price'] / df['inflation2']
+df[['price','inflation adjusted oil price']].plot()
+plt.savefig('corr_05.png')
+\end{minted}
 
-
+\includegraphics[height=6cm]{corr_05.png}
 
 
 \begin{minted}[fontsize=\footnotesize]{python}
-p = 0.56; tmp = 1.96*np.sqrt((1/42.)*p*(1-p)); print p-tmp, p+tmp
+df['production'] = pd.read_csv('world.csv',index_col=0,sep=' ')
+print df.production.corr(df['inflation adjusted oil price'])
+print df[:10]
 \end{minted}
 
 \begin{verbatim}
-0.409875429504 0.710124570496
+0.644058365167
+          price  inflation  inflation2  inflation adjusted oil price  \
+year                                                                   
+1985  33.998325        3.6    1.036000                     32.816916   
+1986  14.634975        1.9    1.055684                     13.863026   
+1987  15.872433        3.6    1.093689                     14.512753   
+1988  12.671617        4.1    1.138530                     11.129806   
+1989  16.059233        4.8    1.193179                     13.459195   
+1990  18.053533        5.4    1.257611                     14.355420   
+1991  16.085092        4.2    1.310431                     12.274661   
+1992  14.916558        3.0    1.349744                     11.051402   
+1993  14.665650        3.0    1.390236                     10.549037   
+1994  13.295725        2.6    1.426382                      9.321293   
+
+      production  
+year              
+1985       59.12  
+1986       61.91  
+1987       62.28  
+1988       64.62  
+1989       65.92  
+1990       66.78  
+1991       66.85  
+1992       67.35  
+1993       67.55  
+1994       68.94  
 \end{verbatim}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
