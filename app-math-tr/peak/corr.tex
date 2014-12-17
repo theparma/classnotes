@@ -10,7 +10,6 @@ plt.savefig('corr_01.png')
 
 \includegraphics[height=6cm]{corr_01.png}
 
-
 \begin{minted}[fontsize=\footnotesize]{python}
 print len(list(pd.rolling_mean(df[1],80).dropna()))
 \end{minted}
@@ -47,9 +46,7 @@ df = pd.read_csv('burgersold.csv',sep=' ',header=None,index_col=0,names=['sold']
 df['price'] = pd.read_csv('burgerprice.csv',sep=' ',header=None,index_col=0)
 df['price'] = df['price'].interpolate()
 df['inflation'] = pd.read_csv('usinf.csv',index_col=0,sep='\s*')
-df['inflation2'] = 1 + (df['inflation'] / 100.)
-df['inflation2'] = df['inflation2'].cumprod()
-df['adjprice'] = df['price'] / df['inflation2']
+df['adjprice'] = df['price'] / (1 + (df['inflation'] / 100.)).cumprod()
 print df.sold.corr(df.adjprice)
 \end{minted}
 
@@ -81,15 +78,12 @@ df = pd.read_csv('oilprice.csv')
 df['year'] = df['date'].map(lambda x: int(re.search(r'(\d+)',x).groups(1)[0]))
 df = df.drop('date',axis=1).groupby('year').mean()
 df['inflation'] = pd.read_csv('usinf.csv',index_col=0,sep='\s*')
-df['inflation2'] = 1 + (df['inflation'] / 100.)
-df['inflation2'] = df['inflation2'].cumprod()
-df['inflation adjusted oil price'] = df['price'] / df['inflation2']
+df['inflation adjusted oil price'] = df['price'] / (1 + (df['inflation'] / 100.)).cumprod()
 df[['price','inflation adjusted oil price']].plot()
 plt.savefig('corr_05.png')
 \end{minted}
 
 \includegraphics[height=6cm]{corr_05.png}
-
 
 \begin{minted}[fontsize=\footnotesize]{python}
 df['production'] = pd.read_csv('world.csv',index_col=0,sep=' ')
