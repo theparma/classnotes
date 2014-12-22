@@ -47,11 +47,25 @@ df['price'] = pd.read_csv('burgerprice.csv',sep=' ',header=None,index_col=0)
 df['price'] = df['price'].interpolate()
 df['inflation'] = pd.read_csv('usinf.csv',index_col=0,sep='\s*')
 df['adjprice'] = df['price'] / (1 + (df['inflation'] / 100.)).cumprod()
-print df.sold.corr(df.adjprice)
+print df[['adjprice','price','inflation']][10:20]
+print df['adjprice'].min(), df['adjprice'].max()
+print df.sold.sum()
 \end{minted}
 
 \begin{verbatim}
-0.445384371682
+         price  inflation
+1979  0.400000       11.3
+1980  0.416667       13.5
+1981  0.433333       10.3
+1982  0.450000        6.2
+1983  0.466667        3.2
+1984  0.483333        4.3
+1985  0.500000        3.6
+1986  0.550000        1.9
+1987  0.600000        3.6
+1995  0.650000        2.8
+0.161743841023 0.237134750975
+203639
 \end{verbatim}
 
 http://the-american-catholic.com/2014/11/21/wages-and-hamburgers-a-pricing-history/
@@ -78,8 +92,8 @@ df = pd.read_csv('oilprice.csv')
 df['year'] = df['date'].map(lambda x: int(re.search(r'(\d+)',x).groups(1)[0]))
 df = df.drop('date',axis=1).groupby('year').mean()
 df['inflation'] = pd.read_csv('usinf.csv',index_col=0,sep='\s*')
-df['inflation adjusted oil price'] = df['price'] / (1 + (df['inflation'] / 100.)).cumprod()
-df[['price','inflation adjusted oil price']].plot()
+df['adjprice'] = df['price'] / (1 + (df['inflation'] / 100.)).cumprod()
+df[['price','adjprice']].plot()
 plt.savefig('corr_05.png')
 \end{minted}
 
@@ -87,7 +101,7 @@ plt.savefig('corr_05.png')
 
 \begin{minted}[fontsize=\footnotesize]{python}
 df['production'] = pd.read_csv('world.csv',index_col=0,sep=' ')
-print df.production.corr(df['inflation adjusted oil price'])
+print df.production.corr(df['adjprice'])
 print df[:10]
 \end{minted}
 
