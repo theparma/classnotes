@@ -107,17 +107,41 @@ $$
 $$
 
 
+\begin{minted}[fontsize=\footnotesize]{python}
+import pymc as pm
+@pm.potential
+def SNLS(X=X):
+    logp = -X[0]**2 / X[1]
+    logp += -X[1]**2 / X[2]  # or whatever...
+    return logp
+X = pm.Uniform('X', 0, 1, value=[0.45, 0.24, 0.68])
+m = pm.MCMC([X, SNLS])
+m.use_step_method(pm.AdaptiveMetropolis, X)
+m.sample(100)
+\end{minted}
+
+\begin{verbatim}
+ [-----------------100%-----------------] 100 of 100 complete in 0.0 sec
+\end{verbatim}
+
+\begin{minted}[fontsize=\footnotesize]{python}
+pm.Matplot.plot(X)
+\end{minted}
+
+\begin{verbatim}
+Plotting X_0
+Plotting X_1
+Plotting X_2
+\end{verbatim}
+
+
+\includegraphics[height=6cm]{X_2.png}
 
 
 
 
+Information Theory, Inference and Learning Algorithms
 
-
-
-
-
-
-
-
+http://nbviewer.ipython.org/gist/aflaxman/7d946762ee99daf739f1
 
 \end{document}
