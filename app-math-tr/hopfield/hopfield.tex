@@ -17,6 +17,7 @@ $$
 Log olurluk
 
 $$  
+\mlabel{1}
 \ln \big( \prod _{n=1}^{N} P(x^{(n)};W) \big) = 
 \sum _{n=1}^{N} \bigg[ \frac{1}{2} x^{(n)^T} W x^{(n)} - \ln Z(W) \bigg]
 $$
@@ -53,14 +54,17 @@ $$
 
 
 $$ 
+\mlabel{2}
 \frac{\partial}{\partial w_{ij}} \exp \big( \frac{1}{2} x^T W x \big)  = 
 \frac{1}{2}  \exp \big( \frac{1}{2} x^T W x \big) 
 \frac{\partial}{\partial w_{ij}}x^T W x
-\mlabel{1}
- $$
+$$
 
+(2)'in icindeki bolumu acalim,
 
 $$ \frac{\partial}{\partial w_{ij}}x^T W x = x_i x_j $$
+
+Simdi (2)'ye geri koyalim,
 
 $$ 
 =  \frac{1}{2}  \exp \big( \frac{1}{2} x^T W x \big) x_i x_j
@@ -85,8 +89,22 @@ $$
 \frac{1}{2}  \sum_x P(x;W) x_i x_j
  $$
 
+Artik $\ln Z(W)$'nin turevini biliyoruz. O zaman tum log olurlugun turevi,
+(1) uzerinde uygularsak,
+
+$$  
+\sum _{n=1}^{N} \bigg[ \frac{\partial}{\partial w_{ij}}  \frac{1}{2} x^{(n)^T} W x^{(n)} - 
+\frac{\partial}{\partial w_{ij}}  \ln Z(W) \bigg]
+$$
 
 
+$$  
+\sum _{n=1}^{N} 
+\bigg[ 
+\frac{1}{2} x_i^{(n)^T}x_j^{(n)} - 
+\frac{\partial}{\partial w_{ij}}  \ln Z(W) 
+\bigg]
+$$
 
 
 
