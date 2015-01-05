@@ -1,0 +1,105 @@
+\documentclass[12pt,fleqn]{article}\usepackage{../common}
+\begin{document}
+Bir Coklu Ikisel Dagilim (Multivar. Binary Distribution) ve Hopfield Agi
+
+$$  
+P(x;W) = \frac{1}{Z(W)} 
+\exp \bigg[ \frac{1}{2} x^T W x \bigg]
+$$
+
+Olurluk (likelihood)
+
+$$  
+\prod _{n=1}^{N} P(x^{(n)};W) = \frac{1}{Z(W)} 
+\exp \bigg[ \frac{1}{2} x^{(n)^T} W x^{(n)} \bigg]
+$$
+
+Log olurluk
+
+$$  
+\ln \big( \prod _{n=1}^{N} P(x^{(n)};W) \big) = 
+\sum _{n=1}^{N} \bigg[ \frac{1}{2} x^{(n)^T} W x^{(n)} - \ln Z(W) \bigg]
+$$
+
+
+Birazdan $w_{ij}$ uzerinden turev alacagiz, $\ln Z(W)$'nin turevi ne
+olacak, daha dogrusu $Z(W)$'yi nasil turevi alinir hale getiririz?
+
+$Z(W)$ normalizasyon sabiti olduguna gore, dagilimin geri kalaninin
+sonsuzlar uzerinden entegrali (ya da toplami) normalizasyon sabitine
+esittir, 
+
+$$ 
+Z(W) = \sum_x  \exp \bigg[ \frac{1}{2} x^T W x \bigg]
+ $$
+
+$$ 
+\ln Z(W) = \ln \bigg[ \sum_x  \exp \big( \frac{1}{2} x^T W x \big) \bigg]
+ $$
+
+Log bazli turev alinca log icindeki hersey oldugu gibi bolume gider, ve log
+icindekinin turevi alinirak bolume koyulur. Fakat log icine dikkatli
+bakarsak bu zaten $Z(W)$'nin tanimidir, boylece denklemi temizleme sansi
+dogdu, bolume hemen $Z(W)$ deriz, ve turevi log'un icine uygulariz,
+
+
+$$ 
+\frac{\partial}{\partial w_{ij}} \ln Z(W) = 
+\frac{1}{Z(W)}
+\bigg[ 
+\sum_x \frac{\partial}{\partial w_{ij}} \exp \big( \frac{1}{2} x^T W x \big) 
+\bigg]
+ $$
+
+
+$$ 
+\frac{\partial}{\partial w_{ij}} \exp \big( \frac{1}{2} x^T W x \big)  = 
+\frac{1}{2}  \exp \big( \frac{1}{2} x^T W x \big) 
+\frac{\partial}{\partial w_{ij}}x^T W x
+\mlabel{1}
+ $$
+
+
+$$ \frac{\partial}{\partial w_{ij}}x^T W x = x_i x_j $$
+
+$$ 
+=  \frac{1}{2}  \exp \big( \frac{1}{2} x^T W x \big) x_i x_j
+ $$
+
+
+$$ 
+\frac{\partial}{\partial w_{ij}} \ln Z(W) = 
+\frac{1}{Z(W)}
+\bigg[ 
+\sum_x \frac{1}{2}  \exp \big( \frac{1}{2} x^T W x \big) x_i x_j
+\bigg]
+ $$
+
+$$ 
+= 
+\frac{1}{2}  \sum_x \frac{1}{Z(W)}  \exp \big( \frac{1}{2} x^T W x \big) x_i x_j
+ $$
+
+$$ 
+= 
+\frac{1}{2}  \sum_x P(x;W) x_i x_j
+ $$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
