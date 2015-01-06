@@ -22,9 +22,9 @@ $$
 \sum _{n=1}^{N} \bigg[ \frac{1}{2} x^{(n)^T} W x^{(n)} - \ln Z(W) \bigg]
 $$
 
-
-Birazdan $\frac{\partial \mathcal L}{\partial w_{ij}}$ turevini alacagiz, o sirada $\ln Z(W)$'nin turevi lazim,
-daha dogrusu $Z(W)$'yi nasil turevi alinir hale getiririz?
+Birazdan $\frac{\partial \mathcal L}{\partial w_{ij}}$ turevini alacagiz, o
+sirada $\ln Z(W)$'nin turevi lazim, daha dogrusu $Z(W)$'yi nasil turevi
+alinir hale getiririz?
 
 $Z(W)$ normalizasyon sabiti olduguna gore, dagilimin geri kalaninin
 sonsuzlar uzerinden entegrali (ya da toplami) normalizasyon sabitine
@@ -66,10 +66,7 @@ $$ \frac{\partial}{\partial w_{ij}}x^T W x = x_i x_j $$
 
 Simdi (2)'ye geri koyalim,
 
-$$ 
-=  \frac{1}{2}  \exp \big( \frac{1}{2} x^T W x \big) x_i x_j
- $$
-
+$$ =  \frac{1}{2}  \exp \big( \frac{1}{2} x^T W x \big) x_i x_j$$
 
 $$ 
 \frac{\partial}{\partial w_{ij}} \ln Z(W) = 
@@ -77,29 +74,31 @@ $$
 \bigg[ 
 \sum_x \frac{1}{2}  \exp \big( \frac{1}{2} x^T W x \big) x_i x_j
 \bigg]
- $$
+$$
 
 $$ 
 = 
 \frac{1}{2}  \sum_x \frac{1}{Z(W)}  \exp \big( \frac{1}{2} x^T W x \big) x_i x_j
- $$
+$$
 
 $$ 
 = 
 \frac{1}{2}  \sum_x P(x;W) x_i x_j
- $$
+$$
 
 Ustteki son ifadede bir kisaltma kullanalim,
 
 $$ 
 \sum_x P(x;W) x_i x_j =  <x_i,x_j>_{P(x;W)}
 $$
+
 Artik $\ln Z(W)$'nin turevini biliyoruz. O zaman tum log olurlugun turevine
 (1) donebiliriz, 
 
 $$  
 \frac{\partial \mathcal{L}}{\partial w_{ij}} = 
-\sum _{n=1}^{N} \bigg[ \frac{\partial}{\partial w_{ij}}  \frac{1}{2} x^{(n)^T} W x^{(n)} - 
+\sum _{n=1}^{N} \bigg[ 
+\frac{\partial}{\partial w_{ij}}  \frac{1}{2} x^{(n)^T} W x^{(n)} - 
 \frac{\partial}{\partial w_{ij}}  \ln Z(W) \bigg]
 $$
 
@@ -143,7 +142,7 @@ covariance) temsil eder. Duzenleyince,
 
 $$ 
 N \cdot <x_ix_j>_{Data} = \sum _{n=1}^{N}  x_i^{(n)^T}x_j^{(n)}
- $$
+$$
 
 simdi esitligin sag tarafi uc ustteki formule geri koyulabilir,
 
@@ -191,20 +190,20 @@ print X.trace()
 \end{minted}
 
 \begin{verbatim}
- [-----------------100%-----------------] 100 of 100 complete in 0.0 sec929.258052868
-[[ 0.53524187  0.5101911   0.66042418 ...,  0.50036561  0.54607666
-   0.59754949]
- [ 0.65638942  0.4783261   0.63907422 ...,  0.40159229  0.60001351
-   0.73953164]
- [ 0.66938509  0.42037807  0.56442453 ...,  0.4538526   0.5867844
-   0.6921165 ]
+ [-----------------100%-----------------] 100 of 100 complete in 0.0 sec895.374930314
+[[ 0.40334651  0.54660383  0.54176025 ...,  0.40196009  0.58059625
+   0.44788672]
+ [ 0.39875173  0.47041323  0.56148785 ...,  0.30680384  0.59048635
+   0.53342935]
+ [ 0.35293268  0.43296077  0.60987373 ...,  0.33573178  0.47394715
+   0.5225162 ]
  ..., 
- [ 0.61453101  0.78038041  0.87755512 ...,  0.41324804  0.21268127
-   0.3127227 ]
- [ 0.61453101  0.78038041  0.87755512 ...,  0.41324804  0.21268127
-   0.3127227 ]
- [ 0.61453101  0.78038041  0.87755512 ...,  0.41324804  0.21268127
-   0.3127227 ]]
+ [ 0.29668289  0.2283285   0.62517358 ...,  0.14847019  0.35648232
+   0.00644193]
+ [ 0.29668289  0.2283285   0.62517358 ...,  0.14847019  0.35648232
+   0.00644193]
+ [ 0.29668289  0.2283285   0.62517358 ...,  0.14847019  0.35648232
+   0.00644193]]
 \end{verbatim}
 
 
