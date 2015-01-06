@@ -1,5 +1,4 @@
 import numpy as np
-from EMmixtureBernoulli import *
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 
