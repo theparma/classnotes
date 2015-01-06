@@ -138,8 +138,8 @@ $$
 <x_ix_j>_{Data} = \frac{1}{N} \sum _{n=1}^{N}  x_i^{(n)^T}x_j^{(n)}
 $$
 
-dersek, esitligin sag tarafi verisel kovaryansi (empirical covariance)
-temsil eder, duzenleyince, 
+olarak alirsak, esitligin sag tarafi verisel kovaryansi (empirical
+covariance) temsil eder. Duzenleyince,
 
 $$ 
 N \cdot <x_ix_j>_{Data} = \sum _{n=1}^{N}  x_i^{(n)^T}x_j^{(n)}
@@ -152,6 +152,8 @@ $$
 N \big[<x_ix_j>_{Data}  - <x_ix_j>_{P(x;W)} \big] 
 $$
 
+Bu bir gradyan guncelleme formulu olarak gorulebilir, ve $N$ yerine bir
+guncelleme sabiti alinabilir. 
 
 \begin{minted}[fontsize=\footnotesize]{python}
 Y = np.loadtxt('../../stat/stat_mixbern/binarydigits.txt')
@@ -168,6 +170,59 @@ plt.savefig('boltzmann_03.png')
 \end{minted}
 
 \includegraphics[height=3cm]{boltzmann_01.png}\includegraphics[height=3cm]{boltzmann_02.png}\includegraphics[height=3cm]{boltzmann_03.png}
+
+
+
+
+
+\begin{minted}[fontsize=\footnotesize]{python}
+from pymc import *
+X = Uniform('X', zeros(20), ones(20), value=0.5*ones(20))
+@pm.potential
+def SNLS(X=X):
+    logp = -X[0]**2 / X[1]
+    logp += -X[1]**2 / X[2]  # or whatever...
+    return logp
+m = pm.MCMC([X, SNLS])
+m.use_step_method(pm.AdaptiveMetropolis, X)
+m.sample(100)
+print X.trace().sum()
+print X.trace()
+\end{minted}
+
+\begin{verbatim}
+ [-----------------100%-----------------] 100 of 100 complete in 0.0 sec929.258052868
+[[ 0.53524187  0.5101911   0.66042418 ...,  0.50036561  0.54607666
+   0.59754949]
+ [ 0.65638942  0.4783261   0.63907422 ...,  0.40159229  0.60001351
+   0.73953164]
+ [ 0.66938509  0.42037807  0.56442453 ...,  0.4538526   0.5867844
+   0.6921165 ]
+ ..., 
+ [ 0.61453101  0.78038041  0.87755512 ...,  0.41324804  0.21268127
+   0.3127227 ]
+ [ 0.61453101  0.78038041  0.87755512 ...,  0.41324804  0.21268127
+   0.3127227 ]
+ [ 0.61453101  0.78038041  0.87755512 ...,  0.41324804  0.21268127
+   0.3127227 ]]
+\end{verbatim}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Information Theory, Inference and Learning Algorithms
 
