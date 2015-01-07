@@ -151,9 +151,54 @@ plt.savefig('stat_mcmc_01.png')
 
 \includegraphics[height=6cm]{stat_mcmc_01.png}
 
+Gibbs Orneklemesi
+
+Bu ornekleme metodu Metropolis yonteminin bir versiyonu olarak kabul
+edilir, Metropolis yontemlerinde bir teklif (proposal) dagilimi $Q$ vardir,
+ve bu dagilimin orneklenmek istenen $P$ ile iliskisine gore zar atilip elde
+edilen yeni nokta kabul edilir, ya da kenara atilir. Gibbs ile de bir $Q$
+vardir, ama bir cinlik yapilmistir, $Q$ icin $P$'nin kendisi, daha dogrusu
+onun kosullu dagilim hali kullanilir. Bu kosullu dagilim her $i$ icin
+$P(x_i|\{x_j\}_{j \ne i}$, burada $x_i$ cok boyutlu $x$'in bir ogesidir,
+$\{x_j\}_{j \ne i}$ ise $i$ olmayan diger tum ogelerdir. Yani $i$ {\em
+  olmayan} her degisken kosulunda $i$ orneklenir. Bu kullanimin Metropolis
+yontemi ile ayni oldugu ispatlanmistir. Kosullu dagilimin kullanilmasinin
+ana sebebi ise cok boyutlu $P$ zor bir dagilim olsa bile cogunlukla onun
+kosullu ve tek boyutlu dagiliminin rahatca orneklenebilir halde olmasidir.
+
+Algoritma soyle; Rasgele bir baslangic noktasindan baslanir, ve biri harici
+tum degiskenler sabit tutulup sabit olmayan degisken orneklenir. Bu islem
+surekli uygulanir, bu yapilinca sanki orneklenen dagilimin en olasi yerleri
+gezilmis olur. 
+
+Mesela 2 boyutta, bir $x^{(t)}$ noktasindan basladigimizi farzedelim,
+$P(x_1|x_2)$ dagilimindan bir $x_1$ orneklenir, $b$ seklinde kosullu
+dagilimin tek boyutlu bir Gaussian oldugunu goruyoruz (ki ana dagilim iki
+boyutlu Gaussian), bu tek boyutlu dagilimdan bir orneklem aliniyor, dogal
+olarak o tek boyutlu dagilimin tepe noktasinin altinda bir yerden.
+
+
+\includegraphics[height=8cm]{gibbs.png}
+
+Sonra bu nokta sabitleniyor (yani yeni bir kosullu dagilim yaratiliyor, ve
+orneklenen $x_1$ simdi sag tarafta), yani $P(x_2|x_1)$ dagilimindan. Bu
+bizi $x^{(t+1)}$ konumuna (state) goturuyor, bu boyle devam ediyor. $K$
+degisken (boyutundaki) iceren bir sistemde, genel formuller soyle,
+
+$$ x_1^{(t+1)} \sim P(x_1 | x_2^{t},x_3^{t},..,x_K^{t}, $$ 
+
+$$ x_2^{(t+1)} \sim P(x_2 | x_1^{t},x_3^{t},..,x_K^{t}, $$ 
+
+$$ x_3^{(t+1)} \sim P(x_3 | x_1^{t},x_2^{t},..,x_K^{t}, $$ 
+
+vs..
+
+
 
 Kaynaklar
 
-Algorithmic Machine Learning, Stephen Marsland
+[1] Algorithmic Machine Learning, Stephen Marsland
+
+[2] Information Theory, Inference and Learning Algorithms, D. MacKay
 
 \end{document}
