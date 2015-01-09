@@ -18,12 +18,12 @@ class Boltzmann:
         rand = np.random.rand(N,1)
         for i in xrange(N):
             h=np.dot(T[i,:],S)
-            S[i]=rand[i]<self.sigmoid(h);
+            S[i]=2*rand[i]<self.sigmoid(h)-1;
         return S
 
     def sample(self, T):
         N=T.shape[0]
-        s=np.random.rand(N)<self.sigmoid(0)
+        s=2*np.random.rand(N)<self.sigmoid(0)-1
         for k in xrange(self.init_sample_size):
             s=self.draw(s,T)
         S=np.zeros((N,self.sample_size))
@@ -54,11 +54,11 @@ import numpy as np
 clf = Boltzmann()
 
 A = np.array([\
-[0.,1.,1.,0],
-[1.,1.,0, 0],
-[1.,1.,1.,0],
-[0, 1.,1.,1.],
-[0, 0, 1.,0]
+[-1.,1.,1.,-1],
+[1.,1.,-1,-1],
+[1.,1.,1.,-1],
+[-1, 1.,1.,1.],
+[1, -1, 1.,-1]
 ])
 
 print clf.fit(A)
