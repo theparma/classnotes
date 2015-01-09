@@ -172,10 +172,11 @@ surekli uygulanir, bu yapilinca sanki orneklenen dagilimin en olasi yerleri
 gezilmis olur. 
 
 Mesela 2 boyutta, bir $x^{(t)}$ noktasindan basladigimizi farzedelim,
-$P(x_1|x_2)$ dagilimindan bir $x_1$ orneklenir, $b$ seklinde kosullu
-dagilimin tek boyutlu bir Gaussian oldugunu goruyoruz (ki ana dagilim iki
-boyutlu Gaussian), bu tek boyutlu dagilimdan bir orneklem aliniyor, dogal
-olarak o tek boyutlu dagilimin tepe noktasinin altinda bir yerden.
+$P(x_1|x_2)$ dagilimindan bir $x_1$ orneklenir, (b) seklinde kosullu
+dagilimin tek boyutlu bir Gaussian oldugunu goruyoruz (cunku ana dagilim
+iki boyutlu Gaussian), bu tek boyutlu dagilimdan bir orneklem aliniyor,
+dogal olarak o tek boyutlu dagilimin tepe noktasinin altina yakin bir
+yerden.
 
 
 \includegraphics[height=8cm]{gibbs.png}
@@ -185,11 +186,11 @@ orneklenen $x_1$ simdi sag tarafta), yani $P(x_2|x_1)$ dagilimindan. Bu
 bizi $x^{(t+1)}$ konumuna (state) goturuyor, bu boyle devam ediyor. $K$
 degisken (boyutundaki) iceren bir sistemde, genel formuller soyle,
 
-$$ x_1^{(t+1)} \sim P(x_1 | x_2^{t},x_3^{t},..,x_K^{t}, $$ 
+$$ x_1^{(t+1)} \sim P(x_1 | x_2^{t},x_3^{t},..,x_K^{t}) $$ 
 
-$$ x_2^{(t+1)} \sim P(x_2 | x_1^{t},x_3^{t},..,x_K^{t}, $$ 
+$$ x_2^{(t+1)} \sim P(x_2 | x_1^{t},x_3^{t},..,x_K^{t}) $$ 
 
-$$ x_3^{(t+1)} \sim P(x_3 | x_1^{t},x_2^{t},..,x_K^{t}, $$ 
+$$ x_3^{(t+1)} \sim P(x_3 | x_1^{t},x_2^{t},..,x_K^{t}) $$ 
 
 vs..
 
