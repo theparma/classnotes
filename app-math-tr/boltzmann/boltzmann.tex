@@ -280,6 +280,49 @@ etmemistik, edilseydi sonuc  $\exp (- a_i)$ olacakti.
 
 
 
+\begin{minted}[fontsize=\footnotesize]{python}
+def sigmoid(u):
+    return 1./(1.+np.exp(-u));
+
+def draw(Sin,T):
+    """
+    draw - perform single Gibbs sweep to draw a sample from distribution
+    """
+    N=Sin.shape[0]
+    S=Sin.copy()
+    rand = np.random.rand(N,1)
+    for i in xrange(N):
+        h=np.dot(T[i,:],S)
+        S[i]=rand[i]<sigmoid(h);
+        
+    return S
+
+def sample(T,n,num_init_samples):
+    N=T.shape[0]
+    print 'N',N
+    s=2*(np.random.rand(N)<sigmoid(0))-1
+    
+    for k in xrange(num_init_samples):
+        s=draw(s,T)
+        
+    S=np.zeros((N,n))
+    S[:,0]=s
+    for i in xrange(1,n):
+        S[:,i]=draw(S[:,i-1],T)
+
+    return S
+
+
+import numpy as np
+
+W = np.array([[0.2,0.3,0.5],
+              [-0.2,0.1,-0.44],
+              [0.2,-0.9,0.5]])
+              
+res = sample(W,20,5)
+print res.shape
+print res
+\end{minted}
 
 
 
@@ -327,9 +370,9 @@ plt.savefig('boltzmann_03.png')
 
 Information Theory, Inference and Learning Algorithms, D. MacKay
 
-http://nbviewer.ipython.org/gist/aflaxman/7d946762ee99daf739f1
+\url{http://nbviewer.ipython.org/gist/aflaxman/7d946762ee99daf739f1}
 
-
+\url{http://math.stackexchange.com/questions/1095491/from-pxw-frac1zw-exp-bigl-frac12-xt-w-x-bigr-to-sigmoid/}
 
 
 \end{document}
