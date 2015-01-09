@@ -1,6 +1,6 @@
 class Boltzmann:
 
-    def __init__(self,n_iter=100,eta=0.1,sample_size=100,init_sample_size=10):
+    def __init__(self,n_iter=100,eta=0.01,sample_size=100,init_sample_size=10):
         self.n_iter = n_iter
         self.eta = eta
         self.sample_size = sample_size
@@ -36,12 +36,16 @@ class Boltzmann:
         W_data=np.dot(X.T,X)/X.shape[1];
         print W_data.shape
         W_init = np.random.uniform(size=W_data.shape)
+        W_init = np.tril(W_init) + np.tril(W_init, -1).T
+        np.fill_diagonal(W_init, 0)
+        print W_init
         W = W_init.copy()
         for i in range(self.n_iter):
             print 'Iteration', i
             S = self.sample(W)
             W_guess=np.dot(S.T,S)/S.shape[1];
             W += self.eta * (W_data - W_guess)
+            np.fill_diagonal(W, 0)
 
         return W
 
