@@ -318,15 +318,16 @@ etmemistik, edilseydi sonuc  $\exp (- a_i)$ olacakti.
 \inputminted[fontsize=\footnotesize]{python}{boltz.py}
 
 Fonksiyon \verb!draw! icinde, tek bir veri satiri icin ve sirayla her
-degisken (hucreyi) icin, diger degiskenleri baz alip digerinin kosulsal
-olasiligini hesapliyoruz, ayni anda bu olasiligi kullanarak bir sayi
-uretimi yapiyoruz. Uretimin yapilmasi icin \verb!np.random.rand!'dan gelen
-0 ve 1 arasindaki bir uniform rasgele sayiyi gecip gecmeme irdelemesi
-yeterli. Bir olasilik hesabini bir uretilen rasgele degiskene bu sekilde
-cevirebilirsiniz. Bu ilginc bir numara, ayrica Simulasyon adli bir
-matematik dali tamamen bu islerle ugrasir. Yani MCMC daha cetrefil
-dagilimlar icin kullanilir tabii, ama baz dagilimlar, mesela Normal, Ustel
-(Exponential), Bernoulli gibi dagilimlarin hep uretilme teknikleri vardir.
+degisken (hucre) icin, diger degiskenleri baz alip digerinin kosulsal
+olasiligini hesapliyoruz, ve sonra bu olasiligi kullanarak bir sayi uretimi
+yapiyoruz. Uretimin yapilmasi icin \verb!np.random.rand!'dan gelen 0 ve 1
+arasindaki bir uniform rasgele sayiyi gecip gecmeme irdelemesi yeterli. Bir
+olasilik hesabini bir uretilen rasgele degiskene bu sekilde
+cevirebilirsiniz. Bu ilginc bir numara, Simulasyon adli bir matematik dali
+tamamen bu konularla ugrasiyor, ilgilenenler bakabilir. MCMC daha
+cetrefil dagilimlar icin kullanilir tabii, ama baz dagilimlar, mesela
+Normal, Ustel (Exponential), Bernoulli gibi dagilimlarin hep uretilme
+teknikleri vardir.
 
 Devam edelim; Cagri \verb!sample! ise \verb!draw!'u kullanarak pek cok veri
 satirini iceren ve dagilimi temsil eden bir orneklem yaratmakla
@@ -336,12 +337,13 @@ yapiyor, boylelikle MCMC'nin dagilimi ``gezmesi'' saglanmis oluyor.
 Normalizasyon Sabiti
 
 Bu sabitin hesaplanmasi icin aynen $<x_ix_j>_{P(x;W)}$ icin oldugu gibi tum
-mumkun $x$'ler uzerinden bir toplam gerekir. Bunu bilmedigimize gore, yine
-MCMC'ye basvuracagiz. Tek fark alinan orneklemi (3) formulune gecegiz, ve
-bir olasilik hesabi yapacagiz, ve bu olasiliklar toplayacagiz. Tabii ayni
-$x$'i (eger tekrar tekrar uretilirse -ufak bir ihtimal ama mumkun-) tekrar
-tekrar toplamamak icin hangi $x$'lerin uretildigini bir sozluk icinde
-hatirlayacagiz, yani bir $x$ olasiligi sadece bir kere toplanacak. 
+mumkun $x$'ler uzerinden bir toplam gerekir. Bu toplamin hesaplanmasinin
+cok zor oldugu icin, yine MCMC'ye basvuracagiz. Tek fark alinan orneklemi
+(3) formulune gecegiz, ve bir olasilik hesabi yapacagiz, ve bu olasiliklar
+toplayacagiz. Tabii ayni $x$'i (eger tekrar tekrar uretilirse -ufak bir
+ihtimal ama mumkun-) tekrar tekrar toplamamak icin hangi $x$'lerin
+uretildigini bir sozluk icinde hatirlayacagiz, yani bir $x$ olasiligi
+sadece bir kere toplanacak.
 
 Simdi ufak bir ornek uzerinde BM'i isletelim. 
 
@@ -424,7 +426,7 @@ plt.savefig('boltzmann_03.png')
 Bu goruntuleri tanimak icin BM kullanalim. Egitim ve test olarak veriyi
 ikiye ayiracagiz, ve egitim seti her etiketin $W$'sini ogrenmek icin
 kullanilacak. Daha sonra test setinde her veri noktalarini her uc BM'ye
-ayri ayri ``sorup'' o test verisinin o BM'e gore olasiligini soracagiz, ve
+ayri ayri ``sorup'' o test verisinin o BM'e gore olasiligini alacagiz, ve
 hangi BM daha yuksek olasilik donduruyorsa etiket olarak onu kabul
 edecegiz. Hangi BM daha yuksek olasilik donduruyorsa, o BM ``bu verinin
 benden gelme olasiligi yuksek'' diyor demektir, ve etiket o olmalidir.
@@ -481,11 +483,11 @@ print c
 \end{verbatim}
 
 Burada bakilirsa 2. satir 3. kolon 3 degerini tasiyor cunku 2. ve
-3. degiskenlerin ayni anda 1 olma sayisi tam olarak 3. Sonra dedik ki,
-acaba bu bilgiyi veri uzerinde hesaplayip bir kenara koysak bir dagilim
-gibi kullanamaz miyiz, sonra yeni veri noktasini bu ``dagilima sorabiliriz'',
-olasiligi nedir? Biraz matris carpim cambazligi sonrasi, yeni veri
-noktasi icin sonuc
+3. degiskenlerin ayni anda 1 olma sayisi tam olarak 3. Sonra acaba bu
+bilgiyi veri uzerinde hesaplayip bir kenara koysak bir dagilim gibi
+kullanamaz miyiz, sonra yeni veri noktasini bu ``dagilima sorabiliriz''
+diye dusunduk. Biraz matris carpim cambazligi sonrasi, yeni veri noktasi
+icin
 
 \begin{minted}[fontsize=\footnotesize]{python}
 x = np.array([0,1,1,0])
@@ -497,10 +499,10 @@ print np.dot(np.dot(x.T,c), x) / 2
 \end{verbatim}
 
 gibi sonuclar alabildigimizi gorduk; Bu degerin iliski matrisinin tam
-ortasindaki 4,3,3,4 sayilarinin toplaminin yarisi olduguna dikkat. Yani
-yani $x$ carpimi iliski matrisinin sadece kendini ilgilendiren kismini
-cekip cikartti, yani 2. ve 3. degisenleri arasindaki iliskiyi toplayip
-aldi. 
+ortasindaki 4,3,3,4 sayilarinin toplaminin yarisi olduguna dikkat
+edelim. Yani $x$ carpimi iliski matrisinin sadece kendini ilgilendiren
+kismini cekip cikartti, yani 2. ve 3. degisenleri arasindaki iliskiyi
+toplayip aldi.
 
 Buradan sonra, ``acaba bu bir dagilim olsa normalizasyon sabiti ne
 olurdu?'' sorusuna geldik, ki [4] sorusu buradan cikti ve bu soruya bomba
@@ -508,7 +510,7 @@ bir cevap geldi. Sonra diger okumalarimiz sirasinda Boltzmann Dagilimina
 ulastik, bu dagilimin ek olarak bir $\exp$ tanimi var (ki turev alimi
 sirasinda bu faydali), ve tabii ogrenim icin daha net bir matematigi
 var. Biz de maksimum olurluk ile [4]'teki fikrin sayisal kovaryansa
-ulastirip ulastirmayacagini merak ediyorduk, BM formunda verisal kovaryans
+ulastirip ulastirmayacagini merak ediyorduk, BM formunda verisel kovaryans
 direk elde ediliyor. Boylece BM konusuna girmis olduk. 
 
 Fakat daha iyi haber BM'in, Kisitli BM (RBM) icin bir ziplama tahtasi
