@@ -18,7 +18,7 @@ if len(sys.argv) == 1 or sys.argv[1] == 'tex':
     ./varcalc/varcalc.pdf ./filter/filter.pdf ./svdcluster/svdcluster.pdf \
     ./rndsvd/rndsvd.pdf ./svdrecom/svdrecom.pdf ./svdapprox/svdapprox.pdf \
     ./meanshift/meanshift.pdf ./ztransform/z.pdf ./pagerank/pagerank.pdf \
-    ./crf/crf.pdf ./phd/phd.pdf output \
+    ./boltzmann/boltzmann.pdf ./crf/crf.pdf ./phd/phd.pdf output \
     ~/Dropbox/Public/skfiles/app-math-tr.pdf"
     os.system(cmd)
     print cmd

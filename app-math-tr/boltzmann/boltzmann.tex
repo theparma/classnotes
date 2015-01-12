@@ -169,16 +169,24 @@ guncelleme sabiti alinabilir. Gradyan guncelleme olarak gorulebilir cunku
 $w_{ij}$'ye gore turev aldik, o zaman bizi $\mathcal{L}$'in minimumuna goturecek
 $w$ adimlari ustte goruldugu gibidir. 
 
-(4)'te gorulen $<x_ix_j>_{P(x;W)}$'in anlami nedir? Bu ifade / carpim tum
-mumkun $x$ degerleri uzerinden aliniyor ve ikisel iliskilerin olasiligini
-``mevcut modele'' gore hesapliyor. Yani bu ifade de bir korelasyon
-hesabidir, sadece veriye gore degil, tum mumkun degerler ve model uzerinden
-alinir. Bu ifadeyi hesaplamak icin Monte Carlo simulasyonu
-kullanacagiz. Tum degerler uzerinden gecmek yerine mevcut modele $x$
-degerleri ``urettirecegiz'', ve bu degerleri alip sanki gercek veriymis
-gibi sayisal korelasyonlarini hesaplayacagiz. Sonra bu degeri gercek
-verinin korelasyonunundan cikartip bir sabit uzerinden gradyan adimi atmak
-mumkun olacak. 
+(4)'te gorulen $<x_ix_j>_{P(x;W)}$'in anlami nedir? Bu ifade mumkun tum $x$
+degerleri uzerinden aliniyor ve ikisel iliskilerin olasiligini ``mevcut
+modele'' gore hesapliyor. Yani bu ifade de bir korelasyon hesabidir, sadece
+veriye gore degil, tum mumkun degerler ve model uzerinden alinir. Bu hesabi
+yapmak oldukca zordur, fakat yaklasiksal olarak Monte Carlo yontemi ile
+hesaplanabilir. Nihayet MC ve MCMC metotlarinin kullanilma sebebini gormeye
+basliyoruz; bu metotlar zaten asiri yuksek boyutlu, analitik cozumu
+olmayan, hesaplanamaz (intractable) entegraller (ya da toplamlar) icin
+kesfedilmistir. 
+
+Yani bu ifadeyi hesaplamak icin Monte Carlo simulasyonu kullanacagiz. Tum
+degerleri teker teker ziyaret etmek yerine (ki bu cok uzun zaman alirdi)
+mevcut modele en olasi $x$ degerleri ``urettirecegiz'', ve bu degerleri
+alip sanki gercek veriymis gibi sayisal korelasyonlarini
+hesaplayacagiz. Eger veriler dagilimin en olasi noktalarindan geliyorlarsa,
+elimizde veri dagilimi ``iyi'' temsil eden bir veri setidir. Daha sonra bu
+korelasyon hesabini degeri gercek veri korelasyonunundan cikartip bir sabit
+uzerinden gradyan adimi atmamiz mumkun olacak.
 
 Gibbs Orneklemesi (Sampling)
 
