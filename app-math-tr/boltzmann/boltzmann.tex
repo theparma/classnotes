@@ -277,10 +277,46 @@ $$
 Orijinal dagilim denkleminde $1/2$ ifadesi vardi, onu basta islemlere dahil
 etmemistik, edilseydi sonuc  $\exp (- a_i)$ olacakti. 
 
-
 \inputminted[fontsize=\footnotesize]{python}{boltz.py}
 
+\begin{minted}[fontsize=\footnotesize]{python}
+import boltz
+A = np.array([\
+[0.,1.,1.,1],
+[1.,0.,0,0],
+[1.,1.,1.,0],
+[0, 1.,1.,1.],
+[1, 0, 1.,0]
+])
+A[A==0]=-1
 
+np.random.seed(0)
+clf = boltz.Boltzmann(n_iter=30,eta=0.05,sample_size=100,init_sample_size=50)
+clf.fit(A)
+print 'W'
+print clf.W
+print 'normalizasyon sabiti', clf.C
+
+test = np.array([\
+[0.,1.,1.,1],
+[1.,1.,0,0],
+[0.,1.,1.,1]
+])    
+print clf.predict_proba(test)
+\end{minted}
+
+\begin{verbatim}
+Iteration 0
+Iteration 10
+Iteration 20
+W
+[[ 0.     0.05  -0.075 -0.375]
+ [ 0.05   0.     0.05   0.45 ]
+ [-0.075  0.05   0.     0.325]
+ [-0.375  0.45   0.325  0.   ]]
+normalizasyon sabiti 20.1580365398
+[ 0.11319955  0.05215146  0.11319955]
+\end{verbatim}
 
 \begin{minted}[fontsize=\footnotesize]{python}
 Y = np.loadtxt('../../stat/stat_mixbern/binarydigits.txt')
@@ -301,9 +337,23 @@ plt.savefig('boltzmann_03.png')
 
 
 
+\begin{minted}[fontsize=\footnotesize]{python}
+!python testbm.py
+\end{minted}
 
-
-
+\begin{verbatim}
+Iteration 0
+Iteration 10
+Iteration 20
+Iteration 0
+Iteration 10
+Iteration 20
+Iteration 0
+Iteration 10
+Iteration 20
+0.975
+KNN 0.975
+\end{verbatim}
 
 
 

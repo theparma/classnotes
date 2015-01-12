@@ -2,7 +2,7 @@ import numpy as np
 
 class Boltzmann:
 
-    def __init__(self,n_iter=100,eta=0.01,sample_size=100,init_sample_size=10):
+    def __init__(self,n_iter=100,eta=0.1,sample_size=100,init_sample_size=10):
         self.n_iter = n_iter
         self.eta = eta
         self.sample_size = sample_size
@@ -47,7 +47,7 @@ class Boltzmann:
         W=np.zeros((X.shape[1],X.shape[1]))
         W_data=np.dot(X.T,X)/X.shape[1];
         for i in range(self.n_iter):
-            print 'Iteration', i
+            if i % 10 == 0: print 'Iteration', i
             S = self.sample(W)
             S = (S*2)-1
             W_guess=np.dot(S.T,S)/S.shape[1];
@@ -56,20 +56,8 @@ class Boltzmann:
         self.W = W
         self.C = self.normc(X)
 
-if __name__ == "__main__": 
+    def predict_proba(self, X):
+        return np.diag(np.exp(0.5 * np.dot(np.dot(X, self.W), X.T))) / self.C
+
         
-    A = np.array([\
-    [0.,1.,1.,1],
-    [1.,1.,0,0],
-    [1.,1.,1.,0],
-    [0, 1.,1.,1.],
-    [1, 0, 1.,0]
-    ])
-    A[A==0]=-1
-
-    clf = Boltzmann()
-    clf.fit(A)
-    print clf.W
-    print clf.C
-    print A
-
+        
