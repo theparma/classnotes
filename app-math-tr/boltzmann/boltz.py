@@ -36,10 +36,10 @@ class Boltzmann:
         """
         Return the normalization constant
         """
-        S = self.sample(self.W)
-        print S
-        return 0
-
+        def f(x): return np.exp(0.5 * np.dot(np.dot(x,self.W), x))
+        S = 2*self.sample(self.W)-1
+        res = dict((tuple(s),f(s)) for s in S)
+        return np.sum(res.values())
     
     def fit(self, X):
         W=np.zeros((X.shape[1],X.shape[1]))
@@ -49,7 +49,6 @@ class Boltzmann:
             print 'Iteration', i
             S = self.sample(W)
             S = (S*2)-1
-            #print S
             W_guess=np.dot(S.T,S)/S.shape[1];
             W += self.eta * (W_data - W_guess)
             np.fill_diagonal(W, 0)
@@ -68,6 +67,15 @@ A = np.array([\
 [1, 0, 1.,0]
 ])
 A[A==0]=-1
-clf.fit(A)
-print clf.W
-print A
+
+#clf.fit(A)
+#print clf.W
+#print clf.C
+#print A
+
+clf.W = np.array([[ 0.,     0.07,  -0.02,  -0.245],
+                  [ 0.07,   0.,     0.11,   0.045],
+                  [-0.02,   0.11,   0.,     0.065],
+                  [-0.245,  0.045,  0.065,  0.   ]])
+
+print clf.normc(A)
