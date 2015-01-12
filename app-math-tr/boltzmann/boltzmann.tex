@@ -203,15 +203,15 @@ ve,
 
 $$ a_i = \sum_j  w_{ij}x_j $$
 
-Bu kosulsal olasiligin ne kadar temiz oldugu onemli, ustteki gorulen bir
-sigmoid fonksiyonudur nihayetinde... Bu fonksiyonlar hakkinda daha fazla
-bilgi {\em Lojistik Regresyon} yazisinda bulunabilir. 
+Bu kosulsal olasiligin temiz / basit bir formul olmasi onemli, ustteki
+gorulen bir sigmoid fonksiyonu bu turden bir fonksiyondur... Bu
+fonksiyonlar hakkinda daha fazla bilgi {\em Lojistik Regresyon} yazisinda
+bulunabilir.
 
-Ama, ana formul (3)'ten bu noktaya nasil eristik?
-
-$x$ vektoru icinde sadece $x_i$ ogesinin $b$ olmasini $x^b$ olarak
+Ama, ana formul (3)'ten bu noktaya nasil eristik? Bu noktada biraz turetme
+yapmak lazim. $x$ vektoru icinde sadece $x_i$ ogesinin $b$ olmasini $x^b$ olarak
 alalim. Once kosulsal dagilimda ``verili'' olan kismi elde etmek lazim. O
-zaman
+uzaman
 
 $$ P(x_j,j \ne i) = P(x^0) + P(x^1) $$
 
@@ -322,11 +322,11 @@ degisken (hucreyi) icin, diger degiskenleri baz alip digerinin kosulsal
 olasiligini hesapliyoruz, ayni anda bu olasiligi kullanarak bir sayi
 uretimi yapiyoruz. Uretimin yapilmasi icin \verb!np.random.rand!'dan gelen
 0 ve 1 arasindaki bir uniform rasgele sayiyi gecip gecmeme irdelemesi
-yeterli. Bir olasiligi bir uretilen rasgele degiskene bu sekilde
+yeterli. Bir olasilik hesabini bir uretilen rasgele degiskene bu sekilde
 cevirebilirsiniz. Bu ilginc bir numara, ayrica Simulasyon adli bir
 matematik dali tamamen bu islerle ugrasir. Yani MCMC daha cetrefil
 dagilimlar icin kullanilir tabii, ama baz dagilimlar, mesela Normal, Ustel
-(Exponential), Bernoulli gibi dagilimlarin hep uretilme teknikleri vardir. 
+(Exponential), Bernoulli gibi dagilimlarin hep uretilme teknikleri vardir.
 
 Devam edelim; Cagri \verb!sample! ise \verb!draw!'u kullanarak pek cok veri
 satirini iceren ve dagilimi temsil eden bir orneklem yaratmakla
