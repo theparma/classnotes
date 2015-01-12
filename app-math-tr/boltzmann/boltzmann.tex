@@ -377,13 +377,13 @@ W
 normalizasyon sabiti 16.4620358997
 \end{verbatim}
 
-Sonuc $W$ ustte goruldugu gibi. Ornek veriye bakarsa 2. satir 3. kolonda
+Sonuc $W$ ustte goruldugu gibi. Ornek veriye bakarsak 2. satir 3. kolonda
 arti bir deger var, 1. satir 4. kolonda eksi deger var. Bu bekledigimiz bir
 sey cunku 2. ve 3. degiskenlerin arasinda bir korelasyon var, $x_2$ ne
 zaman 1/0 ise $x_3$ te 1/0. Fakat $x_1$ ile $x_4$ ters bir korelasyon var,
 birbirlerinin zitti degerlere sahipler. 
 
-Yeni test verisini dagilima gecelim, 
+Simdi yeni test verisini dagilima ``soralim'', 
 
 \begin{minted}[fontsize=\footnotesize]{python}
 test = np.array([\
@@ -423,11 +423,11 @@ plt.savefig('boltzmann_03.png')
 
 Bu goruntuleri tanimak icin BM kullanalim. Egitim ve test olarak veriyi
 ikiye ayiracagiz, ve egitim seti her etiketin $W$'sini ogrenmek icin
-kullanilacak. Daha sonra test setinde her veri noktalarini her BM'ye
-(ucune) ayri ayri gecip o test verisinin ``olasiligini'' soracagiz, ve
+kullanilacak. Daha sonra test setinde her veri noktalarini her uc BM'ye
+ayri ayri ``sorup'' o test verisinin o BM'e gore olasiligini soracagiz, ve
 hangi BM daha yuksek olasilik donduruyorsa etiket olarak onu kabul
 edecegiz. Hangi BM daha yuksek olasilik donduruyorsa, o BM ``bu verinin
-benden gelme olasiligi yuksek'' diyor demektir, ve etiket o BM olmalidir. 
+benden gelme olasiligi yuksek'' diyor demektir, ve etiket o olmalidir.
 
 \inputminted[fontsize=\footnotesize]{python}{testbm.py}
 
@@ -449,16 +449,16 @@ Boltzmann Makinasi 0.975
 KNN 0.975
 \end{verbatim}
 
-KNN ile ayni sonucu aldik, ki bu aslinda oldukca temiz / basit bir veri
-seti icin fena degildir. 
+Sonuc yuzde 97.5, oldukca yuksek, ve KNN metotu ile ayni sonucu aldik, ki
+bu aslinda oldukca temiz / basit bir veri seti icin fena degil.
 
 Biraz Hikaye
 
-Boltzman Makinalariyla ilgilenmemizin ilginc bir hikayesi var. Aslinda
-BM'den haberimiz yoktu, ayrica mevcut isimizde 0/1 iceren ikisel verilerle
-cok hasir nesirdik, ve bu tur verilerde ikisel iliskiler (cooccurence)
-hesabi iyi sonuclar verir, ki bu hesap basit bir matris carpimi ile elde
-edilir.
+Boltzman Makinalariyla ilgilenmemizin ilginc bir hikayesi var. Aslinda bu
+metottan haberimiz yoktu, ayrica mevcut isimizde 0/1 iceren ikisel
+verilerle cok hasir nesirdik, ve bu tur verilerde ikisel iliskiler
+(cooccurence) hesabi iyi sonuclar verir, ki bu hesap basit bir matris
+carpimi ile elde edilir.
 
 \begin{minted}[fontsize=\footnotesize]{python}
 import numpy as np
