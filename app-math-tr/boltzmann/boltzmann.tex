@@ -309,7 +309,33 @@ etmemistik, edilseydi sonuc  $\exp (- a_i)$ olacakti.
 
 \inputminted[fontsize=\footnotesize]{python}{boltz.py}
 
+Fonksiyon \verb!draw! icinde, tek bir veri satiri icin ve sirayla her
+degisken (hucreyi) icin, diger degiskenleri baz alip digerinin kosulsal
+olasiligini hesapliyoruz, ayni anda bu olasiligi kullanarak bir sayi
+uretimi yapiyoruz. Uretimin yapilmasi icin \verb!np.random.rand!'dan gelen
+0 ve 1 arasindaki bir uniform rasgele sayiyi gecip gecmeme irdelemesi
+yeterli. Bir olasiligi bir uretilen rasgele degiskene bu sekilde
+cevirebilirsiniz. Bu ilginc bir numara, ayrica Simulasyon adli bir
+matematik dali tamamen bu islerle ugrasir. Yani MCMC daha cetrefil
+dagilimlar icin kullanilir tabii, ama baz dagilimlar, mesela Normal, Ustel
+(Exponential), Bernoulli gibi dagilimlarin hep uretilme teknikleri vardir. 
 
+Devam edelim; Cagri \verb!sample! ise \verb!draw!'u kullanarak pek cok veri
+satirini iceren ve dagilimi temsil eden bir orneklem yaratmakla
+sorumlu. Bunu her orneklem satirini baz alarak bir sonrakini urettirerek
+yapiyor, boylelikle MCMC'nin dagilimi ``gezmesi'' saglanmis oluyor.
+
+Normalizasyon Sabiti
+
+Bu sabitin hesaplanmasi icin aynen $<x_ix_j>_{P(x;W)}$ icin oldugu gibi tum
+mumkun $x$'ler uzerinden bir toplam gerekir. Bunu bilmedigimize gore, yine
+MCMC'ye basvuracagiz. Tek fark alinan orneklemi (3) formulune gecegiz, ve
+bir olasilik hesabi yapacagiz, ve bu olasiliklar toplayacagiz. Tabii ayni
+$x$'i (eger tekrar tekrar uretilirse -ufak bir ihtimal ama mumkun-) tekrar
+tekrar toplamamak icin hangi $x$'lerin uretildigini bir sozluk icinde
+hatirlayacagiz, yani bir $x$ olasiligi sadece bir kere toplanacak. 
+
+Simdi ufak bir ornek uzerinde BM'i isletelim. 
 
 \begin{minted}[fontsize=\footnotesize]{python}
 import boltz
@@ -322,13 +348,36 @@ A = np.array([\
 ])
 A[A==0]=-1
 
-np.random.seed(0)
-clf = boltz.Boltzmann(n_iter=30,eta=0.05,sample_size=100,init_sample_size=50)
+clf = boltz.Boltzmann(n_iter=50,eta=0.01,sample_size=200,init_sample_size=50)
 clf.fit(A)
 print 'W'
 print clf.W
 print 'normalizasyon sabiti', clf.C
+\end{minted}
 
+\begin{verbatim}
+Iteration 0
+Iteration 10
+Iteration 20
+Iteration 30
+Iteration 40
+W
+[[ 0.    -0.065 -0.06  -0.055]
+ [-0.065  0.     0.17   0.105]
+ [-0.06   0.17   0.    -0.09 ]
+ [-0.055  0.105 -0.09   0.   ]]
+normalizasyon sabiti 16.4620358997
+\end{verbatim}
+
+Sonuc $W$ ustte goruldugu gibi. Ornek veriye bakarsa 2. satir 3. kolonda
+arti bir deger var, 1. satir 4. kolonda eksi deger var. Bu bekledigimiz bir
+sey cunku 2. ve 3. degiskenlerin arasinda bir korelasyon var, $x_2$ ne
+zaman 1/0 ise $x_3$ te 1/0. Fakat $x_1$ ile $x_4$ ters bir korelasyon var,
+birbirlerinin zitti degerlere sahipler. 
+
+Yeni test verisini dagilima gecelim, 
+
+\begin{minted}[fontsize=\footnotesize]{python}
 test = np.array([\
 [0.,1.,1.,1],
 [1.,1.,0,0],
@@ -338,27 +387,14 @@ print clf.predict_proba(test)
 \end{minted}
 
 \begin{verbatim}
-Iteration 0
-Iteration 10
-Iteration 20
-W
-[[ 0.     0.05  -0.075 -0.375]
- [ 0.05   0.     0.05   0.45 ]
- [-0.075  0.05   0.     0.325]
- [-0.375  0.45   0.325  0.   ]]
-normalizasyon sabiti 20.1580365398
-[ 0.11319955  0.05215146  0.11319955]
+[ 0.0730905   0.05692294  0.0730905 ]
 \end{verbatim}
 
-\begin{minted}[fontsize=\footnotesize]{python}
-Y = np.loadtxt('../../stat/stat_mixbern/binarydigits.txt')
-print Y.shape
-\end{minted}
+Goruntu Tanima
 
-\begin{verbatim}
-(100, 64)
-\end{verbatim}
-
+Elimizde el yazisi tanima algoritmalari icin kullanilan bir veri seti var.
+Veride 0,5,7 harflerinin goruntuleri var. Mesela 5 icin bazi ornek
+goruntuler,
 
 \begin{minted}[fontsize=\footnotesize]{python}
 Y = np.loadtxt('../../stat/stat_mixbern/binarydigits.txt')
@@ -377,7 +413,15 @@ plt.savefig('boltzmann_03.png')
 \includegraphics[height=3cm]{boltzmann_01.png}\includegraphics[height=3cm]{boltzmann_02.png}\includegraphics[height=3cm]{boltzmann_03.png}
 
 
+Bu goruntuleri tanimak icin BM kullanalim. Egitim ve test olarak veriyi
+ikiye ayiracagiz, ve egitim seti her etiketin $W$'sini ogrenmek icin
+kullanilacak. Daha sonra test setinde her veri noktalarini her BM'ye
+(ucune) ayri ayri gecip o test verisinin ``olasiligini'' soracagiz, ve
+hangi BM daha yuksek olasilik donduruyorsa etiket olarak onu kabul
+edecegiz. Hangi BM daha yuksek olasilik donduruyorsa, o BM ``bu verinin
+benden gelme olasiligi yuksek'' diyor demektir, ve etiket o BM olmalidir. 
 
+\inputminted[fontsize=\footnotesize]{python}{testbm.py}
 
 \begin{minted}[fontsize=\footnotesize]{python}
 !python testbm.py
@@ -393,18 +437,19 @@ Iteration 20
 Iteration 0
 Iteration 10
 Iteration 20
-0.975
+Boltzmann Makinasi 0.975
 KNN 0.975
 \end{verbatim}
 
+KNN ile ayni sonucu aldik, ki bu aslinda oldukca temiz / basit bir veri
+seti icin fena degildir. 
 
 
+[1] Information Theory, Inference and Learning Algorithms, D. MacKay, sf. 523
 
-Information Theory, Inference and Learning Algorithms, D. MacKay
+[2] \url{http://nbviewer.ipython.org/gist/aflaxman/7d946762ee99daf739f1}
 
-\url{http://nbviewer.ipython.org/gist/aflaxman/7d946762ee99daf739f1}
-
-\url{http://math.stackexchange.com/questions/1095491/from-pxw-frac1zw-exp-bigl-frac12-xt-w-x-bigr-to-sigmoid/}
+[3] \url{http://math.stackexchange.com/questions/1095491/from-pxw-frac1zw-exp-bigl-frac12-xt-w-x-bigr-to-sigmoid/}
 
 
 \end{document}

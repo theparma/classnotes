@@ -13,33 +13,38 @@ class Boltzmann:
 
     def draw(self, Sin,T):
         """
-        draw - perform single Gibbs sweep to draw a sample from distribution
+        Bir Gibbs gecisi yaparak dagilimdan bir orneklem al
         """
-        N=Sin.shape[0]
+        D=Sin.shape[0]
         S=Sin.copy()
-        rand = np.random.rand(N,1)
-        for i in xrange(N):
+        rand = np.random.rand(D,1)
+        for i in xrange(D):
             h=np.dot(T[i,:],S)
             S[i]=rand[i]<self.sigmoid(h);
         return S
 
     def sample(self, T):
-        N=T.shape[0]
+        N=T.shape[0]        
+        # sigmoid(0) her zaman 0.5 olacak
         s=np.random.rand(N)<self.sigmoid(0)
+        # alttaki dongu atlama / gozonune alinmayacak degerler icin        
         for k in xrange(self.init_sample_size):
             s=self.draw(s,T)
         S=np.zeros((N,self.sample_size))
         S[:,0]=s
+        # simdi degerleri toplamaya basla
         for i in xrange(1,self.sample_size):
             S[:,i]=self.draw(S[:,i-1],T)
         return S.T
 
     def normc(self, X):
         """
-        Return the normalization constant
+        normalizasyon sabitini dondur
         """
         def f(x): return np.exp(0.5 * np.dot(np.dot(x,self.W), x))
         S = 2*self.sample(self.W)-1
+        # sozluk icinde anahtar tekil x degeri boylece bir
+        # olasilik degeri sadece bir kere toplanir
         res = dict((tuple(s),f(s)) for s in S)
         return np.sum(res.values())
     

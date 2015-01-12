@@ -22,7 +22,7 @@ for label in [0,5,7]:
 res3 = np.argmax(np.array(res).T,axis=1)
 res3[res3==1] = 5
 res3[res3==2] = 7
-print np.sum(res3==y_test) / float(len(y_test))
+print 'Boltzmann Makinasi', np.sum(res3==y_test) / float(len(y_test))
 
 clf = neighbors.KNeighborsClassifier()
 clf.fit(X_train,y_train)
