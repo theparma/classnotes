@@ -58,6 +58,3 @@ class Boltzmann:
 
     def predict_proba(self, X):
         return np.diag(np.exp(0.5 * np.dot(np.dot(X, self.W), X.T))) / self.C
-
-        
-        

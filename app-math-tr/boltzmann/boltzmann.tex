@@ -1,6 +1,8 @@
 \documentclass[12pt,fleqn]{article}\usepackage{../common}
 \begin{document}
-Bir Coklu Ikisel Dagilim (Multivar. Binary Distribution) ve Boltzmann Dagilimi
+Boltzman Makinalari (Rasgele Hopfield Aglari) 
+
+Alttaki ifade bir Boltmann dagilimini gosterir, 
 
 $$  
 \mlabel{3}
@@ -8,9 +10,16 @@ P(x;W) = \frac{1}{Z(W)}
 \exp \bigg[ \frac{1}{2} x^T W x \bigg]
 $$
 
-ki $W$ simetrik ve caprazinda (diagonal) sifir iceren bir matristir. 
+ki $x$ cok boyutlu ve -1,+1 degerleri iceren bir vektor, $W$ simetrik ve
+caprazinda (diagonal) sifir iceren bir matristir, $n \times d$
+boyutlarindaki bir veri icin $d \times d$ boyutlarinda olacaktir.  Bolzmann
+Makinalari (BM), Kisitli Bolzmann Makinalari (Restricted Bolzmann Machines)
+kavramina gecis yapmadan once iyi bir durak noktasi. 
 
-Olurluk (likelihood)
+BM $W$ icinde aslinda tum degiskenlerin ikisel iliskisini icerir. $W$ cok
+degiskenli Gaussian dagilimindaki $\Sigma$'da oldugu gibi ikisel
+baglantilari saptar. Veriden $W$'yu ogrenmek icin olurlugu hesaplamak
+lazim. Olurluk (likelihood)
 
 $$  
 \prod _{n=1}^{N} P(x^{(n)};W) = \frac{1}{Z(W)} 
@@ -91,6 +100,7 @@ $$
 Ustteki son ifadede bir kisaltma kullanalim,
 
 $$ 
+\mlabel{4}
 \sum_x P(x;W) x_i x_j =  <x_i,x_j>_{P(x;W)}
 $$
 
@@ -153,12 +163,31 @@ $$
 N \big[<x_ix_j>_{Data}  - <x_ix_j>_{P(x;W)} \big] 
 $$
 
-Bu bir gradyan guncelleme formulu olarak gorulebilir, ve $N$ yerine bir
-guncelleme sabiti alinabilir. 
+Her ne kadar $N$ veri noktasi sayisini gosteriyor olsa da, ustteki ifade
+bir gradyan guncelleme formulu olarak ta gorulebilir, ve $N$ yerine bir
+guncelleme sabiti alinabilir. Gradyan guncelleme olarak gorulebilir cunku
+$w_{ij}$'ye gore turev aldik, o zaman bizi $\mathcal{L}$'in minimumuna goturecek
+$w$ adimlari ustte goruldugu gibidir. 
 
-Ana dagilim fonksiyonu baz alinarak, yeni veri $x$ uzerinde o $x$ uzerinde
-biri haric tum ogelerin bilindigi durumda bilinmeyen tek hucre $i$ icin 1
-olma olasilik degeri,
+(4)'te gorulen $<x_ix_j>_{P(x;W)}$'in anlami nedir? Bu ifade / carpim tum
+mumkun $x$ degerleri uzerinden aliniyor ve ikisel iliskilerin olasiligini
+``mevcut modele'' gore hesapliyor. Yani bu ifade de bir korelasyon
+hesabidir, sadece veriye gore degil, tum mumkun degerler ve model uzerinden
+alinir. Bu ifadeyi hesaplamak icin Monte Carlo simulasyonu
+kullanacagiz. Tum degerler uzerinden gecmek yerine mevcut modele $x$
+degerleri ``urettirecegiz'', ve bu degerleri alip sanki gercek veriymis
+gibi sayisal korelasyonlarini hesaplayacagiz. Sonra bu degeri gercek
+verinin korelasyonunundan cikartip bir sabit uzerinden gradyan adimi atmak
+mumkun olacak. 
+
+Gibbs Orneklemesi (Sampling)
+
+Gibbs orneklemesinin detaylari icin {\em Monte Carlo, Entegraller, MCMC}
+yazisina danisilabilir. Bolzmann dagilimindan orneklem almak icin bize tek
+bir degisken (hucre) haricinde diger hepsinin bilindigi olasilik hesabi
+lazim, yani $P(x_i = 1 | x_j, j \ne i)$.  Ana dagilim fonksiyonu baz
+alinarak, yeni veri $x$ uzerinde o $x$ uzerinde biri haric tum ogelerin
+bilindigi durumda bilinmeyen tek hucre $i$ icin 1 olma olasilik degeri,
 
 $$ P(x_i = 1 | x_j, j \ne i) = \frac{1}{1 + e^{-a_i}} $$
 
@@ -167,9 +196,10 @@ ve,
 $$ a_i = \sum_j  w_{ij}x_j $$
 
 Bu kosulsal olasiligin ne kadar temiz oldugu onemli, ustteki gorulen bir
-sigmoid fonksiyonu. Bu fonksiyonlar hakkinda daha fazla bilgi {\em Lojistik
-  Regresyon} yazisinda bulunabilir. Ana formul (3)'ten bu noktaya nasil
-eristik?
+sigmoid fonksiyonudur nihayetinde... Bu fonksiyonlar hakkinda daha fazla
+bilgi {\em Lojistik Regresyon} yazisinda bulunabilir. 
+
+Ama, ana formul (3)'ten bu noktaya nasil eristik?
 
 $x$ vektoru icinde sadece $x_i$ ogesinin $b$ olmasini $x^b$ olarak
 alalim. Once kosulsal dagilimda ``verili'' olan kismi elde etmek lazim. O
@@ -279,6 +309,8 @@ etmemistik, edilseydi sonuc  $\exp (- a_i)$ olacakti.
 
 \inputminted[fontsize=\footnotesize]{python}{boltz.py}
 
+
+
 \begin{minted}[fontsize=\footnotesize]{python}
 import boltz
 A = np.array([\
@@ -317,6 +349,16 @@ W
 normalizasyon sabiti 20.1580365398
 [ 0.11319955  0.05215146  0.11319955]
 \end{verbatim}
+
+\begin{minted}[fontsize=\footnotesize]{python}
+Y = np.loadtxt('../../stat/stat_mixbern/binarydigits.txt')
+print Y.shape
+\end{minted}
+
+\begin{verbatim}
+(100, 64)
+\end{verbatim}
+
 
 \begin{minted}[fontsize=\footnotesize]{python}
 Y = np.loadtxt('../../stat/stat_mixbern/binarydigits.txt')
