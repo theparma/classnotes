@@ -1,6 +1,6 @@
 class Boltzmann:
 
-    def __init__(self,n_iter=30,eta=0.1,sample_size=100,init_sample_size=10):
+    def __init__(self,n_iter=100,eta=0.01,sample_size=100,init_sample_size=10):
         self.n_iter = n_iter
         self.eta = eta
         self.sample_size = sample_size
@@ -49,7 +49,7 @@ class Boltzmann:
             print 'Iteration', i
             S = self.sample(W)
             S = (S*2)-1
-            print S
+            #print S
             W_guess=np.dot(S.T,S)/S.shape[1];
             W += self.eta * (W_data - W_guess)
             np.fill_diagonal(W, 0)
@@ -61,7 +61,7 @@ import numpy as np
 clf = Boltzmann()
 
 A = np.array([\
-[0.,1.,1.,0],
+[0.,1.,1.,1],
 [1.,1.,0,0],
 [1.,1.,1.,0],
 [0, 1.,1.,1.],
