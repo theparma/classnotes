@@ -444,12 +444,76 @@ KNN 0.975
 KNN ile ayni sonucu aldik, ki bu aslinda oldukca temiz / basit bir veri
 seti icin fena degildir. 
 
+Biraz Hikaye
+
+Boltzman Makinalariyla ilgilenmemizin ilginc bir hikayesi var. Aslinda
+BM'den haberimiz yoktu, ayrica mevcut isimizde 0/1 iceren ikisel verilerle
+cok hasir nesirdik, ve bu tur verilerde ikisel iliskiler (cooccurence)
+hesabi iyi sonuclar verir, ki bu hesap basit bir matris carpimi ile elde
+edilir.
+
+\begin{minted}[fontsize=\footnotesize]{python}
+import numpy as np
+A = np.array([\
+[0.,1.,1.,0],
+[1.,1.,0, 0],
+[1.,1.,1.,0],
+[0, 1.,1.,1.],
+[0, 0, 1.,0]
+])
+c = A.T.dot(A).astype(float)
+print c 
+\end{minted}
+
+\begin{verbatim}
+[[ 2.  2.  1.  0.]
+ [ 2.  4.  3.  1.]
+ [ 1.  3.  4.  1.]
+ [ 0.  1.  1.  1.]]
+\end{verbatim}
+
+Burada bakilirsa 2. satir 3. kolon 3 degerini tasiyor cunku 2. ve
+3. degiskenlerin ayni anda 1 olma sayisi tam olarak 3. Sonra dedik ki,
+acaba bu bilgiyi veri uzerinde hesaplayip bir kenara koysak bir dagilim
+gibi kullanamaz miyiz, sonra yeni veri noktasini bu ``dagilima sorabiliriz'',
+olasiligi nedir? Biraz matris carpim cambazligi sonrasi, yeni veri
+noktasi icin sonuc
+
+\begin{minted}[fontsize=\footnotesize]{python}
+x = np.array([0,1,1,0])
+print np.dot(np.dot(x.T,c), x) / 2
+\end{minted}
+
+\begin{verbatim}
+7.0
+\end{verbatim}
+
+gibi sonuclar alabildigimizi gorduk; Bu degerin iliski matrisinin tam
+ortasindaki 4,3,3,4 sayilarinin toplaminin yarisi olduguna dikkat. Yani
+yani $x$ carpimi iliski matrisinin sadece kendini ilgilendiren kismini
+cekip cikartti, yani 2. ve 3. degisenleri arasindaki iliskiyi toplayip
+aldi. 
+
+Buradan sonra, ``acaba bu bir dagilim olsa normalizasyon sabiti ne
+olurdu?'' sorusuna geldik, ki [4] sorusu buradan cikti ve bu soruya bomba
+bir cevap geldi. Sonra diger okumalarimiz sirasinda Boltzmann Dagilimina
+ulastik, bu dagilimin ek olarak bir $\exp$ tanimi var (ki turev alimi
+sirasinda bu faydali), ve tabii ogrenim icin daha net bir matematigi
+var. Biz de maksimum olurluk ile [4]'teki fikrin sayisal kovaryansa
+ulastirip ulastirmayacagini merak ediyorduk, BM formunda verisal kovaryans
+direk elde ediliyor. Boylece BM konusuna girmis olduk. 
+
+Fakat daha iyi haber BM'in, Kisitli BM (RBM) icin bir ziplama tahtasi
+olmasi, zaten RBM'den sonra Derin Ogrenim (Deep Learning) konusu geliyor,
+cunku DO birden fazla RBM'lerin ust uste konmus hali. 
 
 [1] Information Theory, Inference and Learning Algorithms, D. MacKay, sf. 523
 
 [2] \url{http://nbviewer.ipython.org/gist/aflaxman/7d946762ee99daf739f1}
 
 [3] \url{http://math.stackexchange.com/questions/1095491/from-pxw-frac1zw-exp-bigl-frac12-xt-w-x-bigr-to-sigmoid/}
+
+[4] \url{http://math.stackexchange.com/questions/1080504/calculating-the-sum-frac12-sum-xt-sigma-x-for-all-x-in-0-1-n}
 
 
 \end{document}
