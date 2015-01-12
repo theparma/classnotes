@@ -1,3 +1,5 @@
+import numpy as np
+
 class Boltzmann:
 
     def __init__(self,n_iter=100,eta=0.01,sample_size=100,init_sample_size=10):
@@ -44,7 +46,6 @@ class Boltzmann:
     def fit(self, X):
         W=np.zeros((X.shape[1],X.shape[1]))
         W_data=np.dot(X.T,X)/X.shape[1];
-        print W_data
         for i in range(self.n_iter):
             print 'Iteration', i
             S = self.sample(W)
@@ -55,27 +56,20 @@ class Boltzmann:
         self.W = W
         self.C = self.normc(X)
 
-import numpy as np
+if __name__ == "__main__": 
+        
+    A = np.array([\
+    [0.,1.,1.,1],
+    [1.,1.,0,0],
+    [1.,1.,1.,0],
+    [0, 1.,1.,1.],
+    [1, 0, 1.,0]
+    ])
+    A[A==0]=-1
 
-clf = Boltzmann()
+    clf = Boltzmann()
+    clf.fit(A)
+    print clf.W
+    print clf.C
+    print A
 
-A = np.array([\
-[0.,1.,1.,1],
-[1.,1.,0,0],
-[1.,1.,1.,0],
-[0, 1.,1.,1.],
-[1, 0, 1.,0]
-])
-A[A==0]=-1
-
-#clf.fit(A)
-#print clf.W
-#print clf.C
-#print A
-
-clf.W = np.array([[ 0.,     0.07,  -0.02,  -0.245],
-                  [ 0.07,   0.,     0.11,   0.045],
-                  [-0.02,   0.11,   0.,     0.065],
-                  [-0.245,  0.045,  0.065,  0.   ]])
-
-print clf.normc(A)
