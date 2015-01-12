@@ -48,6 +48,7 @@ class Boltzmann:
         for i in range(self.n_iter):
             print 'Iteration', i
             S = self.sample(W)
+            S = (S*2)-1
             print S
             W_guess=np.dot(S.T,S)/S.shape[1];
             W += self.eta * (W_data - W_guess)
@@ -66,6 +67,7 @@ A = np.array([\
 [0, 1.,1.,1.],
 [1, 0, 1.,0]
 ])
-
+A[A==0]=-1
 clf.fit(A)
 print clf.W
+print A
