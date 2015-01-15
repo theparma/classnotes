@@ -322,12 +322,18 @@ degisken (hucre) icin, diger degiskenleri baz alip digerinin kosulsal
 olasiligini hesapliyoruz, ve sonra bu olasiligi kullanarak bir sayi uretimi
 yapiyoruz. Uretimin yapilmasi icin \verb!np.random.rand!'dan gelen 0 ve 1
 arasindaki bir uniform rasgele sayiyi gecip gecmeme irdelemesi yeterli. Bir
-olasilik hesabini bir uretilen rasgele degiskene bu sekilde
-cevirebilirsiniz. Bu ilginc bir numara, Simulasyon adli bir matematik dali
-tamamen bu konularla ugrasiyor, ilgilenenler bakabilir. MCMC daha
-cetrefil dagilimlar icin kullanilir tabii, ama baz dagilimlar, mesela
-Normal, Ustel (Exponential), Bernoulli gibi dagilimlarin hep uretilme
-teknikleri vardir.
+Bernoulli olasilik hesabini uretilen bir rasgele degiskene bu sekilde
+cevirebilirsiniz. Bu niye isler? Ustte belirttigimiz irdelemeyi rasgele
+degisken olarak kodlarsak (ki bu da bir Bernoulli rasgele degiskeni olur),
+
+$$ Y = 
+\left\{ \begin{array}{ll}
+1 & U < p \\
+0 & U \ge p \\
+\end{array} \right.
+ $$
+
+Bu durumda $P(X=1) = P(U<p) = p$ olurdu. 
 
 Devam edelim; Cagri \verb!sample! ise \verb!draw!'u kullanarak pek cok veri
 satirini iceren ve dagilimi temsil eden bir orneklem yaratmakla
