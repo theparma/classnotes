@@ -321,10 +321,11 @@ Fonksiyon \verb!draw! icinde, tek bir veri satiri icin ve sirayla her
 degisken (hucre) icin, diger degiskenleri baz alip digerinin kosulsal
 olasiligini hesapliyoruz, ve sonra bu olasiligi kullanarak bir sayi uretimi
 yapiyoruz. Uretimin yapilmasi icin \verb!np.random.rand!'dan gelen 0 ve 1
-arasindaki bir uniform rasgele sayiyi gecip gecmeme irdelemesi yeterli. Bir
-Bernoulli olasilik hesabini uretilen bir rasgele degiskene bu sekilde
-cevirebilirsiniz. Bu niye isler? Ustte belirttigimiz irdelemeyi rasgele
-degisken olarak kodlarsak (ki bu da bir Bernoulli rasgele degiskeni olur),
+arasindaki bir (duz) uniform rasgele sayiyi gecip gecmeme irdelemesi
+yeterli. Bir Bernoulli olasilik hesabini uretilen bir rasgele degiskene bu
+sekilde cevirebilirsiniz. Bu niye isler? Ustte belirttigimiz irdelemeyi
+rasgele degisken olarak kodlarsak (ki bu da bir Bernoulli rasgele degiskeni
+olur), ve uniform rasgele degisken $U$ olsun,
 
 $$ Y = 
 \left\{ \begin{array}{ll}
@@ -333,7 +334,8 @@ $$ Y =
 \end{array} \right.
  $$
 
-Bu durumda $P(X=1) = P(U<p) = p$ olurdu. 
+Bu durumda $P(X=1) = P(U<p) = p$ olurdu. Neden? Cunku ustte bir surekli
+(continuous) bir uniform yarattik, ve $P(U<p) = F_u(p) = p$. 
 
 Devam edelim; Cagri \verb!sample! ise \verb!draw!'u kullanarak pek cok veri
 satirini iceren ve dagilimi temsil eden bir orneklem yaratmakla
