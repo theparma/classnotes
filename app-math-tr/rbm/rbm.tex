@@ -138,11 +138,10 @@ hesap yapariz, BM icin yapmistik bunu,
 $$  
 \mathcal{L} = 
 \ln \big( \prod_{n=1}^{N} P(x^{n};W) \big) = 
-\sum_{n=1}^{N} \ln P(x^{n};W) \big) 
-$$
+\sum_{n=1}^{N} \ln P(x^{n};W) \big) $$
 
 $$ 
-=  \sum_{n=1}^{N} \ln \frac{Z_{x^{(n)}}(W)}{Z(W)}  
+= \sum_{n=1}^{N} \ln \frac{Z_{x^{(n)}}(W)}{Z(W)}  
 = \sum_{n=1}^{N}  \big(\ln Z_{x^{(n)}} - \ln Z \big)
  $$
 
@@ -153,8 +152,27 @@ $$
 - \frac{\partial \ln Z }{\partial w_{ij}} \big)
 $$
 
+Parantez icindeki ilk turevi alalim,
 
 
+$$ 
+\frac{\partial \ln Z_{x^{(n)}} }{\partial w_{ij}} =
+\sum_h 
+\frac{\partial }{\partial w_{ij}}
+\big[ 
+\frac{1}{2} y^T W y
+\big] = \sum_h  y_iy_j
+ $$
+
+
+$$ 
+\frac{\partial \ln Z }{\partial w_{ij}} =
+\sum_{h,x}
+\frac{\partial }{\partial w_{ij}}
+\big[ 
+\frac{1}{2} y^T W y
+\big] = \sum_{h,x}  y_iy_j
+ $$
 
 
 
