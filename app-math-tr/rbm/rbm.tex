@@ -9,40 +9,40 @@ sabitidir.
 
 $$ p(x,h;W) = \exp (-E(x,h)) / Z $$
 
-$E$ tanimina ``enerji'' olarak atif yapildigini da gorebilirsiniz bazen. 
+$E$ tanimina ``enerji'' olarak ta atif yapilabiliyor.
 
 $$ E(x,h) = -h^TWx - c^Tx - b^Th $$
 
-Dikkat edilirse, BM'lerden farkli olarak RBM taniminda $c,b$ degiskenleri
-var. Bu degiskenler yanlilik (bias) icindir, yani veri icindeki genel
-egilimi saptamalari icin modele konulmustur. Ayrica $h^TWx$ terimi var, bu
-BM'deki $x^TWx$ biraz farkli, simdi gizli degiskenler, $h$ uzerinden
-$x$'ler arasinda baglanti yapiyor. Bir baska ilginc farklilik BM ile tum
-$x$' ogeleri birbirine baglanabiliyordu, RBM ile daha az (ya da fazla)
-olabilecek $h$ katmaninda baglantilar paylasiliyor. Ozellikle azaltma
-durumunda RBM ozellik alanini azaltarak bir tur genelleme eylemini
-beceriyor.
+BM'lerden farkli olarak RBM taniminda $c,b$ degiskenleri var. Bu
+degiskenler yanlilik (bias) icin, yani veri icindeki genel egilimi
+saptamalari icin modele konulmustur. Ayrica $h^TWx$ terimi var, bu BM'deki
+ $x^TWx$ biraz farkli, gizli degiskenler, $h$ uzerinden $x$'ler arasinda
+baglanti yapiyor. Bir baska ilginc farklilik BM ile tum $x$ ogeleri
+birbirine baglanabiliyordu, RBM ile daha az (ya da fazla) olabilecek $h$
+katmaninda baglantilar paylasiliyor. Ozellikle azaltma durumunda RBM
+ozellik alanini azaltarak bir tur genellemeyi gerceklestirebiliyor.
 
-Ustteki formul alttaki gibi acilabilir,
+Formul alttaki gibi de acilabilir,
 
 $$ = - \sum_j \sum_k W_{j,k}h_jx_k - \sum_k c_kx_k - \sum_j b_jh_j  $$
-
-Dikkat: $h,x$ degiskenleri olasilik teorisinden bilinen rasgele
-degiskenlerdir, yani hem $x$'e hem de $h$'e ``zar attirabiliriz'' / bu
-degiskenler uzerinden orneklem toplayabiliriz. Bu kritik bir konu. Ayrica,
-ustteki tanimlardan net sekilde anlasiliyor ama bir daha vurgulayalim;
-RBM'ler aynen BM'ler gibi bir olasilik dagilimi uzerinden
-tanimlanirlar. Tum mumkun degerleri uzerinden entegralleri (ya da
-toplamlari) alininca sonuc 1 olur, vs.
 
 RBM'lerin alttaki gibi resmedildigini gorebilirsiniz.
 
 \includegraphics[height=4cm]{rbm_01.png}
 \includegraphics[height=4cm]{rbm_02.png}
 
-RBM'lerin ``kisitli'' olarak tanimlanmalarinin sebebi, gizli degiskenlerin
+$h,x$ degiskenleri olasilik teorisinden bilinen rasgele degiskenlerdir,
+yani hem $x$'e hem de $h$'e ``zar attirabiliriz'' / bu degiskenler
+uzerinden orneklem toplayabiliriz. 
+
+Ayrica, RBM'ler aynen BM'ler gibi bir olasilik yogunluk fonksiyonu
+uzerinden tanimlanirlar, onceki formulde gordugumuz gibi, tum mumkun
+degerleri uzerinden entegralleri (ya da toplamlari) alininca sonuc 1 olur,
+vs.
+
+RBM'lerin ``kisitli'' olarak tanimlanmalarinin sebebi gizli degiskenlerin
 kendi aralarinda, ve gorunen degiskenlerin kendi aralarinda direk
-baglantiya izin verilmis olmasidir, bu bakimdan
+baglantiya izin verilmemis olmasidir, bu bakimdan
 ``kisitlanmislardir''. Baglantilara, $W$ uzerinden sadece gizli ve gorunen
 degiskenler (tabakalar) arasinda izin verilmistir. Bu tabii ki matematiksel
 olarak bazi kolayliklar sagliyor.
@@ -76,8 +76,10 @@ $$ E(x,h) = -h^TWx $$
 $$ = - \sum_j \sum_k W_{j,k}h_jx_k  $$
 
 ve
+
 $$ p(x,h;W)  = \exp (h^TWx) / Z $$
 
+yeterli olacaktir. Bir diger kolaylik $x,h$ yerine tek degisken kullanmak,
 
 Eger $y \equiv (x,h)$ olarak alirsak, 
 
