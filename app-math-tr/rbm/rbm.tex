@@ -51,7 +51,9 @@ Devam edelim, ana formulden hareketle cebirsel olarak sunlar da dogrudur,
 
 $$ p(x,h;W) = \exp (-E(x,h)) / Z $$
 
-$$ = \exp (h^TWx + c^Tx + b^Th ) / Z $$
+$$ 
+\mlabel{2}
+= \exp (h^TWx + c^Tx + b^Th ) / Z $$
 
 $$ = \exp (h^TWx) \exp (c^Tx) \exp(b^Th) / Z $$
 
@@ -90,7 +92,13 @@ $$ P(x,h;W) = \frac{1}{Z(W)} \exp
 \bigg]
 $$
 
-$h$ uzerinden marjinalize edersek,
+Aslinda acik konusmak gerekirse ``enerji'' gibi kavramlarla ugrasmak, ya da
+icinde eksi terimler iceren bir grup degiskenin tekrar eksisini almak ve
+eksilerin etkisinin notralize etmis olmak yerine bastan (2)'deki ifadeyle
+yola cikmak daha kisa. Giristeki aciklamalari literaturde gorulebilecek
+bazi anlatimlari aciklamak icin yaptik. 
+
+Neyse, $h$ uzerinden marjinalize edersek,
 
 $$ P(x;W) = \sum_h \frac{1}{Z(W)} \exp 
 \bigg[ 
@@ -108,7 +116,7 @@ $$
 $$
 
 
-And $Z(W)$ itself is
+Ve $Z(W)$ 
 
 $$ Z(W) = \sum_{h,x} \exp 
 \bigg[ 
@@ -161,8 +169,36 @@ Parantez icindeki ilk turevi alalim,
 
 $$ 
 \frac{\partial \ln Z_{x^{(n)}} }{\partial w_{ij}} = 
-\frac{\partial }{\partial w_{ij}}  \ln \bigg[ \sum_h \exp \big( \frac{1}{2} y^T W y \big) \bigg]
+\frac{\partial }{\partial w_{ij}}  
+\ln \bigg[ 
+\sum_h \exp \big( \frac{1}{2} y^{n^T} W y^n \big) 
+\bigg]
 $$
+
+
+$$ 
+= \frac{1}{Z_{x^{(n)}}}  \bigg[ \sum_h \frac{\partial }{\partial w_{ij}} \exp \big( \frac{1}{2} y^{n^T} W y^n  \big) \bigg]
+$$
+
+$$ 
+= \frac{1}{Z_{x^{(n)}}}  
+\bigg[ 
+\sum_h  \exp \big( \frac{1}{2} y^{n^T} W y^n  \big) 
+\frac{\partial }{\partial w_{ij}} y^{n^T} W y^n 
+\bigg]
+$$
+
+$$ 
+= \frac{1}{Z_{x^{(n)}}}  \sum_h  \exp \big( \frac{1}{2} y^{n^T} W y^n  \big) y_iy_j
+=  \sum_h \frac{1}{Z}  \exp \big( \frac{1}{2} y^{n^T} W y^n  \big) y_iy_j
+$$
+
+$$ 
+= P(h|x^n;W) y_iy_j
+$$
+
+
+
 
 
 
