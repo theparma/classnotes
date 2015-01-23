@@ -109,7 +109,7 @@ $$
 
 $$  
 \mlabel{1}
-= \frac{1}{Z(W)}  \sum_h \exp 
+P(x;W) = \frac{1}{Z(W)}  \sum_h \exp 
 \bigg[ 
 \frac{1}{2} y^T W y
 \bigg]
@@ -129,7 +129,7 @@ denkleminin ``farkli bir sekilde marjinalize edilmis hali'' olarak
 gostermis oluruz onu, ve boylece daha kisa bir formul kullanabiliriz,
 
 $$  
-= \frac{1}{Z(W)}  
+P(x;W) = \frac{1}{Z(W)}  
 \underbrace{
 \sum_h \exp 
 \bigg[ 
@@ -150,7 +150,7 @@ hesap yapariz, BM icin yapmistik bunu,
 $$  
 \mathcal{L} = 
 \ln \big( \prod_{n=1}^{N} P(x^{n};W) \big) = 
-\sum_{n=1}^{N} \ln P(x^{n};W) \big) 
+\sum_{n=1}^{N} \ln P(x^{n};W) 
 $$
 
 $$ 
@@ -165,7 +165,7 @@ $$
 - \frac{\partial \ln Z }{\partial w_{ij}} \big)
 $$
 
-Parantez icindeki ilk turevi alalim,
+Parantez icindeki 1. turevi alalim,
 
 $$ 
 \frac{\partial \ln Z_{x^{(n)}} }{\partial w_{ij}} = 
@@ -190,16 +190,13 @@ $$
 
 $$ 
 = \frac{1}{Z_{x^{(n)}}}  \sum_h  \exp \big( \frac{1}{2} y^{n^T} W y^n  \big) y_iy_j
-=  \sum_h \frac{1}{Z}  \exp \big( \frac{1}{2} y^{n^T} W y^n  \big) y_iy_j
 $$
 
 $$ 
-= P(h|x^n;W) y_iy_j
+=  \sum_h \frac{1}{ Z }  \exp \big( \frac{1}{2} y^{n^T} W y^n  \big) y_iy_j
 $$
 
-
-
-
+$$ =  \sum_h P(y^n;W) y_iy_j $$
 
 
 
