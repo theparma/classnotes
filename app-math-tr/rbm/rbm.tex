@@ -158,8 +158,8 @@ $$
 = \sum_{n=1}^{N}  \big(\ln Z_{x^{(n)}} - \ln Z \big) 
 $$
 
-
 $$ 
+\mlabel{3}
 \frac{\partial \mathcal{L} }{\partial w_{ij}} = 
  \sum_{n=1}^{N}  \big( \frac{\partial \ln Z_{x^{(n)}} }{\partial w_{ij}}
 - \frac{\partial \ln Z }{\partial w_{ij}} \big)
@@ -174,7 +174,6 @@ $$
 \sum_h \exp \big( \frac{1}{2} y^{n^T} W y^n \big) 
 \bigg]
 $$
-
 
 $$ 
 = \frac{1}{Z_{x^{(n)}}}  \bigg[ \sum_h \frac{\partial }{\partial w_{ij}} \exp \big( \frac{1}{2} y^{n^T} W y^n  \big) \bigg]
@@ -218,12 +217,41 @@ $$
 Ust kisim $P(y;W)$ yani $P(x,h;W) $ alt kisim $P(x;W)$ olmaz mi? Evet! Ve,
 
 
-$$ P(h|x;W) = \frac{P(x,h;W)}{P(x;W)}  $$
+$$ P(h|x^n;W) = \frac{P(x^n,h;W)}{P(x^n;W)}  $$
 
 olduguna gore, 
 
-$$ =  \sum_h P(h|x;W) y_iy_j $$
-elde ederiz. Bu da 
+$$ =  \sum_h P(h|x^n;W) y_iy_j $$
+
+elde ederiz. Bunu da $<y_iy_j>_{P(h|x^n;W)}$ olarak yazabiliriz. 
+
+Simdi parantez icindeki 2. turevi alalim, yani $\frac{\partial \ln Z }{\partial w_{ij}} $,
+
+$$ 
+\frac{\partial \ln Z }{\partial w_{ij}}  = 
+\sum_{h,x} \frac{1}{Z}  \exp \big( \frac{1}{2} y^{n^T} W y^n  \big) y_iy_j =
+\sum_{h,x} P(y^n;W)  y_iy_j
+$$
+
+ki bu son ifadeyi de $<y_iy_j>_{P(y^n;W)}$ olarak yazabiliriz. Tamamini,
+yani (3) ifadesini, artik soyle yazabiliriz,
+
+$$
+\sum_{n=1}^{N}  \big( \frac{\partial \ln Z_{x^{(n)}} }{\partial w_{ij}} - \frac{\partial \ln Z }{\partial w_{ij}} \big)
+= \sum_{n=1}^{N}  <y_iy_j>_{P(h|x^n;W)} - <y_iy_j>_{P(y^n;W)}
+$$
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
