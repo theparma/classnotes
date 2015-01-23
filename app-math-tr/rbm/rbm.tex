@@ -192,12 +192,38 @@ $$
 = \frac{1}{Z_{x^{(n)}}}  \sum_h  \exp \big( \frac{1}{2} y^{n^T} W y^n  \big) y_iy_j
 $$
 
+
 $$ 
-=  \sum_h \frac{1}{ Z }  \exp \big( \frac{1}{2} y^{n^T} W y^n  \big) y_iy_j
+= \sum_h  \frac{1}{Z_{x^{(n)}}}  \exp \big( \frac{1}{2} y^{n^T} W y^n  \big) y_iy_j
 $$
 
-$$ =  \sum_h P(y^n;W) y_iy_j $$
+$Z_{x^{(n)}}$'nin ne oldugunu hatirlarsak, $\exp$ ifadesinin $h$ uzerinden
+marjinalize edilmis hali,
 
+$$ 
+= \sum_h  \frac{\exp \big( \frac{1}{2} y^{n^T} W y^n  \big)}
+{\sum_h \exp \big( \frac{1}{2} y^T W y \big) } 
+y_iy_j
+$$
+
+Eger bolumun ustunu ve altini $Z$ ile bolsek,
+
+$$ 
+= \sum_h  
+\frac{\exp \big( \frac{1}{2} y^{n^T} W y^n  \big) / Z} 
+{\sum_h \exp \big( \frac{1}{2} y^T W y \big) / Z} 
+y_iy_j
+$$
+
+Ust kisim $P(y;W)$ yani $P(x,h;W) $ alt kisim $P(x;W)$ olmaz mi? Evet! Ve,
+
+
+$$ P(h|x;W) = \frac{P(x,h;W)}{P(x;W)}  $$
+
+olduguna gore, 
+
+$$ =  \sum_h P(h|x;W) y_iy_j $$
+elde ederiz. Bu da 
 
 
 
