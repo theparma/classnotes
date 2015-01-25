@@ -1,7 +1,7 @@
 import os, sys
 
 if len(sys.argv) == 1:
-    print "choose dict number"
+    print "choose dict number (tex1|tex2|tex3)"
     exit()
 
 if sys.argv[1] == 'tex1':
@@ -10,7 +10,7 @@ if sys.argv[1] == 'tex1':
     exit()
 
 if sys.argv[1] == 'tex2':
-    os.system("pdflatex dict2.tex")
+    os.system("pdflatex -shell-escape dict2.tex")
     os.system("evince dict2.pdf")
     exit()
 
