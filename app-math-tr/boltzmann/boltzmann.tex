@@ -344,14 +344,19 @@ yapiyor, boylelikle MCMC'nin dagilimi ``gezmesi'' saglanmis oluyor.
 
 Normalizasyon Sabiti
 
-Bu sabitin hesaplanmasi icin aynen $<x_ix_j>_{P(x;W)}$ icin oldugu gibi tum
-mumkun $x$'ler uzerinden bir toplam gerekir. Bu toplamin hesaplanmasinin
-cok zor oldugu icin, yine MCMC'ye basvuracagiz. Tek fark alinan orneklemi
-(3) formulune gecegiz, ve bir olasilik hesabi yapacagiz, ve bu olasiliklar
-toplayacagiz. Tabii ayni $x$'i (eger tekrar tekrar uretilirse -ufak bir
-ihtimal ama mumkun-) tekrar tekrar toplamamak icin hangi $x$'lerin
-uretildigini bir sozluk icinde hatirlayacagiz, yani bir $x$ olasiligi
-sadece bir kere toplanacak.
+Birazdan gorecegimiz ornek icin normalizasyon sabitini de hesaplamamiz
+gerekecek. Niye? Mesela iki farkli BM dagilimini farkli etiketli verilerden
+ogreniyoruz, sonra test veri noktasini her iki ayri dagilima ``soruyoruz''?
+Olasiligi nedir? Bu noktada kesin bir olasilik hesabi istedigimiz icin
+artik $Z$ bilinmek zorunda. Bu sabitin hesaplanmasi icin ise
+$<x_ix_j>_{P(x;W)}$ icin oldugu gibi, tum mumkun $x$'ler uzerinden bir
+toplam gerekir, bu toplam $\sum_x \exp 1/2 x^T W x$ toplami. Bu toplamin
+hesaplanmasi cok zor oldugu icin, yine MCMC'ye basvuracagiz. Tek fark
+alinan orneklemi (3) formulune gecegiz, ve bir olasilik hesabi yapacagiz,
+ve bu olasiliklari toplayacagiz. Tabii ayni $x$'i (eger tekrar tekrar
+uretilirse -ufak bir ihtimal ama mumkun-) tekrar tekrar toplamamak icin
+hangi $x$'lerin uretildigini bir sozluk icinde hatirlayacagiz, yani bir $x$
+olasiligi sadece bir kere toplanacak.
 
 Simdi ufak bir ornek uzerinde BM'i isletelim. 
 
