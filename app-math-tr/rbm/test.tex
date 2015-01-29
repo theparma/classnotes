@@ -1,0 +1,65 @@
+\documentclass[12pt,fleqn]{article}\usepackage{../common}
+\begin{document}
+
+\begin{minted}[fontsize=\footnotesize]{python}
+from sklearn.cross_validation import train_test_split
+x = np.loadtxt('/home/burak/Documents/classnotes/stat/stat_mixbern/binarydigits.txt')
+labels = np.ravel(np.loadtxt('/home/burak/Documents/classnotes/stat/stat_mixbern/bindigitlabels.txt'))
+X_train, X_test, y_train, y_test = train_test_split(x, labels, test_size=0.2,random_state=0)
+print X_train.shape
+\end{minted}
+
+\begin{verbatim}
+(80, 64)
+\end{verbatim}
+
+\begin{minted}[fontsize=\footnotesize]{python}
+import rbm
+clfs = {}
+for label in [0,5,7]:
+    x = X_train[y_train==label]
+    print x.shape
+    clf = rbm.RBM(num_visible = 64, num_hidden = 30, max_epochs = 500)
+    clf.fit(x)
+    clfs[label] = clf
+\end{minted}
+
+\begin{verbatim}
+(33, 64)
+16495
+(24, 64)
+11999
+(23, 64)
+11318
+\end{verbatim}
+
+\begin{minted}[fontsize=\footnotesize]{python}
+res = []
+for label in [0,5,7]:
+    res.append(clfs[label].predict_proba(X_test))
+res3 = np.argmax(np.array(res).T,axis=1)
+res3[res3==1] = 5
+res3[res3==2] = 7
+res3 = map(lambda x: float(x), res3)
+print 'RBM', np.sum(res3==y_test) / float(len(y_test))
+\end{minted}
+
+\begin{verbatim}
+RBM 1.0
+\end{verbatim}
+
+\begin{minted}[fontsize=\footnotesize]{python}
+from sklearn import neighbors
+clf = neighbors.KNeighborsClassifier()
+clf.fit(X_train,y_train)
+res3 = clf.predict(X_test)    
+print 'KNN', np.sum(res3==y_test) / float(len(y_test))
+\end{minted}
+
+\begin{verbatim}
+KNN 1.0
+\end{verbatim}
+
+
+
+\end{document}
