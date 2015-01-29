@@ -242,10 +242,39 @@ $$
 $$
 
 
+\inputminted[fontsize=\footnotesize]{python}{rbm.py}
 
+\begin{minted}[fontsize=\footnotesize]{python}
+from sklearn import neighbors
+from sklearn.cross_validation import train_test_split
+import numpy as np
 
+x = np.loadtxt('binarydigits.txt')
+labels = np.ravel(np.loadtxt('bindigitlabels.txt'))
+X_train, X_test, y_train, y_test = train_test_split(x, labels, test_size=0.2,random_state=0)
+print X_train.shape
 
+clfs = {}
+for label in [0,5,7]:
+    x = X_train[y_train==label]
+    clf = RBM(num_visible = 64, num_hidden = 2, max_epochs = 500)
+    clf.fit(x)
+    clfs[label] = clf
 
+res = []
+for label in [0,5,7]:
+    res.append(clfs[label].predict_proba(X_test))
+res3 = np.argmax(np.array(res).T,axis=1)
+res3[res3==1] = 5
+res3[res3==2] = 7
+res3 = map(lambda x: float(x), res3)
+print 'RBM', np.sum(res3==y_test) / float(len(y_test))
+
+clf = neighbors.KNeighborsClassifier()
+clf.fit(X_train,y_train)
+res3 = clf.predict(X_test)    
+print 'KNN', np.sum(res3==y_test) / float(len(y_test))
+\end{minted}
 
 
 

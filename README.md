@@ -38,12 +38,19 @@ import matploblib.pylab as plt
 
 ibarelerini script'in basina eklemek gerekir. Bu durumda kodlar
 `dosya.py` gibi bir dosya icinde kaydedilir, ve `python dosya.py` ile
-komut satirindan isletilir. 
+komut satirindan isletilir.
 
-Not: Cetrefil bir kullanim, Emacs icinde LaTeX dokumani *icinde* iken
-Python kodlarini `emacs-ipython` adli bir teknoloji uzerinden direk
-belge icinde isletmektir (arka planda ipython'a baglaniyor, yani ayni
-temel yapi kullaniliyor). Bu durumda, emacs-ipython gereken tum
+Kurulmasi gereken bazi Python paketleri (eger Anaconda tarafindan kurulmadiysa)
+
+Scikit Learn
+Pandas
+Numpy
+Scipy
+
+Not: Daha komplike bir kullanim, Emacs icinde LaTeX dokumani *icinde*
+iken Python kodlarini `emacs-ipython` adli bir teknoloji uzerinden
+direk belge icinde isletmektir (arka planda ipython'a baglaniyor, yani
+ayni temel yapi kullaniliyor). Bu durumda, emacs-ipython gereken tum
 ipython ayarlarini kendisi yapiyor.
 
 [1] Komut satiri nedir? Windows uzerindeyseniz `Start | All Programs |
@@ -51,7 +58,9 @@ Accessories | Command Prompt` ile baslatilir. Terminal usulu metin
 bazli bir iletisim aracidir. Ubuntu uzerinde `Applications |
 Accessories | Terminal` ile baslatilabilir. Kodlari ve dokumanlari
 nereye actiysaniz, o dizine komut satirindan `cd [dizin ismi]` ile
-gidebilirsiniz, ve buradan ipyton komutunu isletebilirsiniz.
+gidebilirsiniz, ve buradan ipyton komutunu isletebilirsiniz, ya da
+dokuman icindeki kodlari bir dosya.py dosyasina yazdiktan sonra
+`python dosya.py` ile kodlari isletebilirsiniz.
 
 ### English
 
