@@ -257,7 +257,7 @@ print X_train.shape
 clfs = {}
 for label in [0,5,7]:
     x = X_train[y_train==label]
-    clf = rbm.RBM(num_visible = 64, num_hidden = 4, max_epochs = 500)
+    clf = rbm.RBM(num_visible = 64, num_hidden = 5, max_epochs = 500)
     clf.fit(x)
     clfs[label] = clf
 

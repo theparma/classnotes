@@ -13,6 +13,7 @@ class RBM:
     self.weights = np.insert(self.weights, 0, 0, axis = 0)
     self.weights = np.insert(self.weights, 0, 0, axis = 1)
     self.max_epochs = max_epochs
+    self.norm_c = 0
 
   def fit(self, data):
     num_examples = data.shape[0]
@@ -31,7 +32,7 @@ class RBM:
       for h,v in itertools.izip(pos_hidden_states.astype(float),
                                 pos_visible_states):
         v = np.insert(v, 0, 1)
-        self.norm_dict[(tuple(h),tuple(v))] = 1
+        self.norm_c += np.dot(np.dot(h.T,self.weights.T), v)
         
       pos_associations = np.dot(data.T, pos_hidden_probs)
 
@@ -47,8 +48,6 @@ class RBM:
           ((pos_associations - neg_associations) / num_examples)
 
       error = np.sum((data - neg_visible_probs) ** 2)
-
-    self.norm_c = self.norm_constant()
           
   def run_hidden(self, data):
 
@@ -80,13 +79,6 @@ class RBM:
     hidden_states = hidden_states[:,1:]
     return hidden_states
   
-  def norm_constant(self):
-    sum = 0
-    for h,v in self.norm_dict:
-      h = np.array(h); v = np.array(v)
-      sum += np.dot(np.dot(h.T,self.weights.T), v)
-    return sum
-
   def predict_proba(self, X):
     hs = self.run_visible(X)
     hs = np.insert(hs, 0, 1,axis=1)
