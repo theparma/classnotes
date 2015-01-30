@@ -48,7 +48,6 @@ class RBM:
 
       error = np.sum((data - neg_visible_probs) ** 2)
 
-    print 'dict', len(self.norm_dict)
     self.norm_c = self.norm_constant()
           
   def run_hidden(self, data):

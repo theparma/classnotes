@@ -247,17 +247,17 @@ $$
 \begin{minted}[fontsize=\footnotesize]{python}
 from sklearn import neighbors
 from sklearn.cross_validation import train_test_split
-import numpy as np
+import numpy as np, rbm
 
-x = np.loadtxt('binarydigits.txt')
-labels = np.ravel(np.loadtxt('bindigitlabels.txt'))
+x = np.loadtxt('../../stat/stat_mixbern/binarydigits.txt')
+labels = np.ravel(np.loadtxt('../../stat/stat_mixbern/bindigitlabels.txt'))
 X_train, X_test, y_train, y_test = train_test_split(x, labels, test_size=0.2,random_state=0)
 print X_train.shape
 
 clfs = {}
 for label in [0,5,7]:
     x = X_train[y_train==label]
-    clf = RBM(num_visible = 64, num_hidden = 2, max_epochs = 500)
+    clf = rbm.RBM(num_visible = 64, num_hidden = 4, max_epochs = 500)
     clf.fit(x)
     clfs[label] = clf
 
@@ -276,7 +276,11 @@ res3 = clf.predict(X_test)
 print 'KNN', np.sum(res3==y_test) / float(len(y_test))
 \end{minted}
 
-
+\begin{verbatim}
+(80, 64)
+RBM 1.0
+KNN 1.0
+\end{verbatim}
 
 
 
