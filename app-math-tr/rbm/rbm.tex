@@ -2,25 +2,39 @@
 \begin{document}
 Kisitli Boltzmann Makinalari (Restricted Boltzmann Machines -RBM-)
 
-Bir RBM icinde ikisel (binary) degerler tasiyan gizli (hidden) $h$
-degiskenler, ve yine ikisel gorunen (visible) degiskenler $v$ vardir. $Z$
-aynen once gordugumuz Boltzman Makinalarinda (BM) oldugu gibi normalizasyon
-sabitidir.
-
+RBM aynen BM orneginde oldugu gibi bir dagilimdir. Verilen $x,h$ icin bir
+olasilik degeri geri dondurebilir. 
 $$ p(x,h;W) = \exp (-E(x,h)) / Z $$
 
-$E$ tanimina ``enerji'' olarak ta atif yapilabiliyor.
+Standart RBM icin $h,x$ ikiseldir (binary). Gizli (hidden) tabaka $h$, ve
+``gorunen (visible)'' tabaka $x$ vardir. $Z$ aynen once gordugumuz Boltzman
+Makinalarinda (BM) oldugu gibi normalizasyon sabitidir.
+
+Daha ilerlemeden once bir vurguyu yapalim; spesifik bir RBM'i tanimlayan
+sey onun $W$ matrisidir. Gizli degiskenler bazen karisiklik yaratabiliyor,
+bu degiskenler aynen gorunen degiskenler gibi degiskendirler. Yani belli
+$h$'lerin ``olasiligi'' sorulabilir, ya da onlar uretilebilir. Fakat RBM'i
+egitirken sadece gorunen kismi tarafindan egitiriz. Gizli tabaka bu sirada
+orneklem ile arada sirada ici doldurulur, bu tabii ki $W$'ye bagli olarak
+yapilacaktir. Gizli tabaka daha dusuk boyutlu oldugu icin git/gel bir tur
+ozetleme yapar ki ogrenim bu sirada ortaya cikar. 
+
+Devam edelim, $E$ tanimina ``enerji'' olarak ta atif yapilabiliyor.
 
 $$ E(x,h) = -h^TWx - c^Tx - b^Th $$
 
-BM'lerden farkli olarak RBM taniminda $c,b$ degiskenleri var. Bu
-degiskenler yanlilik (bias) icin, yani veri icindeki genel egilimi
-saptamalari icin modele konulmustur. Ayrica $h^TWx$ terimi var, bu BM'deki
- $x^TWx$ biraz farkli, gizli degiskenler, $h$ uzerinden $x$'ler arasinda
-baglanti yapiyor. Bir baska ilginc farklilik BM ile tum $x$ ogeleri
-birbirine baglanabiliyordu, RBM ile daha az (ya da fazla) olabilecek $h$
-katmaninda baglantilar paylasiliyor. Ozellikle azaltma durumunda RBM
-ozellik alanini azaltarak bir tur genellemeyi gerceklestirebiliyor.
+BM'lerden farkli olarak RBM'de $c,b$ degiskenleri var. Bu degiskenler
+yanlilik (bias) icin, yani veri icindeki genel egilimi saptamalari icin
+modele konulmustur. Ayrica $h^TWx$ terimi var, bu BM'deki $x^TWx$'den biraz
+farkli, daha once belirttigimiz gibi, $h$ uzerinden $x$'ler arasinda
+baglanti yapiyor. BM ile tum $x$ ogeleri birbirine baglanabiliyordu, RBM
+ile $h$ katmaninda baglantilar paylasiliyor. Bu $h$ uzerinden baglanti
+zorunlulugu RBM'in ozetleme alanini azaltarak bir tur genellemeyi
+gerceklestirebiliyor. Bu yuzden onlara ``kisitli'' Boltzmann makinalari adi
+veriliyor. Gizli degiskenlerin kendi aralarinda, ve gorunen degiskenlerin
+kendi aralarinda direk baglantiya izin verilmemistir. Baglantilara, $W$
+uzerinden sadece gizli ve gorunen degiskenler (tabakalar) arasinda izin
+verilmistir. Bu tabii ki matematiksel olarak bazi kolayliklar sagliyor.
 
 Formul alttaki gibi de acilabilir,
 
@@ -31,21 +45,14 @@ RBM'lerin alttaki gibi resmedildigini gorebilirsiniz.
 \includegraphics[height=4cm]{rbm_01.png}
 \includegraphics[height=4cm]{rbm_02.png}
 
-$h,x$ degiskenleri olasilik teorisinden bilinen rasgele degiskenlerdir,
-yani hem $x$'e hem de $h$'e ``zar attirabiliriz'' / bu degiskenler
-uzerinden orneklem toplayabiliriz. 
+Tekrar vurgulayalim, $h,x$ degiskenleri olasilik teorisinden bilinen
+rasgele degiskenlerdir, yani hem $x$'e hem de $h$'e ``zar attirabiliriz'' /
+bu degiskenler uzerinden orneklem toplayabiliriz.
 
 Ayrica, RBM'ler aynen BM'ler gibi bir olasilik yogunluk fonksiyonu
 uzerinden tanimlanirlar, onceki formulde gordugumuz gibi, tum mumkun
 degerleri uzerinden entegralleri (ya da toplamlari) alininca sonuc 1 olur,
 vs.
-
-RBM'lerin ``kisitli'' olarak tanimlanmalarinin sebebi gizli degiskenlerin
-kendi aralarinda, ve gorunen degiskenlerin kendi aralarinda direk
-baglantiya izin verilmemis olmasidir, bu bakimdan
-``kisitlanmislardir''. Baglantilara, $W$ uzerinden sadece gizli ve gorunen
-degiskenler (tabakalar) arasinda izin verilmistir. Bu tabii ki matematiksel
-olarak bazi kolayliklar sagliyor.
 
 Devam edelim, ana formulden hareketle cebirsel olarak sunlar da dogrudur,
 
@@ -66,11 +73,11 @@ p(x,h;W) = \frac{1}{Z}
 \prod_j \prod_k \exp (W_{jk}h_jx_k) \prod_k \exp(c_kx_k) \prod_j \exp(b_jh_j) 
  $$
 
- Notasyonu kolaylastirmak amaciyla $b,c$ terimlerini $W$ icine absorbe
- edebiliriz, $x_0=1$ ve $h_0=1$ degerlerini mecbur tutarsak ve $w_{0,:}=c$
- ve $w_{:,0}=b$ dersek, yani $W$'nin sifirinci satirinin tamaminin $c$
- oldugunu, sifirinci kolonunun tamaminin $b$ oldugunu kabul edersek
- RBM ana formulunu tekrar elde etmis oluruz, fakat artik
+Notasyonu kolaylastirmak amaciyla $b,c$ terimlerini $W$ icine absorbe
+edebiliriz, $x_0=1$ ve $h_0=1$ degerlerini mecbur tutarsak ve $w_{0,:}=c$
+ve $w_{:,0}=b$ dersek, yani $W$'nin sifirinci satirinin tamaminin $c$
+oldugunu, sifirinci kolonunun tamaminin $b$ oldugunu kabul edersek
+RBM ana formulunu tekrar elde etmis oluruz, fakat artik
 
 $$ E(x,h) = -h^TWx $$
 
@@ -94,9 +101,10 @@ $$
 
 Aslinda acik konusmak gerekirse ``enerji'' gibi kavramlarla ugrasmak, ya da
 icinde eksi terimler iceren bir grup degiskenin tekrar eksisini almak ve
-eksilerin etkisinin notralize etmis olmak yerine bastan (2)'deki ifadeyle
-yola cikmak daha kisadir. Icinde enerji olan aciklamalari biraz da
-literaturde gorulebilecek anlatimlara aciklik getirmek icin yaptik.
+eksilerin etkisinin notralize etmis olmaya gerek yok, bunun yerine bastan
+(2)'deki ifadeyle yola cikmak daha kisad. Icinde enerji olan aciklamalari
+biraz da literaturde gorulebilecek anlatimlara aciklik getirmek icin
+yaptik.
 
 Neyse, $h$ uzerinden marjinalize edersek,
 
@@ -246,9 +254,9 @@ Bu formulu de BM icin yaptigimiz gibi bir gradyan guncelleme formulune
 donusturebiliriz. Guncelleme formulunun hangi hesaplari gerektirdigine
 gelince; Ilk terim tum $h$'ler uzerinden, ikincisi ise tum $x,h$'ler
 uzerinden bir olasilik hesabi ve ornekleme gerektirecek. Bu durum cetin
-hesap (intractable) denen bir durum, ve daha once BM icin bu problemi Gibbs
-orneklemesi ile cozmustuk. Ayni cozumu burada da uygulayabiliriz, fakat
-belki daha iyi bir yaklasim su olacak. 
+hesap (intractable) denen bir durum, ozellikle $x,h$ sarti icin; daha once
+BM icin bu problemi Gibbs orneklemesi ile cozmustuk. Ayni cozumu burada da
+uygulayabiliriz, fakat belki daha iyi bir yaklasim su olacak.
 
 CD Yontemi (Contrastive Divergence) 
 
@@ -273,16 +281,17 @@ ve tabii ki $\sigma(x) = 1 / (1+e^{-x})$. Daha once 1 olma olasiligini
 nasil ornekleme cevirecegimizi de gormustuk zaten. 
 
 Simdi CD'nin ne olduguna gelelim. Eger RBM icin gereken orneklemeyi klasik
-Gibbs ile yaparsak orneklemeyi ``yeterince uzun sure'' yapmak gerekir ki
-dagilimin olasi noktalari gezilmis olsun. Fakat, ozellikle yuksek boyutlu
-durumlarda, tum $x,h$ kombinasyonlarini dusunursek bu cok buyuk bir
-alandir. Bunun yerine, ve ustteki bagimsizlik formullerinden hareketle CD
-yontemi bulunmustur, bu yonteme gore ornekleme verinin {\em kendisinden}
-baslatilir (kiyasla Gibbs rasgele bir noktadan), dongunun mesela ilk
-adiminda $x^0$ (ki bu tum verinin tamami), o baz alinarak $p(h^0|v^0)$
-hesaplanir (ustteki sigmoid, onun uzerinden $h^0$ orneklemi). Sonra $h^0$
-baz alinir ve $x^1$, bu boyle devam eder. Boylece mumkun $h$ ve $x$'ler
-gezilmis olur. 
+Gibbs ile yaparsak ornekleme zincirini ``yeterince uzun sure'' isletmek
+gerekir ki dagilimin olasi noktalari gezilmis olsun. Fakat, ozellikle
+yuksek boyutlu durumlarda, tum $x,h$ kombinasyonlarini dusunursek bu cok
+buyuk bir alandir ve gezme islemi cok, cok uzun zaman alabilir. Bunun
+yerine, ve ustteki bagimsizlik formullerinden hareketle CD yontemi
+bulunmustur, bu yonteme gore ornekleme verinin {\em kendisinden} baslatilir
+(kiyasla Gibbs rasgele bir noktadan), dongunun mesela ilk adiminda $x^0$
+(ki bu tum verinin tamami), baz alinarak $p(h^0|v^0)$ hesaplanir (ustteki
+sigmoid), onun uzerinden $h^0$ orneklemi alinir, sonra $h^0$ baz alinir ve
+$x^1$ uretilir, bu boyle devam eder. Boylece mumkun $h$ ve $x$'ler gezilmis
+olur.
 
 Literaturde su sekildeki resim bolca gorulebilir,
 
@@ -292,7 +301,7 @@ Bu yontem pur Gibbs orneklemesine kiyasla cok daha hizli isler ve iyi
 sonuclar verir. Teorik olarak niye isledigi [1,2] makalelerinde
 bulunabilir. CD aslinda (4) hedef formulunu degil baska bir hedefi optimize
 ediyor, fakat sonuc orijinal gradyan adimlarinin yapmak istedigine
-yakin. [3] baz alinarak, su sekilde,
+yakin. [3] baz alinarak, su sekilde kodlanabilir,
 
 \inputminted[fontsize=\footnotesize]{python}{rbm.py}
 
@@ -307,16 +316,17 @@ veri noktasi $x$ icin bir gizli bir $h$ uretebilir. Bunu ustteki
 formulasyondan zaten biliyoruz. Ayrica, $h$ genellikle daha az boyutta
 olduguna gore (hatta olmasa bile) bu $h$ uretiminin bir tur transformasyon
 oldugu, veri uzerinde bir ``ozetleme'' yaptigi iddia edilebilir. O zaman
-teorik olarak, gorunur veri yerine bu gizli veriyi kullanirsak, ve bu
-veriyi alip baska bir siniflayiciya verirsek, mesela lojistik regresyon,
-bilinen $h$'ler ve bilinen etiketler uzerinden takip edilen bir (supervised)
-egitim yapabiliriz. Yani once RBM egitiyoruz, sonra tum verinin $h$
-karsiligini aliyoruz, bunlari lojistik regresyona veriyoruz. 
+teorik olarak, gorunur veri yerine, gorunur veriden uretilen gizli veriyi
+kullanirsak ve bu veriyi alip baska bir siniflayiciya verirsek, mesela
+lojistik regresyon gibi, bu $h$'ler ve etiketler uzerinden takip edilen bir
+(supervised) egitim yapabiliriz. Yani, once RBM egitiyoruz, tum verinin $h$
+karsiligini aliyoruz, sonra bunlari lojistik regresyona veriyoruz. Alttaki
+kodda bunun orneginin gorebiliriz.
 
-Alttaki kod, ayrica, k-Katlama (k-fold) teknigini uyguluyor, veriyi 3
-parcaya bolup sirasiyla tum parcalari birer kez test, digerlerini egitim
-verisi yapiyoruz, boylece verinin tamami uzerinden egitim/test yapmis
-oluyoruz. Sonuc,
+Bu kod, ayrica, k-Katlama (k-fold) teknigini uyguluyor, veriyi 3 parcaya
+bolup sirasiyla tum parcalari birer kez test, digerlerini egitim verisi
+yapiyor, boylece verinin tamami uzerinden egitim/test yapmis
+olunuyor. Sonuc,
 
 \inputminted[fontsize=\footnotesize]{python}{test_rbmkfold.py}
 
