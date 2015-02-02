@@ -1,3 +1,4 @@
+# En iyi parametreleri bulmak icin grid search yap
 from sklearn.cross_validation import train_test_split
 from sklearn.metrics import classification_report
 from sklearn.linear_model import LogisticRegression
@@ -44,10 +45,3 @@ bestParams = gs.best_estimator_.get_params()
 # so they can be manually set
 for p in sorted(params.keys()):
     print "\t %s: %f" % (p, bestParams[p])
-
-# best score: 0.980
-# RBM + LOGISTIC REGRESSION PARAMETERS
-# 	 logistic__C: 100.000000
-# 	 rbm__learning_rate: 0.300000
-# 	 rbm__n_components: 30.000000
-# 	 rbm__n_iter: 300.000000
