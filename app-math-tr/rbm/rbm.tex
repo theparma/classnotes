@@ -66,11 +66,11 @@ p(x,h;W) = \frac{1}{Z}
 \prod_j \prod_k \exp (W_{jk}h_jx_k) \prod_k \exp(c_kx_k) \prod_j \exp(b_jh_j) 
  $$
 
-Notasyonu kolaylastirmak amaciyla $b,c$ terimlerini $W$ icine absorbe
-edebiliriz, $x_0=1$ ve $h_0=1$ degerlerini mecbur tutarsak ve $w_{0,:}=c$
-ve $w_{:,0}=b$ dersek, yani $W$'nin sifirinci satirinin tamamini $c$'ye set
-edip, sifirinci kolonunun tamamini $b$'ye set edersek, RBM ana formulunu
-tekrar elde etmis oluruz, fakat artik 
+ Notasyonu kolaylastirmak amaciyla $b,c$ terimlerini $W$ icine absorbe
+ edebiliriz, $x_0=1$ ve $h_0=1$ degerlerini mecbur tutarsak ve $w_{0,:}=c$
+ ve $w_{:,0}=b$ dersek, yani $W$'nin sifirinci satirinin tamaminin $c$
+ oldugunu, sifirinci kolonunun tamaminin $b$ oldugunu kabul edersek
+ RBM ana formulunu tekrar elde etmis oluruz, fakat artik
 
 $$ E(x,h) = -h^TWx $$
 
@@ -95,8 +95,8 @@ $$
 Aslinda acik konusmak gerekirse ``enerji'' gibi kavramlarla ugrasmak, ya da
 icinde eksi terimler iceren bir grup degiskenin tekrar eksisini almak ve
 eksilerin etkisinin notralize etmis olmak yerine bastan (2)'deki ifadeyle
-yola cikmak daha kisa. Giristeki aciklamalari literaturde gorulebilecek
-bazi anlatimlari aciklamak icin yaptik. 
+yola cikmak daha kisadir. Icinde enerji olan aciklamalari biraz da
+literaturde gorulebilecek anlatimlara aciklik getirmek icin yaptik.
 
 Neyse, $h$ uzerinden marjinalize edersek,
 
@@ -125,8 +125,8 @@ $$ Z(W) = \sum_{h,x} \exp
 $$
 
 (1) denkleminde bolumunden sonraki kisma $Z_x(W)$ dersek, sanki ayni $\exp$
-denkleminin ``farkli bir sekilde marjinalize edilmis hali'' olarak
-gostermis oluruz onu, ve boylece daha kisa bir formul kullanabiliriz,
+denkleminin $x$'ler uzerinden marjinalize edilmis hali olarak
+gosterebiliriz onu, ve boylece daha kisa bir formul kullanabiliriz,
 
 $$  
 P(x;W) = \frac{1}{Z(W)}  
@@ -229,58 +229,73 @@ Simdi parantez icindeki 2. turevi alalim, yani $\frac{\partial \ln Z }{\partial 
 
 $$ 
 \frac{\partial \ln Z }{\partial w_{ij}}  = 
-\sum_{h,x} \frac{1}{Z}  \exp \big( \frac{1}{2} y^{n^T} W y^n  \big) y_iy_j =
-\sum_{h,x} P(y^n;W)  y_iy_j
+\sum_{h,x} \frac{1}{Z}  \exp \big( \frac{1}{2} y^{T} W y  \big) y_iy_j =
+\sum_{h,x} P(y;W)  y_iy_j
 $$
 
-ki bu son ifadeyi de $<y_iy_j>_{P(y^n;W)}$ olarak yazabiliriz. Tamamini,
+ki bu son ifadeyi de $<y_iy_j>_{P(y;W)}$ olarak yazabiliriz. Tamamini,
 yani (3) ifadesini, artik soyle yazabiliriz,
 
 $$
 \sum_{n=1}^{N}  \big( \frac{\partial \ln Z_{x^{(n)}} }{\partial w_{ij}} - \frac{\partial \ln Z }{\partial w_{ij}} \big)
-= \sum_{n=1}^{N}  <y_iy_j>_{P(h|x^n;W)} - <y_iy_j>_{P(y^n;W)}
+= \sum_{n=1}^{N}  <y_iy_j>_{P(h|x^n;W)} - <y_iy_j>_{P(y;W)}
 $$
+
+Bu formulu de BM icin yaptigimiz gibi bir gradyan guncelleme formulune
+donusturebiliriz. Guncelleme formulunun hangi hesaplari gerektirdigine
+gelince; Ilk terim tum $h$'ler uzerinden, ikincisi ise tum $x,h$'ler
+uzerinden bir olasilik hesabi ve ornekleme gerektirecek. Bu durum cetin
+hesap (intractable) denen bir durum, ve daha once BM icin bu problemi Gibbs
+orneklemesi ile cozmustuk. Ayni cozumu burada da uygulayabiliriz, fakat
+belki daha iyi bir yaklasim su olacak. 
+
+CD Yontemi (Contrastive Divergence) 
+
+RBM'leri egitmek icin kullanilan en populer yontem CD yontemidir. Bu
+yontemi gecmeden once bazi matematiksel kolayliklari bilmek gerekli. 
+
+RBM grafigine bakarsak, eger $x$ biliniyor ise bu $h$ degiskenlerini
+bagimsiz hale getirir (kosullu olasilik kurali), ve ayni sekilde $h$
+biliniyor ise $x$ bagimsiz hale gelir. Bunu gorsel olarak bile anlamak cok
+kolay, elimizle tum $x$'leri kapatalim mesela ve $h$ dugumlerine bakalim,
+aralarinda hicbir baglanti yoktur degil mi? Ayni sekilde $h$ kapatinca
+$x$'ler ``baglantisiz'' hale gelir. 
+
+Bu bagimsizliktan yola cikarak, daha once BM icin yaptigimiz gibi,
+olasiliklar su basit formullere donusur,
+
+$$ p(h_i|x) = \sigma \bigg( \sum _{j=1}^{m} w_{ij} x_j \bigg) $$
+
+$$ p(x_i|h) = \sigma \bigg( \sum _{i=1}^{n} w_{ij} h_i \bigg) $$
+
+ve tabii ki $\sigma(x) = 1 / (1+e^{-x})$. Daha once 1 olma olasiligini
+nasil ornekleme cevirecegimizi de gormustuk zaten. 
+
+Simdi CD'nin ne olduguna gelelim. Eger RBM icin gereken orneklemeyi klasik
+Gibbs ile yaparsak orneklemeyi ``yeterince uzun sure'' yapmak gerekir ki
+dagilimin olasi noktalari gezilmis olsun. Fakat, ozellikle yuksek boyutlu
+durumlarda, tum $x,h$ kombinasyonlarini dusunursek bu cok buyuk bir
+alandir. Bunun yerine, ve ustteki bagimsizlik formullerinden hareketle CD
+yontemi bulunmustur, bu yonteme gore ornekleme operasyonu verinin kendisini
+baz alarak baslatilir, dongunun mesela ilk adiminda $x^0$ (ki bu tum
+verinin tamami), ve o baz alinarak $p(h^0|v^0)$ hesaplanir, ki bu ustteki
+sigmoid, ve onun uzerinden $h^0$ orneklemi toplanir. 
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \inputminted[fontsize=\footnotesize]{python}{rbm.py}
 
-\begin{minted}[fontsize=\footnotesize]{python}
-from sklearn import neighbors
-from sklearn.cross_validation import train_test_split
-import numpy as np, rbm
-
-x = np.loadtxt('../../stat/stat_mixbern/binarydigits.txt')
-labels = np.ravel(np.loadtxt('../../stat/stat_mixbern/bindigitlabels.txt'))
-X_train, X_test, y_train, y_test = train_test_split(x, labels, test_size=0.2,random_state=0)
-print X_train.shape
-
-clfs = {}
-for label in [0,5,7]:
-    x = X_train[y_train==label]
-    clf = rbm.RBM(num_visible = 64, num_hidden = 5, max_epochs = 500)
-    clf.fit(x)
-    clfs[label] = clf
-
-res = []
-for label in [0,5,7]:
-    res.append(clfs[label].predict_proba(X_test))
-res3 = np.argmax(np.array(res).T,axis=1)
-res3[res3==1] = 5
-res3[res3==2] = 7
-res3 = map(lambda x: float(x), res3)
-print 'RBM', np.sum(res3==y_test) / float(len(y_test))
-
-clf = neighbors.KNeighborsClassifier()
-clf.fit(X_train,y_train)
-res3 = clf.predict(X_test)    
-print 'KNN', np.sum(res3==y_test) / float(len(y_test))
-\end{minted}
-
-\begin{verbatim}
-(80, 64)
-RBM 1.0
-KNN 1.0
-\end{verbatim}
 
 
 

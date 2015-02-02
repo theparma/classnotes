@@ -13,7 +13,6 @@ class RBM:
     self.weights = np.insert(self.weights, 0, 0, axis = 0)
     self.weights = np.insert(self.weights, 0, 0, axis = 1)
     self.max_epochs = max_epochs
-    self.norm_c = 0
 
   def fit(self, data):
     num_examples = data.shape[0]
@@ -29,11 +28,6 @@ class RBM:
       tmp = np.array(pos_hidden_states).astype(float)
       pos_visible_states = self.run_hidden(tmp[:,1:])
 
-      for h,v in itertools.izip(pos_hidden_states.astype(float),
-                                pos_visible_states):
-        v = np.insert(v, 0, 1)
-        self.norm_c += np.dot(np.dot(h.T,self.weights.T), v)
-        
       pos_associations = np.dot(data.T, pos_hidden_probs)
 
       neg_visible_activations = np.dot(pos_hidden_states, self.weights.T)
