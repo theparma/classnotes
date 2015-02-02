@@ -20,4 +20,3 @@ for train, test in cv:
     
 print np.mean(scores)
             
-# 97    
