@@ -277,12 +277,14 @@ Gibbs ile yaparsak orneklemeyi ``yeterince uzun sure'' yapmak gerekir ki
 dagilimin olasi noktalari gezilmis olsun. Fakat, ozellikle yuksek boyutlu
 durumlarda, tum $x,h$ kombinasyonlarini dusunursek bu cok buyuk bir
 alandir. Bunun yerine, ve ustteki bagimsizlik formullerinden hareketle CD
-yontemi bulunmustur, bu yonteme gore ornekleme operasyonu verinin kendisini
-baz alarak baslatilir, dongunun mesela ilk adiminda $x^0$ (ki bu tum
-verinin tamami), o baz alinarak $p(h^0|v^0)$ hesaplanir (ki bu ustteki
-sigmoid, ve onun uzerinden $h^0$ orneklemi toplanir yani). Sonra $h^0$ baz
-alinir ve $x^1$, bu boyle devam eder. Literaturde su sekildeki resim bolca
-gorulebilir,
+yontemi bulunmustur, bu yonteme gore ornekleme verinin {\em kendisinden}
+baslatilir (kiyasla Gibbs rasgele bir noktadan), dongunun mesela ilk
+adiminda $x^0$ (ki bu tum verinin tamami), o baz alinarak $p(h^0|v^0)$
+hesaplanir (ustteki sigmoid, onun uzerinden $h^0$ orneklemi). Sonra $h^0$
+baz alinir ve $x^1$, bu boyle devam eder. Boylece mumkun $h$ ve $x$'ler
+gezilmis olur. 
+
+Literaturde su sekildeki resim bolca gorulebilir,
 
 \includegraphics[height=5cm]{rbm_03.png}
 
