@@ -14,7 +14,7 @@ cv = KFold(n=len(X),n_folds=3)
 for train, test in cv:
     X_train, Y_train = X[train], Y[train]
     X_test, Y_test = X[test], Y[test]
-    clf = neighbors.KNeighborsClassifier()
+    clf = neighbors.KNeighborsClassifier(n_neighbors=1)
     clf.fit(X_train, Y_train)
     scores.append(clf.score(X_test, Y_test))
     

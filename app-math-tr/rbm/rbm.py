@@ -7,7 +7,6 @@ class RBM:
     self.num_hidden = num_hidden
     self.num_visible = num_visible
     self.learning_rate = learning_rate
-    self.norm_dict = {}
     self.weights = 0.1 * np.random.randn(self.num_visible, self.num_hidden)    
     self.weights = np.insert(self.weights, 0, 0, axis = 0)
     self.weights = np.insert(self.weights, 0, 0, axis = 1)
