@@ -1,14 +1,16 @@
-import cPickle, numpy as np, gzip, rbm
-from sklearn import neighbors
-from sklearn import svm
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.cross_validation import train_test_split
+import cPickle, numpy as np, rbm
 from sklearn.linear_model import LogisticRegression
 
 from sklearn.base import BaseEstimator
 from sklearn.base import TransformerMixin
 
 class SKRBM(BaseEstimator, TransformerMixin):
+    """
+    Bu sinif bizim RBM kodu ile sklearn arasinda baglantiyi kurmak
+    icin yazildi, tek yaptigi parametreleri alip RBM'i cagirmak, bu
+    baglanti gerekti cunku sklearn KFold kodlarinin islemesi icin
+    belli bazi fonksiyon cagrilari saglanmali, mesela transform()
+    """
     def __init__(self, n_components=-1, learning_rate=-1, n_iter=-1,num_visible=-1):
       self.n_components = n_components
       self.learning_rate = learning_rate
