@@ -291,11 +291,32 @@ Literaturde su sekildeki resim bolca gorulebilir,
 Bu yontem pur Gibbs orneklemesine kiyasla cok daha hizli isler ve iyi
 sonuclar verir. Teorik olarak niye isledigi [1,2] makalelerinde
 bulunabilir. CD aslinda (4) hedef formulunu degil baska bir hedefi optimize
-ediyor, fakat sonuc (4)'un yapmak istedigine yakin. Kod [3] baz alinarak,
-su sekilde,
+ediyor, fakat sonuc orijinal gradyan adimlarinin yapmak istedigine
+yakin. [3] baz alinarak, su sekilde,
 
 \inputminted[fontsize=\footnotesize]{python}{rbm.py}
 
+RBM ve Siniflama 
+
+Siniflama (classification) islemi yapmak icin BM orneginde bir
+normalizasyon sabiti hesaplamistik. Burada degisik bir yoldan gidecegiz; ki
+bu yol ileride Derin Ogrenim icin faydali olacak. 
+
+Egittikten sonra bir RBM, icindeki $W$'ye gore, herhangi bir ``gorunur''
+veri noktasi $x$ icin bir gizli bir $h$ uretebilir. Bunu ustteki
+formulasyondan zaten biliyoruz. Ayrica, $h$ genellikle daha az boyutta
+olduguna gore (hatta olmasa bile) bu $h$ uretiminin bir tur transformasyon
+oldugu, veri uzerinde bir ``ozetleme'' yaptigi iddia edilebilir. O zaman
+teorik olarak, gorunur veri yerine bu gizli veriyi kullanirsak, ve bu
+veriyi alip baska bir siniflayiciya verirsek, mesela lojistik regresyon,
+bilinen $h$'ler ve bilinen etiketler uzerinden takip edilen bir (supervised)
+egitim yapabiliriz. Yani once RBM egitiyoruz, sonra tum verinin $h$
+karsiligini aliyoruz, bunlari lojistik regresyona veriyoruz. 
+
+Alttaki kod, ayrica, k-Katlama (k-fold) teknigini uyguluyor, veriyi 3
+parcaya bolup sirasiyla tum parcalari birer kez test, digerlerini egitim
+verisi yapiyoruz, boylece verinin tamami uzerinden egitim/test yapmis
+oluyoruz. Sonuc,
 
 \inputminted[fontsize=\footnotesize]{python}{test_rbmkfold.py}
 
@@ -306,6 +327,8 @@ su sekilde,
 \begin{verbatim}
 1.0
 \end{verbatim}
+
+Basari yuzde 100! Altta karsilastirma icin KNN teknigi kullandik,
 
 \inputminted[fontsize=\footnotesize]{python}{test_knnkfold.py}
 
