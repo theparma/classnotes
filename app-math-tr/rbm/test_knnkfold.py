@@ -5,8 +5,8 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.cross_validation import train_test_split
 from sklearn.linear_model import LogisticRegression
 
-X = np.loadtxt('binarydigits.txt')
-Y = np.ravel(np.loadtxt('bindigitlabels.txt'))
+X = np.loadtxt('../../stat/stat_mixbern/binarydigits.txt')
+Y = np.ravel(np.loadtxt('../../stat/stat_mixbern/bindigitlabels.txt'))
 
 from sklearn.cross_validation import KFold
 scores = []

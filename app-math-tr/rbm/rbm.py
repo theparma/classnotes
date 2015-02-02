@@ -3,8 +3,7 @@ import itertools
 
 class RBM:
   
-  def __init__(self, num_visible, num_hidden, learning_rate = 0.1,\
-                 max_epochs = 1000):
+  def __init__(self, num_hidden, learning_rate,max_epochs, num_visible=10):
     self.num_hidden = num_hidden
     self.num_visible = num_visible
     self.learning_rate = learning_rate
@@ -13,7 +12,7 @@ class RBM:
     self.weights = np.insert(self.weights, 0, 0, axis = 0)
     self.weights = np.insert(self.weights, 0, 0, axis = 1)
     self.max_epochs = max_epochs
-
+    
   def fit(self, data):
     num_examples = data.shape[0]
 
@@ -27,7 +26,7 @@ class RBM:
 
       tmp = np.array(pos_hidden_states).astype(float)
       pos_visible_states = self.run_hidden(tmp[:,1:])
-
+        
       pos_associations = np.dot(data.T, pos_hidden_probs)
 
       neg_visible_activations = np.dot(pos_hidden_states, self.weights.T)
@@ -72,15 +71,7 @@ class RBM:
         np.random.rand(num_examples, self.num_hidden + 1)  
     hidden_states = hidden_states[:,1:]
     return hidden_states
-  
-  def predict_proba(self, X):
-    hs = self.run_visible(X)
-    hs = np.insert(hs, 0, 1,axis=1)
-    res = []
-    for i in range(len(X)):
-      tmp = np.dot(hs[i],self.weights.T)
-      res.append(np.dot(tmp.T,np.insert(X[i], 0, 1)))
-    return np.array(res) / self.norm_c
               
   def _logistic(self, x):
     return 1.0 / (1 + np.exp(-x))
+

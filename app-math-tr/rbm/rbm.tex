@@ -237,6 +237,7 @@ ki bu son ifadeyi de $<y_iy_j>_{P(y;W)}$ olarak yazabiliriz. Tamamini,
 yani (3) ifadesini, artik soyle yazabiliriz,
 
 $$
+\mlabel{4}
 \sum_{n=1}^{N}  \big( \frac{\partial \ln Z_{x^{(n)}} }{\partial w_{ij}} - \frac{\partial \ln Z }{\partial w_{ij}} \big)
 = \sum_{n=1}^{N}  <y_iy_j>_{P(h|x^n;W)} - <y_iy_j>_{P(y;W)}
 $$
@@ -278,21 +279,18 @@ durumlarda, tum $x,h$ kombinasyonlarini dusunursek bu cok buyuk bir
 alandir. Bunun yerine, ve ustteki bagimsizlik formullerinden hareketle CD
 yontemi bulunmustur, bu yonteme gore ornekleme operasyonu verinin kendisini
 baz alarak baslatilir, dongunun mesela ilk adiminda $x^0$ (ki bu tum
-verinin tamami), ve o baz alinarak $p(h^0|v^0)$ hesaplanir, ki bu ustteki
-sigmoid, ve onun uzerinden $h^0$ orneklemi toplanir. 
+verinin tamami), o baz alinarak $p(h^0|v^0)$ hesaplanir (ki bu ustteki
+sigmoid, ve onun uzerinden $h^0$ orneklemi toplanir yani). Sonra $h^0$ baz
+alinir ve $x^1$, bu boyle devam eder. Literaturde su sekildeki resim bolca
+gorulebilir,
 
+\includegraphics[height=5cm]{rbm_03.png}
 
-
-
-
-
-
-
-
-
-
-
-
+Bu yontem pur Gibbs orneklemesine kiyasla cok daha hizli isler ve iyi
+sonuclar verir. Teorik olarak niye isledigi [1,2] makalelerinde
+bulunabilir. CD aslinda (4) hedef formulunu degil baska bir hedefi optimize
+ediyor, fakat sonuc (4)'un yapmak istedigine yakin. Kod [3] baz alinarak,
+su sekilde,
 
 \inputminted[fontsize=\footnotesize]{python}{rbm.py}
 
@@ -304,6 +302,16 @@ sigmoid, ve onun uzerinden $h^0$ orneklemi toplanir.
 
 
 
+
+Kaynaklar
+
+[1] Hinton, G., Training Products of Experts by Minimizing Contrastive
+Divergence
+
+[2] Louppe, G., Collaborative filtering, Scalable approaches using
+restricted Boltzmann machines, Master Tezi, 2010
+
+[3] \url{https://github.com/echen/restricted-boltzmann-machines}
 
 
 
