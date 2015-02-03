@@ -1,21 +1,9 @@
-"""Restricted Boltzmann Machine
-"""
-
-# Authors: Yann N. Dauphin <dauphiya@iro.umontreal.ca>
-#          Vlad Niculae
-#          Gabriel Synnaeve
-#          Lars Buitinck
-# License: BSD 3 clause
-
-import time
-
 import numpy as np
 import scipy.sparse as sp
-
 from sklearn.base import BaseEstimator
 from sklearn.base import TransformerMixin
 from sklearn.externals.six.moves import xrange
-from sklearn.utils import atleast2d_or_csr, check_arrays
+from sklearn.utils import check_arrays
 from sklearn.utils import check_random_state
 from sklearn.utils import gen_even_slices
 from sklearn.utils import issparse
@@ -23,8 +11,6 @@ from sklearn.utils.extmath import safe_sparse_dot
 from sklearn.utils.extmath import log_logistic
 from sklearn.utils.fixes import expit             # logistic function
 
-"""Restricted Boltzmann Machine
-"""
 class BernoulliRBM(BaseEstimator, TransformerMixin):
     """Bernoulli Restricted Boltzmann Machine (RBM).
 
@@ -256,7 +242,6 @@ class BernoulliRBM(BaseEstimator, TransformerMixin):
         batch_slices = list(gen_even_slices(n_batches * self.batch_size,
                                             n_batches, n_samples))
         verbose = self.verbose
-        begin = time.time()
         for iteration in xrange(1, self.n_iter + 1):
             for batch_slice in batch_slices:
                 self._fit(X[batch_slice], rng)

@@ -287,11 +287,14 @@ yuksek boyutlu durumlarda, tum $x,h$ kombinasyonlarini dusunursek bu cok
 buyuk bir alandir ve gezme islemi cok, cok uzun zaman alabilir. Bunun
 yerine, ve ustteki bagimsizlik formullerinden hareketle CD yontemi
 bulunmustur, bu yonteme gore ornekleme verinin {\em kendisinden} baslatilir
-(kiyasla Gibbs rasgele bir noktadan), dongunun mesela ilk adiminda $x^0$
-(ki bu tum verinin tamami), baz alinarak $p(h^0|v^0)$ hesaplanir (ustteki
-sigmoid), onun uzerinden $h^0$ orneklemi alinir, sonra $h^0$ baz alinir ve
-$x^1$ uretilir, bu boyle devam eder. Boylece mumkun $h$ ve $x$'ler gezilmis
-olur.
+(kiyasla pur Gibbs rasgele bir noktadan), dongunun mesela ilk adiminda
+$x^0$ (ki bu tum verinin tamami), baz alinarak $p(h^0|v^0)$ hesaplanir
+(ustteki sigmoid), onun uzerinden $h^0$ orneklemi alinir, sonra $h^0$ baz
+alinir ve $x^1$ uretilir, bu boyle devam eder. Boylece mumkun $h$ ve
+$x$'ler gezilmis olur. Not: Surekli verinin kendisine donmenin de bazi
+dezavantajlari var, ki bunu yapmadan pur Gibbs orneklemesine daha yakin bir
+yaklasim Kalici (Persistent) CD adli yontemdir (tabii baska yaklasiksal
+numaralar kullanarak).
 
 Literaturde su sekildeki resim bolca gorulebilir,
 

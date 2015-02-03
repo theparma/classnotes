@@ -1,7 +1,48 @@
 \documentclass[12pt,fleqn]{article}\usepackage{../common}
 \begin{document}
 
-http://videolectures.net/icml09_tieleman_ufw/
+\begin{algorithm}[h]
+\begin{pseudocode}
+\codename $\code{persistent\_cd}$\\
+\codeline Rasgele sayilar ile $W$'ye baslangic degerleri ver \\
+\end{pseudocode}
+\end{algorithm}
+
+
+
+
+\begin{algorithm}[h]
+\begin{pseudocode}
+\codename $\code{ball\_knn}\left(PS^{in},node\right)$\\
+\codeline -- Eger alttaki sart gecerli ise node icindeki bir noktanin daha once \\
+\codeline -- kesfedilmis $k$ en yakin komsudan daha yakin olmasi imkansizdir\\
+\codeline $\code{if } D^{node}_{minp} \ge D_{sofar}$ \\
+\codeline \> $\code{return } PS_{in}$ degismemis halde;\\
+\codeline $\code{else if } node $ bir cocuk noktasi ise \\
+\codeline \> $PS_{out} = PS_{in}$;\\
+\codeline \> $\code{for } \forall x \in points(node)$\\
+\codeline \> \> $\code{if } \left( |x-q| < D_{sofar} \right)$; -- basit lineer arama yap\\
+\codeline \> \> $x$'i $PS_{out}$'a ekle;\\
+\codeline \> \> $\code{if } |PS^{out}| == k+1$;\\
+\codeline \> \> \> en uzak olan komsuyu $PS^{out}$'tan cikart;\\
+\codeline \> \> \> $D_{sofar}$'i guncelle;\\
+\codeline \\
+\codeline -- eger uc nokta degil ise iki cocuk dugumden daha yakin olanini \\
+\codeline -- incele, sonra daha uzakta olanina bak. buyuk bir ihtimalle   \\
+\codeline -- arama devam ettirilirse bu arama kendiliginden kesilecektir  \\
+\codeline $\code{else }$\\
+\codeline \> $node_1 = node$'un $q$'ya en yakin cocugu;\\
+\codeline \> $node_2 = node$'un $q$'dan en uzak cocugu;\\
+\codeline \> $PS^{temp} = \code{ball\_knn}(PS^{in},node_1)$;\\
+\codeline \> $PS^{out} = \code{ball\_knn}(PS^{temp},node_2);$
+\end{pseudocode}
+\end{algorithm}
+
+
+
+
+
+\url{http://videolectures.net/icml09_tieleman_ufw/}
 
 
 \end{document}
