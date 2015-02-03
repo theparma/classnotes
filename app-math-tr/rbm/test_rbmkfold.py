@@ -8,8 +8,9 @@ class SKRBM(BaseEstimator, TransformerMixin):
     """
     Bu sinif bizim RBM kodu ile sklearn arasinda baglantiyi kurmak
     icin yazildi, tek yaptigi parametreleri alip RBM'i cagirmak, bu
-    baglanti gerekti cunku sklearn KFold kodlarinin islemesi icin
-    belli bazi fonksiyon cagrilari saglanmali, mesela transform()
+    baglanti aslinda KFold icin muhakkak lazim degil (run_visible ile
+    de bu isi halledebilirdik), fakat GridSearch kullanmak gerekirse
+    class'in icinde transform() cagrisinin olmasi lazim.
     """
     def __init__(self, n_components=-1, learning_rate=-1, n_iter=-1,num_visible=-1):
       self.n_components = n_components
