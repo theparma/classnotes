@@ -98,7 +98,6 @@ class RBM:
     
     for iteration in xrange(1, self.max_epochs + 1):
         for batch_slice in batch_slices:
-            #print X[batch_slice]
             self._fit(X[batch_slice])
             break
     
