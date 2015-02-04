@@ -62,21 +62,25 @@ class RBM:
 
     num_examples = data.shape[0]
 
-    visible_states = np.ones((num_examples, self.num_visible + 1))
+    visible_states = np.ones((num_examples, self.num_visible))
 
-    data = np.insert(data, 0, 1, axis = 1)
-
-    visible_activations = np.dot(data, self.weights.T)
+    visible_activations = np.dot(data, self.weights)
     visible_probs = self._logistic(visible_activations)
     visible_states[:,:] = visible_probs > \
-        np.random.rand(num_examples, self.num_visible + 1)
+        np.random.rand(num_examples, self.num_visible )
 
-    visible_states = visible_states[:,1:]
+    #visible_states = visible_states[:,1:]
     return visible_states
   
   def _logistic(self, x):
     return 1.0 / (1 + np.exp(-x))
-    
+
+  def _fit(self, v_pos):
+    h_pos = self.run_visible(v_pos)
+    v_neg = self.run_hidden(self.h_samples_)
+    h_neg = self.run_visible(v_neg)
+    print h_neg
+
   def fit(self, data):
     """
     Makinayi egit
@@ -86,17 +90,21 @@ class RBM:
     data: Her satirin "gorunen" veri oldugu bir matris
     """
     num_examples = data.shape[0]
+    self.h_samples_ = np.zeros((self.batch_size, self.num_visible))
+    self.h_samples_ = np.insert(self.h_samples_, 0, 1, axis = 1)
     n_batches = int(np.ceil(float(num_examples) / self.batch_size))
     batch_slices = list(gen_even_slices(n_batches * self.batch_size,
                                         n_batches, num_examples))
     
     for iteration in xrange(1, self.max_epochs + 1):
         for batch_slice in batch_slices:
-            print X[batch_slice]
+            #print X[batch_slice]
+            self._fit(X[batch_slice])
+            break
     
 if __name__ == "__main__":    
     import numpy as np
     X = np.array([[0, 0, 0], [0, 1, 1], [1, 0, 1], [1, 1, 1]])
-    model = RBM(num_hidden=2, learning_rate=0.1,max_epochs=10, num_visible=4, batch_size=2)
+    model = RBM(num_hidden=2, learning_rate=0.1,max_epochs=10, num_visible=3, batch_size=2)
     model.fit(X)
     
