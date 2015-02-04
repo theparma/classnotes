@@ -164,25 +164,6 @@ class BernoulliRBM(BaseEstimator, TransformerMixin):
         return (rng.random_sample(size=p.shape) < p)
 
 
-    def gibbs(self, v):
-        """Perform one Gibbs sampling step.
-
-        Parameters
-        ----------
-        v : array-like, shape (n_samples, n_features)
-            Values of the visible layer to start from.
-
-        Returns
-        -------
-        v_new : array-like, shape (n_samples, n_features)
-            Values of the visible layer after one Gibbs step.
-        """
-        rng = check_random_state(self.random_state)
-        h_ = self._sample_hiddens(v, rng)
-        v_ = self._sample_visibles(h_, rng)
-
-        return v_
-
 
     def _fit(self, v_pos, rng):
         """Inner fit for one mini-batch.
@@ -241,14 +222,18 @@ class BernoulliRBM(BaseEstimator, TransformerMixin):
         n_batches = int(np.ceil(float(n_samples) / self.batch_size))
         batch_slices = list(gen_even_slices(n_batches * self.batch_size,
                                             n_batches, n_samples))
-        verbose = self.verbose
+
         for iteration in xrange(1, self.n_iter + 1):
             for batch_slice in batch_slices:
                 self._fit(X[batch_slice], rng)
         return self
 
-
 #python test6.py
 #(50000, 784)
 #RBM 0.9608
-    
+        
+if __name__ == "__main__":    
+    import numpy as np
+    X = np.array([[0, 0, 0], [0, 1, 1], [1, 0, 1], [1, 1, 1]])
+    model = BernoulliRBM(n_components=2,batch_size=2)
+    model.fit(X)
