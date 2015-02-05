@@ -2,34 +2,19 @@ from sklearn.utils import gen_even_slices
 import numpy as np
 import itertools
 
-class RBM:
-  
-  def __init__(self, num_hidden, num_visible, learning_rate,max_epochs=10, batch_size=10):
+class RBM:  
+  def __init__(self, num_hidden, num_visible, learning_rate,max_epochs=10,
+               batch_size=10):
     self.num_hidden = num_hidden
     self.num_visible = num_visible
     self.learning_rate = learning_rate
-    # Agirlik matrisi W'yi yarat (buyukluk num_visible x num_hidden),
-    # bunun icin Gaussian dagilimi kullan, ortalama=0, standart sapma 1. 
     self.weights = 0.1 * np.random.randn(self.num_visible, self.num_hidden)    
-    # Egilim (bias) icin ilk satir ve ilk kolona 1 degeri koy
     self.weights = np.insert(self.weights, 0, 0, axis = 0)
     self.weights = np.insert(self.weights, 0, 0, axis = 1)
     self.max_epochs = max_epochs
     self.batch_size = batch_size
             
   def run_visible(self, data):
-    """
-    RBM'in egitilmis olduguna farz ederek, gorunen veri uzerinde
-    RBM'i islet, ve h icin bir orneklem al
-
-    Parametreler
-    ----------
-    data: Her satirin gorunen veri oldugu bir matris
-    
-    Returns
-    -------
-    hidden_states: data icindeki her satira tekabul eden gizli h verisi
-    """
     num_examples = data.shape[0]
     
     hidden_states = np.ones((num_examples, self.num_hidden + 1))
@@ -45,10 +30,6 @@ class RBM:
 
           
   def run_hidden(self, data):
-    """
-    run_visible'a benzer, sadece gizli veri icin gorunen veri uret
-    """
-
     num_examples = data.shape[0]
 
     visible_states = np.ones((num_examples, self.num_visible + 1))
@@ -82,13 +63,6 @@ class RBM:
     self.h_samples_ = np.floor(h_neg, h_neg)[:,1:]
 
   def fit(self, data):
-    """
-    Makinayi egit
-
-    Parametreler
-    ----------
-    data: Her satirin "gorunen" veri oldugu bir matris
-    """
     num_examples = data.shape[0]
     self.h_samples_ = np.zeros((self.batch_size, self.num_hidden))
     n_batches = int(np.ceil(float(num_examples) / self.batch_size))

@@ -1,3 +1,6 @@
+'''
+Scikit Learn PCD kullanan RBM kodu
+'''
 import numpy as np
 import scipy.sparse as sp
 from sklearn.base import BaseEstimator

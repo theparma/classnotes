@@ -1,13 +1,38 @@
 # En iyi parametreleri bulmak icin grid search yap
 from sklearn.cross_validation import train_test_split
 from sklearn.metrics import classification_report
+from sklearn.base import BaseEstimator
+from sklearn.base import TransformerMixin
 from sklearn.linear_model import LogisticRegression
 from sklearn.neural_network import BernoulliRBM
 from sklearn.grid_search import GridSearchCV
 from sklearn.pipeline import Pipeline
+import argparse, time, rbm
 import numpy as np
-import argparse, rbms
-import time
+
+class SKRBM(BaseEstimator, TransformerMixin):
+    """
+    Bu sinif bizim RBM kodu ile sklearn arasinda baglantiyi kurmak
+    icin yazildi, tek yaptigi parametreleri alip RBM'i cagirmak, bu
+    baglanti GridSearch icin gerekli cunku bu altyapi arka planda
+    icinde transform() cagrisini yapiyor.
+    """
+    def __init__(self, n_components=-1, learning_rate=-1, n_iter=-1,num_visible=-1):
+      self.n_components = n_components
+      self.learning_rate = learning_rate
+      self.n_iter = n_iter
+      self.num_visible = num_visible
+      self.rbm_ = rbm.RBM(num_hidden=self.n_components,
+                          learning_rate=self.learning_rate,
+                          max_epochs=self.n_iter,num_visible=num_visible)
+
+    def transform(self, X):
+      return self.rbm_.run_visible(X)
+
+    def fit(self, X, y=None):
+      self.rbm_.fit(X)
+      return self
+
 
 x = np.loadtxt('binarydigits.txt')
 labels = np.ravel(np.loadtxt('bindigitlabels.txt'))
@@ -15,7 +40,7 @@ X_train, X_test, y_train, y_test = train_test_split(x, labels, test_size=0.4,ran
 print X_train.shape
 
 # initialize the RBM + Logistic Regression pipeline
-rbm = rbms.SKRBM()
+rbm = SKRBM()
 logistic = LogisticRegression()
 classifier = Pipeline([("rbm", rbm), ("logistic", logistic)])
 

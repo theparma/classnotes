@@ -1,8 +1,6 @@
-import cPickle, numpy as np, gzip
 from sklearn import neighbors
-from sklearn import svm
-from sklearn.cross_validation import train_test_split
 from sklearn.linear_model import LogisticRegression
+import numpy as np
 
 X = np.loadtxt('../../stat/stat_mixbern/binarydigits.txt')
 Y = np.ravel(np.loadtxt('../../stat/stat_mixbern/bindigitlabels.txt'))
