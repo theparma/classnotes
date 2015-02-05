@@ -62,14 +62,16 @@ class RBM:
 
     num_examples = data.shape[0]
 
-    visible_states = np.ones((num_examples, self.num_visible))
+    visible_states = np.ones((num_examples, self.num_visible + 1))
 
-    visible_activations = np.dot(data, self.weights)
+    data = np.insert(data, 0, 1, axis = 1)
+
+    visible_activations = np.dot(data, self.weights.T)
     visible_probs = self._logistic(visible_activations)
     visible_states[:,:] = visible_probs > \
-        np.random.rand(num_examples, self.num_visible )
+        np.random.rand(num_examples, self.num_visible + 1)
 
-    #visible_states = visible_states[:,1:]
+    visible_states = visible_states[:,1:]
     return visible_states
   
   def _logistic(self, x):
@@ -77,9 +79,18 @@ class RBM:
 
   def _fit(self, v_pos):
     h_pos = self.run_visible(v_pos)
+    print self.h_samples_.shape
     v_neg = self.run_hidden(self.h_samples_)
+    print v_neg.shape
     h_neg = self.run_visible(v_neg)
-    print h_neg
+    lr = float(self.learning_rate) / v_pos.shape[0]
+    update = np.dot(v_pos.T, h_pos).T
+    update -= np.dot(h_neg.T, v_neg)
+    self.weights[1:,1:] += lr * update.T
+    h_neg[np.random.rand(h_neg.shape[0], h_neg.shape[1]) < h_neg] = 1.0  # sample binomial
+    self.h_samples_ = np.floor(h_neg, h_neg)
+    print self.h_samples_
+    print 'done'
 
   def fit(self, data):
     """
@@ -90,8 +101,7 @@ class RBM:
     data: Her satirin "gorunen" veri oldugu bir matris
     """
     num_examples = data.shape[0]
-    self.h_samples_ = np.zeros((self.batch_size, self.num_visible))
-    self.h_samples_ = np.insert(self.h_samples_, 0, 1, axis = 1)
+    self.h_samples_ = np.zeros((self.batch_size, self.num_hidden))
     n_batches = int(np.ceil(float(num_examples) / self.batch_size))
     batch_slices = list(gen_even_slices(n_batches * self.batch_size,
                                         n_batches, num_examples))
@@ -100,6 +110,7 @@ class RBM:
         for batch_slice in batch_slices:
             self._fit(X[batch_slice])
             break
+        break
     
 if __name__ == "__main__":    
     import numpy as np
