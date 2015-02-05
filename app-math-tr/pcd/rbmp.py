@@ -71,11 +71,15 @@ class RBM:
     v_neg = self.run_hidden(self.h_samples_)
     h_neg = self.run_visible(v_neg)
     lr = float(self.learning_rate) / v_pos.shape[0]
+    v_pos = np.insert(v_pos, 0, 1, axis = 1)
+    h_pos = np.insert(h_pos, 0, 1, axis = 1)
+    v_neg = np.insert(v_neg, 0, 1, axis = 1)
+    h_neg = np.insert(h_neg, 0, 1, axis = 1)
     update = np.dot(v_pos.T, h_pos).T
     update -= np.dot(h_neg.T, v_neg)
-    self.weights[1:,1:] += lr * update.T
+    self.weights += lr * update.T
     h_neg[np.random.rand(h_neg.shape[0], h_neg.shape[1]) < h_neg] = 1.0  # sample binomial
-    self.h_samples_ = np.floor(h_neg, h_neg)
+    self.h_samples_ = np.floor(h_neg, h_neg)[:,1:]
 
   def fit(self, data):
     """
@@ -100,4 +104,4 @@ if __name__ == "__main__":
     X = np.array([[0, 0, 0], [0, 1, 1], [1, 0, 1], [1, 1, 1]])
     model = RBM(num_hidden=2, num_visible=3, learning_rate=0.1,batch_size=2)
     model.fit(X)
-    print model.weights[1:,1:].T
+    print model.weights
