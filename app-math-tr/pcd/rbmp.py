@@ -4,7 +4,7 @@ import itertools
 
 class RBM:
   
-  def __init__(self, num_hidden, learning_rate,max_epochs, num_visible=10, batch_size=10):
+  def __init__(self, num_hidden, num_visible, learning_rate,max_epochs=10, batch_size=10):
     self.num_hidden = num_hidden
     self.num_visible = num_visible
     self.learning_rate = learning_rate
@@ -79,9 +79,7 @@ class RBM:
 
   def _fit(self, v_pos):
     h_pos = self.run_visible(v_pos)
-    print self.h_samples_.shape
     v_neg = self.run_hidden(self.h_samples_)
-    print v_neg.shape
     h_neg = self.run_visible(v_neg)
     lr = float(self.learning_rate) / v_pos.shape[0]
     update = np.dot(v_pos.T, h_pos).T
@@ -89,8 +87,6 @@ class RBM:
     self.weights[1:,1:] += lr * update.T
     h_neg[np.random.rand(h_neg.shape[0], h_neg.shape[1]) < h_neg] = 1.0  # sample binomial
     self.h_samples_ = np.floor(h_neg, h_neg)
-    print self.h_samples_
-    print 'done'
 
   def fit(self, data):
     """
@@ -109,12 +105,10 @@ class RBM:
     for iteration in xrange(1, self.max_epochs + 1):
         for batch_slice in batch_slices:
             self._fit(X[batch_slice])
-            break
-        break
     
 if __name__ == "__main__":    
     import numpy as np
     X = np.array([[0, 0, 0], [0, 1, 1], [1, 0, 1], [1, 1, 1]])
-    model = RBM(num_hidden=2, learning_rate=0.1,max_epochs=10, num_visible=3, batch_size=2)
+    model = RBM(num_hidden=2, num_visible=3, learning_rate=0.1,batch_size=2)
     model.fit(X)
-    
+    print model.weights[1:,1:].T

@@ -237,3 +237,4 @@ if __name__ == "__main__":
     X = np.array([[0, 0, 0], [0, 1, 1], [1, 0, 1], [1, 1, 1]])
     model = BernoulliRBM(n_components=2,batch_size=2)
     model.fit(X)
+    print model.components_
