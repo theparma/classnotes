@@ -1,7 +1,6 @@
 import cPickle, numpy as np, gzip
 from sklearn import neighbors
 from sklearn import svm
-from sklearn.tree import DecisionTreeClassifier
 from sklearn.cross_validation import train_test_split
 from sklearn.linear_model import LogisticRegression
 

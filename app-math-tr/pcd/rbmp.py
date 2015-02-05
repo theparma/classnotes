@@ -16,18 +16,7 @@ class RBM:
     self.weights = np.insert(self.weights, 0, 0, axis = 1)
     self.max_epochs = max_epochs
     self.batch_size = batch_size
-    
-  def fit(self, data):
-    """
-    Makinayi egit
-
-    Parametreler
-    ----------
-    data: Her satirin "gorunen" veri oldugu bir matris
-    """
-    num_examples = data.shape[0]
-    n_batches = int(np.ceil(float(num_examples) / self.batch_size))
-        
+            
   def run_visible(self, data):
     """
     RBM'in egitilmis olduguna farz ederek, gorunen veri uzerinde
@@ -104,7 +93,7 @@ class RBM:
     
     for iteration in xrange(1, self.max_epochs + 1):
         for batch_slice in batch_slices:
-            self._fit(X[batch_slice])
+            self._fit(data[batch_slice])
     
 if __name__ == "__main__":    
     import numpy as np
