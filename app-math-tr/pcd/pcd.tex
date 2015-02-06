@@ -1,13 +1,29 @@
 \documentclass[12pt,fleqn]{article}\usepackage{../common}
 \begin{document}
 
-
 \inputminted[fontsize=\footnotesize]{python}{rbmp.py}
+
+\inputminted[fontsize=\footnotesize]{python}{test_rbmkfold.py}
+
+\begin{minted}[fontsize=\footnotesize]{python}
+! python test_rbmkfold.py
+\end{minted}
+
+\begin{verbatim}
+0.989898989899
+\end{verbatim}
+
+Daha cetrefil bir veri seti MNIST veri setine [2] bakalim. Veri 28x28
+boyutunda ikisel veri olarak kodlanmis rakamlarin el yazisindan alinmis
+resimlerini icerir. Veriyi aldiktan sonra egitim / test kisimlarinin ilk
+1000 tanesi uzerinde algoritmamizi kullanirsak, tek komsulu KNN (yani 1-NN)
+yuzde 85.4 basari sonucunu verir. Alttaki parametreler uzerinden RBM yuzde
+86 olacaktir.
 
 \inputminted[fontsize=\footnotesize]{python}{test_mnist.py}
 
-\url{http://videolectures.net/icml09_tieleman_ufw/}
+[1] \url{http://videolectures.net/icml09_tieleman_ufw/}
 
-\url{http://www.iro.umontreal.ca/~lisa/deep/data/mnist/mnist.pkl.gz}
+[2] \url{http://www.iro.umontreal.ca/~lisa/deep/data/mnist/mnist.pkl.gz}
 
 \end{document}
