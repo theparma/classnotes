@@ -1,7 +1,56 @@
 \documentclass[12pt,fleqn]{article}\usepackage{../common}
 \begin{document}
+Kalici CD (Persistent Contrastive Divergence -PCD-)
+
+Kisitli Boltzman Makinalari (RBM) yazisinda gosterilen egitim CD
+(contrastive divergence) uzerinden idi. Amac alttaki formulde, ozellikle
+eksiden sonraki terimi yaklasiksal olarak hesaplamaktir. 
+
+$$ \sum_{n=1}^{N}  <y_iy_j>_{P(h|x^n;W)} - <y_iy_j>_{P(x,h;W)} $$
+
+Bu terime basinda eksi oldugu icin negatif parcaciklar (negative particles)
+ismi de veriliyor. CD bir tur Gibbs ``tek adimlik Gibbs orneklemesi'' idi;
+tek adim ornekleme sonrasinda dongunun bir sonraki adiminda veri tekrar
+baslangic noktasi olarak zincire set ediliyordu. Yani CD usulu Gibbs'in
+veriden uzaklasma sansi cok azdir.
+
+Bu durumun tabii ki dezavantajlari vardir; Cogu ilginc yapay ogrenim verisi
+çokdorukludur (multimodal), yani optimizasyon baglaminda dusunulurse birden
+fazla tepe (ya da cukur) noktasi icerir. Eger eldeki veri egitim
+prosedurunu bu noktalara yeterince kanalize edemiyorsa, o noktalar
+ogrenilmemis olur ve bu test verisi uzerindeki performansi kotu
+etkiler. Fakat bazen verinin bile soylediginden degisik yonleri gezebilen
+bir prosedur belki daha basarili olacaktir. 
+
+Bu dezavantajlari duzelten bir teknik Kalici CD teknigidir. PCD'ye gore
+modelden gelen ``negatif parcaciklarin'' orneklemesi arka planda, kendi
+baslarina ilerler, ve bu zincir hicbir zaman veriye, ya da baska bir seye
+set edilmez (hatta zincirin baslangic noktasi bile veriden alakasiz olarak,
+rasgele secilir). Yani $h^0,x^0, h^1, x^1, ...$ uretimi neredeyse tamamen
+``kapali devre'' kendi kendine ilerleyen bir surec olacaktir. Diger yanda
+pozitif parcaciklar veriden geliyor (ve tabii ki her gradyan adimi sonrasi
+degisen $W$ hem pozitif hem negatif parcaciklari etkiler), ve bu al/ver
+iliskisi, hatta bir bakima model ile verinin kapismasinin PCD'yi daha
+avantajli hale getirdigi iddia edilir, cokdoruklu verilerin ogrenilmesinde
+PCD daha basarili bulunmustur.
 
 \inputminted[fontsize=\footnotesize]{python}{rbmp.py}
+
+Ustte gorulen kod daha once RBM icin kullanilan kodla benzesiyor, sadece
+\verb!fit! degisik, ve \verb!_fit! eklendi. Bu kodda miniparca (minibatch)
+kavrami da var, her gradyan adimi ufak verinin miniparcalari uzerinden
+atilir. Bu parcalar hakikaten ufak, mesela 10 ila 100 arasidir ve bu ilginc
+bir durumu ortaya cikartir, ozellikle negatif parcaciklar icin ki bu
+parcaciklar $W$ baglantisi haricinde kendi baslarina ilerler, cok az veri
+noktasi ile islem yapabilmektedirler.
+
+Metot \verb!fit! icinde \verb!self.h_samples_! degiskenine dikkat, bu
+degisken PCD'nin ``kalici'' olmasini saglar, her \verb!_fit! cagri sonrasi
+negatif parcacik orneklemesi \verb!self.h_samples_!'nin biraktigi yerden
+baslar. 
+
+
+RBM icin kullandigimiz ayni veri seti uzerine k-katlama ile test edelim,
 
 \inputminted[fontsize=\footnotesize]{python}{test_rbmkfold.py}
 
@@ -15,15 +64,22 @@
 
 Daha cetrefil bir veri seti MNIST veri setine [2] bakalim. Veri 28x28
 boyutunda ikisel veri olarak kodlanmis rakamlarin el yazisindan alinmis
-resimlerini icerir. Veriyi aldiktan sonra egitim / test kisimlarinin ilk
-1000 tanesi uzerinde algoritmamizi kullanirsak, tek komsulu KNN (yani 1-NN)
-yuzde 85.4 basari sonucunu verir. Alttaki parametreler uzerinden RBM yuzde
-86 olacaktir.
+resimlerini icerir. Veri seti unlu cunku Derin Ogrenim'in ilk buyuk
+basarilari bu veri seti uzerinde paylasildi. MNIST'i aldiktan sonra egitim
+/ test kisimlarinin ilk 1000 tanesi uzerinde algoritmamizi kullanirsak, tek
+komsulu KNN (yani 1-NN) yuzde 85.4 basari sonucunu verir. Alttaki
+parametreler uzerinden PCD ile RBM'in basarisi yuzde 86 olacaktir.
 
 \inputminted[fontsize=\footnotesize]{python}{test_mnist.py}
 
 [1] \url{http://videolectures.net/icml09_tieleman_ufw/}
 
 [2] \url{http://www.iro.umontreal.ca/~lisa/deep/data/mnist/mnist.pkl.gz}
+
+[3] Bengio, Y., {\em Learning Deep Architectures for AI}
+
+[4] Larochelle, H., Neural Networks class,
+\url{https://www.youtube.com/playlist?list=PL6Xpj9I5qXYEcOhn7TqghAJ6NAPrNmUBHd}
+
 
 \end{document}
