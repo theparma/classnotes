@@ -1,4 +1,3 @@
-# http://www.iro.umontreal.ca/~lisa/deep/data/mnist/mnist.pkl.gz
 import numpy as np, gzip, sys
 from sklearn import neighbors
 from sklearn.cross_validation import train_test_split
@@ -7,8 +6,7 @@ from sklearn.linear_model import LogisticRegression
 np.random.seed(0)
 S = 1000
 
-import cPickle, numpy as np, gzip
-f = gzip.open('/home/burak/Downloads/DeepLearningTutorials/data/mnist.pkl.gz', 'rb')
+f = gzip.open('/tmp/mnist.pkl.gz', 'rb')
 train_set, valid_set, test_set = cPickle.load(f)
 f.close()
 
