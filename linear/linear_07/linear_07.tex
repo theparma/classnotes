@@ -11,7 +11,7 @@ algoritma nedir, mesela. Ornek uzerinde gorelim,
 
 $$ 
 A = 
-\left[\begin{array}{rrrr}
+\left[\begin{array}{cccc}
 1 & 2 & 2 & 2  \\
 2 & 4 & 6 & 8 \\
 3 & 6 & 8 & 10
@@ -19,18 +19,90 @@ A =
  $$
 
 Ilk bakista gozume carpan 2. kolon 1. kolonun bir kati. Ya da 2. kolon
-1. ile ``ayni yonde'', bu iki kolon ``bagimsiz degil''. Tabii bu bilgileri 
+1. ile ``ayni yonde'', bu iki kolon ``bagimsiz degil''. Tabii bu bilgileri
 cozum sirasinda da algoritmanin bir yan etkisi olarak kesfetmeyi
 bekleriz. Satirlara bakiyorum, 1. ve 2. toplami 3. ile ayni, yani 3. satir
-bagimsiz degil. Tum bunlar eliminasyonun yan urunleri olarak bulunmalilar. 
+bagimsiz degil. Tum bunlar eliminasyonun yan urunleri olarak bulunmalilar.
 
-Evet ana algoritmamiz eliminasyon, onun dikdortgensel kosula adapte edilmis
-hali [pivot ta sifir var ise durmadan cozume devam ediyoruz ?? vs].
+Ana algoritmamiz eliminasyon olacak, ama onun dikdortgensel kosula adapte
+edilmis hali, pivotta sifir var ise durmadan cozume devam ediyoruz, vs.
 
 Eliminasyon sirasinda yapilan islemler sifir uzayini degistirmez. Degil mi?
-Eger mesela bir denklemin (satirin) bir katini bir diger denklemden
-cikartiyorsam bu nihai cozumu degistirmez, cunku denklem sistemi
-degismemistir. 
+Bu onemli. Bir denklem sisteminde bir denklemin (satirin) bir katini bir
+diger denklemden cikartiyorsam bu nihai cozumu degistirmez, cunku denklem
+sistemi bir butun olarak degismemistir. Satir uzayi degismez, ama dikkat,
+kolon uzayi degisir. Eliminasyonun neyi degistirdigi neyi degistirmedigini
+bilmek lazim. 
+
+Ilk pivot'tan baslayalim (yesil ile isaretli)
+
+$$ 
+\left[\begin{array}{cccc}
+\textcolor{green}{1} & 2 & 2 & 2  \\
+2 & 4 & 6 & 8 \\
+3 & 6 & 8 & 10
+\end{array}\right]
+ $$
+
+Pivot satirini 2 ile carpip 2. satirdan cikartiyoruz. Sonra pivot satirini
+3 ile carpip 3. satirdan cikartiyoruz. Sonuc
+
+$$ 
+\left[\begin{array}{cccc}
+1 & 2 & 2 & 2  \\
+0 & 0 & 2 & 4 \\
+0 & 0 & 2 & 4
+\end{array}\right]
+ $$
+
+Simdi sonraki pivot'u ariyoruz, normal durumda bu pivot
+
+$$ 
+\left[\begin{array}{rrrr}
+1 & 2 & 2 & 2  \\
+0 & \textcolor{green}{0} & 2 & 4 \\
+0 & 0 & 2 & 4
+\end{array}\right]
+ $$
+
+olurdu. Ama orada sifir var, o zaman bir alttaki satira bakiyoruz, ki
+umuyoruz ki satir degis-tokusu yaparak o noktaya sifir olmayan bir deger
+gelsin. Ama mustakbel pivot'un altindaki hucre de sifir degerini tasiyor!
+Bu bir seyin isareti aslinda.. Neyin? Bu baktigimiz kolonun kendinden once
+gelen kolonlarin bir kombinasyonu oldugunun isareti. Fakat bunun uzerinde
+fazla durmaya gerek yok, algoritmik olarak durup dusunmeye gerek yok, eger
+bir pivot'u kullanamiyorsak hemen yana geceriz, yani
+
+$$ 
+\left[\begin{array}{rrrr}
+1 & 2 & 2 & 2  \\
+0 & 0 & \textcolor{green}{2} & 4 \\
+0 & 0 & 2 & 4
+\end{array}\right]
+ $$
+
+Simdi 2. satiri 3. satirdan cikartmak yeterli. Sonuc altta. Bu matrise $U$
+diyebiliriz, gerci tam ustucgensel (uppertriangular) sayilmaz, cunku
+sifir dengesi tam degil, ama hafiften ustucgensel. Tum pivot'lari
+gosterirsek, 
+
+$$ 
+\left[\begin{array}{rrrr}
+\textcolor{green}{1} & 2 & 2 & 2  \\
+0 & 0 & \textcolor{green}{2} & 4 \\
+0 & 0 & 0 & 0
+\end{array}\right]
+ $$
+
+Iki tane pivot var; ve bu iki sayisi bu matris hakkinda onemli bir bulguya
+isaret ediyor, bu matrisin kertesi (rank) 2. Kerte bir matrisin pivot
+sayisidir. 
+
+
+
+
+
+
 
 
 
