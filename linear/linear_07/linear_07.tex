@@ -87,6 +87,7 @@ sifir dengesi tam degil, ama hafiften ustucgensel. Tum pivot'lari
 gosterirsek, 
 
 $$ 
+U = 
 \left[\begin{array}{rrrr}
 \textcolor{green}{1} & 2 & 2 & 2  \\
 0 & 0 & \textcolor{green}{2} & 4 \\
@@ -98,9 +99,27 @@ Iki tane pivot var; ve bu iki sayisi bu matris hakkinda onemli bir bulguya
 isaret ediyor, bu matrisin kertesi (rank) 2. Kerte bir matrisin pivot
 sayisidir. 
 
+Bu noktada geriye sokmak (backsubstitution) ile sonucu elde
+edebiliriz. Tabii $Ax=0$'in bir sonucu vardir, degil mi? Evet, ki bu
+beklenir cunku elde 3 denklem ve 4 bilinmeyen var, bu sistemden ``bir''
+cozum cikmasi normal. Simdi onlari bulmak istiyorum.
 
+Bu cozumleri bulurken kritik adim su, ki bu adima ``pivot kolonlarini /
+degiskenlerini ayirma'' adi veriyoruz. Pivot kolonlari pivot hucrelerinin
+oldugu kolonlar ki bunlar 1. ve 3. kolonlar, ve ``serbest kolonlar'' ki
+bunlar geri kalanlari, yani 2. ve 4. Niye bu isimleri kullandim, ozellikle
+pivot olmayan kolonlara niye ``serbest'' adini verdim?
 
+Simdi $Ux=0$'nun cozumunu bulma baglaminda dusunelim. Bu durumda
+$x_2,x_4$'a istedigim degeri atayabilirim. Belki cebirsel olarak tum
+denklemleri gormek daha faydali olur, $Ux=0$'i soyle yazabiliriz, 
 
+$$ x_1 + 2x_2 + 2x_3 + 2x_4 = 0 $$
+
+$$ 2x_3 + 4x_4 = 0 $$
+
+Ve daha once dedigimiz gibi bu denklem sistemini geriye sokma yontemi ile
+cozebiliriz, 
 
 
 

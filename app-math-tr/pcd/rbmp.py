@@ -59,7 +59,7 @@ class RBM:
     update = np.dot(v_pos.T, h_pos).T
     update -= np.dot(h_neg.T, v_neg)
     self.weights += lr * update.T
-    h_neg[np.random.rand(h_neg.shape[0], h_neg.shape[1]) < h_neg] = 1.0  # sample binomial
+    h_neg[np.random.rand(h_neg.shape[0], h_neg.shape[1]) < h_neg] = 1.0 
     self.h_samples_ = np.floor(h_neg, h_neg)[:,1:]
 
   def fit(self, data):

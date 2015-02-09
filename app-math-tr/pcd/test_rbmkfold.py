@@ -12,7 +12,8 @@ cv = KFold(n=len(X),n_folds=3)
 for train, test in cv:
     X_train, Y_train = X[train], Y[train]
     X_test, Y_test = X[test], Y[test]
-    r = rbmp.RBM(num_hidden=40, learning_rate=0.1, max_epochs=100,num_visible=64,batch_size=10)
+    r = rbmp.RBM(num_hidden=40, learning_rate=0.1, max_epochs=100,
+                 num_visible=64, batch_size=10)
     r.fit(X_train)
     clf = LogisticRegression(C=1000)
     clf.fit(r.run_visible(X_train), Y_train)

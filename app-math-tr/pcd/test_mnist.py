@@ -21,7 +21,8 @@ clf.fit(X_train, y_train)
 print 'KNN', clf.score(X_test, y_test)
 
 import rbmp
-r = rbmp.RBM(num_hidden=500, learning_rate=0.1, max_epochs=200,num_visible=784,batch_size=20)
+r = rbmp.RBM(num_hidden=500, learning_rate=0.1, max_epochs=200,
+             num_visible=784,batch_size=20)
 r.fit(X_train)
 clf = LogisticRegression(C=1000)
 clf.fit(r.run_visible(X_train), y_train)
