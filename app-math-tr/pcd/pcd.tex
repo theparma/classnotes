@@ -15,27 +15,28 @@ Simdi RBM'de gordugumuz CD'yi hatirlayalim, CD bir tur ``tek adimlik Gibbs
 orneklemesi'' yapiyordu; bu tek adim ornekleme sonrasinda bir sonraki adim
 oncesi, veri, tekrar baslangic noktasi olarak zincire veriliyordu. Yani her
 CD adiminin baslangici illa ki verinin kendisi olacaktir. Bu usul Gibbs'in
-veriden uzaklasma sansi cok azdir.
+veriden uzaklasma sansi cok azdir. Fakat cogu ilginc yapay ogrenim verisi
+çokdorukludur (multimodal), optimizasyon baglaminda dusunulurse birden
+fazla tepe (ya da cukur) noktasi icerir. Eger eldeki veri, egitimi bu
+noktalara yeterince kanalize edemiyorsa o noktalar ogrenilmemis olur. Bazen
+verinin (bile) soylediginden degisik yonleri gezebilen bir prosedur bu
+cokdoruklu alani gezmesi acisindan daha basarili olabilecektir.
 
-Bu yontemin avantajlari oldugu gibi tabii ki dezavantajlari da var; Cogu
-ilginc yapay ogrenim verisi çokdorukludur (multimodal), yani optimizasyon
-baglaminda dusunulurse birden fazla tepe (ya da cukur) noktasi icerir. Eger
-eldeki veri egitim prosedurunu bu noktalara yeterince kanalize edemiyorsa,
-o noktalar ogrenilmemis olur ve bu test verisi uzerindeki performansi kotu
-etkiler. Fakat bazen verinin bile soylediginden degisik yonleri gezebilen
-bir prosedur belki daha basarili olacaktir.
+PCD bu eksikleri duzeltmeye cabalar. PCD'ye gore modelden gelen ``negatif
+parcaciklarin'' orneklemesi arka planda, kendi baslarina ilerler, ve bu
+zincir hicbir zaman veriye, ya da baska bir seye set edilmez (hatta
+zincirin baslangic noktasi bile veriden alakasiz olarak, rasgele
+secilir). Bu yonteme gore $h^0,x^0, h^1, x^1, ...$ uretimi neredeyse
+tamamen ``kapali devre'' kendi kendine ilerleyen bir surec olacaktir. Diger
+yanda pozitif parcaciklar veriden geliyor (ve tabii ki her gradyan adimi
+sonrasi degisen $W$ hem pozitif hem negatif parcaciklari etkiler), ve bu
+al/ver iliskisi, hatta bir bakima model ile verinin kapismasinin PCD'yi
+daha avantajli hale getirdigi iddia edilir, ki PCD, CD'den genellikle daha
+iyi ogrenim saglar [5].
 
-Bu dezavantajlari duzelten bir teknik Kalici CD teknigidir. PCD'ye gore
-modelden gelen ``negatif parcaciklarin'' orneklemesi arka planda, kendi
-baslarina ilerler, ve bu zincir hicbir zaman veriye, ya da baska bir seye
-set edilmez (hatta zincirin baslangic noktasi bile veriden alakasiz olarak,
-rasgele secilir). Bu yonteme gore $h^0,x^0, h^1, x^1, ...$ uretimi
-neredeyse tamamen ``kapali devre'' kendi kendine ilerleyen bir surec
-olacaktir. Diger yanda pozitif parcaciklar veriden geliyor (ve tabii ki her
-gradyan adimi sonrasi degisen $W$ hem pozitif hem negatif parcaciklari
-etkiler), ve bu al/ver iliskisi, hatta bir bakima model ile verinin
-kapismasinin PCD'yi daha avantajli hale getirdigi iddia edilir, ki PCD,
-CD'den genellikle daha iyi ogrenim saglar [5].
+CD'ye kiyasla PCD'nin Gibbs ya da genel olarak MCMC orneklemesinin
+prensibine daha yakin durdugu iddia edilebilir, cunku PCD ile bir orneklem
+zinciri kesintisiz olarak devam ettirilir. 
 
 \inputminted[fontsize=\footnotesize]{python}{rbmp.py}
 
